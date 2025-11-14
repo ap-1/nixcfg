@@ -9,7 +9,10 @@
     networkmanagerapplet
     discord-canary
     libnotify
+    nerd-fonts.fira-code
   ];
+
+  fonts.fontconfig.enable = true;
 
   programs.firefox = {
     enable = true;
