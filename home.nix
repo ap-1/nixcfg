@@ -93,8 +93,8 @@
       };
     };
     signing = {
-      key = "841AFB689A5BACCB";
-      format = "openpgp";
+      key = "~/.ssh/id_ed25519.pub";
+      format = "ssh";
       signByDefault = true;
     };
   };
@@ -137,6 +137,17 @@
     enableZshIntegration = true;
     enableSshSupport = true;
     pinentry.package = pkgs.pinentry-curses;
+  };
+
+  services.ssh-agent.enable = true;
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+    matchBlocks = {
+      "*" = {
+        addKeysToAgent = "yes";
+      };
+    };
   };
 
   services.xdg-desktop-portal-termfilepickers = {
