@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ ... }:
 
 {
   programs.git = {
@@ -11,7 +11,7 @@
     settings = {
       user = {
         name = "Anish Pallati";
-	email = "i@anish.land";
+        email = "i@anish.land";
       };
       init.defaultBranch = "main";
       tag.gpgSign = true;

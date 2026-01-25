@@ -1,6 +1,8 @@
 { self, lib, pkgs, ... }:
 
 {
+  imports = [ ../../modules/system/settings.nix ];
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -8,9 +10,6 @@
   ];
 
   environment.variables.NH_DARWIN_FLAKE = "/etc/nix-darwin";
-
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
 
   # Add self as a trusted user
   nix.settings.trusted-users = [ "anish" ];

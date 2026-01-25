@@ -3,14 +3,17 @@
 {
   home.packages = with pkgs; [
     pfetch
+    tmux
+    tree
+    devenv
+    claude-code
+
+    # applications
     discord-canary
     slack
-    moonlight-qt
     prismlauncher
+    moonlight-qt
     qbittorrent
-    tmux
-    claude-code
-    devenv
   ];
 
   programs.zsh = {
@@ -24,8 +27,11 @@
     initContent = lib.mkMerge [
       (lib.mkBefore ''
         zstyle ':omz:plugins:eza' 'git-status' yes
-	zstyle ':omz:plugins:eza' 'icons' yes
+        zstyle ':omz:plugins:eza' 'icons' yes
       '')
+      ''
+        pfetch
+      ''
     ];
 
     oh-my-zsh = {

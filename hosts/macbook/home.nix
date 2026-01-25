@@ -19,8 +19,18 @@
     docker-compose
     colima
     nixd # nix language server
+    nil # also a nix language server
     sshpass
     rustup
+    typst
+    git-filter-repo
+    marp-cli
+    dioxus-cli
+    wasm-bindgen-cli
+    ragenix
+    bun
+    uv
+    openbao
 
     # applications
     shottr
@@ -30,7 +40,6 @@
   programs.zsh.shellAliases.update = "nh darwin switch";
 
   programs.ssh = {
-    enableDefaultConfig = false;
     matchBlocks."*".extraOptions = {
       IgnoreUnknown = "UseKeychain";
       UseKeychain = "yes";
