@@ -1,18 +1,23 @@
-{ pkgs, lib, xdg-termfilepickers, neovim-nightly-overlay, ...}:
+{ pkgs, lib, xdg-termfilepickers, ...}:
 
 {
-  nixpkgs.config.allowUnfreePredicate = pkg : builtins.elem (lib.getName pkg) [
-    "discord-canary"
+  imports = [
+    ../../modules/home/git.nix
+    ../../modules/home/gpg.nix
+    ../../modules/home/neovim.nix
+    ../../modules/home/shell.nix
+    ../../modules/home/ssh.nix
+    ../../modules/home/nixpkgs.nix
   ];
 
   home.packages = with pkgs; [
-    networkmanagerapplet
-    discord-canary
     libnotify
     nerd-fonts.fira-code
   ];
 
   fonts.fontconfig.enable = true;
+
+  programs.zsh.shellAliases.update = "nh os switch";
 
   programs.firefox = {
     enable = true;
@@ -22,35 +27,6 @@
         "widget.use-xdg-desktop-portal.file-picker" = 1;
       };
     };
-  };
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-
-    shellAliases = {
-      update = "sudo nixos-rebuild switch --flake ~/dotfiles#ap-1";
-      config = "nvim ~/dotfiles/configuration.nix";
-      flake = "nvim ~/dotfiles/flake.nix";
-      home = "nvim ~/dotfiles/home.nix";	  
-      
-      ls = "eza -la";
-      cat = "bat --style=plain --paging=never";
-    };
-
-    oh-my-zsh = {
-      enable = true;
-    };
-  };
-
-  programs.atuin = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.eza = {
-    enable = true;
-    enableZshIntegration = true;
   };
 
   programs.yazi = {
@@ -71,46 +47,6 @@
     '';
   };
   
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.gh = {
-    enable = true;
-    gitCredentialHelper.enable = true;
-    settings = {
-      git_protocol = "ssh";
-    };
-  };
-
-  programs.git = {
-    enable = true;
-    settings = {
-      user = {
-        name = "Anish Pallati";
-        email = "i@anish.land";
-      };
-      init = {
-        defaultBranch = "main";
-      };
-    };
-    signing = {
-      key = "~/.ssh/id_ed25519.pub";
-      format = "ssh";
-      signByDefault = true;
-    };
-  };
-
-  programs.neovim = {
-    enable = true;
-    package = neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
-
   catppuccin = {
     enable = true;
     flavor = "mocha";
@@ -133,25 +69,6 @@
   programs.rofi.enable = true;
   services.dunst.enable = true;
   programs.waybar.enable = true;
-
-  programs.gpg.enable = true;
-  services.gpg-agent = {
-    enable = true;
-    enableZshIntegration = true;
-    enableSshSupport = true;
-    pinentry.package = pkgs.pinentry-curses;
-  };
-
-  services.ssh-agent.enable = true;
-  programs.ssh = {
-    enable = true;
-    addKeysToAgent = "yes";
-    matchBlocks = {
-      "*" = {
-        addKeysToAgent = "yes";
-      };
-    };
-  };
 
   services.xdg-desktop-portal-termfilepickers = {
     enable = true;
