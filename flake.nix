@@ -47,6 +47,9 @@
               inherit inputs xdg-termfilepickers neovim-nightly-overlay;
             };
 
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            
             home-manager.users.anish = {
               imports = [
                 ./hosts/pc/home.nix
@@ -59,7 +62,7 @@
         ];
       };
 
-      darwinConfigurations."MacBook-Pro-4" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations."MacBook-Pro-19" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit self; };
         modules = [
           ./hosts/macbook/configuration.nix

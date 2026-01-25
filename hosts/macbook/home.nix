@@ -1,14 +1,7 @@
 { lib, pkgs, ... }:
 
 {
-  imports = [
-    ../../modules/home/git.nix
-    ../../modules/home/gpg.nix
-    ../../modules/home/neovim.nix
-    ../../modules/home/shell.nix
-    ../../modules/home/ssh.nix
-    ../../modules/home/nixpkgs.nix
-  ];
+  imports = [ ../../modules/home ];
 
   home.username = "anish";
   home.homeDirectory = lib.mkForce "/Users/anish";

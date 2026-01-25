@@ -1,14 +1,7 @@
 { pkgs, lib, xdg-termfilepickers, ...}:
 
 {
-  imports = [
-    ../../modules/home/git.nix
-    ../../modules/home/gpg.nix
-    ../../modules/home/neovim.nix
-    ../../modules/home/shell.nix
-    ../../modules/home/ssh.nix
-    ../../modules/home/nixpkgs.nix
-  ];
+  imports = [ ../../modules/home ];
 
   home.packages = with pkgs; [
     libnotify

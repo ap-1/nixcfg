@@ -1,7 +1,7 @@
 { self, lib, pkgs, ... }:
 
 {
-  imports = [ ../../modules/system/settings.nix ];
+  imports = [ ../../modules/system ];
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -36,12 +36,6 @@
       "steam"
     ];
   };
-
-  # Unfree packages
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "shottr"
-    "raycast"
-  ];
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
