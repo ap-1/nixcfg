@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     libnotify
     nerd-fonts.fira-code
+    nushell # needed for xdg-desktop-portal-termfilepickers yazi wrapper scripts
   ];
 
   fonts.fontconfig.enable = true;
@@ -68,7 +69,7 @@
     package = xdg-termfilepickers.packages.${pkgs.stdenv.hostPlatform.system}.default;
     config = {
       # --app-id used by a hyprland windowrule
-      terminal_command = [(lib.getExe pkgs.foot)];
+      terminal_command = [(lib.getExe pkgs.foot) "--app-id=yazi"];
     };
   };
 
