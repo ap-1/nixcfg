@@ -1,7 +1,10 @@
 { pkgs, lib, xdg-termfilepickers, ...}:
 
 {
-  imports = [ ../../modules/home ];
+  imports = [
+    ../../modules/home
+    ./hyprland
+  ];
 
   home.packages = with pkgs; [
     libnotify
@@ -18,6 +21,17 @@
   services.flatpak = {
     enable = true;
     packages = [ "org.vinegarhq.Sober" ];
+    overrides = {
+      "org.vinegarhq.Sober" = {
+        Context = {
+          filesystems = [
+            "xdg-run/app/com.discordapp.Discord:create"
+            "xdg-run/discord-ipc-0"
+          ];
+          devices = [ "input" ];
+        };
+      };
+    };
   };
 
   programs.firefox = {
