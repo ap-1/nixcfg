@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 
 {
   home.packages = with pkgs; [
@@ -21,6 +21,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    dotDir = "${config.xdg.configHome}/zsh";
 
     shellAliases = {
       cat = "bat --style=plain --paging=never";

@@ -11,7 +11,12 @@
 
   fonts.fontconfig.enable = true;
 
-  programs.zsh.shellAliases.update = "nh os switch";
+  programs.zsh.shellAliases.update = "nh os switch ~/dotfiles";
+
+  services.flatpak = {
+    enable = true;
+    packages = [ "org.vinegarhq.Sober" ];
+  };
 
   programs.firefox = {
     enable = true;
@@ -93,6 +98,7 @@
     GTK_USE_PORTAL = "1"; # legacy
     GDK_DEBUG = "portals"; # termfilechooser
     QT_QPA_PLATFORMTHEME = "xdgdesktopportal";
+    XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share";
   };
 
   home.stateVersion = "25.05";

@@ -17,6 +17,7 @@
     catppuccin.url = "github:catppuccin/nix";
     xdg-termfilepickers.url = "github:Guekka/xdg-desktop-portal-termfilepickers/195ba6bb4a4f0224b0e749f2198fc88696be6383";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
   outputs =
@@ -25,9 +26,10 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      neovim-nightly-overlay,
       catppuccin,
       xdg-termfilepickers,
+      neovim-nightly-overlay,
+      nix-flatpak,
     }:
     {
       formatter = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" ] (
@@ -44,7 +46,7 @@
           {
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = {
-              inherit inputs xdg-termfilepickers neovim-nightly-overlay;
+              inherit inputs xdg-termfilepickers neovim-nightly-overlay nix-flatpak;
             };
 
             home-manager.useGlobalPkgs = true;
@@ -56,6 +58,7 @@
 
                 catppuccin.homeModules.catppuccin
                 xdg-termfilepickers.homeManagerModules.default
+                nix-flatpak.homeManagerModules.nix-flatpak
               ];
             };
           }
