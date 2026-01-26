@@ -3,12 +3,6 @@
 {
   imports = [ ../../modules/system ];
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [
-    nh
-  ];
-
   environment.variables.NH_DARWIN_FLAKE = "/etc/nix-darwin";
 
   # Add self as a trusted user
