@@ -13,6 +13,8 @@
 
   programs.zsh.shellAliases.update = "nh os switch ~/dotfiles";
 
+  services.ssh-agent.enable = true;
+
   services.flatpak = {
     enable = true;
     packages = [ "org.vinegarhq.Sober" ];
