@@ -49,7 +49,7 @@
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            
+
             home-manager.users.anish = {
               imports = [
                 ./hosts/pc/home.nix

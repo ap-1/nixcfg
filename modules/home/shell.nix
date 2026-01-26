@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    bat
+    eza
     pfetch
     tmux
     tree
@@ -39,9 +41,6 @@
       plugins = [ "eza" ];
     };
   };
-
-  programs.bat.enable = true;
-  programs.eza.enable = true;
 
   programs.direnv = {
     enable = true;
