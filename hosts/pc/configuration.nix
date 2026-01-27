@@ -47,7 +47,7 @@
 
   # Enable ly display manager
   services.displayManager.ly.enable = true;
-  
+
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -68,7 +68,10 @@
   users.users.anish = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
   };
 
   users.defaultUserShell = pkgs.zsh;

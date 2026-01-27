@@ -14,9 +14,11 @@
       "discord-canary"
       "slack"
       "claude-code"
+      "cloudflare-warp"
 
       # mac-only
       "shottr"
       "raycast"
+      "tailscale-gui"
     ];
 }

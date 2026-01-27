@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -8,14 +13,6 @@
     tmux
     tree
     devenv
-    claude-code
-
-    # applications
-    discord-canary
-    slack
-    prismlauncher
-    moonlight-qt
-    qbittorrent
   ];
 
   programs.zsh = {

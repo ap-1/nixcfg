@@ -1,4 +1,9 @@
-{ self, lib, pkgs, ... }:
+{
+  self,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [ ../../modules/system ];
@@ -27,12 +32,12 @@
 
     casks = [
       "ghostty"
-      "steam"
+      "zed"
     ];
   };
 
   # Tailscale
-  services.tailscale.enable = true;
+  programs.tailscale-gui.enable = true;
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";

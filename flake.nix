@@ -2,10 +2,11 @@
   description = "Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/master"; # nixos-unstable
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin";
+      # url = "github:nix-darwin/nix-darwin";
+      url = "github:ap-1/nix-darwin/programs-tailscale-gui";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -46,7 +47,12 @@
           {
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = {
-              inherit inputs xdg-termfilepickers neovim-nightly-overlay nix-flatpak;
+              inherit
+                inputs
+                xdg-termfilepickers
+                neovim-nightly-overlay
+                nix-flatpak
+                ;
             };
 
             home-manager.useGlobalPkgs = true;

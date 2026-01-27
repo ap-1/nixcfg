@@ -7,5 +7,6 @@
     ./neovim.nix
     ./shell.nix
     ./ssh.nix
+    ./apps.nix
   ];
 }
