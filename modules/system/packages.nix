@@ -6,7 +6,15 @@
     "flakes"
   ];
 
-  environment.systemPackages = with pkgs; [ nh ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      nh
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      ly
+      cloudflare-warp
+    ];
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:

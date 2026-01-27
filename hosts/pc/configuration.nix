@@ -79,13 +79,6 @@
   programs.zsh.enable = true;
   programs.hyprland.enable = true;
 
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-    ly
-    cloudflare-warp
-  ];
-
   environment.variables = {
     LIBVA_DRIVER_NAME = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";

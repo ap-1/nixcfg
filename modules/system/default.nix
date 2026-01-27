@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./settings.nix ];
+  imports = [ ./packages.nix ];
 }
