@@ -6,7 +6,7 @@
 
     nix-darwin = {
       # url = "github:nix-darwin/nix-darwin";
-      url = "github:ap-1/nix-darwin/programs-tailscale-gui";
+      url = "github:ap-1/nix-darwin/programs-gui-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

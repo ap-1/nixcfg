@@ -8,7 +8,6 @@
     prismlauncher
     moonlight-qt
     qbittorrent
-    cloudflare-warp
     element-desktop
   ];
 }

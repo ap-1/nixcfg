@@ -120,16 +120,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1769420154,
-        "narHash": "sha256-ekJ2UO/7Z96thz4Bea0u7Fy1XiWfVpA5Lsdn4GG4w38=",
+        "lastModified": 1769526457,
+        "narHash": "sha256-RwNsJK9NR0jUsUxoWEZDIE/ZsxWjC+4a3llp1jkpO0U=",
         "owner": "ap-1",
         "repo": "nix-darwin",
-        "rev": "656ff1f346033104998b60d3ad29dfb1e28aefc9",
+        "rev": "384b02009a01373d0bfd39c61c0270e16ff7689d",
         "type": "github"
       },
       "original": {
         "owner": "ap-1",
-        "ref": "programs-tailscale-gui",
+        "ref": "programs-gui-modules",
         "repo": "nix-darwin",
         "type": "github"
       }
