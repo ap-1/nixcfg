@@ -59,6 +59,10 @@
     '';
   };
 
+  programs.bat.enable = true;
+  programs.rofi.enable = true;
+  services.dunst.enable = true;
+
   services.xdg-desktop-portal-termfilepickers = {
     enable = true;
     package = xdg-termfilepickers.packages.${pkgs.stdenv.hostPlatform.system}.default;
