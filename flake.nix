@@ -15,10 +15,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+
     catppuccin.url = "github:catppuccin/nix";
     xdg-termfilepickers.url = "github:Guekka/xdg-desktop-portal-termfilepickers/195ba6bb4a4f0224b0e749f2198fc88696be6383";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
   outputs =
@@ -27,10 +29,11 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      nix-flatpak,
+      nix-cachyos-kernel,
       catppuccin,
       xdg-termfilepickers,
       neovim-nightly-overlay,
-      nix-flatpak,
     }:
     {
       formatter = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" ] (
@@ -42,6 +45,26 @@
         modules = [
           ./hosts/pc/configuration.nix
           ./hosts/pc/hardware-configuration.nix
+
+          # CachyOS kernel overlay
+          (
+            { pkgs, ... }:
+            {
+              nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
+              boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v4;
+
+              nix.settings = {
+                substituters = [
+                  "https://attic.xuyh0120.win/lantian"
+                  "https://cache.garnix.io"
+                ];
+                trusted-public-keys = [
+                  "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+                  "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+                ];
+              };
+            }
+          )
 
           home-manager.nixosModules.home-manager
           {

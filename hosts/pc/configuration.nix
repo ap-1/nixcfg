@@ -10,20 +10,45 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # AMD CPU optimizations
+  boot.kernelParams = [ "amd_pstate=active" ];
 
-  # Load NVIDIA kernel modules
-  boot.kernelModules = [
-    "nvidia"
-    "nvidia_modeset"
-    "nvidia_uvm"
-    "nvidia_drm"
+  # Btrfs optimizations
+  fileSystems."/".options = [
+    "subvol=@"
+    "compress=zstd"
+    "noatime"
   ];
+  fileSystems."/home".options = [
+    "subvol=@home"
+    "compress=zstd"
+    "noatime"
+  ];
+
+  # Enable OpenGL
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     open = false;
+    modesetting.enable = true;
+    nvidiaSettings = true; # for nvidia-settings
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  # Gamemode
+  programs.gamemode = {
+    enable = true;
+    settings = {
+      general = {
+        renice = 10;
+      };
+    };
   };
 
   # Set networking options.
@@ -71,6 +96,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "gamemode"
     ];
   };
 
