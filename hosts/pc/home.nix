@@ -15,6 +15,11 @@
 
   programs.zsh.shellAliases.update = "nh os switch ~/dotfiles";
 
+  # enabled manually for catppuccin
+  programs.rofi.enable = true;
+  programs.foot.enable = true;
+  services.dunst.enable = true;
+
   services.flatpak = {
     enable = true;
     packages = [ "org.vinegarhq.Sober" ];
@@ -58,12 +63,6 @@
       require("starship"):setup()
     '';
   };
-
-  programs.eza.enable = true;
-  programs.bat.enable = true;
-  programs.rofi.enable = true;
-  programs.foot.enable = true;
-  services.dunst.enable = true;
 
   services.xdg-desktop-portal-termfilepickers = {
     enable = true;

@@ -7,13 +7,15 @@
 
 {
   home.packages = with pkgs; [
-    bat
-    eza
     pfetch
-    tmux
     tree
     devenv
   ];
+
+  # enabled manually for catppuccin
+  programs.bat.enable = true;
+  programs.eza.enable = true;
+  programs.tmux.enable = true;
 
   programs.zsh = {
     enable = true;
