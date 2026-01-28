@@ -14,10 +14,10 @@
       spotify
     ]
     ++ lib.optionals stdenv.isDarwin [
-      ghostty-bin
+      ghostty-bin # macos terminal emulator
     ]
     ++ lib.optionals stdenv.isLinux [
-      ghostty
+      foot # linux terminal emulator
       libnotify
       nerd-fonts.fira-code
       nushell # needed for xdg-desktop-portal-termfilepickers yazi wrapper scripts

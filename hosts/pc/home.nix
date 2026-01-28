@@ -59,18 +59,14 @@
     '';
   };
 
-  programs.bat.enable = true;
-  programs.rofi.enable = true;
-  services.dunst.enable = true;
-
   services.xdg-desktop-portal-termfilepickers = {
     enable = true;
     package = xdg-termfilepickers.packages.${pkgs.stdenv.hostPlatform.system}.default;
     config = {
-      # --class sets the Wayland app id, used by a hyprland windowrule
+      # --app-id is used by a hyprland windowrule
       terminal_command = [
-        (lib.getExe pkgs.ghostty)
-        "--class=yazi"
+        (lib.getExe pkgs.foot)
+        "--app-id=yazi"
       ];
     };
   };
