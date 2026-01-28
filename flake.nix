@@ -2,8 +2,7 @@
   description = "Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/master"; # nixos-unstable
-
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-darwin = {
       # url = "github:nix-darwin/nix-darwin";
       url = "github:ap-1/nix-darwin/programs-gui-modules";
