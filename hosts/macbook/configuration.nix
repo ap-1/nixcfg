@@ -37,8 +37,8 @@
   };
 
   # VPN
-  programs.tailscale-gui.enable = true;
-  programs.cloudflare-warp.enable = true;
+  programs.tailscale-gui.enable = true; # must be in /Applications/Tailscale.app
+  programs.cloudflare-warp.enable = true; # nix-darwin module enables launchd daemon
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
