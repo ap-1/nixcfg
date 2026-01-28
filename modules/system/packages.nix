@@ -23,6 +23,7 @@
       "slack"
       "claude-code"
       "cloudflare-warp"
+      "spotify"
 
       # mac-only
       "shottr"

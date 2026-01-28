@@ -86,7 +86,13 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            home-manager.users.anish = import ./hosts/macbook/home.nix;
+            home-manager.users.anish = {
+              imports = [
+                ./hosts/macbook/home.nix
+
+                catppuccin.homeModules.catppuccin
+              ];
+            };
           }
         ];
       };

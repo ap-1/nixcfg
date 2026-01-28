@@ -11,17 +11,9 @@
     ./hyprland
   ];
 
-  home.packages = with pkgs; [
-    libnotify
-    nerd-fonts.fira-code
-    nushell # needed for xdg-desktop-portal-termfilepickers yazi wrapper scripts
-  ];
-
   fonts.fontconfig.enable = true;
 
   programs.zsh.shellAliases.update = "nh os switch ~/dotfiles";
-
-  services.ssh-agent.enable = true;
 
   services.flatpak = {
     enable = true;
@@ -67,37 +59,18 @@
     '';
   };
 
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-
-    eza.enable = true;
-    yazi.enable = true;
-    nvim.enable = true;
-    atuin.enable = true;
-    starship.enable = true;
-    hyprland.enable = true;
-    bat.enable = true;
-    foot.enable = true;
-    rofi.enable = true;
-    dunst.enable = true;
-    waybar.enable = true;
-  };
-
   programs.bat.enable = true;
-  programs.foot.enable = true;
   programs.rofi.enable = true;
   services.dunst.enable = true;
-  programs.waybar.enable = true;
 
   services.xdg-desktop-portal-termfilepickers = {
     enable = true;
     package = xdg-termfilepickers.packages.${pkgs.stdenv.hostPlatform.system}.default;
     config = {
-      # --app-id used by a hyprland windowrule
+      # --class sets the Wayland app id, used by a hyprland windowrule
       terminal_command = [
-        (lib.getExe pkgs.foot)
-        "--app-id=yazi"
+        (lib.getExe pkgs.ghostty)
+        "--class=yazi"
       ];
     };
   };

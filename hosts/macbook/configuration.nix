@@ -29,11 +29,7 @@
   homebrew = {
     enable = true;
     onActivation.cleanup = "none";
-
-    casks = [
-      "ghostty"
-      "zed"
-    ];
+    casks = [ "zed" ];
   };
 
   # VPN

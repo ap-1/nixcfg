@@ -8,5 +8,6 @@
     ./shell.nix
     ./ssh.nix
     ./packages.nix
+    ./catppuccin.nix
   ];
 }
