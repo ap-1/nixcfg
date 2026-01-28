@@ -59,8 +59,10 @@
     '';
   };
 
+  programs.eza.enable = true;
   programs.bat.enable = true;
   programs.rofi.enable = true;
+  programs.foot.enable = true;
   services.dunst.enable = true;
 
   services.xdg-desktop-portal-termfilepickers = {
