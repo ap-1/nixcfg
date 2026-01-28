@@ -10,6 +10,11 @@
 
   environment.variables.NH_DARWIN_FLAKE = "/etc/nix-darwin";
 
+  # Networking options
+  networking.hostName = "ap-1";
+  networking.localHostName = "ap-1";
+  networking.computerName = "ap-1";
+
   # Add self as a trusted user
   nix.settings.trusted-users = [ "anish" ];
 

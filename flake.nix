@@ -93,7 +93,7 @@
         ];
       };
 
-      darwinConfigurations."MacBook-Pro-19" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations."ap-1" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit self; };
         modules = [
           ./hosts/macbook/configuration.nix
