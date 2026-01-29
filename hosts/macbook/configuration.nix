@@ -38,6 +38,7 @@
   };
 
   # VPN
+  services.tailscale.enable = true; # for SSH
   programs.tailscale-gui.enable = true; # must be in /Applications/Tailscale.app
   programs.cloudflare-warp.enable = true; # nix-darwin module enables launchd daemon
 

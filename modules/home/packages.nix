@@ -4,14 +4,15 @@
   home.packages =
     with pkgs;
     [
-      claude-code
       discord-canary
+      element-desktop
       slack
       prismlauncher
       moonlight-qt
       qbittorrent
-      element-desktop
+      claude-code
       spotify
+      jujutsu
     ]
     ++ lib.optionals stdenv.isDarwin [
       ghostty-bin # macos terminal emulator
