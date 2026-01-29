@@ -10,6 +10,8 @@
     with pkgs;
     [
       nh
+      ghostty.terminfo # for tailscale ssh
+      foot.terminfo
     ]
     ++ lib.optionals stdenv.isLinux [
       ly

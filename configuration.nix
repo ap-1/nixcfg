@@ -1,56 +1,26 @@
-{ config, pkgs, ... }:
+# Edit this configuration file to define what should be installed on
+# your system. Help is available in the configuration.nix(5) man page, on
+# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+
+{ config, lib, pkgs, ... }:
 
 {
-  imports = [
-    ../../modules/system
-    ./tailscale.nix
-  ];
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # AMD CPU optimizations
-  boot.kernelParams = [ 
-    "amd_pstate=active"
-    "amdgpu.dc=1"
-    "video=2560x1440@60"
-  ];
+  # networking.hostName = "nixos"; # Define your hostname.
 
-  # Btrfs optimizations
-  fileSystems."/".options = [
-    "subvol=@"
-    "compress=zstd"
-    "noatime"
-  ];
-  fileSystems."/home".options = [
-    "subvol=@home"
-    "compress=zstd"
-    "noatime"
-  ];
-
-  # Enable OpenGL
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
-  # Gamemode
-  programs.gamemode = {
-    enable = true;
-    settings = {
-      general = {
-        renice = 10;
-      };
-    };
-  };
-
-  # Set networking options.
-  networking.hostName = "ap-1";
+  # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  # time.timeZone = "Europe/Amsterdam";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -64,8 +34,11 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable ly display manager
-  services.displayManager.ly.enable = true;
+  # Enable the X11 windowing system.
+  # services.xserver.enable = true;
+
+
+  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -75,41 +48,46 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
+  # services.pulseaudio.enable = true;
+  # OR
+  # services.pipewire = {
+  #   enable = true;
+  #   pulse.enable = true;
+  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
-  # Define user account.
-  users.users.anish = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "gamemode"
-    ];
-  };
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # users.users.alice = {
+  #   isNormalUser = true;
+  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  #   packages = with pkgs; [
+  #     tree
+  #   ];
+  # };
 
-  users.defaultUserShell = pkgs.zsh;
+  # programs.firefox.enable = true;
 
-  programs.zsh.enable = true;
-  programs.hyprland.enable = true;
+  # List packages installed in system profile.
+  # You can use https://search.nixos.org/ to find more packages (and options).
+  # environment.systemPackages = with pkgs; [
+  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #   wget
+  # ];
 
-  environment.variables = {
-    NIXOS_OZONE_WL = 1; # Configure Electron / CEF apps to use Wayland
-  };
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Enable the flatpak service
-  services.flatpak.enable = true;
+  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -139,5 +117,7 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "26.05"; # Did you read the comment?
+
 }
+
