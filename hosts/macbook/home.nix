@@ -16,10 +16,6 @@
     sshpass
     rustup
     typst
-    git-filter-repo
-    marp-cli
-    dioxus-cli
-    wasm-bindgen-cli
     ragenix
     bun
     uv

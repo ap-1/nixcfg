@@ -11,7 +11,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # AMD CPU optimizations
-  boot.kernelParams = [ 
+  boot.kernelParams = [
     "amd_pstate=active"
     "amdgpu.dc=1"
     "video=2560x1440@60"

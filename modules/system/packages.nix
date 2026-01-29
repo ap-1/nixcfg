@@ -10,12 +10,14 @@
     with pkgs;
     [
       nh
-      ghostty.terminfo # for tailscale ssh
-      foot.terminfo
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      # foot.terminfo # for ssh from pc
     ]
     ++ lib.optionals stdenv.isLinux [
       ly
       cloudflare-warp
+      ghostty.terminfo # for ssh from macbook
     ];
 
   nixpkgs.config.allowUnfreePredicate =
