@@ -14,6 +14,7 @@
         email = "i@anish.land";
       };
       init.defaultBranch = "main";
+      pull.rebase = true;
       tag.gpgSign = true;
       color.ui = "auto";
     };
