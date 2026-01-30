@@ -8,7 +8,8 @@
 {
   imports = [ ../../modules/system ];
 
-  environment.variables.NH_DARWIN_FLAKE = "/etc/nix-darwin";
+  # Enable the Determinate Nix module
+  determinateNix.enable = true;
 
   # Networking options
   networking.hostName = "ap-1";

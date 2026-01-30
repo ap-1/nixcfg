@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     nix-darwin = {
       # url = "github:nix-darwin/nix-darwin";
       url = "github:ap-1/nix-darwin/programs-gui-modules";
@@ -26,6 +27,7 @@
     inputs@{
       self,
       nixpkgs,
+      determinate,
       nix-darwin,
       home-manager,
       nix-flatpak,
@@ -42,6 +44,8 @@
       nixosConfigurations.ap-1 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          determinate.nixosModules.default
+
           ./hosts/pc/configuration.nix
           ./hosts/pc/hardware-configuration.nix
 
@@ -96,6 +100,8 @@
       darwinConfigurations."ap-1" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit self; };
         modules = [
+          determinate.darwinModules.default
+
           ./hosts/macbook/configuration.nix
 
           home-manager.darwinModules.home-manager

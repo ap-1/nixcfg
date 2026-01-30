@@ -26,7 +26,7 @@
     raycast
   ];
 
-  programs.zsh.shellAliases.update = "nh darwin switch";
+  programs.zsh.shellAliases.update = "nh darwin switch ~/dotfiles";
 
   programs.ssh = {
     matchBlocks."*".extraOptions = {
