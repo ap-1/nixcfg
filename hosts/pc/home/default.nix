@@ -1,0 +1,54 @@
+{ pkgs, ... }:
+
+{
+  imports = [
+    ../../../modules/home
+    ./hyprland
+    ./flatpak.nix
+    ./filechooser.nix
+  ];
+
+  fonts.fontconfig.enable = true;
+
+  programs.zsh.shellAliases.update = "nh os switch ~/dotfiles";
+
+  # enabled manually for catppuccin
+  programs.rofi.enable = true;
+  programs.foot.enable = true;
+  services.dunst.enable = true;
+
+  programs.firefox = {
+    enable = true;
+    profiles.default = {
+      extensions.force = true;
+      settings = {
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+      };
+    };
+  };
+
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+
+    plugins = {
+      starship = pkgs.fetchFromGitHub {
+        owner = "Rolv-Apneseth";
+        repo = "starship.yazi";
+        rev = "a63550b2f91f0553cc545fd8081a03810bc41bc0";
+        sha256 = "sha256-PYeR6fiWDbUMpJbTFSkM57FzmCbsB4W4IXXe25wLncg=";
+      };
+    };
+
+    initLua = ''
+      require("starship"):setup()
+    '';
+  };
+
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+  };
+
+  home.stateVersion = "25.05";
+}

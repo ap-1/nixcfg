@@ -16,7 +16,7 @@
     publish = {
       enable = true;
       userServices = true; # broadcasts sunshine
-      addresses = true;    # broadcasts this machine's IP
+      addresses = true; # broadcasts this machine's IP
     };
   };
 
@@ -26,5 +26,10 @@
     KERNEL=="uinput", MODE="0660", GROUP="input", SYMLINK+="uinput"
   '';
 
-  users.users.anish.extraGroups = [ "input" "video" "render" "uinput" ];
+  users.users.anish.extraGroups = [
+    "input"
+    "video"
+    "render"
+    "uinput"
+  ];
 }

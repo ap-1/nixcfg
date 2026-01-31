@@ -46,8 +46,7 @@
         modules = [
           determinate.nixosModules.default
 
-          ./hosts/pc/configuration.nix
-          ./hosts/pc/hardware-configuration.nix
+          ./hosts/pc/configuration
 
           # CachyOS kernel overlay
           (
@@ -86,7 +85,7 @@
 
             home-manager.users.anish = {
               imports = [
-                ./hosts/pc/home.nix
+                ./hosts/pc/home
 
                 catppuccin.homeModules.catppuccin
                 xdg-termfilepickers.homeManagerModules.default

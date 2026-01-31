@@ -9,6 +9,6 @@
       };
     };
   };
-  
+
   users.users.anish.extraGroups = [ "gamemode" ];
 }

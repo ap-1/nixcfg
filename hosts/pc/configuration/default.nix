@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ../../modules/system
+    ../../../modules/system
+    ./hardware-configuration.nix
     ./tailscale.nix
     ./gamemode.nix
     ./sunshine.nix
@@ -38,7 +39,7 @@
   };
 
   # Lock screen
-  security.pam.services.waylock = {};
+  security.pam.services.waylock = { };
 
   # Set networking options.
   networking.hostName = "ap-1";
@@ -61,10 +62,6 @@
 
   # Enable ly display manager
   services.displayManager.ly.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -104,12 +101,6 @@
 
   # Enable the flatpak service
   services.flatpak.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
