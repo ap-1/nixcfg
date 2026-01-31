@@ -4,6 +4,8 @@
   imports = [
     ../../modules/system
     ./tailscale.nix
+    ./gamemode.nix
+    ./sunshine.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -32,17 +34,8 @@
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
-    enable32Bit = true;
-  };
-
-  # Gamemode
-  programs.gamemode = {
-    enable = true;
-    settings = {
-      general = {
-        renice = 10;
-      };
-    };
+    enable32Bit = true; # Steam
+    extraPackages = with pkgs; [ libva-mesa-driver ];
   };
 
   # Set networking options.
@@ -90,7 +83,6 @@
     extraGroups = [
       "wheel"
       "networkmanager"
-      "gamemode"
     ];
   };
 

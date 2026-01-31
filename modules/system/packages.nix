@@ -12,6 +12,7 @@
       nh
     ]
     ++ lib.optionals stdenv.isDarwin [
+      # sunshine
       # foot.terminfo # for ssh from pc
     ]
     ++ lib.optionals stdenv.isLinux [
