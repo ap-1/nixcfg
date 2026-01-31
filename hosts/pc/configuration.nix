@@ -35,7 +35,6 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true; # Steam
-    extraPackages = with pkgs; [ libva-mesa-driver ];
   };
 
   # Lock screen
