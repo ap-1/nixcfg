@@ -7,6 +7,7 @@
     ./tailscale.nix
     ./gamemode.nix
     ./sunshine.nix
+    ./media.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
