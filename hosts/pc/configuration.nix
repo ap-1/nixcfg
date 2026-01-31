@@ -38,6 +38,9 @@
     extraPackages = with pkgs; [ libva-mesa-driver ];
   };
 
+  # Lock screen
+  security.pam.services.waylock = {};
+
   # Set networking options.
   networking.hostName = "ap-1";
   networking.networkmanager.enable = true;

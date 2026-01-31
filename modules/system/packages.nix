@@ -17,6 +17,7 @@
     ]
     ++ lib.optionals stdenv.isLinux [
       ly
+      waylock
       cloudflare-warp
       ghostty.terminfo # for ssh from macbook
     ];
