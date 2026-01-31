@@ -26,6 +26,11 @@
     openFirewall = true;
   };
 
+  services.flaresolverr = {
+    enable = true;
+    openFirewall = true;
+  };
+
   services.transmission = {
     enable = true;
     package = pkgs.transmission_4;
