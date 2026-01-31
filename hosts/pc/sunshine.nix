@@ -26,5 +26,5 @@
     KERNEL=="uinput", MODE="0660", GROUP="input", SYMLINK+="uinput"
   '';
 
-  users.users.anish.extraGroups = [ "input" "video" "render" ];
+  users.users.anish.extraGroups = [ "input" "video" "render" "uinput" ];
 }
