@@ -21,6 +21,11 @@
     openFirewall = true;
   };
 
+  services.readarr = {
+    enable = true;
+    openFirewall = true;
+  };
+
   services.prowlarr = {
     enable = true;
     openFirewall = true;
@@ -55,6 +60,8 @@
   users.users.jellyfin.extraGroups = [ "media" ];
   users.users.sonarr.extraGroups = [ "media" ];
   users.users.radarr.extraGroups = [ "media" ];
+  users.users.lidarr.extraGroups = [ "media" ];
+  users.users.readarr.extraGroups = [ "media" ];
   users.users.transmission.extraGroups = [ "media" ];
 
   # Directories
@@ -64,5 +71,7 @@
     "d /media/downloads/.incomplete 0775 root media -"
     "d /media/movies 0775 root media -"
     "d /media/tv 0775 root media -"
+    "d /media/music 0775 root media -"
+    "d /media/books 0775 root media -"
   ];
 }
