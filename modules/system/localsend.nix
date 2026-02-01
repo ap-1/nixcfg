@@ -1,12 +1,16 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  isLinux,
+  ...
+}:
 
 {
   environment.systemPackages = with pkgs; [ localsend ];
-
-  programs = lib.optionalAttrs pkgs.stdenv.isLinux {
-    localsend = {
-      enable = true;
-      openFirewall = true;
-    };
+}
+// lib.optionalAttrs isLinux {
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
   };
 }
