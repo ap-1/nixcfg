@@ -101,7 +101,7 @@
         modules = [
           determinate.darwinModules.default
 
-          ./hosts/macbook/configuration
+          ./hosts/macbook/configuration.nix
 
           home-manager.darwinModules.home-manager
           {

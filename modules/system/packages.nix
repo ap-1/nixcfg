@@ -29,7 +29,12 @@
       "slack"
       "claude-code"
       "cloudflare-warp"
+      "tailscale-gui"
       "spotify"
+
+      # pc-only
+      "steam"
+      "steam-unwrapped"
 
       # mac-only
       "shottr"

@@ -12,13 +12,6 @@
     ];
   };
 
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-unwrapped"
-    ];
-
   # Gamemode
   programs.gamemode.enable = true;
 

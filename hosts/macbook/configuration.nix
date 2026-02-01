@@ -7,8 +7,7 @@
 
 {
   imports = [
-    ../../../modules/system
-    ./vpn.nix
+    ../../modules/system
   ];
 
   # Enable the Determinate Nix module
@@ -40,6 +39,11 @@
     onActivation.cleanup = "none";
     casks = [ "zed" ];
   };
+
+  # VPN
+  services.tailscale.enable = true; # for SSH
+  programs.tailscale-gui.enable = true;
+  programs.cloudflare-warp.enable = true;
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
