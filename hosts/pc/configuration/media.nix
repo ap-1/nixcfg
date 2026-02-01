@@ -56,6 +56,7 @@
       rpc-bind-address = "0.0.0.0";
       rpc-host-whitelist = "localhost,pc,macbook,iphone,ipad";
       rpc-host-whitelist-enabled = true;
+      rpc-authentication-required = false;
     };
   };
 
@@ -68,6 +69,7 @@
   users.users.radarr.extraGroups = [ "media" ];
   users.users.lidarr.extraGroups = [ "media" ];
   users.users.readarr.extraGroups = [ "media" ];
+  users.users.bazarr.extraGroups = [ "media" ];
   users.users.transmission.extraGroups = [ "media" ];
 
   # Directories
