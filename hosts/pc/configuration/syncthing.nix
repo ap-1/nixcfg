@@ -14,5 +14,6 @@
     dataDir = "/home/anish";
     guiAddress = "127.0.0.1:8384";
     openDefaultPorts = true;
+    settings.gui.insecureSkipHostcheck = true;
   };
 }
