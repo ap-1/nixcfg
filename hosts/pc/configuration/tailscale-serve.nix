@@ -25,6 +25,11 @@ in
             default = 443;
             description = "HTTPS port to expose on tailnet";
           };
+          insecure = mkOption {
+            type = types.bool;
+            default = false;
+            description = "Backend uses HTTPS with self-signed cert";
+          };
         };
       }
     );
@@ -58,7 +63,9 @@ in
             serviceConfig = {
               Type = "oneshot";
               RemainAfterExit = true;
-              ExecStart = "${pkgs.tailscale}/bin/tailscale serve --bg --https=${toString opts.https} http://localhost:${toString opts.port}";
+              ExecStart = "${pkgs.tailscale}/bin/tailscale serve --bg --https=${toString opts.https} ${
+                if opts.insecure then "https+insecure" else "http"
+              }://localhost:${toString opts.port}";
               ExecStop = "${pkgs.tailscale}/bin/tailscale serve --https=${toString opts.https} off";
             };
           }

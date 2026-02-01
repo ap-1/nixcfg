@@ -6,6 +6,7 @@
   services.tailscale-serve.sunshine = {
     port = 47990;
     https = 47990;
+    insecure = true;
   };
 
   # Sunshine service
