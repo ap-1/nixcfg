@@ -9,6 +9,7 @@
     ./sunshine.nix
     ./immich.nix
     ./homepage.nix
+    ./vaultwarden.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

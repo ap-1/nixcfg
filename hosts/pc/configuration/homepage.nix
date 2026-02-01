@@ -1,9 +1,7 @@
 { config, ... }:
 
 {
-  age.secrets.homepage-dashboard = {
-    file = ../../../secrets/homepage-dashboard.age;
-  };
+  age.secrets.homepage-dashboard.file = ../../../secrets/homepage-dashboard.age;
 
   services.homepage-dashboard = {
     enable = true;

@@ -1,9 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  age.secrets.transmission = {
-    file = ../../../secrets/transmission.age;
-  };
+  age.secrets.transmission.file = ../../../secrets/transmission.age;
 
   services.jellyfin = {
     enable = true;
