@@ -14,7 +14,7 @@
     foot.enable = true;
     ghostty.enable = true;
     hyprland.enable = true;
-    # mangohud.enable = true;
+    mangohud.enable = true;
     nvim.enable = true;
     rofi.enable = true;
     starship.enable = true;

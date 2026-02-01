@@ -34,6 +34,5 @@
       # mac-only
       "shottr"
       "raycast"
-      "tailscale-gui"
     ];
 }

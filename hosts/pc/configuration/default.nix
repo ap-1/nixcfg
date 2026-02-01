@@ -3,11 +3,11 @@
 {
   imports = [
     ../../../modules/system
+    ./games.nix
     ./hardware-configuration.nix
-    ./tailscale.nix
-    ./gamemode.nix
-    ./sunshine.nix
     ./media.nix
+    ./sunshine.nix
+    ./tailscale.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

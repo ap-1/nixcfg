@@ -45,6 +45,17 @@
     '';
   };
 
+  programs.mangohud = {
+    enable = true;
+    enableSessionWide = false;
+    settings = {
+      cpu_temp = true;
+      gpu_temp = true;
+      fps = true;
+      frame_timing = 1;
+    };
+  };
+
   xdg.userDirs = {
     enable = true;
     createDirectories = true;

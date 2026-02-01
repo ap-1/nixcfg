@@ -54,7 +54,7 @@
   };
 
   # Shared media group
-  users.groups.media = {};
+  users.groups.media = { };
 
   users.users.anish.extraGroups = [ "media" ];
   users.users.jellyfin.extraGroups = [ "media" ];
