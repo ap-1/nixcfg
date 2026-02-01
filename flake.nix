@@ -43,6 +43,9 @@
 
       nixosConfigurations.ap-1 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+          isLinux = true;
+        };
         modules = [
           determinate.nixosModules.default
 
@@ -97,7 +100,10 @@
       };
 
       darwinConfigurations."ap-1" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self; };
+        specialArgs = {
+          inherit self;
+          isLinux = false;
+        };
         modules = [
           determinate.darwinModules.default
 

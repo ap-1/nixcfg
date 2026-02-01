@@ -41,8 +41,6 @@
   };
 
   # VPN
-  services.tailscale.enable = true; # for SSH
-  programs.tailscale-gui.enable = true;
   programs.cloudflare-warp.enable = true;
 
   # The platform the configuration will be used on.

@@ -1,5 +1,9 @@
 { ... }:
 
 {
-  imports = [ ./packages.nix ];
+  imports = [
+    ./packages.nix
+    ./localsend.nix
+    ./tailscale.nix
+  ];
 }

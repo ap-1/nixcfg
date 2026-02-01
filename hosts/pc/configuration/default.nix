@@ -7,7 +7,6 @@
     ./hardware-configuration.nix
     ./media.nix
     ./sunshine.nix
-    ./tailscale.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

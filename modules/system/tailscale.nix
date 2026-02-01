@@ -1,11 +1,16 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  isLinux,
+  ...
+}:
 
 {
-  # Enable Tailscale and IP forwarding
-  services.tailscale = {
-    enable = true;
-    useRoutingFeatures = "both";
-  };
+  services.tailscale.enable = true;
+}
+// lib.optionalAttrs isLinux {
+  services.tailscale.useRoutingFeatures = "both"; # IP forwarding
 
   # Enable UDP GRO forwarding on boot
   systemd.services.tailscale-udp-gro = {
