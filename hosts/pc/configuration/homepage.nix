@@ -43,6 +43,8 @@
               widget = {
                 type = "qbittorrent";
                 url = "http://pc:8080";
+                username = "anish";
+                password = "{{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}";
               };
             };
           }

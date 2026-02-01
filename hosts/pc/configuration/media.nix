@@ -54,7 +54,8 @@
       download-dir = "/media/downloads";
       incomplete-dir = "/media/downloads/.incomplete";
       rpc-bind-address = "0.0.0.0";
-      rpc-whitelist-enabled = false;
+      rpc-host-whitelist = "localhost,pc,macbook,iphone,ipad";
+      rpc-host-whitelist-enabled = true;
     };
   };
 
