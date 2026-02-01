@@ -20,6 +20,7 @@
           {
             "Jellyfin" = {
               href = "https://pc.meteor-banjo.ts.net:8096";
+              icon = "jellyfin";
               widget = {
                 type = "jellyfin";
                 url = "http://localhost:8096";
@@ -30,6 +31,7 @@
           {
             "Immich" = {
               href = "https://pc.meteor-banjo.ts.net:2283";
+              icon = "immich";
               widget = {
                 type = "immich";
                 url = "http://localhost:2283";
@@ -45,6 +47,7 @@
           {
             "qBittorrent" = {
               href = "https://pc.meteor-banjo.ts.net:8080";
+              icon = "qbittorrent";
               widget = {
                 type = "qbittorrent";
                 url = "http://localhost:8080";
@@ -56,6 +59,7 @@
           {
             "Transmission" = {
               href = "https://pc.meteor-banjo.ts.net:9091";
+              icon = "transmission";
               widget = {
                 type = "transmission";
                 url = "http://localhost:9091";
@@ -71,6 +75,7 @@
           {
             "Sonarr" = {
               href = "https://pc.meteor-banjo.ts.net:8989";
+              icon = "sonarr";
               widget = {
                 type = "sonarr";
                 url = "http://localhost:8989";
@@ -81,6 +86,7 @@
           {
             "Radarr" = {
               href = "https://pc.meteor-banjo.ts.net:7878";
+              icon = "radarr";
               widget = {
                 type = "radarr";
                 url = "http://localhost:7878";
@@ -91,6 +97,7 @@
           {
             "Lidarr" = {
               href = "https://pc.meteor-banjo.ts.net:8686";
+              icon = "lidarr";
               widget = {
                 type = "lidarr";
                 url = "http://localhost:8686";
@@ -101,6 +108,7 @@
           {
             "Readarr" = {
               href = "https://pc.meteor-banjo.ts.net:8787";
+              icon = "readarr";
               widget = {
                 type = "readarr";
                 url = "http://localhost:8787";
@@ -111,6 +119,7 @@
           {
             "Prowlarr" = {
               href = "https://pc.meteor-banjo.ts.net:9696";
+              icon = "prowlarr";
               widget = {
                 type = "prowlarr";
                 url = "http://localhost:9696";
@@ -121,6 +130,7 @@
           {
             "Bazarr" = {
               href = "https://pc.meteor-banjo.ts.net:6767";
+              icon = "bazarr";
               widget = {
                 type = "bazarr";
                 url = "http://localhost:6767";
