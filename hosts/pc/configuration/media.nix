@@ -74,6 +74,7 @@
   users.users.lidarr.extraGroups = [ "media" ];
   users.users.readarr.extraGroups = [ "media" ];
   users.users.bazarr.extraGroups = [ "media" ];
+  users.users.qbittorrent.extraGroups = [ "media" ];
   users.users.transmission.extraGroups = [ "media" ];
 
   # Directories
