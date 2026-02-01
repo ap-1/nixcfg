@@ -3,7 +3,6 @@
 {
   age.secrets."homepage-dashboard" = {
     file = ../../../secrets/homepage-dashboard.age;
-    owner = "homepage-dashboard";
   };
 
   services.homepage-dashboard = {
