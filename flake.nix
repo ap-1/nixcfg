@@ -18,6 +18,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
+    agenix.url = "github:ryantm/agenix";
     catppuccin.url = "github:catppuccin/nix";
     xdg-termfilepickers.url = "github:Guekka/xdg-desktop-portal-termfilepickers/195ba6bb4a4f0224b0e749f2198fc88696be6383";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -32,6 +33,7 @@
       home-manager,
       nix-flatpak,
       nix-cachyos-kernel,
+      agenix,
       catppuccin,
       xdg-termfilepickers,
       neovim-nightly-overlay,
@@ -48,6 +50,7 @@
         };
         modules = [
           determinate.nixosModules.default
+          agenix.nixosModules.default
 
           ./hosts/pc/configuration
 
@@ -106,6 +109,7 @@
         };
         modules = [
           determinate.darwinModules.default
+          agenix.nixosModules.default
 
           ./hosts/macbook/configuration.nix
 
