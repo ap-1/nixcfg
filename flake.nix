@@ -99,7 +99,7 @@
         ];
       };
 
-      darwinConfigurations."ap-1" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations.ap-1 = nix-darwin.lib.darwinSystem {
         specialArgs = {
           inherit self;
           isLinux = false;
