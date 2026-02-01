@@ -6,28 +6,31 @@
   ...
 }:
 
-{
-  services.tailscale.enable = true;
-}
-// lib.optionalAttrs isLinux {
-  services.tailscale.useRoutingFeatures = "both"; # IP forwarding
+lib.mkMerge [
+  {
+    services.tailscale.enable = true;
+  }
 
-  # Enable UDP GRO forwarding on boot
-  systemd.services.tailscale-udp-gro = {
-    description = "Enable UDP GRO forwarding for Tailscale";
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
+  (lib.optionalAttrs isLinux {
+    services.tailscale.useRoutingFeatures = "both"; # IP forwarding
+
+    # Enable UDP GRO forwarding on boot
+    systemd.services.tailscale-udp-gro = {
+      description = "Enable UDP GRO forwarding for Tailscale";
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+      script = ''
+        # Get the default route interface
+        NETDEV=$(${pkgs.iproute2}/bin/ip -o route get 8.8.8.8 | cut -f 5 -d " ")
+        if [ -n "$NETDEV" ]; then
+          ${pkgs.ethtool}/bin/ethtool -K $NETDEV rx-udp-gro-forwarding on rx-gro-list off || true
+        fi
+      '';
     };
-    script = ''
-      # Get the default route interface
-      NETDEV=$(${pkgs.iproute2}/bin/ip -o route get 8.8.8.8 | cut -f 5 -d " ")
-      if [ -n "$NETDEV" ]; then
-        ${pkgs.ethtool}/bin/ethtool -K $NETDEV rx-udp-gro-forwarding on rx-gro-list off || true
-      fi
-    '';
-  };
-}
+  })
+]
