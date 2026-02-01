@@ -9,6 +9,7 @@ with lib;
 
 let
   cfg = config.services.tailscale-serve;
+  serviceNames = attrNames cfg;
 in
 {
   options.services.tailscale-serve = mkOption {
@@ -32,20 +33,36 @@ in
   };
 
   config = mkIf (cfg != { }) {
-    systemd.services = mapAttrs' (
-      name: opts:
-      nameValuePair "tailscale-serve-${name}" {
-        description = "Tailscale Serve for ${name}";
-        after = [ "tailscaled.service" ];
-        wants = [ "tailscaled.service" ];
-        wantedBy = [ "multi-user.target" ];
-        serviceConfig = {
-          Type = "oneshot";
-          RemainAfterExit = true;
-          ExecStart = "${pkgs.tailscale}/bin/tailscale serve --bg --https=${toString opts.https} http://localhost:${toString opts.port}";
-          ExecStop = "${pkgs.tailscale}/bin/tailscale serve --https=${toString opts.https} off";
-        };
-      }
-    ) cfg;
+    systemd.services =
+      let
+        indexed = imap0 (i: name: {
+          inherit i name;
+          opts = cfg.${name};
+        }) serviceNames;
+      in
+      listToAttrs (
+        map (
+          {
+            i,
+            name,
+            opts,
+          }:
+          nameValuePair "tailscale-serve-${name}" {
+            description = "Tailscale Serve for ${name}";
+            after = [
+              "tailscaled.service"
+            ]
+            ++ optional (i > 0) "tailscale-serve-${elemAt serviceNames (i - 1)}.service";
+            wants = [ "tailscaled.service" ];
+            wantedBy = [ "multi-user.target" ];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+              ExecStart = "${pkgs.tailscale}/bin/tailscale serve --bg --https=${toString opts.https} http://localhost:${toString opts.port}";
+              ExecStop = "${pkgs.tailscale}/bin/tailscale serve --https=${toString opts.https} off";
+            };
+          }
+        ) indexed
+      );
   };
 }
