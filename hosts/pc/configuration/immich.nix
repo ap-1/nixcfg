@@ -1,12 +1,18 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ ./tailscale-serve.nix ];
+
+  services.tailscale-serve.immich = {
+    port = 2283;
+    https = 2283;
+  };
+
   services.immich = {
     enable = true;
-    host = "0.0.0.0";
+    host = "127.0.0.1";
     port = 2283;
     mediaLocation = "/media/immich";
-
     machine-learning.enable = true;
 
     # Hardware Accelerated Video Transcoding

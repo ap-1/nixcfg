@@ -1,6 +1,13 @@
 { ... }:
 
 {
+  imports = [ ./tailscale-serve.nix ];
+
+  services.tailscale-serve.sunshine = {
+    port = 47990;
+    https = 47990;
+  };
+
   # Sunshine service
   services.sunshine = {
     enable = true;

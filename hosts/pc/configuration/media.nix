@@ -1,6 +1,47 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ ./tailscale-serve.nix ];
+
+  services.tailscale-serve = {
+    jellyfin = {
+      port = 8096;
+      https = 8096;
+    };
+    sonarr = {
+      port = 8989;
+      https = 8989;
+    };
+    radarr = {
+      port = 7878;
+      https = 7878;
+    };
+    lidarr = {
+      port = 8686;
+      https = 8686;
+    };
+    readarr = {
+      port = 8787;
+      https = 8787;
+    };
+    prowlarr = {
+      port = 9696;
+      https = 9696;
+    };
+    bazarr = {
+      port = 6767;
+      https = 6767;
+    };
+    qbittorrent = {
+      port = 8080;
+      https = 8080;
+    };
+    transmission = {
+      port = 9091;
+      https = 9091;
+    };
+  };
+
   age.secrets.transmission.file = ../../../secrets/transmission.age;
 
   services.jellyfin = {
@@ -57,7 +98,7 @@
       incomplete-dir = "/media/downloads/.incomplete";
       rpc-bind-address = "0.0.0.0";
       rpc-whitelist-enabled = false;
-      rpc-host-whitelist = "localhost,pc,macbook,iphone,ipad";
+      rpc-host-whitelist = "localhost,pc,pc.meteor-banjo.ts.net,macbook,iphone,ipad";
       rpc-host-whitelist-enabled = true;
       rpc-authentication-required = true;
     };

@@ -1,6 +1,13 @@
 { config, ... }:
 
 {
+  imports = [ ./tailscale-serve.nix ];
+
+  services.tailscale-serve.homepage = {
+    port = 8082;
+    https = 443;
+  };
+
   age.secrets.homepage-dashboard.file = ../../../secrets/homepage-dashboard.age;
 
   services.homepage-dashboard = {
