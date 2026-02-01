@@ -29,6 +29,7 @@
                 type = "immich";
                 url = "http://pc:2283";
                 key = "{{HOMEPAGE_VAR_IMMICH_KEY}}";
+                version = 2;
               };
             };
           }
