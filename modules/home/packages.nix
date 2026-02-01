@@ -15,6 +15,7 @@
     ]
     ++ lib.optionals stdenv.isDarwin [
       ghostty-bin # macos terminal emulator
+      syncthing
     ]
     ++ lib.optionals stdenv.isLinux [
       foot # linux terminal emulator

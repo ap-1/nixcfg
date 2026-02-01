@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  imports = [ ../../../tailscale-serve.nix ];
+  imports = [ ./tailscale-serve.nix ];
 
   services.tailscale-serve.homepage = {
     port = 8082;

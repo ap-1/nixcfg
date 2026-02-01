@@ -10,6 +10,7 @@
     ./immich.nix
     ./homepage.nix
     ./vaultwarden.nix
+    ./syncthing.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

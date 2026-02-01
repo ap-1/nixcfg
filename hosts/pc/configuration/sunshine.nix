@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  imports = [ ../../../tailscale-serve.nix ];
+  imports = [ ./tailscale-serve.nix ];
 
   services.tailscale-serve.sunshine = {
     port = 47990;
