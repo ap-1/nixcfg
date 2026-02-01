@@ -125,7 +125,7 @@
 
             home-manager.users.anish = {
               imports = [
-                ./hosts/macbook/home.nix
+                ./hosts/macbook/home
 
                 catppuccin.homeModules.catppuccin
               ];

@@ -163,6 +163,13 @@
               description = "File sync";
             };
           }
+          {
+            "Syncthing (Mac)" = {
+              href = "https://macbook.meteor-banjo.ts.net:8384";
+              icon = "syncthing";
+              description = "File sync";
+            };
+          }
         ];
       }
     ];

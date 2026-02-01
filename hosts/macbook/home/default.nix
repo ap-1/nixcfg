@@ -1,7 +1,10 @@
 { lib, pkgs, ... }:
 
 {
-  imports = [ ../../modules/home ];
+  imports = [
+    ../../../modules/home
+    ./syncthing.nix
+  ];
 
   home.username = "anish";
   home.homeDirectory = lib.mkForce "/Users/anish";
@@ -25,7 +28,6 @@
     shottr
     raycast
     ghostty-bin
-    syncthing-macos
   ];
 
   programs.zsh.shellAliases.update = "nh darwin switch ~/dotfiles";
