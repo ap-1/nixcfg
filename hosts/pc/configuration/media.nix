@@ -58,7 +58,9 @@
       download-dir = "/media/downloads";
       incomplete-dir = "/media/downloads/.incomplete";
       rpc-bind-address = "0.0.0.0";
-      rpc-host-whitelist-enabled = false;
+      rpc-whitelist-enabled = false;
+      rpc-host-whitelist = "localhost,pc,macbook,iphone,ipad";
+      rpc-host-whitelist-enabled = true;
       rpc-authentication-required = true;
     };
     credentialsFile = config.age.secrets.transmission.path;
