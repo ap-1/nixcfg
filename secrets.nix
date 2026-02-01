@@ -5,5 +5,9 @@ let
   pc = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBu43o7nsVIt9KB1hpc+vCEY1CkROhQ01ZulhwtEs2j root@ap-1";
 in
 {
-  "secrets/homepage-dashboard.age".publicKeys = [ anish macbook pc ];
+  "secrets/homepage-dashboard.age".publicKeys = [
+    anish
+    macbook
+    pc
+  ];
 }
