@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ./media.nix
     ./sunshine.nix
+    ./immich.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
