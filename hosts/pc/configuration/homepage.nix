@@ -11,12 +11,11 @@
     environmentFile = config.age.secrets.homepage-dashboard.path;
     settings = {
       allowedHosts = [
-        "localhost"
-        "127.0.0.1"
-        "pc"
-        "iphone"
-        "ipad"
-        "macbook"
+        "localhost:8082"
+        "pc:8082"
+        "iphone:8082"
+        "ipad:8082"
+        "macbook:8082"
       ];
     };
     services = [
