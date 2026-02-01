@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./tailscale-serve.nix ];
+  imports = [ ../../../tailscale-serve.nix ];
 
   services.tailscale-serve = {
     jellyfin = {

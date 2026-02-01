@@ -5,5 +5,6 @@
     ./packages.nix
     ./localsend.nix
     ./tailscale.nix
+    ./syncthing.nix
   ];
 }

@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  imports = [ ./tailscale-serve.nix ];
+  imports = [ ../../../tailscale-serve.nix ];
 
   services.tailscale-serve.homepage = {
     port = 8082;
@@ -144,6 +144,13 @@
               href = "https://pc.meteor-banjo.ts.net:47990";
               icon = "sunshine";
               description = "Game streaming";
+            };
+          }
+          {
+            "Syncthing" = {
+              href = "https://pc.meteor-banjo.ts.net:8384";
+              icon = "syncthing";
+              description = "File sync";
             };
           }
         ];
