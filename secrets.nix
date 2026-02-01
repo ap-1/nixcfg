@@ -1,0 +1,6 @@
+let
+  key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDwjDM2gTgro+aN81I65BFexfLXq1u/8AJ3PmCTX5X/a i@anish.land";
+in
+{
+  "secrets/homepage-dashboard.age".publicKeys = [ key ];
+}

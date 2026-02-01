@@ -8,6 +8,7 @@
     ./media.nix
     ./sunshine.nix
     ./immich.nix
+    ./homepage.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
