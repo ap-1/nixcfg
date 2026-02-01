@@ -25,10 +25,8 @@
     shottr
     raycast
     ghostty-bin
-    syncthing
+    syncthing-macos
   ];
-
-  services.syncthing.enable = true;
 
   programs.zsh.shellAliases.update = "nh darwin switch ~/dotfiles";
 
