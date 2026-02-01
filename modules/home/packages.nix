@@ -9,7 +9,6 @@
       slack
       prismlauncher
       moonlight-qt
-      qbittorrent
       claude-code
       spotify
       jujutsu

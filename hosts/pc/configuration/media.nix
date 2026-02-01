@@ -41,6 +41,11 @@
     openFirewall = true;
   };
 
+  services.qbittorrent = {
+    enable = true;
+    openFirewall = true;
+  };
+
   services.transmission = {
     enable = true;
     package = pkgs.transmission_4;
