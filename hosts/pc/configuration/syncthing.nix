@@ -3,7 +3,7 @@
 {
   imports = [ ./tailscale-serve.nix ];
 
-  services.tailscale-serve.sunshine = {
+  services.tailscale-serve.syncthing = {
     port = 8384;
     https = 8384;
   };
