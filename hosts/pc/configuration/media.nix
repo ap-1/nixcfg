@@ -1,6 +1,10 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
+  age.secrets.transmission = {
+    file = ../../../secrets/transmission.age;
+  };
+
   services.jellyfin = {
     enable = true;
     openFirewall = true;
@@ -56,8 +60,8 @@
       rpc-bind-address = "0.0.0.0";
       rpc-host-whitelist = "localhost,pc,macbook,iphone,ipad";
       rpc-host-whitelist-enabled = true;
-      rpc-authentication-required = false;
     };
+    credentialsFile = config.age.secrets.transmission.path;
   };
 
   # Shared media group

@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  age.secrets."homepage-dashboard" = {
+  age.secrets.homepage-dashboard = {
     file = ../../../secrets/homepage-dashboard.age;
   };
 
@@ -54,6 +54,8 @@
               widget = {
                 type = "transmission";
                 url = "http://pc:9091";
+                username = "anish";
+                password = "{{HOMEPAGE_VAR_TRANSMISSION_PASSWORD}}";
               };
             };
           }

@@ -10,4 +10,10 @@ in
     macbook
     pc
   ];
+
+  "secrets/transmission.age".publicKeys = [
+    anish
+    macbook
+    pc
+  ];
 }
