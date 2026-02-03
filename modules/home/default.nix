@@ -9,5 +9,6 @@
     ./ssh.nix
     ./packages.nix
     ./catppuccin.nix
+    ./zed-editor
   ];
 }
