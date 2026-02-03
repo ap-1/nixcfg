@@ -14,8 +14,6 @@
     docker
     docker-compose
     colima
-    nixd # nix language server
-    nil # also a nix language server
     sshpass
     rustup
     typst
