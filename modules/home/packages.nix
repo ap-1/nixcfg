@@ -12,6 +12,7 @@
       claude-code
       spotify
       jujutsu
+      bitwarden-desktop
     ]
     ++ lib.optionals stdenv.isLinux [
       foot # linux terminal emulator
