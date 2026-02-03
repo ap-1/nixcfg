@@ -17,11 +17,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # AMD CPU optimizations
+  # AMD settings
+  boot.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
     "amd_pstate=active"
     "amdgpu.dc=1"
-    "video=2560x1440@60"
   ];
 
   # Btrfs optimizations
