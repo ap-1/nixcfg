@@ -12,6 +12,7 @@
       claude-code
       spotify
       jujutsu
+      zed-editor
     ]
     ++ lib.optionals stdenv.isLinux [
       foot # linux terminal emulator

@@ -20,6 +20,6 @@
     starship.enable = true;
     tmux.enable = true;
     yazi.enable = true;
-    # zed.enable = true;
+    zed.enable = true;
   };
 }
