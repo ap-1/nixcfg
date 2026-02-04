@@ -150,13 +150,6 @@
             };
           }
           {
-            "OpenRGB" = {
-              href = "https://pc.meteor-banjo.ts.net:6742";
-              icon = "openrgb";
-              description = "RGB lighting control";
-            };
-          }
-          {
             "Sunshine" = {
               href = "https://pc.meteor-banjo.ts.net:47990";
               icon = "sunshine";
