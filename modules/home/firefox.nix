@@ -12,7 +12,7 @@
     profiles.default = {
       search = {
         force = true;
-	default = "ddg";
+        default = "ddg";
       };
 
       extensions = {
@@ -56,20 +56,20 @@
 
         # disable suggestions
         "browser.search.suggest.enabled" = false;
-	"browser.urlbar.suggest.searches" = false;
-	"browser.urlbar.showSearchSuggestionsFirst" = false;
-	"browser.search.suggest.enabled.private" = false;
-	"browser.urlbar.trending.featureGate" = false;
-	"browser.urlbar.recentsearches.featureGate" = false;
-	"browser.urlbar.suggest.quicksuggest.sponsored" = false;
-	"browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
-	"browser.urlbar.quicksuggest.enabled" = false;
-	"browser.urlbar.suggest.topsites" = false;
-	"browser.urlbar.suggest.history" = false;
-	"browser.urlbar.suggest.bookmark" = false;
-	"browser.urlbar.suggest.openpage" = false;
-	"browser.urlbar.suggest.engines" = false;
-	"browser.urlbar.suggest.quickactions" = false;
+        "browser.urlbar.suggest.searches" = false;
+        "browser.urlbar.showSearchSuggestionsFirst" = false;
+        "browser.search.suggest.enabled.private" = false;
+        "browser.urlbar.trending.featureGate" = false;
+        "browser.urlbar.recentsearches.featureGate" = false;
+        "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+        "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
+        "browser.urlbar.quicksuggest.enabled" = false;
+        "browser.urlbar.suggest.topsites" = false;
+        "browser.urlbar.suggest.history" = false;
+        "browser.urlbar.suggest.bookmark" = false;
+        "browser.urlbar.suggest.openpage" = false;
+        "browser.urlbar.suggest.engines" = false;
+        "browser.urlbar.suggest.quickactions" = false;
 
         # privacy
         "privacy.globalprivacycontrol.enabled" = true;
