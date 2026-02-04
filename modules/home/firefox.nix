@@ -89,7 +89,7 @@
         "identity.fxaccounts.telemetry.clientAssociationPing.enabled" = false;
 
         # dns over https
-        "network.trr.mode" = 2;
+        "network.trr.mode" = 2; # fall back to local (tailscale) on failure
         "network.trr.uri" = "https://mozilla.cloudflare-dns.com/dns-query";
 
         # gwfox theme requirements
