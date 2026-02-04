@@ -18,10 +18,26 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
-    agenix.url = "github:ryantm/agenix";
-    catppuccin.url = "github:catppuccin/nix";
-    xdg-termfilepickers.url = "github:Guekka/xdg-desktop-portal-termfilepickers/195ba6bb4a4f0224b0e749f2198fc88696be6383";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    xdg-termfilepickers = {
+      url = "github:Guekka/xdg-desktop-portal-termfilepickers/9a4a40fee7a6973f581404b6fa1f1107026d05f8";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -37,6 +53,7 @@
       catppuccin,
       xdg-termfilepickers,
       neovim-nightly-overlay,
+      firefox-addons,
     }:
     {
       formatter = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" ] (
@@ -80,9 +97,10 @@
             home-manager.extraSpecialArgs = {
               inherit
                 inputs
+                nix-flatpak
                 xdg-termfilepickers
                 neovim-nightly-overlay
-                nix-flatpak
+                firefox-addons
                 ;
             };
 
@@ -117,7 +135,7 @@
           {
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = {
-              inherit inputs neovim-nightly-overlay;
+              inherit inputs neovim-nightly-overlay firefox-addons;
             };
 
             home-manager.useGlobalPkgs = true;

@@ -17,16 +17,6 @@
   programs.foot.enable = true;
   services.dunst.enable = true;
 
-  programs.firefox = {
-    enable = true;
-    profiles.default = {
-      extensions.force = true;
-      settings = {
-        "widget.use-xdg-desktop-portal.file-picker" = 1;
-      };
-    };
-  };
-
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
