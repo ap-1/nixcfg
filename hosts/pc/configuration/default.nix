@@ -11,6 +11,7 @@
     ./homepage.nix
     ./vaultwarden.nix
     ./syncthing.nix
+    ./openrgb.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
