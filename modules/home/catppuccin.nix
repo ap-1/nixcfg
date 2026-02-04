@@ -10,7 +10,6 @@
     dunst.enable = true;
     element-desktop.enable = true;
     eza.enable = true;
-    # firefox.enable = true;
     foot.enable = true;
     ghostty.enable = true;
     hyprland.enable = true;
