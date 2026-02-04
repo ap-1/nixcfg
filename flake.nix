@@ -135,7 +135,11 @@
           {
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = {
-              inherit inputs neovim-nightly-overlay firefox-addons;
+              inherit
+                inputs
+                neovim-nightly-overlay
+                firefox-addons
+                ;
             };
 
             home-manager.useGlobalPkgs = true;

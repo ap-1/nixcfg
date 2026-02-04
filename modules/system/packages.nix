@@ -31,6 +31,8 @@
       "cloudflare-warp"
       "tailscale-gui"
       "spotify"
+      "firefox-bin"
+      "firefox-bin-unwrapped"
 
       # pc-only
       "steam"

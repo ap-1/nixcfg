@@ -1,8 +1,13 @@
-{ pkgs, firefox-addons, ... }:
+{
+  pkgs,
+  firefox-addons,
+  ...
+}:
 
 {
   programs.firefox = {
     enable = true;
+    package = pkgs.firefox-bin;
 
     policies = {
       DisableTelemetry = true;
@@ -84,7 +89,7 @@
         "identity.fxaccounts.telemetry.clientAssociationPing.enabled" = false;
 
         # dns over https
-        "network.trr.mode" = 3;
+        "network.trr.mode" = 2;
         "network.trr.uri" = "https://mozilla.cloudflare-dns.com/dns-query";
 
         # gwfox theme requirements
