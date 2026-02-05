@@ -68,6 +68,7 @@
 
         # startup settings
         "browser.aboutConfig.showWarning" = false; # disable about:config warning
+        "browser.toolbars.bookmarks.visibility" = "never"; # disable bookmarks
         "browser.newtabpage.activity-stream.showSponsored" = false; # disable sponsored content on Firefox Home
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
@@ -145,7 +146,7 @@
         "network.http.referer.XOriginTrimmingPolicy" = 2; # trim referrer to origin
         "browser.contentblocking.category" = "strict"; # Total Cookie Protection
         "privacy.globalprivacycontrol.enabled" = true;
-        "privacy.resistFingerprinting" = true;
+        # "privacy.resistFingerprinting" = true; (disables dark mode)
         "privacy.resistFingerprinting.block_mozAddonManager" = true; # disable mozAddonManager Web API
 
         # enable webauth
