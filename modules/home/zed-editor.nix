@@ -9,6 +9,7 @@
       "rainbow-csv"
       "just"
       "typst"
+      "terraform"
     ];
     extraPackages = with pkgs; [
       nixd
