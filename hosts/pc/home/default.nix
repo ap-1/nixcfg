@@ -6,6 +6,7 @@
     ./hyprland
     ./flatpak.nix
     ./filechooser.nix
+    ./theme.nix
   ];
 
   fonts.fontconfig.enable = true;
