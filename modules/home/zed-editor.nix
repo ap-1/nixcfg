@@ -10,6 +10,7 @@
       "just"
       "typst"
       "terraform"
+      "swift"
     ];
     extraPackages = with pkgs; [
       nixd
