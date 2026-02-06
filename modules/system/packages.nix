@@ -30,10 +30,10 @@
       "claude-code"
       "cloudflare-warp"
       "tailscale-gui"
-      "spotify"
       "firefox-bin"
       "firefox-bin-unwrapped"
       "apple_cursor"
+      "spotify"
 
       # pc-only
       "steam"

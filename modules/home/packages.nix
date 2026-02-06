@@ -10,7 +10,6 @@
       prismlauncher
       moonlight-qt
       claude-code
-      spotify
       jujutsu
       bitwarden-desktop
     ]

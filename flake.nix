@@ -42,6 +42,10 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -59,6 +63,7 @@
       neovim-nightly-overlay,
       firefox-addons,
       stylix,
+      spicetify-nix,
     }:
     {
       formatter = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" ] (
@@ -106,6 +111,7 @@
                 xdg-termfilepickers
                 neovim-nightly-overlay
                 firefox-addons
+                spicetify-nix
                 ;
             };
 
@@ -120,6 +126,7 @@
                 catppuccin.homeModules.catppuccin
                 xdg-termfilepickers.homeManagerModules.default
                 nix-flatpak.homeManagerModules.nix-flatpak
+                spicetify-nix.homeManagerModules.spicetify
               ];
             };
           }
@@ -145,6 +152,7 @@
                 inputs
                 neovim-nightly-overlay
                 firefox-addons
+                spicetify-nix
                 ;
             };
 
@@ -157,6 +165,7 @@
 
                 stylix.homeModules.stylix
                 catppuccin.homeModules.catppuccin
+                spicetify-nix.homeManagerModules.spicetify
               ];
             };
           }
