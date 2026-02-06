@@ -11,7 +11,7 @@
 
   fonts.fontconfig.enable = true;
 
-  programs.zsh.shellAliases.update = "nh os switch ~/dotfiles";
+  programs.zsh.shellAliases.update = "nh os switch ~/nixcfg";
 
   # enabled manually for catppuccin
   programs.rofi.enable = true;

@@ -28,7 +28,7 @@
     ghostty-bin
   ];
 
-  programs.zsh.shellAliases.update = "nh darwin switch ~/dotfiles";
+  programs.zsh.shellAliases.update = "nh darwin switch ~/nixcfg";
 
   programs.ssh = {
     matchBlocks."*".extraOptions = {
