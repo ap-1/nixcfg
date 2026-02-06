@@ -33,6 +33,7 @@
       "spotify"
       "firefox-bin"
       "firefox-bin-unwrapped"
+      "apple_cursor"
 
       # pc-only
       "steam"
