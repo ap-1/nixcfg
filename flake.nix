@@ -38,6 +38,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -54,6 +58,7 @@
       xdg-termfilepickers,
       neovim-nightly-overlay,
       firefox-addons,
+      stylix,
     }:
     {
       formatter = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" ] (
@@ -111,6 +116,7 @@
               imports = [
                 ./hosts/pc/home
 
+                stylix.homeModules.stylix
                 catppuccin.homeModules.catppuccin
                 xdg-termfilepickers.homeManagerModules.default
                 nix-flatpak.homeManagerModules.nix-flatpak
@@ -149,6 +155,7 @@
               imports = [
                 ./hosts/macbook/home
 
+                stylix.homeModules.stylix
                 catppuccin.homeModules.catppuccin
               ];
             };

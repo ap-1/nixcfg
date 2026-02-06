@@ -11,5 +11,6 @@
     ./catppuccin.nix
     ./zed-editor.nix
     ./firefox.nix
+    ./stylix.nix
   ];
 }
