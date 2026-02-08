@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.git = {
@@ -27,4 +27,6 @@
       git_protocol = "ssh";
     };
   };
+
+  home.packages = with pkgs; [ codeberg-cli ];
 }
