@@ -11,6 +11,9 @@
       "typst"
       "terraform"
       "swift"
+      "svelte"
+      "toml"
+      "biome"
     ];
     extraPackages = with pkgs; [
       nixd
