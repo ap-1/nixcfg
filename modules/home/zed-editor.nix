@@ -14,6 +14,7 @@
       "svelte"
       "toml"
       "biome"
+      "nginx"
     ];
     extraPackages = with pkgs; [
       nixd
