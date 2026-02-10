@@ -18,9 +18,6 @@
   networking.localHostName = "ap-1";
   networking.computerName = "ap-1";
 
-  # Add self as a trusted user
-  nix.settings.trusted-users = [ "anish" ];
-
   # Set Git commit hash for darwin-version.
   system.configurationRevision = self.rev or self.dirtyRev or null;
 
