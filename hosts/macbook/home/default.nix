@@ -15,7 +15,6 @@
     docker-compose
     colima
     sshpass
-    rustup
     typst
     ragenix
     bun
