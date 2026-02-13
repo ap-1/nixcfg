@@ -1,16 +1,10 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, isLinux, ... }:
 
 {
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
-
-  determinateNix.customSettings = {
-    trusted-users = [ "anish" ];
-    extra-substituters = [ "https://cache.garnix.io" ];
-    extra-trusted-public-keys = [ "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=" ];
-  };
 
   environment.systemPackages =
     with pkgs;
@@ -51,4 +45,11 @@
       "shottr"
       "raycast"
     ];
+}
+// lib.optionalAttrs (!isLinux) {
+  determinateNix.customSettings = {
+    trusted-users = [ "anish" ];
+    extra-substituters = [ "https://cache.garnix.io" ];
+    extra-trusted-public-keys = [ "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=" ];
+  };
 }
