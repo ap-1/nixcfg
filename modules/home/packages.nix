@@ -12,6 +12,7 @@
       claude-code
       jujutsu
       bitwarden-desktop
+      rustup
     ]
     ++ lib.optionals stdenv.isLinux [
       foot # linux terminal emulator
