@@ -25,6 +25,7 @@
     shottr
     raycast
     ghostty-bin
+    iina
   ];
 
   programs.zsh.shellAliases.update = "nh darwin switch ~/nixcfg";
