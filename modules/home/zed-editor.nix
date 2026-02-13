@@ -15,6 +15,7 @@
       "toml"
       "biome"
       "nginx"
+      "discord-presence"
     ];
     extraPackages = with pkgs; [
       nixd
