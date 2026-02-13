@@ -12,6 +12,6 @@
     ./zed-editor.nix
     ./firefox.nix
     ./stylix.nix
-    # ./spicetify.nix
+    ./spicetify.nix
   ];
 }
