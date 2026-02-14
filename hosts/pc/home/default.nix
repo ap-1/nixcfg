@@ -15,8 +15,16 @@
 
   # enabled manually for catppuccin
   programs.rofi.enable = true;
-  programs.foot.enable = true;
   services.dunst.enable = true;
+
+  programs.foot = {
+    enable = true;
+    settings = {
+      main = {
+        font = "monospace:size=12";
+      };
+    };
+  };
 
   programs.yazi = {
     enable = true;

@@ -12,6 +12,9 @@
     ];
   };
 
+  # Native games
+  environment.systemPackages = with pkgs; [ tetrio-desktop ];
+
   # Gamemode
   programs.gamemode.enable = true;
 

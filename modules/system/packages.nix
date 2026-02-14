@@ -1,4 +1,9 @@
-{ lib, pkgs, isLinux, ... }:
+{
+  lib,
+  pkgs,
+  isLinux,
+  ...
+}:
 
 {
   nix.settings.experimental-features = [
@@ -40,6 +45,7 @@
       # pc-only
       "steam"
       "steam-unwrapped"
+      "tetrio-desktop"
 
       # mac-only
       "shottr"
