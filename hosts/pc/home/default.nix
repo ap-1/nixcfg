@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ../../../modules-old/home
     ./hyprland
     ./flatpak.nix
     ./filechooser.nix

@@ -13,7 +13,6 @@
           "slack"
           "claude-code"
           "cloudflare-warp"
-          "tailscale-gui"
           "firefox-bin"
           "firefox-bin-unwrapped"
           "apple_cursor"

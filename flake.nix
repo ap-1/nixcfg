@@ -125,11 +125,8 @@
 
                     config.flake.modules.homeManager.common
 
-                    inputs.stylix.homeModules.stylix
-                    inputs.catppuccin.homeModules.catppuccin
                     inputs.xdg-termfilepickers.homeManagerModules.default
                     inputs.nix-flatpak.homeManagerModules.nix-flatpak
-                    inputs.spicetify-nix.homeManagerModules.spicetify
                   ];
                 };
               }
@@ -165,12 +162,7 @@
                 home-manager.users.anish = {
                   imports = [
                     ./hosts/macbook/home
-
                     config.flake.modules.homeManager.common
-
-                    inputs.stylix.homeModules.stylix
-                    inputs.catppuccin.homeModules.catppuccin
-                    inputs.spicetify-nix.homeManagerModules.spicetify
                   ];
                 };
               }
