@@ -65,6 +65,7 @@
         # general
         "browser.startup.page" = 3; # Open previous windows and tabs
         "sidebar.verticalTabs" = true;
+        "layout.css.prefers-color-scheme.content-override" = 0; # Use system theme
 
         # startup settings
         "browser.aboutConfig.showWarning" = false; # disable about:config warning
@@ -172,8 +173,8 @@
         pkgs.fetchFromGitHub {
           owner = "akkva";
           repo = "gwfox";
-          tag = "2.81";
-          sha256 = "sha256-EBivjaSTXGwYpvs3WHmrEVa5TDiPpu8tXwRFoIpYBtw=";
+          tag = "2.82";
+          sha256 = "sha256-3bvou70RLR9yxapCasckmt3HjszYL2Li7/1rNhXr3BQ=";
         }
         + "/chrome/userChrome.css"
       );
@@ -182,8 +183,8 @@
         pkgs.fetchFromGitHub {
           owner = "akkva";
           repo = "gwfox";
-          tag = "2.81";
-          sha256 = "sha256-EBivjaSTXGwYpvs3WHmrEVa5TDiPpu8tXwRFoIpYBtw=";
+          tag = "2.82";
+          sha256 = "sha256-3bvou70RLR9yxapCasckmt3HjszYL2Li7/1rNhXr3BQ=";
         }
         + "/chrome/userContent.css"
       );
