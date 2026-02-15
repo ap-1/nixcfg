@@ -37,6 +37,7 @@
           "discord-canary"
           "slack"
           "claude-code"
+          "cloudflare-warp"
           "tailscale-gui"
           "firefox-bin"
           "firefox-bin-unwrapped"
