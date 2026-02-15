@@ -20,11 +20,8 @@
 
   systemd.user.services.xdg-desktop-portal-termfilepickers = {
     Unit = {
-      After = [ "graphical-session.target" ];
-      PartOf = [ "graphical-session.target" ];
-    };
-    Install = {
-      WantedBy = lib.mkForce [ "graphical-session.target" ];
+      PartOf = lib.mkForce [ "xdg-desktop-portal.service" ];
+      After = lib.mkAfter [ "xdg-desktop-portal.service" ];
     };
   };
 
