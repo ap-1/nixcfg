@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../../modules/home
+    ../../../modules-old/home
     ./syncthing.nix
   ];
 
@@ -27,13 +27,4 @@
     ghostty-bin
     iina
   ];
-
-  programs.zsh.shellAliases.update = "nh darwin switch ~/nixcfg";
-
-  programs.ssh = {
-    matchBlocks."*".extraOptions = {
-      IgnoreUnknown = "UseKeychain";
-      UseKeychain = "yes";
-    };
-  };
 }

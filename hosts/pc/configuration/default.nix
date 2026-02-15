@@ -1,8 +1,7 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    ../../../modules/system
     ./games.nix
     ./hardware-configuration.nix
     ./media.nix

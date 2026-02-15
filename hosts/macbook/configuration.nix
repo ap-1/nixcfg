@@ -1,14 +1,6 @@
-{
-  self,
-  lib,
-  pkgs,
-  ...
-}:
+{ self, ... }:
 
 {
-  imports = [
-    ../../modules/system
-  ];
 
   # Enable the Determinate Nix module
   determinateNix.enable = true;
