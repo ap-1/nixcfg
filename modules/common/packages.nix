@@ -29,7 +29,7 @@
       home.packages =
         with pkgs;
         [
-          element-desktop
+          # element-desktop
           slack
           prismlauncher
           moonlight-qt
