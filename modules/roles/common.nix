@@ -12,6 +12,7 @@
       config.flake.modules.homeManager.catppuccin
       config.flake.modules.homeManager.firefox
       config.flake.modules.homeManager.spicetify
+      config.flake.modules.homeManager.discord
       config.flake.modules.homeManager.packages
     ];
   };

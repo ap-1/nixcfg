@@ -29,7 +29,6 @@
       home.packages =
         with pkgs;
         [
-          discord-canary
           element-desktop
           slack
           prismlauncher
