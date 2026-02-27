@@ -9,7 +9,6 @@
     ./immich.nix
     ./homepage.nix
     ./vaultwarden.nix
-    ./syncthing.nix
     ./openrgb.nix
   ];
 

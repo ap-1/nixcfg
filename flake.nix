@@ -83,6 +83,7 @@
               ./hosts/pc/configuration
 
               config.flake.modules.nixos.common
+              config.flake.modules.nixos.pc
 
               inputs.determinate.nixosModules.default
               inputs.agenix.nixosModules.default
@@ -128,6 +129,7 @@
                     ./hosts/pc/home
 
                     config.flake.modules.homeManager.common
+                    config.flake.modules.homeManager.pc
 
                     inputs.xdg-termfilepickers.homeManagerModules.default
                     inputs.nix-flatpak.homeManagerModules.nix-flatpak
@@ -142,9 +144,8 @@
               self = inputs.self;
             };
             modules = [
-              ./hosts/macbook/configuration.nix
-
               config.flake.modules.darwin.common
+              config.flake.modules.darwin.macbook
 
               inputs.determinate.darwinModules.default
               inputs.agenix.nixosModules.default
@@ -165,9 +166,13 @@
 
                 home-manager.users.anish = {
                   imports = [
-                    ./hosts/macbook/home
                     config.flake.modules.homeManager.common
+                    config.flake.modules.homeManager.macbook
                   ];
+
+                  home.username = "anish";
+                  home.homeDirectory = inputs.nixpkgs.lib.mkForce "/Users/anish";
+                  home.stateVersion = "25.11";
                 };
               }
             ];
