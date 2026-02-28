@@ -171,8 +171,8 @@
             pkgs.fetchFromGitHub {
               owner = "akkva";
               repo = "gwfox";
-              tag = "2.82";
-              sha256 = "sha256-3bvou70RLR9yxapCasckmt3HjszYL2Li7/1rNhXr3BQ=";
+              tag = "2.86";
+              sha256 = "sha256-z2zTaD63mho050cdvzXygZ2TWHql67yfFOOh7ND1Okc=";
             }
             + "/chrome/userChrome.css"
           );
@@ -181,8 +181,8 @@
             pkgs.fetchFromGitHub {
               owner = "akkva";
               repo = "gwfox";
-              tag = "2.82";
-              sha256 = "sha256-3bvou70RLR9yxapCasckmt3HjszYL2Li7/1rNhXr3BQ=";
+              tag = "2.86";
+              sha256 = "sha256-z2zTaD63mho050cdvzXygZ2TWHql67yfFOOh7ND1Okc=";
             }
             + "/chrome/userContent.css"
           );
