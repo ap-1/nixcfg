@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.pc-theme =
+  flake.modules.homeManager.theme =
     { pkgs, ... }:
     {
       xdg.portal = {
