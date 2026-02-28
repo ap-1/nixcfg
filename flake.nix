@@ -53,7 +53,6 @@
       url = "github:moonlight-mod/moonlight";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    devenv.url = "github:cachix/devenv";
   };
 
   outputs =

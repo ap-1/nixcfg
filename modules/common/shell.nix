@@ -8,10 +8,10 @@
       ...
     }:
     {
-      home.packages = [
-        pkgs.pfetch
-        pkgs.tree
-        inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.devenv
+      home.packages = with pkgs; [
+        pfetch
+        tree
+        devenv
       ];
 
       # enabled manually for catppuccin
@@ -43,6 +43,13 @@
           enable = true;
           plugins = [ "eza" ];
         };
+      };
+
+      programs.direnv = {
+        enable = true;
+        silent = true;
+        nix-direnv.enable = true;
+        enableZshIntegration = true;
       };
 
       programs.starship = {
