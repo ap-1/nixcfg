@@ -53,8 +53,10 @@
           # open terminal
           cmd - return : open -na "$HOME/Applications/Home Manager Apps/Ghostty.app"
 
-          # close window
-          alt - q : yabai -m window --close
+          # quit focused app
+          alt - q : app=$(yabai -m query --windows --window | jq -r '.app'); \
+                    yabai -m window --close; \
+                    [ -n "$app" ] && osascript -e "tell application \"$app\" to quit"
 
           # focus window
           alt - h : yabai -m window --focus west
