@@ -12,6 +12,8 @@
         pfetch
         tree
         devenv
+        awscli2
+        ffmpeg-headless
       ];
 
       # enabled manually for catppuccin

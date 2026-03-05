@@ -9,6 +9,7 @@
   flake.modules.darwin.macbook = {
     imports = with config.flake.modules.darwin; [
       configuration
+      yabai
     ];
   };
 }
