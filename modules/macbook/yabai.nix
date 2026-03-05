@@ -51,7 +51,7 @@
         enable = true;
         skhdConfig = ''
           # open terminal
-          alt - return : open -na /Applications/Ghostty.app
+          cmd - return : open -na "$HOME/Applications/Home Manager Apps/Ghostty.app"
 
           # close window
           alt - q : yabai -m window --close
