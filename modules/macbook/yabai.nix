@@ -1,15 +1,28 @@
 {
+  # Requires "sudo nvram boot-args=-arm64e_preview_abi"
+  # Also, SIP must be disabled
   flake.modules.darwin.yabai =
     { pkgs, ... }:
     {
-      security.accessibilityPrograms = [
-        "${pkgs.skhd}/bin/skhd"
-        "${pkgs.yabai}/bin/yabai"
-      ];
+      system.activationScripts.postActivation.text = ''
+        for app in "${pkgs.skhd}/bin/skhd" "${pkgs.yabai}/bin/yabai"; do
+          ${pkgs.sqlite}/bin/sqlite3 "/Library/Application Support/com.apple.TCC/TCC.db" \
+            "INSERT OR REPLACE INTO access (service, client, client_type, auth_value, auth_reason, auth_version, indirect_object_identifier) \
+             VALUES ('kTCCServiceAccessibility', '$app', 1, 2, 4, 1, 'UNUSED');"
+        done
+      '';
 
       services.yabai = {
         enable = true;
         enableScriptingAddition = true;
+        extraConfig = ''
+          # create spaces to have 9 total
+          for idx in $(seq 1 9); do
+            if ! yabai -m query --spaces --space "$idx" &>/dev/null; then
+              yabai -m space --create
+            fi
+          done
+        '';
         config = {
           layout = "bsp";
           window_placement = "second_child";
@@ -37,6 +50,9 @@
       services.skhd = {
         enable = true;
         skhdConfig = ''
+          # open terminal
+          alt - return : open -na /Applications/Ghostty.app
+
           # close window
           alt - q : yabai -m window --close
 
