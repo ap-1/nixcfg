@@ -21,6 +21,7 @@
       services.stash = {
         enable = true;
         openFirewall = true;
+        mutableSettings = false;
         username = "anish";
         passwordFile = config.age.secrets.stash-password.path;
         jwtSecretKeyFile = config.age.secrets.stash-jwt.path;
