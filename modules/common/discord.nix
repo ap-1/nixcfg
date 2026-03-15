@@ -1,9 +1,23 @@
 {
   flake.modules.homeManager.discord =
-    { pkgs, ... }:
+    { pkgs, inputs, ... }:
     {
-      home.packages = [ pkgs.discord-canary ];
+      imports = [ inputs.moonlight.homeModules.default ];
 
-      # TODO: add moonlight
+      home.packages = [
+        (pkgs.discord-canary.override {
+          withMoonlight = true;
+          moonlight = inputs.moonlight.packages.${pkgs.system}.moonlight;
+        })
+      ];
+
+      programs.moonlight = {
+        enable = true;
+        configs.canary = {
+          extensions = {
+            moonbase.enabled = true;
+          };
+        };
+      };
     };
 }
