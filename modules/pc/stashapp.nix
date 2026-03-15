@@ -4,10 +4,13 @@
     {
       age.secrets.stash-jwt.file = ../../secrets/stash-jwt.age;
       age.secrets.stash-session.file = ../../secrets/stash-session.age;
+      age.secrets.stash-password.file = ../../secrets/stash-password.age;
 
       services.stash = {
         enable = true;
         openFirewall = true;
+        username = "anish";
+        passwordFile = config.age.secrets.stash-password.path;
         jwtSecretKeyFile = config.age.secrets.stash-jwt.path;
         sessionStoreKeyFile = config.age.secrets.stash-session.path;
         settings = {

@@ -16,4 +16,5 @@ in
   "secrets/vaultwarden.age".publicKeys = all;
   "secrets/stash-jwt.age".publicKeys = all;
   "secrets/stash-session.age".publicKeys = all;
+  "secrets/stash-password.age".publicKeys = all;
 }
