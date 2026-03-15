@@ -7,7 +7,7 @@
       home.packages = [
         (pkgs.discord-canary.override {
           withMoonlight = true;
-          moonlight = inputs.moonlight.packages.${pkgs.system}.moonlight;
+          moonlight = inputs.moonlight.packages.${pkgs.stdenv.hostPlatform.system}.moonlight;
         })
       ];
 
