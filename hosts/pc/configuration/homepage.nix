@@ -13,7 +13,7 @@
   services.homepage-dashboard = {
     enable = true;
     openFirewall = true;
-    environmentFile = config.age.secrets.homepage-dashboard.path;
+    environmentFiles = [ config.age.secrets.homepage-dashboard.path ];
     services = [
       {
         "Media" = [
