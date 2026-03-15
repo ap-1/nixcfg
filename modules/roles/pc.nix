@@ -10,7 +10,9 @@
   };
 
   flake.modules.nixos.pc = {
-    imports = [
+    imports = with config.flake.modules.nixos; [
+      immich
+      stashapp
     ];
   };
 }

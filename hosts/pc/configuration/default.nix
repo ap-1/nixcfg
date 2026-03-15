@@ -6,7 +6,6 @@
     ./hardware-configuration.nix
     ./media.nix
     ./sunshine.nix
-    ./immich.nix
     ./homepage.nix
     ./vaultwarden.nix
     ./openrgb.nix

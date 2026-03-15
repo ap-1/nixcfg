@@ -1,0 +1,26 @@
+{
+  flake.modules.nixos.immich =
+    { ... }:
+    {
+      services.immich = {
+        enable = true;
+        host = "127.0.0.1";
+        port = 2283;
+        mediaLocation = "/media/immich";
+        machine-learning.enable = true;
+
+        # Hardware Accelerated Video Transcoding
+        accelerationDevices = null;
+      };
+
+      users.users.immich.extraGroups = [
+        "video"
+        "render"
+      ];
+
+      # Directories
+      systemd.tmpfiles.rules = [
+        "d /media/immich 0750 immich immich -"
+      ];
+    };
+}
