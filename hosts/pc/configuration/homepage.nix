@@ -40,6 +40,18 @@
               };
             };
           }
+          {
+            "Stash" = {
+              href = "http://pc.meteor-banjo.ts.net:9999";
+              description = "Media organizer";
+            };
+          }
+          {
+            "Suwayomi" = {
+              href = "http://pc.meteor-banjo.ts.net:4567";
+              description = "Manga reader";
+            };
+          }
         ];
       }
       {

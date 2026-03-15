@@ -6,7 +6,7 @@
         enable = true;
         openFirewall = true;
         settings.server = {
-          ip = "127.0.0.1";
+          ip = "0.0.0.0";
           port = 4567;
           flareSolverrEnabled = true;
           flareSolverrUrl = "http://localhost:8191";
