@@ -23,6 +23,7 @@
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
+    shellWrapperName = "y";
 
     plugins = {
       starship = pkgs.fetchFromGitHub {
