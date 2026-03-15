@@ -17,6 +17,8 @@
           "biome"
           "nginx"
           "discord-presence"
+          "agda"
+          "git-firefly"
         ];
         extraPackages = with pkgs; [
           nixd

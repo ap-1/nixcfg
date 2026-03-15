@@ -37,6 +37,7 @@
           jujutsu
           bitwarden-desktop
           rustup
+          (agda.withPackages (p: [ p.standard-library ]))
         ]
         ++ lib.optionals stdenv.isLinux [
           foot # linux terminal emulator
