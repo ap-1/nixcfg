@@ -30,7 +30,7 @@
           }
           {
             "Immich" = {
-              href = "https://pc.meteor-banjo.ts.net:2283";
+              href = "http://pc.meteor-banjo.ts.net:2283";
               icon = "immich";
               widget = {
                 type = "immich";
