@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.packages =
+  flake.modules.homeManager.mac-packages =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

@@ -2,7 +2,7 @@
 {
   flake.modules.homeManager.macbook = {
     imports = with config.flake.modules.homeManager; [
-      packages
+      mac-packages
     ];
   };
 
