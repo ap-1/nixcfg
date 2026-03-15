@@ -11,10 +11,6 @@
       home.packages = with pkgs; [
         pfetch
         tree
-        devenv
-        awscli2
-        ssm-session-manager-plugin
-        ffmpeg-headless
       ];
 
       # enabled manually for catppuccin
@@ -36,6 +32,8 @@
           (lib.mkBefore ''
             zstyle ':omz:plugins:eza' 'git-status' yes
             zstyle ':omz:plugins:eza' 'icons' no
+
+            export NIX_CONFIG="access-tokens = github.com=$(${lib.getExe pkgs.gh} auth token 2>/dev/null)"
           '')
           ''
             pfetch

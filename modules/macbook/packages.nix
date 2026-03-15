@@ -14,6 +14,10 @@
         nodejs
         pnpm
         openbao
+        devenv
+        awscli2
+        ssm-session-manager-plugin
+        ffmpeg-headless
 
         # applications
         shottr
