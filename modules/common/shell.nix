@@ -13,6 +13,7 @@
         tree
         devenv
         awscli2
+        ssm-session-manager-plugin
         ffmpeg-headless
       ];
 

@@ -11,6 +11,8 @@
         ragenix
         bun
         uv
+        nodejs
+        pnpm
         openbao
 
         # applications
