@@ -13,6 +13,7 @@
     imports = with config.flake.modules.nixos; [
       immich
       stashapp
+      suwayomi
     ];
   };
 }
