@@ -18,6 +18,7 @@
         awscli2
         ssm-session-manager-plugin
         ffmpeg-headless
+        yt-dlp
 
         # applications
         shottr
