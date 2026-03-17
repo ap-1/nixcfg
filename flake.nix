@@ -126,7 +126,7 @@
 
                 home-manager.users.anish = {
                   imports = [
-                    ./hosts/pc/home
+                    ./hosts/pc/home.nix
 
                     config.flake.modules.homeManager.common
                     config.flake.modules.homeManager.pc

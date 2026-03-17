@@ -2,13 +2,9 @@
 
 {
   imports = [
-    ./games.nix
     ./hardware-configuration.nix
     ./media.nix
-    ./sunshine.nix
     ./homepage.nix
-    ./vaultwarden.nix
-    ./openrgb.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

@@ -6,6 +6,7 @@
       clipboard
       flatpak
       theme
+      hyprland
     ];
   };
 
@@ -14,6 +15,10 @@
       immich
       stashapp
       suwayomi
+      vaultwarden
+      openrgb
+      sunshine
+      games
     ];
   };
 }
