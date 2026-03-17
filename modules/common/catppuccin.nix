@@ -21,6 +21,7 @@
       tmux.enable = true;
       yazi.enable = true;
       zed.enable = true;
+      zellij.enable = true;
     };
   };
 }

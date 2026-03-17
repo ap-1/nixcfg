@@ -17,6 +17,7 @@
       programs.bat.enable = true;
       programs.eza.enable = true;
       programs.tmux.enable = true;
+      programs.zellij.enable = true;
 
       programs.zsh = {
         enable = true;
