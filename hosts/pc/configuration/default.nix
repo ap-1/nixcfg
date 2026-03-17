@@ -80,6 +80,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "media"
     ];
   };
 
