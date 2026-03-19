@@ -2,7 +2,6 @@
   flake.modules.nixos.sunshine =
     { ... }:
     {
-      # Sunshine service
       services.sunshine = {
         enable = true;
         autoStart = true;

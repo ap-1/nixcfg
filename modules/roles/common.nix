@@ -21,10 +21,16 @@
   flake.modules.nixos.common = {
     imports = with config.flake.modules.nixos; [
       tailscale
+      tailscale-tls
       localsend
       nix-settings
       packages
     ];
+
+    services.tailscale-tls = {
+      hostname = "pc";
+      tailnet = "meteor-banjo.ts.net";
+    };
   };
 
   flake.modules.darwin.common = {

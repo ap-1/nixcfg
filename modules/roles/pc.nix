@@ -12,6 +12,7 @@
 
   flake.modules.nixos.pc = {
     imports = with config.flake.modules.nixos; [
+      homepage
       immich
       stashapp
       suwayomi

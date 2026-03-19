@@ -18,17 +18,21 @@
         group = "stash";
       };
 
+      services.tailscale-tls.proxies.stashapp = {
+        port = 19999;
+        https = 9999;
+      };
+
       services.stash = {
         enable = true;
-        openFirewall = true;
         mutableSettings = false;
         username = "anish";
         passwordFile = config.age.secrets.stash-password.path;
         jwtSecretKeyFile = config.age.secrets.stash-jwt.path;
         sessionStoreKeyFile = config.age.secrets.stash-session.path;
         settings = {
-          host = "0.0.0.0";
-          port = 9999;
+          host = "127.0.0.1";
+          port = 19999;
           stash = [
             { path = "/media/stash"; }
           ];

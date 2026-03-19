@@ -2,12 +2,16 @@
   flake.modules.nixos.suwayomi =
     { ... }:
     {
+      services.tailscale-tls.proxies.suwayomi = {
+        port = 14567;
+        https = 4567;
+      };
+
       services.suwayomi-server = {
         enable = true;
-        openFirewall = true;
         settings.server = {
-          ip = "0.0.0.0";
-          port = 4567;
+          ip = "127.0.0.1";
+          port = 14567;
           autoDownloadNewChapters = true;
           excludeEntryWithUnreadChapters = true;
           flareSolverrEnabled = true;
