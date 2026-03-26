@@ -31,7 +31,7 @@
         [
           # games
           prismlauncher
-          tetrio-desktop
+          # tetrio-desktop
           moonlight-qt
 
           # element-desktop

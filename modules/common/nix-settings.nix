@@ -44,12 +44,8 @@
           "spotify"
           "shottr"
           "raycast"
-          "tetrio-desktop"
+          # "tetrio-desktop"
         ];
-
-      nixpkgs.config.problems.handlers = {
-        nss_wrapper.broken = "warn";
-      };
 
       determinateNix.customSettings = {
         trusted-users = [ "anish" ];
