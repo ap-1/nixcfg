@@ -29,10 +29,13 @@
       home.packages =
         with pkgs;
         [
+          # games
+          prismlauncher
+          tetrio-desktop
+          moonlight-qt
+
           # element-desktop
           slack
-          prismlauncher
-          moonlight-qt
           claude-code
           jujutsu
           bitwarden-desktop

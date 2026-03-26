@@ -16,7 +16,6 @@
 
       # Native games
       environment.systemPackages = with pkgs; [
-        tetrio-desktop
         (heroic.override {
           extraPkgs =
             pkgs': with pkgs'; [
