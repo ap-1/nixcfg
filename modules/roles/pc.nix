@@ -7,6 +7,7 @@
       flatpak
       theme
       hyprland
+      games
     ];
   };
 
