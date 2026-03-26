@@ -171,20 +171,20 @@
             pkgs.fetchFromGitHub {
               owner = "akkva";
               repo = "gwfox";
-              tag = "3.1.1";
-              sha256 = "sha256-LwJtxnOFdZDp0gmnBu75GPqG/cSUoXYRhGvRUOFAEdA=";
+              rev = "1f993a5c0f6097a61b01f2d73309f6d7bc247067";
+              sha256 = "sha256-rTV5U05a0axHakP4Wi1goafaRQm8Owo03pKgmhk2GSo=";
             }
-            + "/chrome/userChrome.css"
+            + "/userChrome.css"
           );
 
           userContent = builtins.readFile (
             pkgs.fetchFromGitHub {
               owner = "akkva";
               repo = "gwfox";
-              tag = "3.1.1";
-              sha256 = "sha256-LwJtxnOFdZDp0gmnBu75GPqG/cSUoXYRhGvRUOFAEdA=";
+              rev = "1f993a5c0f6097a61b01f2d73309f6d7bc247067";
+              sha256 = "sha256-rTV5U05a0axHakP4Wi1goafaRQm8Owo03pKgmhk2GSo=";
             }
-            + "/chrome/userContent.css"
+            + "/userContent.css"
           );
         };
       };
