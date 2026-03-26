@@ -38,6 +38,7 @@
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
+    setSessionVariables = true;
   };
 
   home.stateVersion = "25.05";
