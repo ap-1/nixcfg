@@ -19,6 +19,7 @@
         ssm-session-manager-plugin
         ffmpeg-headless
         yt-dlp
+        poppler-utils
 
         # applications
         shottr
