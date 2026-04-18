@@ -44,7 +44,7 @@
           "spotify"
           "shottr"
           "raycast"
-          # "tetrio-desktop"
+          "tetrio-desktop"
         ];
 
       determinateNix.customSettings = {
