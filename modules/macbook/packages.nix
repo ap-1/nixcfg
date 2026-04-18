@@ -20,6 +20,8 @@
         ffmpeg-headless
         yt-dlp
         poppler-utils
+        opentofu
+        terragrunt
 
         # applications
         shottr
