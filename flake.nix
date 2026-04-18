@@ -53,6 +53,10 @@
       url = "github:moonlight-mod/moonlight";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-claude-code = {
+      url = "github:ryoppippi/nix-claude-code";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -92,7 +96,10 @@
               (
                 { pkgs, ... }:
                 {
-                  nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ];
+                  nixpkgs.overlays = [
+                    inputs.nix-cachyos-kernel.overlays.pinned
+                    inputs.nix-claude-code.overlays.default
+                  ];
                   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v4;
 
                   nix.settings = {
@@ -149,6 +156,8 @@
 
               inputs.determinate.darwinModules.default
               inputs.agenix.nixosModules.default
+
+              { nixpkgs.overlays = [ inputs.nix-claude-code.overlays.default ]; }
 
               inputs.home-manager.darwinModules.home-manager
               {
