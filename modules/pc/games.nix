@@ -7,7 +7,7 @@
         remotePlay.openFirewall = true;
         dedicatedServer.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
-        gamescopeSession.enable = true;
+        gamescopeSession.enable = false;
         extraCompatPackages = with pkgs; [
           proton-ge-bin
           mangohud
@@ -42,8 +42,22 @@
     };
 
   flake.modules.homeManager.games =
-    { ... }:
+    { pkgs, ... }:
     {
+      programs.lutris = {
+        enable = true;
+        extraPackages = with pkgs; [
+          gamescope
+          gamemode
+        ];
+        winePackages = with pkgs; [
+          wineWow64Packages.stable
+        ];
+        protonPackages = with pkgs; [
+          proton-ge-bin
+        ];
+      };
+
       programs.mangohud = {
         enable = true;
         enableSessionWide = true;
