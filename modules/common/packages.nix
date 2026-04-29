@@ -18,6 +18,7 @@
     {
       environment.systemPackages = with pkgs; [
         nh
+        darwin.PowerManagement
         # sunshine
         # foot.terminfo # for ssh from pc
       ];

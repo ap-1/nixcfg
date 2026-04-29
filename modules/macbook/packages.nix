@@ -22,6 +22,7 @@
         poppler-utils
         opentofu
         terragrunt
+        (proxmark3.override { hardwarePlatform = "PM3GENERIC"; })
 
         # applications
         shottr
