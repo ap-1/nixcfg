@@ -10,6 +10,7 @@
         ghostty.terminfo # for ssh from macbook
         wiremix # pipewire tui
         impala # iwd tui
+        playerctl
       ];
     };
 
