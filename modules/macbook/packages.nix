@@ -23,6 +23,9 @@
         poppler-utils
         opentofu
         terragrunt
+        kubectl
+        kubernetes-helm
+        argocd
         (proxmark3.override { hardwarePlatform = "PM3GENERIC"; })
 
         # applications
