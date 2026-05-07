@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake.modules.homeManager.mac-packages =
     { pkgs, ... }:
@@ -14,7 +15,7 @@
         nodejs
         pnpm
         openbao
-        devenv
+        inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.default
         awscli2
         ssm-session-manager-plugin
         ffmpeg-headless
