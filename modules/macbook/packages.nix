@@ -30,7 +30,6 @@
 
         # applications
         shottr
-        raycast
         ghostty-bin
         iina
       ];

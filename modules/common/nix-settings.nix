@@ -43,7 +43,6 @@
           "apple_cursor"
           "spotify"
           "shottr"
-          "raycast"
           "tetrio-desktop"
         ];
 
