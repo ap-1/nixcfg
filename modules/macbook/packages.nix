@@ -16,16 +16,9 @@
         pnpm
         openbao
         inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.default
-        awscli2
-        ssm-session-manager-plugin
         ffmpeg-headless
         yt-dlp
         poppler-utils
-        opentofu
-        terragrunt
-        kubectl
-        kubernetes-helm
-        argocd
         (proxmark3.override { hardwarePlatform = "PM3GENERIC"; })
 
         # applications

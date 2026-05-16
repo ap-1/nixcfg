@@ -1630,6 +1630,26 @@
         "type": "github"
       }
     },
+    "omp-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778886193,
+        "narHash": "sha256-4W9rjS2PN8iVcFYkJgiGOE/U383njIRFxrRnL/edo6c=",
+        "ref": "refs/heads/main",
+        "rev": "105e55b9baa8eafd7927038c59c43199444cf4b0",
+        "revCount": 60,
+        "type": "git",
+        "url": "https://git.molez.org/mandlm/omp-nix"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.molez.org/mandlm/omp-nix"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": [
@@ -1705,6 +1725,7 @@
         "nix-darwin": "nix-darwin",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_9",
+        "omp-nix": "omp-nix",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "xdg-termfilepickers": "xdg-termfilepickers"

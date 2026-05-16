@@ -32,7 +32,6 @@
         with pkgs;
         [
           # games
-          prismlauncher
           tetrio-desktop
           moonlight-qt
 
@@ -44,6 +43,7 @@
           rustup
         ]
         ++ lib.optionals stdenv.isLinux [
+          prismlauncher
           foot # linux terminal emulator
           libnotify
           nerd-fonts.fira-code

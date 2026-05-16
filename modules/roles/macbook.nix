@@ -3,6 +3,7 @@
   flake.modules.homeManager.macbook = {
     imports = with config.flake.modules.homeManager; [
       mac-packages
+      omp
     ];
   };
 
