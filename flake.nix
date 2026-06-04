@@ -2,7 +2,7 @@
   description = "Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
 
@@ -14,7 +14,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,10 +33,6 @@
       url = "github:Guekka/xdg-desktop-portal-termfilepickers/9a4a40fee7a6973f581404b6fa1f1107026d05f8";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,16 +49,8 @@
       url = "github:moonlight-mod/moonlight";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-claude-code = {
-      url = "github:ryoppippi/nix-claude-code";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     omp-nix = {
       url = "git+https://git.molez.org/mandlm/omp-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    devenv = {
-      url = "github:cachix/devenv";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -106,18 +94,15 @@
                 {
                   nixpkgs.overlays = [
                     inputs.nix-cachyos-kernel.overlays.pinned
-                    inputs.nix-claude-code.overlays.default
                   ];
                   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v4;
 
                   nix.settings = {
                     substituters = [
                       "https://attic.xuyh0120.win/lantian"
-                      "https://cache.garnix.io"
                     ];
                     trusted-public-keys = [
                       "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-                      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
                     ];
                   };
                 }
@@ -164,9 +149,6 @@
 
               inputs.determinate.darwinModules.default
               inputs.agenix.nixosModules.default
-
-              { nixpkgs.overlays = [ inputs.nix-claude-code.overlays.default ]; }
-
               inputs.home-manager.darwinModules.home-manager
               {
                 home-manager.backupFileExtension = "backup";

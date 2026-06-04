@@ -11,7 +11,6 @@
         builtins.elem (lib.getName pkg) [
           "discord-canary"
           "slack"
-          "claude-code"
           "cloudflare-warp"
           "firefox-bin"
           "firefox-bin-unwrapped"
@@ -35,7 +34,6 @@
         builtins.elem (lib.getName pkg) [
           "discord-canary"
           "slack"
-          "claude-code"
           "cloudflare-warp"
           "tailscale-gui"
           "firefox-bin"
@@ -48,8 +46,7 @@
 
       determinateNix.customSettings = {
         trusted-users = [ "anish" ];
-        extra-substituters = [ "https://cache.garnix.io" ];
-        extra-trusted-public-keys = [ "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=" ];
+        lazy-trees = true;
       };
     };
 }

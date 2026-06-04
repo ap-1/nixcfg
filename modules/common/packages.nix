@@ -37,7 +37,6 @@
 
           # element-desktop
           slack
-          claude-code
           jujutsu
           bitwarden-desktop
           rustup

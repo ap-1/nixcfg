@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ ... }:
 {
   flake.modules.homeManager.mac-packages =
     { pkgs, ... }:
@@ -7,6 +7,7 @@
         docker
         docker-compose
         colima
+        container
         sshpass
         typst
         ragenix
@@ -15,7 +16,7 @@
         nodejs
         pnpm
         openbao
-        inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.default
+        devenv
         ffmpeg-headless
         yt-dlp
         poppler-utils

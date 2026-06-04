@@ -1,17 +1,13 @@
-{ inputs, ... }:
 {
-  flake.modules.homeManager.neovim =
-    { pkgs, ... }:
-    {
-      programs.neovim = {
-        enable = true;
-        package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
-        defaultEditor = true;
-        viAlias = true;
-        vimAlias = true;
+  flake.modules.homeManager.neovim = {
+    programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
 
-        withRuby = false;
-        withPython3 = false;
-      };
+      withRuby = false;
+      withPython3 = false;
     };
+  };
 }
