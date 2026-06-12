@@ -3,11 +3,13 @@ let
 
   cortado = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN58RgxMAtPo7du0WeUKvhSx05rcBHqSHI9M0txrvsV8";
   mocha = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBu43o7nsVIt9KB1hpc+vCEY1CkROhQ01ZulhwtEs2j root@ap-1";
+  affogato = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKJuVngSRaPAgi3U7p3QQkItSHEga9Dh4kmzFdeEMhWz root@affogato";
 
   all = [
     anish
     cortado
     mocha
+    affogato
   ];
 in
 {
