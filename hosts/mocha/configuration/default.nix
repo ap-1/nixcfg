@@ -42,6 +42,8 @@
   networking.hostName = "mocha";
   networking.networkmanager.enable = true;
 
+  hardware.mediatek-mt7927.enable = true;
+
   services.tailscale-tls = {
     hostname = "mocha";
     tailnet = "meteor-banjo.ts.net";

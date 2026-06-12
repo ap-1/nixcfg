@@ -58,6 +58,10 @@
       url = "git+https://git.molez.org/mandlm/omp-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mt7927 = {
+      url = "github:cmspam/mt7927-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -92,6 +96,7 @@
 
               inputs.determinate.nixosModules.default
               inputs.agenix.nixosModules.default
+              inputs.mt7927.nixosModules.default
 
               # CachyOS kernel overlay
               (
