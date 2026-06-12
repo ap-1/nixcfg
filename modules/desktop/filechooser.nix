@@ -7,6 +7,21 @@
         inputs.xdg-termfilepickers.homeManagerModules.default
       ];
 
+      programs.yazi = {
+        enable = true;
+        enableZshIntegration = true;
+        shellWrapperName = "y";
+        plugins.starship = pkgs.fetchFromGitHub {
+          owner = "Rolv-Apneseth";
+          repo = "starship.yazi";
+          rev = "a63550b2f91f0553cc545fd8081a03810bc41bc0";
+          sha256 = "sha256-PYeR6fiWDbUMpJbTFSkM57FzmCbsB4W4IXXe25wLncg=";
+        };
+        initLua = ''
+          require("starship"):setup()
+        '';
+      };
+
       services.xdg-desktop-portal-termfilepickers = {
         enable = true;
         package = inputs.xdg-termfilepickers.packages.${pkgs.stdenv.hostPlatform.system}.default;

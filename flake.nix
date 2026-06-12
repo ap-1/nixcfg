@@ -89,7 +89,7 @@
           nixosConfigurations.mocha = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
-              ./hosts/mocha/configuration
+              ./hosts/mocha
 
               config.flake.modules.nixos.common
               config.flake.modules.nixos.desktop
@@ -105,7 +105,7 @@
                   nixpkgs.overlays = [
                     inputs.nix-cachyos-kernel.overlays.pinned
                   ];
-                  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v4;
+                  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
 
                   nix.settings = {
                     substituters = [
@@ -136,8 +136,6 @@
 
                 home-manager.users.anish = {
                   imports = [
-                    ./hosts/mocha/home.nix
-
                     config.flake.modules.homeManager.common
                     config.flake.modules.homeManager.desktop
                     config.flake.modules.homeManager.mocha
@@ -145,6 +143,8 @@
                     inputs.xdg-termfilepickers.homeManagerModules.default
                     inputs.nix-flatpak.homeManagerModules.nix-flatpak
                   ];
+
+                  home.stateVersion = "25.05";
                 };
               }
             ];
@@ -153,7 +153,7 @@
           nixosConfigurations.affogato = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
-              ./hosts/affogato/configuration
+              ./hosts/affogato
 
               config.flake.modules.nixos.common
 
