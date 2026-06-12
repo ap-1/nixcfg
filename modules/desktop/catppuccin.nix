@@ -5,6 +5,7 @@
 
     catppuccin = {
       enable = true;
+      autoEnable = true;
       flavor = "mocha";
       atuin.enable = true;
       bat.enable = true;

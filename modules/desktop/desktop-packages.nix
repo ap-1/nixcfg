@@ -2,6 +2,8 @@
   flake.modules.nixos.desktop-packages =
     { pkgs, ... }:
     {
+      nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
+
       environment.systemPackages = with pkgs; [
         ly
         waylock
@@ -15,6 +17,8 @@
   flake.modules.darwin.desktop-packages =
     { pkgs, ... }:
     {
+      nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
+
       environment.systemPackages = with pkgs; [
         darwin.PowerManagement
         sunshine
