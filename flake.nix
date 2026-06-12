@@ -152,7 +152,6 @@
 
               config.flake.modules.nixos.common
 
-              inputs.determinate.nixosModules.default
               inputs.agenix.nixosModules.default
               inputs.disko.nixosModules.disko
               inputs.preservation.nixosModules.preservation
