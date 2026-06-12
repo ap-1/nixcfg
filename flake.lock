@@ -222,6 +222,26 @@
         "url": "https://install.determinate.systems/determinate-nixd/tag/v3.21.0/x86_64-linux"
       }
     },
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781152676,
+        "narHash": "sha256-RxWs5ND31KzTG7wvMM+PMfUjyNpmIEr999lqNARaM5o=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "ff8702b4de27f72b4c78573dfb89ec74e36abdf1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
     "firefox-addons": {
       "inputs": {
         "nixpkgs": [
@@ -789,11 +809,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779966184,
-        "narHash": "sha256-oB0LhjGgCKMxQq/6FU+EAVjPrZqvmBR2L5PWE2WqHNk=",
+        "lastModified": 1781208183,
+        "narHash": "sha256-d0NrTuDiXaV75xFVkbb/0ev43inUOczkzVvWAeQNLxk=",
         "ref": "refs/heads/main",
-        "rev": "eb653a10cd41173025264393c41f96370226cbd7",
-        "revCount": 87,
+        "rev": "362d17ea6c6a32a97999f87ca1242ef8fc97ef31",
+        "revCount": 142,
         "type": "git",
         "url": "https://git.molez.org/mandlm/omp-nix"
       },
@@ -802,11 +822,27 @@
         "url": "https://git.molez.org/mandlm/omp-nix"
       }
     },
+    "preservation": {
+      "locked": {
+        "lastModified": 1757436102,
+        "narHash": "sha256-mMI9IanU+Xw+pVogD2oT0I2kTmvz2Un/Apc5+CwUpEY=",
+        "owner": "nix-community",
+        "repo": "preservation",
+        "rev": "93416f4614ad2dfed5b0dcf12f27e57d27a5ab11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "preservation",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
         "catppuccin": "catppuccin",
         "determinate": "determinate",
+        "disko": "disko",
         "firefox-addons": "firefox-addons",
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager_2",
@@ -817,6 +853,7 @@
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_4",
         "omp-nix": "omp-nix",
+        "preservation": "preservation",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "xdg-termfilepickers": "xdg-termfilepickers"

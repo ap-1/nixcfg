@@ -9,7 +9,7 @@
       options.services.tailscale-tls = {
         hostname = lib.mkOption {
           type = lib.types.str;
-          example = "pc";
+          example = "mocha";
           description = "Tailscale machine name";
         };
         tailnet = lib.mkOption {

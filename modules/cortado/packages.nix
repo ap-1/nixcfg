@@ -1,11 +1,9 @@
 { ... }:
 {
-  flake.modules.homeManager.mac-packages =
+  flake.modules.homeManager.cortado-packages =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        docker
-        docker-compose
         colima
         container
         sshpass
@@ -13,8 +11,6 @@
         ragenix
         bun
         uv
-        nodejs
-        pnpm
         openbao
         devenv
         ffmpeg-headless

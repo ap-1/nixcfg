@@ -180,7 +180,7 @@
               }
               {
                 "Syncthing (Mac)" = {
-                  href = "https://macbook.${cfg.tailnet}:8384";
+                  href = "https://cortado.${cfg.tailnet}:8384";
                   icon = "syncthing";
                   description = "File sync";
                 };

@@ -57,7 +57,7 @@
       incomplete-dir = "/media/downloads/.incomplete";
       rpc-bind-address = "0.0.0.0";
       rpc-whitelist-enabled = false;
-      rpc-host-whitelist = "localhost,pc,pc.meteor-banjo.ts.net,macbook,iphone,ipad";
+      rpc-host-whitelist = "localhost,mocha,mocha.meteor-banjo.ts.net,cortado,iphone,ipad";
       rpc-host-whitelist-enabled = true;
       rpc-authentication-required = true;
     };

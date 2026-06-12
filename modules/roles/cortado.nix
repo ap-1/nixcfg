@@ -1,13 +1,12 @@
 { config, ... }:
 {
-  flake.modules.homeManager.macbook = {
+  flake.modules.homeManager.cortado = {
     imports = with config.flake.modules.homeManager; [
-      mac-packages
-      omp
+      cortado-packages
     ];
   };
 
-  flake.modules.darwin.macbook = {
+  flake.modules.darwin.cortado = {
     imports = with config.flake.modules.darwin; [
       configuration
     ];

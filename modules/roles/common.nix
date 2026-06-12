@@ -7,14 +7,6 @@
       gpg
       shell
       neovim
-      zed-editor
-      stylix
-      catppuccin
-      firefox
-      spicetify
-      discord
-      syncthing
-      packages
     ];
   };
 
@@ -22,21 +14,14 @@
     imports = with config.flake.modules.nixos; [
       tailscale
       tailscale-tls
-      localsend
       nix-settings
       packages
     ];
-
-    services.tailscale-tls = {
-      hostname = "pc";
-      tailnet = "meteor-banjo.ts.net";
-    };
   };
 
   flake.modules.darwin.common = {
     imports = with config.flake.modules.darwin; [
       tailscale
-      localsend
       nix-settings
       packages
     ];

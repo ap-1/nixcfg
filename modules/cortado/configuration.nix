@@ -6,9 +6,9 @@
       determinateNix.enable = true;
 
       # Networking options
-      networking.hostName = "ap-1";
-      networking.localHostName = "ap-1";
-      networking.computerName = "ap-1";
+      networking.hostName = "cortado";
+      networking.localHostName = "cortado";
+      networking.computerName = "cortado";
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;

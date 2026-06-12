@@ -25,6 +25,11 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    preservation.url = "github:nix-community/preservation";
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -77,13 +82,13 @@
           };
 
         flake = {
-          nixosConfigurations.ap-1 = inputs.nixpkgs.lib.nixosSystem {
+          nixosConfigurations.mocha = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
-              ./hosts/pc/configuration
+              ./hosts/mocha/configuration
 
               config.flake.modules.nixos.common
-              config.flake.modules.nixos.pc
+              config.flake.modules.nixos.desktop
 
               inputs.determinate.nixosModules.default
               inputs.agenix.nixosModules.default
@@ -126,10 +131,11 @@
 
                 home-manager.users.anish = {
                   imports = [
-                    ./hosts/pc/home.nix
+                    ./hosts/mocha/home.nix
 
                     config.flake.modules.homeManager.common
-                    config.flake.modules.homeManager.pc
+                    config.flake.modules.homeManager.desktop
+                    config.flake.modules.homeManager.mocha
 
                     inputs.xdg-termfilepickers.homeManagerModules.default
                     inputs.nix-flatpak.homeManagerModules.nix-flatpak
@@ -139,13 +145,28 @@
             ];
           };
 
-          darwinConfigurations.ap-1 = inputs.nix-darwin.lib.darwinSystem {
+          nixosConfigurations.affogato = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./hosts/affogato/configuration
+
+              config.flake.modules.nixos.common
+
+              inputs.determinate.nixosModules.default
+              inputs.agenix.nixosModules.default
+              inputs.disko.nixosModules.disko
+              inputs.preservation.nixosModules.preservation
+            ];
+          };
+
+          darwinConfigurations.cortado = inputs.nix-darwin.lib.darwinSystem {
             specialArgs = {
               self = inputs.self;
             };
             modules = [
               config.flake.modules.darwin.common
-              config.flake.modules.darwin.macbook
+              config.flake.modules.darwin.desktop
+              config.flake.modules.darwin.cortado
 
               inputs.determinate.darwinModules.default
               inputs.agenix.nixosModules.default
@@ -166,7 +187,8 @@
                 home-manager.users.anish = {
                   imports = [
                     config.flake.modules.homeManager.common
-                    config.flake.modules.homeManager.macbook
+                    config.flake.modules.homeManager.desktop
+                    config.flake.modules.homeManager.cortado
                   ];
 
                   home.username = "anish";

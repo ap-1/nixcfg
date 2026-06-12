@@ -39,8 +39,13 @@
   security.pam.services.waylock = { };
 
   # Set networking options.
-  networking.hostName = "ap-1";
+  networking.hostName = "mocha";
   networking.networkmanager.enable = true;
+
+  services.tailscale-tls = {
+    hostname = "mocha";
+    tailnet = "meteor-banjo.ts.net";
+  };
 
   # Set your time zone.
   time.timeZone = "America/New_York";
