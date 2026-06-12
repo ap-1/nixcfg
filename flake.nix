@@ -160,6 +160,21 @@
               inputs.agenix.nixosModules.default
               inputs.disko.nixosModules.disko
               inputs.preservation.nixosModules.preservation
+
+              inputs.home-manager.nixosModules.home-manager
+              {
+                home-manager.backupFileExtension = "backup";
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+
+                home-manager.users.anish = {
+                  imports = [
+                    config.flake.modules.homeManager.common
+                  ];
+
+                  home.stateVersion = "26.11";
+                };
+              }
             ];
           };
 

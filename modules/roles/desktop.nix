@@ -5,7 +5,6 @@
       (with config.flake.modules.homeManager; [
         zed-editor
         stylix
-        catppuccin
         firefox
         spicetify
         discord
