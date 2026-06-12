@@ -8,7 +8,7 @@
 
   flake.modules.darwin.cortado = {
     imports = with config.flake.modules.darwin; [
-      configuration
+      cortado-configuration
     ];
   };
 }

@@ -89,7 +89,7 @@
           nixosConfigurations.mocha = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
-              ./hosts/mocha
+              config.flake.modules.nixos.mocha
 
               config.flake.modules.nixos.common
               config.flake.modules.nixos.desktop
@@ -97,26 +97,6 @@
               inputs.determinate.nixosModules.default
               inputs.agenix.nixosModules.default
               inputs.mt7927.nixosModules.default
-
-              # CachyOS kernel overlay
-              (
-                { pkgs, ... }:
-                {
-                  nixpkgs.overlays = [
-                    inputs.nix-cachyos-kernel.overlays.pinned
-                  ];
-                  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
-
-                  nix.settings = {
-                    substituters = [
-                      "https://attic.xuyh0120.win/lantian"
-                    ];
-                    trusted-public-keys = [
-                      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-                    ];
-                  };
-                }
-              )
 
               inputs.home-manager.nixosModules.home-manager
               {
@@ -153,7 +133,7 @@
           nixosConfigurations.affogato = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
-              ./hosts/affogato
+              config.flake.modules.nixos.affogato
 
               config.flake.modules.nixos.common
 

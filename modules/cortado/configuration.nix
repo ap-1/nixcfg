@@ -1,5 +1,5 @@
 {
-  flake.modules.darwin.configuration =
+  flake.modules.darwin.cortado-configuration =
     { self, ... }:
     {
       # Enable the Determinate Nix module
