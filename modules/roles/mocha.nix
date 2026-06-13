@@ -8,7 +8,6 @@
       theme
       hyprland
       games
-      foot
     ];
   };
 

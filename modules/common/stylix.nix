@@ -16,6 +16,11 @@
           size = 24;
         };
 
+        fonts.monospace = {
+          package = pkgs.nerd-fonts.fira-code;
+          name = "FiraCode Nerd Font Mono";
+        };
+
         targets = {
           bat.enable = true;
           dunst.enable = true;
