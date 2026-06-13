@@ -24,4 +24,24 @@ in
     anish
     affogato
   ];
+  "secrets/affogato-cloudflare-dns.age".publicKeys = [
+    anish
+    affogato
+  ];
+  "secrets/kanidm-admin.age".publicKeys = [
+    anish
+    affogato
+  ];
+  "secrets/kanidm-idm-admin.age".publicKeys = [
+    anish
+    affogato
+  ];
+  "secrets/kanidm-oauth2-headscale.age".publicKeys = [
+    anish
+    affogato
+  ];
+  "secrets/kanidm-oauth2-headplane.age".publicKeys = [
+    anish
+    affogato
+  ];
 }

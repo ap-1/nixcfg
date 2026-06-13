@@ -10,6 +10,10 @@
           "/var/log"
           "/var/lib/systemd"
           "/var/lib/tailscale"
+          "/var/lib/acme"
+          "/var/lib/caddy"
+          "/var/lib/kanidm"
+          "/var/lib/headscale"
           {
             directory = "/var/lib/nixos";
             inInitrd = true;
