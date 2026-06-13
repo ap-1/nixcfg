@@ -19,6 +19,7 @@
 
   flake.modules.nixos.desktop = {
     imports = with config.flake.modules.nixos; [
+      firefox
       localsend
       desktop-packages
       homepage
@@ -34,6 +35,7 @@
 
   flake.modules.darwin.desktop = {
     imports = with config.flake.modules.darwin; [
+      firefox
       localsend
       desktop-packages
     ];

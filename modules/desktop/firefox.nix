@@ -1,11 +1,12 @@
 { inputs, ... }:
 {
   flake.modules.homeManager.firefox =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       programs.firefox = {
         enable = true;
         package = pkgs.firefox-bin;
+        configPath = "${config.xdg.configHome}/mozilla/firefox";
 
         policies = {
           DisableAppUpdate = true;
@@ -27,20 +28,21 @@
 
           extensions = {
             force = true;
-            packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
+            packages = with pkgs.firefox-addons; [
               # YouTube
-              # enhancer-for-youtube
+              enhancer-for-youtube
               sponsorblock
               return-youtube-dislikes
 
               # Privacy
               ublock-origin
               decentraleyes
-              # port-authority
-              # duckduckgo-for-firefox
+              port-authority
+              duckduckgo-privacy-essentials
 
               # Misc
               bitwarden
+              pay-by-privacy
             ];
           };
 
@@ -174,5 +176,17 @@
           userContent = builtins.readFile "${inputs.gwfox}/userContent.css";
         };
       };
+    };
+
+  flake.modules.nixos.firefox =
+    { ... }:
+    {
+      nixpkgs.overlays = [ inputs.firefox-addons.overlays.default ];
+    };
+
+  flake.modules.darwin.firefox =
+    { ... }:
+    {
+      nixpkgs.overlays = [ inputs.firefox-addons.overlays.default ];
     };
 }
