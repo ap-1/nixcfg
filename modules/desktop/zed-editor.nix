@@ -18,6 +18,7 @@
           "nginx"
           "discord-presence"
           "git-firefly"
+          "lua"
         ];
         extraPackages = with pkgs; [
           nixd

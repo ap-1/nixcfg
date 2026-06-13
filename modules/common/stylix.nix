@@ -21,22 +21,7 @@
           name = "FiraCode Nerd Font Mono";
         };
 
-        targets = {
-          bat.enable = true;
-          dunst.enable = true;
-          foot.enable = true;
-          ghostty.enable = true;
-          hyprland.enable = true;
-          mangohud.enable = true;
-          neovim.enable = true;
-          rofi.enable = true;
-          starship.enable = true;
-          tmux.enable = true;
-          vivid.enable = true;
-          yazi.enable = true;
-          zed.enable = true;
-          zellij.enable = true;
-        };
+        targets.starship.enable = true;
       };
     };
 }

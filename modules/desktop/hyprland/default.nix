@@ -4,10 +4,11 @@
     {
       wayland.windowManager.hyprland = {
         enable = true;
-        extraConfig = builtins.readFile ./hyprland.conf;
+        configType = "lua";
+        extraConfig = builtins.readFile ./hyprland.lua;
       };
 
-      # enabled manually for stylix
+      # enabled manually for catppuccin
       programs.foot.enable = true;
       programs.rofi.enable = true;
       services.dunst.enable = true;

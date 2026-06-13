@@ -11,6 +11,8 @@
           copyToClipboard
         ];
         alwaysEnableDevTools = true;
+        theme = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system}.themes.catppuccin;
+        colorScheme = "mocha";
       };
     };
 }

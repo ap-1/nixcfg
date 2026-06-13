@@ -7,6 +7,7 @@
       gpg
       shell
       neovim
+      catppuccin
       stylix
     ];
   };
