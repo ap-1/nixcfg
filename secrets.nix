@@ -19,4 +19,5 @@ in
   "secrets/stash-jwt.age".publicKeys = all;
   "secrets/stash-session.age".publicKeys = all;
   "secrets/stash-password.age".publicKeys = all;
+  "secrets/opentofu.age".publicKeys = [ anish ];
 }
