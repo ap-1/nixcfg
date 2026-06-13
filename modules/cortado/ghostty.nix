@@ -8,7 +8,8 @@
         settings = {
           window-decoration = true;
           background-blur-radius = 20;
-          background-opacity = 1;
+          background-opacity = 0.8;
+          font-size = 13;
         };
       };
     };

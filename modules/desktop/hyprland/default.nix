@@ -9,7 +9,11 @@
       };
 
       # enabled manually for catppuccin
-      programs.foot.enable = true;
+      programs.foot = {
+        enable = true;
+        settings.main.font = "monospace:size=13";
+        settings.colors-dark.alpha = 0.8;
+      };
       programs.rofi.enable = true;
       services.dunst.enable = true;
     };
