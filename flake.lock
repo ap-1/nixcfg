@@ -250,11 +250,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1781150628,
-        "narHash": "sha256-b4mp8l3qWuSCyYYo9HSngDtcB3PpecYiOXjULrjwwlw=",
+        "lastModified": 1781323358,
+        "narHash": "sha256-W8SFmaIEW4tP4jQ48EJSSVnO8s4gZ1j1D4K22tW9pd8=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "753319310f4673a2dabbfab87482187b40bf9bac",
+        "rev": "89503b569dd29491d5c58bf41c244253fcd3d2b3",
         "type": "gitlab"
       },
       "original": {
@@ -512,11 +512,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781189114,
-        "narHash": "sha256-5inaamLgUMWy+MOBE9ChF9QAF1o/74LFuHkI0W/9rqc=",
+        "lastModified": 1781365335,
+        "narHash": "sha256-zqDBhXMzfbdlO7F2bGHe7MOtB3xngd/+4ieMHDC+ZXo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "486595d2cf49cfcd649b58a284fa11ac0e34da22",
+        "rev": "5b6f5733726a1b2ccafb5dec6ac4ca7299fad66c",
         "type": "github"
       },
       "original": {
@@ -862,11 +862,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781208183,
-        "narHash": "sha256-d0NrTuDiXaV75xFVkbb/0ev43inUOczkzVvWAeQNLxk=",
+        "lastModified": 1781370169,
+        "narHash": "sha256-8YdyF3+nfzquZdChx555IFW+X34QYxNShJbK2NPruFw=",
         "ref": "refs/heads/main",
-        "rev": "362d17ea6c6a32a97999f87ca1242ef8fc97ef31",
-        "revCount": 142,
+        "rev": "261e7137ce1b84bad5eb51a8302050b0710f2af2",
+        "revCount": 166,
         "type": "git",
         "url": "https://git.molez.org/mandlm/omp-nix"
       },
