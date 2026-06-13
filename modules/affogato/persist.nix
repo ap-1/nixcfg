@@ -51,6 +51,7 @@
               directory = ".ssh";
               mode = "0700";
             }
+            "nixcfg"
           ];
           files = [
             ".zsh_history"
