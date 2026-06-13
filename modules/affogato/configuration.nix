@@ -6,6 +6,7 @@
       ...
     }:
     {
+      age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
       age.secrets.affogato-password.file = ../../secrets/affogato-password.age;
 
       boot.loader.grub = {
