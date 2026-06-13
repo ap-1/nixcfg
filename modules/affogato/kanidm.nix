@@ -98,5 +98,10 @@
       };
 
       security.acme.certs."idp.anish.land".reloadServices = [ "kanidm.service" ];
+
+      systemd.services.kanidm = {
+        wants = [ "acme-order-renew-idp.anish.land.service" ];
+        after = [ "acme-order-renew-idp.anish.land.service" ];
+      };
     };
 }

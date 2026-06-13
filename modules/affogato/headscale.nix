@@ -34,8 +34,14 @@
             ];
             pkce.enabled = true;
             allowed_groups = [ "headscale.access@idp.anish.land" ];
+            only_start_if_oidc_is_available = false;
           };
         };
+      };
+
+      systemd.services.headscale = {
+        wants = [ "kanidm.service" ];
+        after = [ "kanidm.service" ];
       };
     };
 }
