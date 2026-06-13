@@ -1,4 +1,3 @@
-{ ... }:
 {
   flake.modules.homeManager.cortado-packages =
     { pkgs, ... }:

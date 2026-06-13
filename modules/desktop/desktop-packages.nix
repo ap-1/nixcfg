@@ -47,6 +47,8 @@
           libnotify
           nerd-fonts.fira-code
           nushell # needed for xdg-desktop-portal-termfilepickers yazi wrapper scripts
+          wl-clipboard
+          cliphist
         ];
     };
 }

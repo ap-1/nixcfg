@@ -66,138 +66,21 @@
 
   outputs =
     inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
-      { config, ... }:
-      {
-        imports = [
-          inputs.flake-parts.flakeModules.modules
-          (inputs.import-tree ./modules)
-        ];
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        inputs.flake-parts.flakeModules.modules
+        (inputs.import-tree ./modules)
+      ];
 
-        systems = [
-          "x86_64-linux"
-          "aarch64-darwin"
-        ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
 
-        perSystem =
-          { pkgs, ... }:
-          {
-            formatter = pkgs.nixfmt;
-          };
-
-        flake = {
-          nixosConfigurations.mocha = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-              config.flake.modules.nixos.mocha
-
-              config.flake.modules.nixos.common
-              config.flake.modules.nixos.desktop
-
-              inputs.determinate.nixosModules.default
-              inputs.agenix.nixosModules.default
-              inputs.mt7927.nixosModules.default
-
-              inputs.home-manager.nixosModules.home-manager
-              {
-                home-manager.backupFileExtension = "backup";
-                home-manager.extraSpecialArgs = {
-                  inherit inputs;
-                  inherit (inputs)
-                    nix-flatpak
-                    xdg-termfilepickers
-                    firefox-addons
-                    spicetify-nix
-                    ;
-                };
-
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-
-                home-manager.users.anish = {
-                  imports = [
-                    config.flake.modules.homeManager.common
-                    config.flake.modules.homeManager.desktop
-                    config.flake.modules.homeManager.mocha
-
-                    inputs.xdg-termfilepickers.homeManagerModules.default
-                    inputs.nix-flatpak.homeManagerModules.nix-flatpak
-                  ];
-
-                  home.stateVersion = "25.05";
-                };
-              }
-            ];
-          };
-
-          nixosConfigurations.affogato = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-              config.flake.modules.nixos.affogato
-
-              config.flake.modules.nixos.common
-
-              inputs.agenix.nixosModules.default
-              inputs.disko.nixosModules.disko
-              inputs.preservation.nixosModules.preservation
-
-              inputs.home-manager.nixosModules.home-manager
-              {
-                home-manager.backupFileExtension = "backup";
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-
-                home-manager.users.anish = {
-                  imports = [
-                    config.flake.modules.homeManager.common
-                  ];
-
-                  home.stateVersion = "26.11";
-                };
-              }
-            ];
-          };
-
-          darwinConfigurations.cortado = inputs.nix-darwin.lib.darwinSystem {
-            specialArgs = {
-              self = inputs.self;
-            };
-            modules = [
-              config.flake.modules.darwin.common
-              config.flake.modules.darwin.desktop
-              config.flake.modules.darwin.cortado
-
-              inputs.determinate.darwinModules.default
-              inputs.agenix.nixosModules.default
-              inputs.home-manager.darwinModules.home-manager
-              {
-                home-manager.backupFileExtension = "backup";
-                home-manager.extraSpecialArgs = {
-                  inherit inputs;
-                  inherit (inputs)
-                    firefox-addons
-                    spicetify-nix
-                    ;
-                };
-
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-
-                home-manager.users.anish = {
-                  imports = [
-                    config.flake.modules.homeManager.common
-                    config.flake.modules.homeManager.desktop
-                    config.flake.modules.homeManager.cortado
-                  ];
-
-                  home.username = "anish";
-                  home.homeDirectory = inputs.nixpkgs.lib.mkForce "/Users/anish";
-                  home.stateVersion = "25.11";
-                };
-              }
-            ];
-          };
+      perSystem =
+        { pkgs, ... }:
+        {
+          formatter = pkgs.nixfmt;
         };
-      }
-    );
+    };
 }
