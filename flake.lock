@@ -447,6 +447,23 @@
         "type": "github"
       }
     },
+    "gwfox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781321775,
+        "narHash": "sha256-YtvWg/1TRtSVT+/CWYOiBVkGoTE2ZnnSwQ8m4dvrJok=",
+        "owner": "akkva",
+        "repo": "gwfox",
+        "rev": "42fb1a2310e64126054f8f95f7b27cc3ce1ccd87",
+        "type": "github"
+      },
+      "original": {
+        "owner": "akkva",
+        "repo": "gwfox",
+        "rev": "42fb1a2310e64126054f8f95f7b27cc3ce1ccd87",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -860,6 +877,7 @@
         "disko": "disko",
         "firefox-addons": "firefox-addons",
         "flake-parts": "flake-parts_2",
+        "gwfox": "gwfox",
         "home-manager": "home-manager_2",
         "import-tree": "import-tree",
         "moonlight": "moonlight",

@@ -157,35 +157,21 @@
             # gwfox theme requirements
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
             "svg.context-properties.content.enabled" = true;
+            "browser.newtabpage.activity-stream.nova.enabled" = false;
             "sidebar.animation.enabled" = false;
           }
           // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
             "widget.use-xdg-desktop-portal.file-picker" = 1;
+            # also gwfox theme requirement
+            "widget.gtk.rounded-bottom-corners.enabled" = true;
           }
           // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
             # also gwfox theme requirement
             "widget.macos.native-context-menus" = false;
           };
 
-          userChrome = builtins.readFile (
-            pkgs.fetchFromGitHub {
-              owner = "akkva";
-              repo = "gwfox";
-              rev = "7bb68e37a8c218484c6bf46c0eb268fdb400bd5a";
-              sha256 = "sha256-m/vmllFAE3+AGiFRzujAlloClZCVIvfXZipjBFFgrvQ=";
-            }
-            + "/userChrome.css"
-          );
-
-          userContent = builtins.readFile (
-            pkgs.fetchFromGitHub {
-              owner = "akkva";
-              repo = "gwfox";
-              rev = "7bb68e37a8c218484c6bf46c0eb268fdb400bd5a";
-              sha256 = "sha256-m/vmllFAE3+AGiFRzujAlloClZCVIvfXZipjBFFgrvQ=";
-            }
-            + "/userContent.css"
-          );
+          userChrome = builtins.readFile "${inputs.gwfox}/userChrome.css";
+          userContent = builtins.readFile "${inputs.gwfox}/userContent.css";
         };
       };
     };

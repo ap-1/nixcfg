@@ -30,6 +30,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     preservation.url = "github:nix-community/preservation";
+    gwfox = {
+      url = "github:akkva/gwfox/42fb1a2310e64126054f8f95f7b27cc3ce1ccd87";
+      flake = false;
+    };
     xdg-termfilepickers = {
       url = "github:Guekka/xdg-desktop-portal-termfilepickers/9a4a40fee7a6973f581404b6fa1f1107026d05f8";
       inputs.nixpkgs.follows = "nixpkgs";
