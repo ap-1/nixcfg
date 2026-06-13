@@ -20,7 +20,6 @@
 
         # applications
         shottr
-        ghostty-bin
         iina
       ];
     };

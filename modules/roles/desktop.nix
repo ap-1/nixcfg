@@ -4,7 +4,6 @@
     imports =
       (with config.flake.modules.homeManager; [
         zed-editor
-        stylix
         firefox
         spicetify
         discord
