@@ -1,7 +1,13 @@
 {
   flake.modules.nixos.affogato-configuration =
-    { pkgs, ... }:
     {
+      config,
+      pkgs,
+      ...
+    }:
+    {
+      age.secrets.affogato-password.file = ../../secrets/affogato-password.age;
+
       boot.loader.grub = {
         enable = true;
         efiSupport = false;
@@ -40,6 +46,8 @@
       };
 
       users.mutableUsers = false;
+      users.users.root.hashedPasswordFile = config.age.secrets.affogato-password.path;
+      users.users.anish.hashedPasswordFile = config.age.secrets.affogato-password.path;
 
       security.sudo.wheelNeedsPassword = false;
 

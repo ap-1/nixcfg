@@ -20,4 +20,8 @@ in
   "secrets/stash-session.age".publicKeys = all;
   "secrets/stash-password.age".publicKeys = all;
   "secrets/opentofu.age".publicKeys = [ anish ];
+  "secrets/affogato-password.age".publicKeys = [
+    anish
+    affogato
+  ];
 }

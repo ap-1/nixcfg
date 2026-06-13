@@ -9,6 +9,7 @@
         directories = [
           "/var/log"
           "/var/lib/systemd"
+          "/var/lib/tailscale"
           {
             directory = "/var/lib/nixos";
             inInitrd = true;
