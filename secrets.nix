@@ -50,4 +50,8 @@ in
     anish
     affogato
   ];
+  "secrets/kanidm-oauth2-vaultwarden.age".publicKeys = [
+    anish
+    affogato
+  ];
 }

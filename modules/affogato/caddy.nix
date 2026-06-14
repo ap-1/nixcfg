@@ -24,6 +24,10 @@
             reverse_proxy http://127.0.0.1:3000
           '';
         };
+        "vault.anish.land" = {
+          useACMEHost = "vault.anish.land";
+          extraConfig = "reverse_proxy http://127.0.0.1:8222";
+        };
       };
     };
 

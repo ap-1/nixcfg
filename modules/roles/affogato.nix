@@ -11,6 +11,7 @@
       affogato-kanidm
       affogato-headscale
       affogato-headplane
+      affogato-vaultwarden
     ];
   };
 }

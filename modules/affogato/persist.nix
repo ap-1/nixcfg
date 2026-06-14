@@ -15,6 +15,7 @@
           "/var/lib/kanidm"
           "/var/lib/headscale"
           "/var/lib/headplane"
+          "/var/lib/vaultwarden"
           {
             directory = "/var/lib/nixos";
             inInitrd = true;

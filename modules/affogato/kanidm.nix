@@ -26,6 +26,12 @@
         group = "kanidm";
         mode = "0440";
       };
+      age.secrets.kanidm-oauth2-vaultwarden = {
+        file = ../../secrets/kanidm-oauth2-vaultwarden.age;
+        owner = "kanidm";
+        group = "kanidm";
+        mode = "0440";
+      };
 
       users.users.kanidm.extraGroups = [ "caddy" ];
 
@@ -57,6 +63,7 @@
 
           groups."headscale.access" = { };
           groups."headplane.admins" = { };
+          groups."vaultwarden.access" = { };
 
           persons.anish = {
             displayName = "Anish";
@@ -64,6 +71,7 @@
             groups = [
               "headscale.access"
               "headplane.admins"
+              "vaultwarden.access"
             ];
           };
 
@@ -88,6 +96,20 @@
             basicSecretFile = config.age.secrets.kanidm-oauth2-headplane.path;
             preferShortUsername = true;
             scopeMaps."headplane.admins" = [
+              "openid"
+              "profile"
+              "email"
+              "groups"
+            ];
+          };
+
+          systems.oauth2.vaultwarden = {
+            displayName = "Vaultwarden";
+            originUrl = "https://vault.anish.land/identity/connect/oidc-signin";
+            originLanding = "https://vault.anish.land/";
+            basicSecretFile = config.age.secrets.kanidm-oauth2-vaultwarden.path;
+            preferShortUsername = true;
+            scopeMaps."vaultwarden.access" = [
               "openid"
               "profile"
               "email"
