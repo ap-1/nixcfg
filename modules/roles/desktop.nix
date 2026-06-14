@@ -22,7 +22,6 @@
       firefox
       localsend
       desktop-packages
-      homepage
       immich
       stashapp
       suwayomi
