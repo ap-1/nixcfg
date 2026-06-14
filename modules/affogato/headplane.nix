@@ -39,6 +39,7 @@
             client_secret_path = config.age.secrets.kanidm-oauth2-headplane.path;
             redirect_uri = "https://headplane.anish.land/admin/oidc/callback";
             disable_api_key_login = true;
+            headscale_api_key_path = config.age.secrets.headscale-api-key.path;
           };
         };
       };
