@@ -39,6 +39,7 @@
             client_secret_path = config.age.secrets.headplane-oauth2-secret.path;
             headscale_api_key_path = config.age.secrets.headscale-api-key.path;
             disable_api_key_login = true;
+            use_pkce = true;
           };
         };
       };
