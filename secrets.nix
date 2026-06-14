@@ -54,4 +54,16 @@ in
     anish
     affogato
   ];
+  "secrets/headscale-authkey-mocha.age".publicKeys = [
+    anish
+    mocha
+  ];
+  "secrets/headscale-authkey-affogato.age".publicKeys = [
+    anish
+    affogato
+  ];
+  "secrets/headscale-authkey-cortado.age".publicKeys = [
+    anish
+    cortado
+  ];
 }

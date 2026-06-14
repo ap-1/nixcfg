@@ -8,6 +8,14 @@
     {
       age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
       age.secrets.affogato-password.file = ../../secrets/affogato-password.age;
+      age.secrets.headscale-authkey-affogato = {
+        file = ../../secrets/headscale-authkey-affogato.age;
+        owner = "root";
+        group = "root";
+        mode = "0400";
+      };
+
+      services.tailscale.authKeyFile = config.age.secrets.headscale-authkey-affogato.path;
 
       boot.loader.grub = {
         enable = true;

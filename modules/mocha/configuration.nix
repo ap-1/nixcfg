@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.mocha-configuration =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
     {
       # Use the systemd-boot EFI boot loader.
       boot.loader.systemd-boot.enable = true;
@@ -40,10 +40,14 @@
 
       hardware.mediatek-mt7927.enable = true;
 
-      services.tailscale-tls = {
-        hostname = "mocha";
-        tailnet = "meteor-banjo.ts.net";
+      age.secrets.headscale-authkey-mocha = {
+        file = ../../secrets/headscale-authkey-mocha.age;
+        owner = "root";
+        group = "root";
+        mode = "0400";
       };
+
+      services.tailscale.authKeyFile = config.age.secrets.headscale-authkey-mocha.path;
 
       # Set your time zone.
       time.timeZone = "America/New_York";

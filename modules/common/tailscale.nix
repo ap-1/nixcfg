@@ -5,6 +5,11 @@
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "both"; # IP forwarding
+        extraUpFlags = [
+          "--login-server=https://headscale.anish.land"
+          "--ssh"
+          "--advertise-exit-node"
+        ];
       };
 
       # Apply UDP GRO forwarding each time an interface comes up
