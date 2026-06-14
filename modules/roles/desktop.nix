@@ -25,7 +25,6 @@
       immich
       stashapp
       suwayomi
-      vaultwarden
       openrgb
       sunshine
       games
