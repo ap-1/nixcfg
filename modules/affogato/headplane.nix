@@ -16,6 +16,13 @@
         mode = "0440";
       };
 
+      age.secrets.headplane-oauth2-secret = {
+        file = ../../secrets/kanidm-oauth2-headplane.age;
+        owner = config.services.headscale.user;
+        group = config.services.headscale.group;
+        mode = "0440";
+      };
+
       services.headplane = {
         enable = true;
         settings = {
@@ -29,7 +36,7 @@
           oidc = {
             issuer = "https://idp.anish.land/oauth2/openid/headplane";
             client_id = "headplane";
-            client_secret_path = config.age.secrets.kanidm-oauth2-headplane.path;
+            client_secret_path = config.age.secrets.headplane-oauth2-secret.path;
             headscale_api_key_path = config.age.secrets.headscale-api-key.path;
             disable_api_key_login = true;
           };
