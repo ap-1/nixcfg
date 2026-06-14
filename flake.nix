@@ -8,8 +8,7 @@
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     nix-darwin = {
-      # url = "github:nix-darwin/nix-darwin";
-      url = "github:ap-1/nix-darwin/programs-gui-modules";
+      url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
