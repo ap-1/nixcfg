@@ -19,7 +19,10 @@
         };
         "headplane.anish.land" = {
           useACMEHost = "headplane.anish.land";
-          extraConfig = "reverse_proxy http://127.0.0.1:3000";
+          extraConfig = ''
+            redir / /admin
+            reverse_proxy http://127.0.0.1:3000
+          '';
         };
       };
     };
