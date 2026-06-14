@@ -19,7 +19,7 @@
           SIGNUPS_ALLOWED = false;
 
           SSO_ENABLED = true;
-          SSO_ONLY = true;
+          SSO_ONLY = false;
           SSO_AUTHORITY = "https://idp.anish.land/oauth2/openid/vaultwarden";
           SSO_CLIENT_ID = "vaultwarden";
           SSO_PKCE = true;
