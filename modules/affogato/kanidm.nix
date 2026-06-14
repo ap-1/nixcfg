@@ -99,9 +99,13 @@
 
       security.acme.certs."idp.anish.land".reloadServices = [ "kanidm.service" ];
 
+      systemd.tmpfiles.rules = [
+        "d /var/lib/kanidm/backups 0700 kanidm kanidm -"
+      ];
+
       systemd.services.kanidm = {
-        wants = [ "acme-order-renew-idp.anish.land.service" ];
-        after = [ "acme-order-renew-idp.anish.land.service" ];
+        wants = [ "acme-idp.anish.land.service" ];
+        after = [ "acme-idp.anish.land.service" ];
       };
     };
 }
