@@ -44,4 +44,12 @@ in
     anish
     affogato
   ];
+  "secrets/headplane-cookie-secret.age".publicKeys = [
+    anish
+    affogato
+  ];
+  "secrets/headscale-api-key.age".publicKeys = [
+    anish
+    affogato
+  ];
 }

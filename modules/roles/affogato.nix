@@ -10,6 +10,7 @@
       affogato-caddy
       affogato-kanidm
       affogato-headscale
+      affogato-headplane
     ];
   };
 }
