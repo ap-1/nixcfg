@@ -39,6 +39,7 @@
               decentraleyes
               port-authority
               duckduckgo-privacy-essentials
+              multi-account-containers
 
               # Misc
               bitwarden
