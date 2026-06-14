@@ -4,6 +4,7 @@
     {
       environment.systemPackages = with pkgs; [
         nh
+        ragenix
         ghostty.terminfo # for ssh from cortado
       ];
     };
@@ -13,6 +14,7 @@
     {
       environment.systemPackages = with pkgs; [
         nh
+        ragenix
         # foot.terminfo # for ssh from mocha
       ];
     };

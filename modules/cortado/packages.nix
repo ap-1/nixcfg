@@ -7,7 +7,6 @@
         container
         sshpass
         typst
-        ragenix
         bun
         uv
         openbao
