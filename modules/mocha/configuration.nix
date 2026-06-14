@@ -49,6 +49,11 @@
 
       services.tailscale.authKeyFile = config.age.secrets.headscale-authkey-mocha.path;
 
+      services.tailscale-tls = {
+        hostname = "mocha";
+        tailnet = "ts.anish.land";
+      };
+
       # Set your time zone.
       time.timeZone = "America/New_York";
 
