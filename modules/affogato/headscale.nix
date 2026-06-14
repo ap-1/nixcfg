@@ -36,6 +36,27 @@
             allowed_groups = [ "headscale.access@idp.anish.land" ];
             only_start_if_oidc_is_available = true;
           };
+
+          policy = {
+            mode = "file";
+            path = builtins.toFile "headscale-acl.json" (builtins.toJSON {
+              acls = [
+                {
+                  action = "accept";
+                  src = [ "*" ];
+                  dst = [ "*:*" ];
+                }
+              ];
+              ssh = [
+                {
+                  action = "accept";
+                  src = [ "autogroup:member" ];
+                  dst = [ "autogroup:self" ];
+                  users = [ "autogroup:nonroot" ];
+                }
+              ];
+            });
+          };
         };
       };
 
