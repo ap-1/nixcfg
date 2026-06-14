@@ -109,6 +109,7 @@
             originLanding = "https://vault.anish.land/";
             basicSecretFile = config.age.secrets.kanidm-oauth2-vaultwarden.path;
             preferShortUsername = true;
+            enableLegacyCrypto = true;
             scopeMaps."vaultwarden.access" = [
               "openid"
               "profile"
