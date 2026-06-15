@@ -28,5 +28,7 @@
 
   flake.modules.darwin.tailscale = {
     services.tailscale.enable = true;
+    # macOS MagicDNS resolver for the headscale tailnet
+    environment.etc."resolver/ts.anish.land".text = "nameserver 100.100.100.100";
   };
 }
