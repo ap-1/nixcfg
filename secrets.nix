@@ -87,4 +87,12 @@ in
     anish
     mocha
   ];
+  "secrets/kanidm-oauth2-litellm.age".publicKeys = [
+    anish
+    affogato
+  ];
+  "secrets/litellm-env.age".publicKeys = [
+    anish
+    mocha
+  ];
 }

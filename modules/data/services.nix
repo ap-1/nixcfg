@@ -25,6 +25,7 @@
       suwayomi = "mocha";
       pdf = "mocha";
       chat = "mocha";
+      litellm = "mocha";
     };
   };
 }

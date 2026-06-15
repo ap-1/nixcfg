@@ -28,7 +28,7 @@ let
       subdomain = "vault";
       callback = "/identity/connect/oidc-signin";
       group = "vaultwarden.access";
-      legacyCrypto = true;
+      enableLegacyCrypto = true;
     };
     forgejo = {
       display = "Forgejo";
@@ -53,6 +53,17 @@ let
       domain = meta.tailnetDomain;
       callback = "/oauth/oidc/callback";
       group = "open-webui.access";
+    };
+    litellm = {
+      display = "LiteLLM";
+      subdomain = "litellm";
+      domain = meta.tailnetDomain;
+      callback = "/sso/callback";
+      group = "litellm.access";
+      claimMaps.litellm_role = {
+        joinType = "csv";
+        valuesByGroup."litellm.access" = [ "proxy_admin" ];
+      };
     };
   };
 
@@ -131,9 +142,10 @@ in
               preferShortUsername = true;
               scopeMaps.${c.group} = scopes;
             }
-            // lib.optionalAttrs (c.legacyCrypto or false) {
-              enableLegacyCrypto = true;
-            }
+            // builtins.intersectAttrs {
+              enableLegacyCrypto = null;
+              claimMaps = null;
+            } c
           ) oauth2;
         };
       };

@@ -26,6 +26,8 @@
       suwayomi
       # stirling-pdf # libreoffice not cached upstream yet
       ollama
+      litellm
+      postgres
       hardware-control
       sunshine
       games

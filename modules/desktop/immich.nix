@@ -14,6 +14,8 @@ in
 
       services.webProxy.sites.immich = "reverse_proxy http://127.0.0.1:12283";
 
+      services.postgresApps.immich = { };
+
       services.immich = {
         enable = true;
         host = "127.0.0.1";
@@ -23,6 +25,7 @@ in
 
         # Hardware Accelerated Video Transcoding
         accelerationDevices = null;
+        database.createDB = false;
 
         settings.oauth = {
           enabled = true;

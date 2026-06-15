@@ -40,6 +40,10 @@ Both certificates are issued over the Cloudflare DNS-01 challenge, and OIDC-gate
 
 affogato's root filesystem is a tmpfs, recreated empty on every boot; only the `/nix` and `/persist` btrfs subvolumes survive. State is carried across reboots by the [preservation](https://github.com/nix-community/preservation) module, which restores a fixed set of paths from `/persist`. These cover service state under `/var/lib`, systemd and nixos state, machine identity (`/etc/machine-id` and the SSH host keys), logs, and the `anish` home. Anything outside that set does not survive a reboot. mocha and cortado use ordinary persistent root filesystems.
 
+## Databases
+
+Applications that need PostgreSQL share one local instance per host, each declaring its database through a shared module that provisions the database and its role. Every database is dumped nightly.
+
 ## Deploying
 
 Each host is built locally with `nh os switch ~/nixcfg` (aliased to `update`).
