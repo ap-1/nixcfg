@@ -27,7 +27,7 @@
       suwayomi
       # stirling-pdf # libreoffice not cached upstream yet
       ollama
-      openrgb
+      hardware-control
       sunshine
       games
     ];

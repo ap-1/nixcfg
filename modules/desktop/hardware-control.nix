@@ -1,7 +1,11 @@
 {
-  flake.modules.nixos.openrgb =
+  flake.modules.nixos.hardware-control =
     { pkgs, ... }:
     {
+      # Fan curves (CoolerControl)
+      programs.coolercontrol.enable = true;
+
+      # RGB (OpenRGB)
       services.hardware.openrgb = {
         enable = true;
         package = pkgs.openrgb-with-all-plugins;
