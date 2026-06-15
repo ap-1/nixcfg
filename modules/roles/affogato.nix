@@ -13,6 +13,7 @@
       affogato-headplane
       affogato-vaultwarden
       affogato-forgejo
+      affogato-atuin
     ];
   };
 }
