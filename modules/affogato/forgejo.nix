@@ -1,6 +1,11 @@
 {
   flake.modules.nixos.affogato-forgejo =
-    { config, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     {
       age.secrets.forgejo-oauth2-secret = {
         file = ../../secrets/kanidm-oauth2-forgejo.age;
@@ -44,44 +49,34 @@
       ];
 
       systemd.services.forgejo = {
-        wants = [ "kanidm.service" ];
-        after = [ "kanidm.service" ];
-      };
+        wants = [
+          "kanidm.service"
+          "caddy.service"
+          "network-online.target"
+        ];
+        after = [
+          "kanidm.service"
+          "caddy.service"
+          "network-online.target"
+        ];
 
-      systemd.services.forgejo-oidc-setup = let
-        cfg = config.services.forgejo;
-        exe = "${cfg.package}/bin/forgejo";
-      in {
-        description = "Configure Forgejo OIDC authentication source";
-        after = [ "forgejo.service" ];
-        requires = [ "forgejo.service" ];
-        wantedBy = [ "multi-user.target" ];
-        path = [ cfg.package pkgs.git ];
-        environment = {
-          USER = cfg.user;
-          HOME = cfg.stateDir;
-          FORGEJO_WORK_DIR = cfg.stateDir;
-          FORGEJO_CUSTOM = cfg.customDir;
-        };
-        serviceConfig = {
-          Type = "oneshot";
-          RemainAfterExit = true;
-          User = cfg.user;
-          Group = cfg.group;
-          WorkingDirectory = cfg.stateDir;
-          ReadWritePaths = [ cfg.stateDir cfg.customDir ];
-        };
-        script = ''
-          if ${exe} admin auth list | grep -q kanidm; then
-            exit 0
+        # OIDC client secret for the sandboxed unit
+        serviceConfig.LoadCredential = lib.mkAfter [
+          "forgejo-oauth2:${config.age.secrets.forgejo-oauth2-secret.path}"
+        ];
+
+        # Provision the kanidm login source before startup
+        preStart = lib.mkAfter ''
+          if ! ${config.services.forgejo.package}/bin/forgejo admin auth list \
+            | ${pkgs.gnugrep}/bin/grep -qw kanidm; then
+            ${config.services.forgejo.package}/bin/forgejo admin auth add-oauth \
+              --name kanidm \
+              --provider openidConnect \
+              --key forgejo \
+              --secret "$(cat "$CREDENTIALS_DIRECTORY/forgejo-oauth2")" \
+              --auto-discover-url https://idp.anish.land/oauth2/openid/forgejo/.well-known/openid-configuration \
+              --skip-local-2fa
           fi
-          ${exe} admin auth add-oauth \
-            --name kanidm \
-            --provider openidConnect \
-            --key forgejo \
-            --secret "$(cat ${config.age.secrets.forgejo-oauth2-secret.path})" \
-            --auto-discover-url https://idp.anish.land/oauth2/openid/forgejo/.well-known/openid-configuration \
-            --skip-local-2fa
         '';
       };
     };
