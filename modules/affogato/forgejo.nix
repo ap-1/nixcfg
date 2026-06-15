@@ -39,6 +39,10 @@
         };
       };
 
+      systemd.tmpfiles.rules = [
+        "d /var/lib/forgejo/custom 0750 forgejo forgejo -"
+      ];
+
       systemd.services.forgejo = {
         wants = [ "kanidm.service" ];
         after = [ "kanidm.service" ];
