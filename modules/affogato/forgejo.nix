@@ -27,7 +27,7 @@
           };
 
           service = {
-            DISABLE_REGISTRATION = false;
+            DISABLE_REGISTRATION = true;
             ALLOW_ONLY_EXTERNAL_REGISTRATION = true;
           };
 

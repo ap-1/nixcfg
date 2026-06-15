@@ -6,7 +6,7 @@
         enable = true;
         host = "0.0.0.0";
         port = 8888;
-        openRegistration = true;
+        openRegistration = false;
         database.createLocally = true;
       };
 
