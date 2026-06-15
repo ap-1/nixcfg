@@ -26,6 +26,7 @@
       stashapp
       suwayomi
       stirling-pdf
+      ollama
       openrgb
       sunshine
       games
