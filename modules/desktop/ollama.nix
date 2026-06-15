@@ -28,6 +28,7 @@ in
         port = 3000;
         environmentFile = config.age.secrets.open-webui-oauth.path;
         environment = {
+          HOME = "/var/lib/open-webui";
           OLLAMA_BASE_URL = "http://127.0.0.1:11434";
           WEBUI_URL = "https://chat.${meta.tailnetDomain}";
           ENABLE_OAUTH_SIGNUP = "True";
