@@ -74,7 +74,7 @@
             showVoiceMemberCount.enabled = true;
             silenceTyping.enabled = true;
             spotifySpoof.enabled = true;
-            staffTags.enabled = true;
+            # staffTags.enabled = true;
             typingTweaks.enabled = true;
             viewJson.enabled = true;
             voiceTextLink.enabled = true;
