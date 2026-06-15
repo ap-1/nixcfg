@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+  meta = config.flake.meta;
+in
 {
   flake.modules.nixos.affogato-headplane =
     { config, ... }:
@@ -27,14 +31,14 @@
         enable = true;
         settings = {
           server = {
-            base_url = "https://headplane.anish.land";
+            base_url = "https://headplane.${meta.domain}";
             cookie_secret_path = config.age.secrets.headplane-cookie-secret.path;
           };
 
           integration.proc.enabled = true;
 
           oidc = {
-            issuer = "https://idp.anish.land/oauth2/openid/headplane";
+            issuer = "${meta.idpUrl}/oauth2/openid/headplane";
             client_id = "headplane";
             client_secret_path = config.age.secrets.headplane-oauth2-secret.path;
             headscale_api_key_path = config.age.secrets.headscale-api-key.path;

@@ -1,43 +1,67 @@
+{ config, ... }:
+let
+  meta = config.flake.meta;
+
+  scopes = [
+    "openid"
+    "profile"
+    "email"
+    "groups"
+  ];
+
+  # kanidm oauth2 clients
+  oauth2 = {
+    headscale = {
+      display = "Headscale";
+      subdomain = "headscale";
+      callback = "/oidc/callback";
+      group = "headscale.access";
+    };
+    headplane = {
+      display = "Headplane";
+      subdomain = "headplane";
+      callback = "/admin/oidc/callback";
+      group = "headplane.admins";
+    };
+    vaultwarden = {
+      display = "Vaultwarden";
+      subdomain = "vault";
+      callback = "/identity/connect/oidc-signin";
+      group = "vaultwarden.access";
+      legacyCrypto = true;
+    };
+    forgejo = {
+      display = "Forgejo";
+      subdomain = "git";
+      callback = "/user/oauth2/kanidm/callback";
+      group = "forgejo.access";
+    };
+  };
+
+  mkKanidmSecret = file: {
+    inherit file;
+    owner = "kanidm";
+    group = "kanidm";
+    mode = "0440";
+  };
+in
 {
   flake.modules.nixos.affogato-kanidm =
-    { config, pkgs, ... }:
     {
-      age.secrets.kanidm-admin = {
-        file = ../../secrets/kanidm-admin.age;
-        owner = "kanidm";
-        group = "kanidm";
-        mode = "0440";
-      };
-      age.secrets.kanidm-idm-admin = {
-        file = ../../secrets/kanidm-idm-admin.age;
-        owner = "kanidm";
-        group = "kanidm";
-        mode = "0440";
-      };
-      age.secrets.kanidm-oauth2-headscale = {
-        file = ../../secrets/kanidm-oauth2-headscale.age;
-        owner = "kanidm";
-        group = "kanidm";
-        mode = "0440";
-      };
-      age.secrets.kanidm-oauth2-headplane = {
-        file = ../../secrets/kanidm-oauth2-headplane.age;
-        owner = "kanidm";
-        group = "kanidm";
-        mode = "0440";
-      };
-      age.secrets.kanidm-oauth2-vaultwarden = {
-        file = ../../secrets/kanidm-oauth2-vaultwarden.age;
-        owner = "kanidm";
-        group = "kanidm";
-        mode = "0440";
-      };
-      age.secrets.kanidm-oauth2-forgejo = {
-        file = ../../secrets/kanidm-oauth2-forgejo.age;
-        owner = "kanidm";
-        group = "kanidm";
-        mode = "0440";
-      };
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
+    {
+      age.secrets = {
+        kanidm-admin = mkKanidmSecret ../../secrets/kanidm-admin.age;
+        kanidm-idm-admin = mkKanidmSecret ../../secrets/kanidm-idm-admin.age;
+      }
+      // lib.mapAttrs' (
+        name: _:
+        lib.nameValuePair "kanidm-oauth2-${name}" (mkKanidmSecret ../../secrets/kanidm-oauth2-${name}.age)
+      ) oauth2;
 
       users.users.kanidm.extraGroups = [ "caddy" ];
 
@@ -46,11 +70,11 @@
 
         server.enable = true;
         server.settings = {
-          domain = "idp.anish.land";
-          origin = "https://idp.anish.land";
+          domain = meta.idpDomain;
+          origin = meta.idpUrl;
           bindaddress = "127.0.0.1:8443";
-          tls_chain = "/var/lib/acme/idp.anish.land/fullchain.pem";
-          tls_key = "/var/lib/acme/idp.anish.land/key.pem";
+          tls_chain = "/var/lib/acme/${meta.idpDomain}/fullchain.pem";
+          tls_key = "/var/lib/acme/${meta.idpDomain}/key.pem";
           online_backup = {
             path = "/var/lib/kanidm/backups";
             schedule = "00 22 * * *";
@@ -59,7 +83,7 @@
         };
 
         client.enable = true;
-        client.settings.uri = "https://idp.anish.land";
+        client.settings.uri = meta.idpUrl;
 
         provision = {
           enable = true;
@@ -67,90 +91,40 @@
           idmAdminPasswordFile = config.age.secrets.kanidm-idm-admin.path;
           autoRemove = true;
 
-          groups."headscale.access" = { };
-          groups."headplane.admins" = { };
-          groups."vaultwarden.access" = { };
-          groups."forgejo.access" = { };
+          groups = lib.listToAttrs (map (c: lib.nameValuePair c.group { }) (lib.attrValues oauth2));
 
           persons.anish = {
             displayName = "Anish";
-            mailAddresses = [ "i@anish.land" ];
-            groups = [
-              "headscale.access"
-              "headplane.admins"
-              "vaultwarden.access"
-              "forgejo.access"
-            ];
+            mailAddresses = [ meta.email ];
+            groups = map (c: c.group) (lib.attrValues oauth2);
           };
 
-          systems.oauth2.headscale = {
-            displayName = "Headscale";
-            originUrl = "https://headscale.anish.land/oidc/callback";
-            originLanding = "https://headscale.anish.land/";
-            basicSecretFile = config.age.secrets.kanidm-oauth2-headscale.path;
-            preferShortUsername = true;
-            scopeMaps."headscale.access" = [
-              "openid"
-              "profile"
-              "email"
-              "groups"
-            ];
-          };
-
-          systems.oauth2.headplane = {
-            displayName = "Headplane";
-            originUrl = "https://headplane.anish.land/admin/oidc/callback";
-            originLanding = "https://headplane.anish.land/";
-            basicSecretFile = config.age.secrets.kanidm-oauth2-headplane.path;
-            preferShortUsername = true;
-            scopeMaps."headplane.admins" = [
-              "openid"
-              "profile"
-              "email"
-              "groups"
-            ];
-          };
-
-          systems.oauth2.vaultwarden = {
-            displayName = "Vaultwarden";
-            originUrl = "https://vault.anish.land/identity/connect/oidc-signin";
-            originLanding = "https://vault.anish.land/";
-            basicSecretFile = config.age.secrets.kanidm-oauth2-vaultwarden.path;
-            preferShortUsername = true;
-            enableLegacyCrypto = true;
-            scopeMaps."vaultwarden.access" = [
-              "openid"
-              "profile"
-              "email"
-              "groups"
-            ];
-          };
-
-          systems.oauth2.forgejo = {
-            displayName = "Forgejo";
-            originUrl = "https://git.anish.land/user/oauth2/kanidm/callback";
-            originLanding = "https://git.anish.land/";
-            basicSecretFile = config.age.secrets.kanidm-oauth2-forgejo.path;
-            preferShortUsername = true;
-            scopeMaps."forgejo.access" = [
-              "openid"
-              "profile"
-              "email"
-              "groups"
-            ];
-          };
+          systems.oauth2 = lib.mapAttrs (
+            name: c:
+            {
+              displayName = c.display;
+              originUrl = "https://${c.subdomain}.${meta.domain}${c.callback}";
+              originLanding = "https://${c.subdomain}.${meta.domain}/";
+              basicSecretFile = config.age.secrets."kanidm-oauth2-${name}".path;
+              preferShortUsername = true;
+              scopeMaps.${c.group} = scopes;
+            }
+            // lib.optionalAttrs (c.legacyCrypto or false) {
+              enableLegacyCrypto = true;
+            }
+          ) oauth2;
         };
       };
 
-      security.acme.certs."idp.anish.land".reloadServices = [ "kanidm.service" ];
+      security.acme.certs."${meta.idpDomain}".reloadServices = [ "kanidm.service" ];
 
       systemd.tmpfiles.rules = [
         "d /var/lib/kanidm/backups 0700 kanidm kanidm -"
       ];
 
       systemd.services.kanidm = {
-        wants = [ "acme-idp.anish.land.service" ];
-        after = [ "acme-idp.anish.land.service" ];
+        wants = [ "acme-${meta.idpDomain}.service" ];
+        after = [ "acme-${meta.idpDomain}.service" ];
       };
     };
 }

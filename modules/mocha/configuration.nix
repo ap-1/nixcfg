@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+  meta = config.flake.meta;
+in
 {
   flake.modules.nixos.mocha-configuration =
     { config, pkgs, ... }:
@@ -51,7 +55,7 @@
 
       services.tailscale-tls = {
         hostname = "mocha";
-        tailnet = "ts.anish.land";
+        tailnet = meta.tailnetDomain;
       };
 
       # Set your time zone.

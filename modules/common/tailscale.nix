@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+  meta = config.flake.meta;
+in
 {
   flake.modules.nixos.tailscale =
     { pkgs, ... }:
@@ -6,7 +10,7 @@
         enable = true;
         useRoutingFeatures = "both"; # IP forwarding
         extraUpFlags = [
-          "--login-server=https://headscale.anish.land"
+          "--login-server=https://headscale.${meta.domain}"
           "--ssh"
           "--advertise-exit-node"
         ];
@@ -29,6 +33,6 @@
   flake.modules.darwin.tailscale = {
     services.tailscale.enable = true;
     # macOS MagicDNS resolver for the headscale tailnet
-    environment.etc."resolver/ts.anish.land".text = "nameserver 100.100.100.100";
+    environment.etc."resolver/${meta.tailnetDomain}".text = "nameserver 100.100.100.100";
   };
 }

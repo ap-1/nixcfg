@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+  meta = config.flake.meta;
+in
 {
   flake.modules.homeManager.git =
     { pkgs, ... }:
@@ -12,8 +16,8 @@
 
         settings = {
           user = {
-            name = "Anish Pallati";
-            email = "i@anish.land";
+            name = meta.name;
+            email = meta.email;
           };
 
           init.defaultBranch = "main";

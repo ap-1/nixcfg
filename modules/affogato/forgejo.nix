@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+  meta = config.flake.meta;
+in
 {
   flake.modules.nixos.affogato-forgejo =
     {
@@ -20,8 +24,8 @@
           DEFAULT.APP_NAME = "Forgejo";
 
           server = {
-            DOMAIN = "git.anish.land";
-            ROOT_URL = "https://git.anish.land/";
+            DOMAIN = "git.${meta.domain}";
+            ROOT_URL = "https://git.${meta.domain}/";
             HTTP_ADDR = "127.0.0.1";
             HTTP_PORT = 3001;
           };
@@ -74,7 +78,7 @@
               --provider openidConnect \
               --key forgejo \
               --secret "$(cat "$CREDENTIALS_DIRECTORY/forgejo-oauth2")" \
-              --auto-discover-url https://idp.anish.land/oauth2/openid/forgejo/.well-known/openid-configuration \
+              --auto-discover-url ${meta.idpUrl}/oauth2/openid/forgejo/.well-known/openid-configuration \
               --skip-local-2fa
           fi
         '';

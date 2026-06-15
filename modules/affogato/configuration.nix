@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+  meta = config.flake.meta;
+in
 {
   flake.modules.nixos.affogato-configuration =
     {
@@ -42,7 +46,7 @@
       networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 22 ];
 
       users.users.root.openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDwjDM2gTgro+aN81I65BFexfLXq1u/8AJ3PmCTX5X/a i@anish.land"
+        meta.sshKey
       ];
 
       users.users.anish = {
@@ -50,7 +54,7 @@
         shell = pkgs.zsh;
         extraGroups = [ "wheel" ];
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDwjDM2gTgro+aN81I65BFexfLXq1u/8AJ3PmCTX5X/a i@anish.land"
+          meta.sshKey
         ];
       };
 

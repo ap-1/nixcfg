@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+  meta = config.flake.meta;
+in
 {
   flake.modules.nixos.affogato-vaultwarden =
     { config, ... }:
@@ -13,14 +17,14 @@
         enable = true;
         environmentFile = config.age.secrets.vaultwarden.path;
         config = {
-          DOMAIN = "https://vault.anish.land";
+          DOMAIN = "https://vault.${meta.domain}";
           ROCKET_ADDRESS = "127.0.0.1";
           ROCKET_PORT = 8222;
           SIGNUPS_ALLOWED = false;
 
           SSO_ENABLED = true;
           SSO_ONLY = false;
-          SSO_AUTHORITY = "https://idp.anish.land/oauth2/openid/vaultwarden";
+          SSO_AUTHORITY = "${meta.idpUrl}/oauth2/openid/vaultwarden";
           SSO_CLIENT_ID = "vaultwarden";
           SSO_PKCE = true;
           SSO_SCOPES = "openid profile email groups";

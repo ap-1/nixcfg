@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+  meta = config.flake.meta;
+in
 {
   flake.modules.homeManager.shell =
     {
@@ -67,7 +71,7 @@
       programs.atuin = {
         enable = true;
         enableZshIntegration = true;
-        settings.sync_address = "http://affogato.ts.anish.land:8888";
+        settings.sync_address = "http://affogato.${meta.tailnetDomain}:8888";
       };
     };
 }

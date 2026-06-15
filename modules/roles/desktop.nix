@@ -25,6 +25,7 @@
       immich
       stashapp
       suwayomi
+      stirling-pdf
       openrgb
       sunshine
       games
