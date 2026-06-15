@@ -16,6 +16,7 @@
           "/var/lib/headscale"
           "/var/lib/headplane"
           "/var/lib/vaultwarden"
+          "/var/lib/forgejo"
           {
             directory = "/var/lib/nixos";
             inInitrd = true;

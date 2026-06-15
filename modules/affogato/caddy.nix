@@ -28,6 +28,10 @@
           useACMEHost = "vault.anish.land";
           extraConfig = "reverse_proxy http://127.0.0.1:8222";
         };
+        "git.anish.land" = {
+          useACMEHost = "git.anish.land";
+          extraConfig = "reverse_proxy http://127.0.0.1:3001";
+        };
       };
     };
 

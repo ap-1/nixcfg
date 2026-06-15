@@ -12,6 +12,7 @@
       affogato-headscale
       affogato-headplane
       affogato-vaultwarden
+      affogato-forgejo
     ];
   };
 }

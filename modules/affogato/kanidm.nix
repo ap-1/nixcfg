@@ -32,6 +32,12 @@
         group = "kanidm";
         mode = "0440";
       };
+      age.secrets.kanidm-oauth2-forgejo = {
+        file = ../../secrets/kanidm-oauth2-forgejo.age;
+        owner = "kanidm";
+        group = "kanidm";
+        mode = "0440";
+      };
 
       users.users.kanidm.extraGroups = [ "caddy" ];
 
@@ -64,6 +70,7 @@
           groups."headscale.access" = { };
           groups."headplane.admins" = { };
           groups."vaultwarden.access" = { };
+          groups."forgejo.access" = { };
 
           persons.anish = {
             displayName = "Anish";
@@ -72,6 +79,7 @@
               "headscale.access"
               "headplane.admins"
               "vaultwarden.access"
+              "forgejo.access"
             ];
           };
 
@@ -111,6 +119,20 @@
             preferShortUsername = true;
             enableLegacyCrypto = true;
             scopeMaps."vaultwarden.access" = [
+              "openid"
+              "profile"
+              "email"
+              "groups"
+            ];
+          };
+
+          systems.oauth2.forgejo = {
+            displayName = "Forgejo";
+            originUrl = "https://git.anish.land/user/oauth2/kanidm/callback";
+            originLanding = "https://git.anish.land/";
+            basicSecretFile = config.age.secrets.kanidm-oauth2-forgejo.path;
+            preferShortUsername = true;
+            scopeMaps."forgejo.access" = [
               "openid"
               "profile"
               "email"
