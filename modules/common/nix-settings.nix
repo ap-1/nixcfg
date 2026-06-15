@@ -21,6 +21,7 @@
           "steam"
           "steam-unwrapped"
           "tetrio-desktop"
+          "open-webui"
         ];
     };
 
