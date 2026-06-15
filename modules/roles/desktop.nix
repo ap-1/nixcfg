@@ -29,6 +29,7 @@
       ollama
       hardware-control
       sunshine
+      syncthing
       games
     ];
   };
