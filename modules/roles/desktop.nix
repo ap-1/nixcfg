@@ -25,7 +25,7 @@
       immich
       stashapp
       suwayomi
-      stirling-pdf
+      # stirling-pdf # libreoffice not cached upstream yet
       ollama
       openrgb
       sunshine
