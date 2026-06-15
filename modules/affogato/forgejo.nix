@@ -81,7 +81,7 @@
             --key forgejo \
             --secret "$(cat ${config.age.secrets.forgejo-oauth2-secret.path})" \
             --auto-discover-url https://idp.anish.land/oauth2/openid/forgejo/.well-known/openid-configuration \
-            --skip-local-2fa true
+            --skip-local-2fa
         '';
       };
     };
