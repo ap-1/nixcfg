@@ -18,12 +18,21 @@
             moonbase.enabled = true;
 
             # theme
-            customCSS = {
+            moonlight-css = {
               enabled = true;
-              config.css = ''@import url("https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css");'';
+              config.paths = [
+                "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css"
+              ];
             };
 
-            # installed extensions
+            # core extensions
+            disableSentry.enabled = true;
+            devToolsExtensions.enabled = true;
+            experiments.enabled = true;
+            noHideToken.enabled = true;
+            noTrack.enabled = true;
+
+            # community extensions
             allActivities.enabled = true;
             alwaysShowForwardTime.enabled = true;
             antinonce.enabled = true;
@@ -41,6 +50,8 @@
             favouriteGifSearch.enabled = true;
             freeScreenShare.enabled = true;
             gameActivityToggle.enabled = true;
+            imageViewer.enabled = true;
+            imgTitle.enabled = true;
             inviteToNowhere.enabled = true;
             manyAccounts.enabled = true;
             mediaControls.enabled = true;
@@ -49,6 +60,7 @@
             mentionAvatars.enabled = true;
             nameColor.enabled = true;
             noOnboardingDelay.enabled = true;
+            noReplyChainNag.enabled = true;
             ownerCrown.enabled = true;
             platformIcons.enabled = true;
             pronouns.enabled = true;
@@ -56,11 +68,13 @@
             replyChain.enabled = true;
             resolver.enabled = true;
             rpcObeysDetection.enabled = true;
+            showAllRoles.enabled = true;
             showMediaOptions.enabled = true;
             showReplySelf.enabled = true;
             showVoiceMemberCount.enabled = true;
             silenceTyping.enabled = true;
             spotifySpoof.enabled = true;
+            staffTags.enabled = true;
             typingTweaks.enabled = true;
             viewJson.enabled = true;
             voiceTextLink.enabled = true;
