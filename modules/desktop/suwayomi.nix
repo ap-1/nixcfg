@@ -2,10 +2,7 @@
   flake.modules.nixos.suwayomi =
     { ... }:
     {
-      services.tailscale-tls.proxies.suwayomi = {
-        port = 14567;
-        https = 4567;
-      };
+      services.webProxy.sites.suwayomi = "reverse_proxy http://127.0.0.1:14567";
 
       services.suwayomi-server = {
         enable = true;

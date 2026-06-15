@@ -15,7 +15,7 @@
   flake.modules.nixos.common = {
     imports = with config.flake.modules.nixos; [
       tailscale
-      tailscale-tls
+      web-proxy
       nix-settings
       packages
     ];

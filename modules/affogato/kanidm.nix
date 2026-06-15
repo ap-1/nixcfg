@@ -36,6 +36,24 @@ let
       callback = "/user/oauth2/kanidm/callback";
       group = "forgejo.access";
     };
+    immich = {
+      display = "Immich";
+      subdomain = "immich";
+      domain = meta.tailnetDomain;
+      group = "immich.access";
+      origins = [
+        "https://immich.${meta.tailnetDomain}/auth/login"
+        "https://immich.${meta.tailnetDomain}/user-settings"
+        "app.immich:///oauth-callback"
+      ];
+    };
+    open-webui = {
+      display = "Open WebUI";
+      subdomain = "chat";
+      domain = meta.tailnetDomain;
+      callback = "/oauth/oidc/callback";
+      group = "open-webui.access";
+    };
   };
 
   mkKanidmSecret = file: {
@@ -101,10 +119,14 @@ in
 
           systems.oauth2 = lib.mapAttrs (
             name: c:
+            let
+              dom = c.domain or meta.domain;
+              base = "https://${c.subdomain}.${dom}";
+            in
             {
               displayName = c.display;
-              originUrl = "https://${c.subdomain}.${meta.domain}${c.callback}";
-              originLanding = "https://${c.subdomain}.${meta.domain}/";
+              originUrl = c.origins or "${base}${c.callback}";
+              originLanding = "${base}/";
               basicSecretFile = config.age.secrets."kanidm-oauth2-${name}".path;
               preferShortUsername = true;
               scopeMaps.${c.group} = scopes;

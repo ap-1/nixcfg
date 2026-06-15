@@ -20,6 +20,9 @@
 
     # headscale dns alias <name>.<tailnetDomain> -> the named host
     tailnet = {
+      immich = "mocha";
+      stash = "mocha";
+      suwayomi = "mocha";
       pdf = "mocha";
       chat = "mocha";
     };

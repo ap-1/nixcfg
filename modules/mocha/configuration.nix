@@ -53,9 +53,13 @@ in
 
       services.tailscale.authKeyFile = config.age.secrets.headscale-authkey-mocha.path;
 
-      services.tailscale-tls = {
-        hostname = "mocha";
-        tailnet = meta.tailnetDomain;
+      age.secrets.cloudflare-dns.file = ../../secrets/cloudflare-dns.age;
+
+      services.webProxy = {
+        domain = meta.tailnetDomain;
+        wildcard = true;
+        tailnetOnly = true;
+        credentialsFile = config.age.secrets.cloudflare-dns.path;
       };
 
       # Set your time zone.

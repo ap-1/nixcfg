@@ -25,9 +25,10 @@ in
     anish
     affogato
   ];
-  "secrets/affogato-cloudflare-dns.age".publicKeys = [
+  "secrets/cloudflare-dns.age".publicKeys = [
     anish
     affogato
+    mocha
   ];
   "secrets/kanidm-admin.age".publicKeys = [
     anish
@@ -72,5 +73,18 @@ in
   "secrets/kanidm-oauth2-forgejo.age".publicKeys = [
     anish
     affogato
+  ];
+  "secrets/kanidm-oauth2-immich.age".publicKeys = [
+    anish
+    affogato
+    mocha
+  ];
+  "secrets/kanidm-oauth2-open-webui.age".publicKeys = [
+    anish
+    affogato
+  ];
+  "secrets/open-webui-oauth.age".publicKeys = [
+    anish
+    mocha
   ];
 }

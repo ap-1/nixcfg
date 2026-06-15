@@ -1,7 +1,13 @@
+{ config, ... }:
+let
+  meta = config.flake.meta;
+in
 {
   flake.modules.nixos.ollama =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
     {
+      age.secrets.open-webui-oauth.file = ../../secrets/open-webui-oauth.age;
+
       services.ollama = {
         enable = true;
         package = pkgs.ollama-rocm;
@@ -18,14 +24,20 @@
 
       services.open-webui = {
         enable = true;
-        host = "0.0.0.0";
+        host = "127.0.0.1";
         port = 3000;
+        environmentFile = config.age.secrets.open-webui-oauth.path;
         environment = {
           OLLAMA_BASE_URL = "http://127.0.0.1:11434";
-          WEBUI_AUTH = "False";
+          WEBUI_URL = "https://chat.${meta.tailnetDomain}";
+          ENABLE_OAUTH_SIGNUP = "True";
+          OAUTH_PROVIDER_NAME = "Kanidm";
+          OAUTH_CLIENT_ID = "open-webui";
+          OAUTH_SCOPES = "openid email profile";
+          OPENID_PROVIDER_URL = "${meta.idpUrl}/oauth2/openid/open-webui/.well-known/openid-configuration";
         };
       };
 
-      networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 3000 ];
+      services.webProxy.sites.chat = "reverse_proxy http://127.0.0.1:3000";
     };
 }

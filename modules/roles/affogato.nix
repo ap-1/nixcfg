@@ -6,8 +6,7 @@
       affogato-hardware-configuration
       affogato-disko
       affogato-persist
-      affogato-acme
-      affogato-caddy
+      affogato-web
       affogato-kanidm
       affogato-headscale
       affogato-headplane

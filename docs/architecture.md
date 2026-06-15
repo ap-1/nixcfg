@@ -31,10 +31,10 @@ Per-host hardware is in [hosts](hosts.md).
 
 Services are reached one of two ways:
 
-- Public, at `*.anish.land`, served by affogato's Caddy with ACME certificates and gated by [kanidm](https://kanidm.com/) OIDC.
-- Tailnet-only, at `*.ts.anish.land`, reachable solely over the mesh with no public DNS or TLS.
+- Public services resolve through Cloudflare to affogato at `<name>.anish.land` and are served by affogato's Caddy under per-name ACME certificates.
+- Tailnet services resolve through the mesh's MagicDNS to their host at `<name>.ts.anish.land` and are served by that host's Caddy under one `*.ts.anish.land` ACME certificate.
 
-See [services](services.md) for the registry that drives both.
+Both certificates are issued over the Cloudflare DNS-01 challenge, and OIDC-gated services authenticate against [kanidm](https://kanidm.com/). See [services](services.md) for the registry that drives both.
 
 ## Persistence
 

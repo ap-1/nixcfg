@@ -18,10 +18,7 @@
         group = "stash";
       };
 
-      services.tailscale-tls.proxies.stashapp = {
-        port = 19999;
-        https = 9999;
-      };
+      services.webProxy.sites.stash = "reverse_proxy http://127.0.0.1:19999";
 
       services.stash = {
         enable = true;
