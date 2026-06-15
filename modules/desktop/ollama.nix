@@ -36,6 +36,7 @@ in
           OAUTH_CLIENT_ID = "open-webui";
           OAUTH_SCOPES = "openid email profile";
           OPENID_PROVIDER_URL = "${meta.idpUrl}/oauth2/openid/open-webui/.well-known/openid-configuration";
+          OAUTH_CODE_CHALLENGE_METHOD = "S256";
         };
       };
 

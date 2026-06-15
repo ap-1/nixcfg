@@ -30,6 +30,7 @@ in
           clientId = "immich";
           clientSecret._secret = config.age.secrets.kanidm-oauth2-immich.path;
           scope = "openid email profile";
+          signingAlgorithm = "ES256";
           buttonText = "Login with Kanidm";
           autoRegister = true;
         };
