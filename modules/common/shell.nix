@@ -67,7 +67,7 @@
       programs.atuin = {
         enable = true;
         enableZshIntegration = true;
-        settings.sync_address = "http://affogato:8888";
+        settings.sync_address = "http://affogato.ts.anish.land:8888";
       };
     };
 }
