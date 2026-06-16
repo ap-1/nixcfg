@@ -2,7 +2,6 @@
   flake.hosts = {
     cortado = {
       sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN58RgxMAtPo7du0WeUKvhSx05rcBHqSHI9M0txrvsV8";
-      syncthingId = "ZCJVMGM-SU6W5NX-WCYTU67-RS63AN5-I6WQC72-XYG2CUE-U5BFIRU-YLDETA2";
       tailnet = {
         ipv4 = "100.64.0.1";
         ipv6 = "fd7a:115c:a1e0::1";
@@ -10,7 +9,6 @@
     };
     mocha = {
       sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBu43o7nsVIt9KB1hpc+vCEY1CkROhQ01ZulhwtEs2j root@ap-1";
-      syncthingId = "7VKJ6MX-CPUQ75F-XGQB6GL-QWY2ER3-2U4XB4I-YHDOCZH-ZI4VCIN-ZXSHHAN";
       tailnet = {
         ipv4 = "100.64.0.2";
         ipv6 = "fd7a:115c:a1e0::2";

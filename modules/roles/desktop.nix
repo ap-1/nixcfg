@@ -7,7 +7,6 @@
         firefox
         spicetify
         discord
-        syncthing
         desktop-packages
       ])
       ++ [
@@ -29,7 +28,6 @@
       ollama
       hardware-control
       sunshine
-      syncthing
       games
     ];
   };

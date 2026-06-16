@@ -25,10 +25,6 @@ This config follows the [dendritic pattern](https://github.com/mightyiam/dendrit
 
 All three join the self-hosted [tailnet](networking.md).
 
-## Sync
-
-mocha and cortado share `~/Projects` and `~/.omp` over [Syncthing](https://syncthing.net/), running peer-to-peer across the tailnet and addressing each other by tailnet IP. Per-folder `.stignore` patterns, declared in Nix, exclude build artifacts such as `target/` and `node_modules/`.
-
 Per-host hardware is in [hosts](hosts.md).
 
 ## Exposure
