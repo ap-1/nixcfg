@@ -8,6 +8,7 @@
         spicetify
         discord
         desktop-packages
+        sunshine
       ])
       ++ [
         inputs.omp-nix.homeManagerModules.omp
@@ -39,6 +40,7 @@
       firefox
       localsend
       desktop-packages
+      sunshine
     ];
   };
 }

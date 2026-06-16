@@ -22,7 +22,6 @@
 
       environment.systemPackages = with pkgs; [
         darwin.PowerManagement
-        sunshine
       ];
     };
 
@@ -32,10 +31,7 @@
       home.packages =
         with pkgs;
         [
-          # games
           tetrio-desktop
-          moonlight-qt
-
           # element-desktop
           slack
           jujutsu

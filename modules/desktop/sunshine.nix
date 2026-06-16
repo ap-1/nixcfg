@@ -33,4 +33,16 @@
         "uinput"
       ];
     };
+
+  flake.modules.darwin.sunshine =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = [ pkgs.sunshine ];
+    };
+
+  flake.modules.homeManager.sunshine =
+    { pkgs, ... }:
+    {
+      home.packages = [ pkgs.moonlight-qt ];
+    };
 }
