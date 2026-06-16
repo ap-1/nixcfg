@@ -10,6 +10,7 @@
         cloudflare-warp
         wiremix # pipewire tui
         impala # iwd tui
+        librepods
         playerctl
       ];
     };
