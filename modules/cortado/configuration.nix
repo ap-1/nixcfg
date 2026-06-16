@@ -1,6 +1,6 @@
 {
   flake.modules.darwin.cortado-configuration =
-    { self, ... }:
+    { self, inputs, ... }:
     {
       # Enable the Determinate Nix module
       determinateNix.enable = true;
@@ -35,6 +35,10 @@
       # Workarounds for upstream nixpkgs bugs.
       # Drop each once its referenced PR/fix lands.
       nixpkgs.overlays = [
+        (_: _: {
+          inherit (import inputs.nixpkgs-discord { system = "aarch64-darwin"; config.allowUnfree = true; })
+            discord discord-canary discord-ptb discord-development;
+        })
         # `darwin.PowerManagement` ships a stale `xcodeHash`, so
         # `system-applications` (caffeinate) fails its post-unpack hash check.
         # https://github.com/NixOS/nixpkgs/blob/nixos-26.05/pkgs/os-specific/darwin/by-name/po/PowerManagement/package.nix

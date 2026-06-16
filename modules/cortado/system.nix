@@ -2,6 +2,7 @@
 {
   flake.darwinConfigurations.cortado = inputs.nix-darwin.lib.darwinSystem {
     specialArgs = {
+      inherit inputs;
       self = inputs.self;
     };
     modules = [

@@ -563,15 +563,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1779398417,
-        "narHash": "sha256-eTya6Y7dw/otqohgYZudkqrcI50740jFUTe4Lyd6GKc=",
-        "owner": "moonlight-mod",
+        "lastModified": 1781574977,
+        "narHash": "sha256-9OAzVj9vR5Lqxc5axiafJl6dcxbpCCkVxoBgaIg8078=",
+        "owner": "ap-1",
         "repo": "moonlight",
-        "rev": "e01464ab9e0bcd42c1550e74a64f2574c14d2d27",
+        "rev": "e6c8964a9be4eff8af9588dcc77270bb9690ab19",
         "type": "github"
       },
       "original": {
-        "owner": "moonlight-mod",
+        "owner": "ap-1",
+        "ref": "fix-darwin-config-path",
         "repo": "moonlight",
         "type": "github"
       }
@@ -703,6 +704,22 @@
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "a62e6edd6d5e1fa0329b8653c801147986f8d446",
+        "type": "github"
+      }
+    },
+    "nixpkgs-discord": {
+      "locked": {
+        "lastModified": 1781576684,
+        "narHash": "sha256-HpoRPbESpSLKc+p7VhPP2ohXU72/fqhv3gweG4sfs/Y=",
+        "owner": "ap-1",
+        "repo": "nixpkgs",
+        "rev": "145009b8f12070e090cf41b4951226be5dac9dd1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ap-1",
+        "ref": "discord-canary-osx-0.0.1159",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
@@ -906,6 +923,7 @@
         "nix-darwin": "nix-darwin",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs-discord": "nixpkgs-discord",
         "omp-nix": "omp-nix",
         "preservation": "preservation",
         "spicetify-nix": "spicetify-nix",

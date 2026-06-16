@@ -17,7 +17,7 @@
           extensions = {
             moonbase.enabled = true;
 
-            # theme
+            # Theme
             moonlight-css = {
               enabled = true;
               config.paths = [
@@ -25,14 +25,14 @@
               ];
             };
 
-            # core extensions
+            # Core extensions
             disableSentry.enabled = true;
             devToolsExtensions.enabled = true;
             experiments.enabled = true;
             noHideToken.enabled = true;
             noTrack.enabled = true;
 
-            # community extensions
+            # Community extensions
             allActivities.enabled = true;
             alwaysShowForwardTime.enabled = true;
             antinonce.enabled = true;

@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-discord.url = "github:ap-1/nixpkgs/discord-canary-osx-0.0.1159";
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
 
@@ -54,7 +55,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     moonlight = {
-      url = "github:moonlight-mod/moonlight";
+      url = "github:ap-1/moonlight/fix-darwin-config-path";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     omp-nix = {
