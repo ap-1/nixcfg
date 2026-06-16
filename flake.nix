@@ -55,7 +55,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     moonlight = {
-      url = "github:ap-1/moonlight/fix-darwin-config-path";
+      url = "github:moonlight-mod/moonlight";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     omp-nix = {

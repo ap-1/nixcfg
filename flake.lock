@@ -563,16 +563,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1781574977,
+        "lastModified": 1781578103,
         "narHash": "sha256-9OAzVj9vR5Lqxc5axiafJl6dcxbpCCkVxoBgaIg8078=",
-        "owner": "ap-1",
+        "owner": "moonlight-mod",
         "repo": "moonlight",
-        "rev": "e6c8964a9be4eff8af9588dcc77270bb9690ab19",
+        "rev": "1594705b1e9b588b558f06cdd54fb0c04162a039",
         "type": "github"
       },
       "original": {
-        "owner": "ap-1",
-        "ref": "fix-darwin-config-path",
+        "owner": "moonlight-mod",
         "repo": "moonlight",
         "type": "github"
       }
