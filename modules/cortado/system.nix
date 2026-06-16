@@ -10,7 +10,6 @@
       config.flake.modules.darwin.desktop
       config.flake.modules.darwin.cortado
 
-      inputs.determinate.darwinModules.default
       inputs.agenix.nixosModules.default
       inputs.home-manager.darwinModules.home-manager
       {

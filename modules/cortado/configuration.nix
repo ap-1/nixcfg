@@ -2,8 +2,6 @@
   flake.modules.darwin.cortado-configuration =
     { self, inputs, ... }:
     {
-      # Enable the Determinate Nix module
-      determinateNix.enable = true;
 
       # Networking options
       networking.hostName = "cortado";

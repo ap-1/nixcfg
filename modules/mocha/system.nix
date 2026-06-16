@@ -8,7 +8,6 @@
       config.flake.modules.nixos.common
       config.flake.modules.nixos.desktop
 
-      inputs.determinate.nixosModules.default
       inputs.agenix.nixosModules.default
       inputs.mt7927.nixosModules.default
 

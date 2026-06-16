@@ -1,11 +1,13 @@
 {
   flake.modules.nixos.nix-settings =
-    { lib, ... }:
+    { lib, pkgs, ... }:
     {
       nix.settings.experimental-features = [
         "nix-command"
         "flakes"
       ];
+      nix.package = pkgs.lixPackageSets.stable.lix;
+
       nixpkgs.config.allowUnfreePredicate =
         pkg:
         builtins.elem (lib.getName pkg) [
@@ -26,12 +28,14 @@
     };
 
   flake.modules.darwin.nix-settings =
-    { lib, ... }:
+    { lib, pkgs, ... }:
     {
       nix.settings.experimental-features = [
         "nix-command"
         "flakes"
       ];
+      nix.package = pkgs.lixPackageSets.stable.lix;
+
       nixpkgs.config.allowUnfreePredicate =
         pkg:
         builtins.elem (lib.getName pkg) [
@@ -49,9 +53,8 @@
           "tetrio-desktop"
         ];
 
-      determinateNix.customSettings = {
+      nix.settings = {
         trusted-users = [ "anish" ];
-        lazy-trees = true;
       };
     };
 }
