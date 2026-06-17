@@ -13,6 +13,7 @@ in
     {
       home.packages = with pkgs; [
         devenv
+        license-go
         pfetch
         tree
       ];
