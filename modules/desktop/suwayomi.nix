@@ -16,6 +16,7 @@
           extensionRepos = [
             "https://raw.githubusercontent.com/suwayomi/tachiyomi-extension/repo/index.min.json"
             "https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"
+            "https://codeberg.org/driftywinds/mihon-extensions/raw/branch/HEAD/index.min.json"
           ];
         };
       };
