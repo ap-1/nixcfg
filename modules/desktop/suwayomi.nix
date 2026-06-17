@@ -4,6 +4,11 @@
     {
       services.webProxy.sites.suwayomi = "reverse_proxy http://127.0.0.1:14567";
 
+      services.flaresolverr = {
+        enable = true;
+        openFirewall = true;
+      };
+
       services.suwayomi-server = {
         enable = true;
         settings.server = {
