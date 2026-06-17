@@ -10,7 +10,6 @@
         bun
         uv
         openbao
-        devenv
         ffmpeg-headless
         yt-dlp
         poppler-utils
