@@ -4,6 +4,7 @@
     {
       # Fan curves (CoolerControl)
       programs.coolercontrol.enable = true;
+      services.webProxy.sites.fans = "reverse_proxy http://127.0.0.1:11987";
 
       # RGB (OpenRGB)
       services.hardware.openrgb = {

@@ -26,6 +26,7 @@
       pdf = "mocha";
       chat = "mocha";
       litellm = "mocha";
+      fans = "mocha";
     };
   };
 }
