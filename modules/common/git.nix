@@ -22,6 +22,7 @@ in
 
           init.defaultBranch = "main";
           pull.rebase = true;
+          push.autoSetupRemote = true;
           tag.gpgSign = true;
           color.ui = "auto";
         };
