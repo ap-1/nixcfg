@@ -101,6 +101,9 @@ in
       # Enable the flatpak service
       services.flatpak.enable = true;
 
+      # USB drive mounting
+      services.udisks2.enable = true;
+
       system.stateVersion = "25.05";
     };
 }
