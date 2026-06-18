@@ -30,10 +30,14 @@ in
           GENERIC_USER_EMAIL_ATTRIBUTE = "email";
           GENERIC_USER_DISPLAY_NAME_ATTRIBUTE = "name";
           GENERIC_USER_ROLE_ATTRIBUTE = "litellm_role";
+          AUTO_REDIRECT_UI_LOGIN_TO_SSO = "true";
         };
         settings.general_settings.store_model_in_db = true;
       };
 
-      services.webProxy.sites.litellm = "reverse_proxy http://127.0.0.1:4000";
+      services.webProxy.sites.litellm = ''
+        redir / /ui/
+        reverse_proxy http://127.0.0.1:4000
+      '';
     };
 }
