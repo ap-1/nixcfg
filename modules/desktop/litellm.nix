@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, inputs, ... }:
 let
   meta = config.flake.meta;
 in
@@ -6,6 +6,8 @@ in
   flake.modules.nixos.litellm =
     { config, ... }:
     {
+      imports = [ inputs.litellm-nix.nixosModules.default ];
+
       age.secrets.litellm-env.file = ../../secrets/litellm-env.age;
 
       services.postgresApps.litellm.service = "litellm";

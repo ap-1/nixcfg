@@ -65,6 +65,7 @@
       url = "github:cmspam/mt7927-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    litellm-nix.url = "git+https://codeberg.org/anish/litellm-nix";
   };
 
   outputs =
