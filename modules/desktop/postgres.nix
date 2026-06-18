@@ -27,7 +27,7 @@
                 url = lib.mkOption {
                   type = lib.types.str;
                   readOnly = true;
-                  default = "postgresql://${name}@/${name}?host=/run/postgresql";
+                  default = "postgresql://${name}@localhost/${name}?host=/run/postgresql";
                   description = "Socket connection url";
                 };
               };
