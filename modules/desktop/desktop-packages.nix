@@ -4,6 +4,18 @@
     {
       nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
 
+      # patch wlrctl scroll to use WHEEL axis source
+      nixpkgs.overlays = [
+        (final: prev: {
+          wlrctl = prev.wlrctl.overrideAttrs (old: {
+            postPatch = (old.postPatch or "") + ''
+              substituteInPlace pointer.c \
+                --replace-fail 'WL_POINTER_AXIS_SOURCE_FINGER' 'WL_POINTER_AXIS_SOURCE_WHEEL'
+            '';
+          });
+        })
+      ];
+
       environment.systemPackages = with pkgs; [
         ly
         waylock

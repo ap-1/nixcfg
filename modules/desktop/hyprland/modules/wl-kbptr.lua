@@ -10,16 +10,25 @@ hl.bind("SUPER + SHIFT + semicolon",
 
 hl.bind("SUPER + G", hl.dsp.submap("cursor"))
 
+-- Boost repeat rate while in cursor submap, restore on exit
+hl.on("keybinds.submap", function(submap)
+    if submap == "cursor" then
+        hl.config({ input = { repeat_rate = 100, repeat_delay = 150 } })
+    else
+        hl.config({ input = { repeat_rate = 25, repeat_delay = 600 } })
+    end
+end)
+
 hl.define_submap("cursor", function()
     -- Jump to a detected element and click
     hl.bind("A",
         hl.dsp.exec_cmd("wl-kbptr -o modes=floating,click -o mode_floating.source=detect"))
 
-    -- Nudge (hold to repeat)
-    hl.bind("H", hl.dsp.exec_cmd("wlrctl pointer move -10 0"), { repeating = true })
-    hl.bind("J", hl.dsp.exec_cmd("wlrctl pointer move 0 10"), { repeating = true })
-    hl.bind("K", hl.dsp.exec_cmd("wlrctl pointer move 0 -10"), { repeating = true })
-    hl.bind("L", hl.dsp.exec_cmd("wlrctl pointer move 10 0"), { repeating = true })
+    -- Cardinal nudge (hold to repeat)
+    hl.bind("H", hl.dsp.exec_cmd("wlrctl pointer move -5 0"), { repeating = true })
+    hl.bind("J", hl.dsp.exec_cmd("wlrctl pointer move 0 5"), { repeating = true })
+    hl.bind("K", hl.dsp.exec_cmd("wlrctl pointer move 0 -5"), { repeating = true })
+    hl.bind("L", hl.dsp.exec_cmd("wlrctl pointer move 5 0"), { repeating = true })
 
     -- Clicks
     hl.bind("S", hl.dsp.exec_cmd("wlrctl pointer click left"))
@@ -27,8 +36,8 @@ hl.define_submap("cursor", function()
     hl.bind("F", hl.dsp.exec_cmd("wlrctl pointer click right"))
 
     -- Scroll (hold to repeat)
-    hl.bind("E", hl.dsp.exec_cmd("wlrctl pointer scroll 10 0"), { repeating = true })
-    hl.bind("R", hl.dsp.exec_cmd("wlrctl pointer scroll -10 0"), { repeating = true })
+    hl.bind("E", hl.dsp.exec_cmd("wlrctl pointer scroll 5 0"), { repeating = true })
+    hl.bind("R", hl.dsp.exec_cmd("wlrctl pointer scroll -5 0"), { repeating = true })
 
     -- Leave the mode
     hl.bind("escape", hl.dsp.submap("reset"))
