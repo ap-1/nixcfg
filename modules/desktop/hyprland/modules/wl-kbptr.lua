@@ -35,9 +35,16 @@ hl.define_submap("cursor", function()
     hl.bind("D", hl.dsp.exec_cmd("wlrctl pointer click middle"))
     hl.bind("F", hl.dsp.exec_cmd("wlrctl pointer click right"))
 
-    -- Scroll (hold to repeat)
-    hl.bind("E", hl.dsp.exec_cmd("wlrctl pointer scroll 5 0"), { repeating = true })
-    hl.bind("R", hl.dsp.exec_cmd("wlrctl pointer scroll -5 0"), { repeating = true })
+    -- Scroll
+    hl.bind("E", hl.dsp.exec_cmd("ydotool mousemove --wheel -- -3"), { repeating = true })
+    hl.bind("R", hl.dsp.exec_cmd("ydotool mousemove --wheel -- 3"),  { repeating = true })
+
+    -- Any mouse click exits the submap
+    hl.bind("mouse:272", hl.dsp.submap("reset"))
+    hl.bind("mouse:273", hl.dsp.submap("reset"))
+    hl.bind("mouse:274", hl.dsp.submap("reset"))
+    hl.bind("mouse:275", hl.dsp.submap("reset"))
+    hl.bind("mouse:276", hl.dsp.submap("reset"))
 
     -- Leave the mode
     hl.bind("escape", hl.dsp.submap("reset"))

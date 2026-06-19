@@ -23,4 +23,8 @@
       programs.rofi.enable = true;
       services.dunst.enable = true;
     };
+
+  flake.modules.nixos.hyprland = {
+    programs.ydotool.enable = true;
+  };
 }

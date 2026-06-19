@@ -22,6 +22,7 @@
       firefox
       localsend
       desktop-packages
+      hyprland
       immich
       stashapp
       suwayomi
