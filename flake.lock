@@ -569,6 +569,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-cliproxyapi": {
+      "locked": {
+        "lastModified": 1781669736,
+        "narHash": "sha256-U04QjGWtAyJpKfF/qYgNP/+8gt/F5zYlCp2CHhKBX3o=",
+        "owner": "ap-1",
+        "repo": "nixpkgs",
+        "rev": "0b9f260bea668d7c6fbd0f9d88384f95174ed41f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ap-1",
+        "ref": "cliproxyapi",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-discord": {
       "locked": {
         "lastModified": 1781576684,
@@ -755,6 +771,7 @@
         "nix-darwin": "nix-darwin",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-cliproxyapi": "nixpkgs-cliproxyapi",
         "nixpkgs-discord": "nixpkgs-discord",
         "omp-nix": "omp-nix",
         "preservation": "preservation",

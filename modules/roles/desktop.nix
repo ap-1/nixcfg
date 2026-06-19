@@ -28,6 +28,7 @@
       # stirling-pdf # libreoffice not cached upstream yet
       ollama
       litellm
+      cliproxyapi
       postgres
       hardware-control
       sunshine

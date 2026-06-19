@@ -30,6 +30,8 @@ in
         environment = {
           HOME = "/var/lib/open-webui";
           OLLAMA_BASE_URL = "http://127.0.0.1:11434";
+          ENABLE_OPENAI_API = "True";
+          OPENAI_API_BASE_URL = "http://127.0.0.1:4000/v1";
           WEBUI_URL = "https://chat.${meta.tailnetDomain}";
           ENABLE_OAUTH_SIGNUP = "True";
           OAUTH_PROVIDER_NAME = "Kanidm";

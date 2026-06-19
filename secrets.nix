@@ -95,4 +95,12 @@ in
     anish
     mocha
   ];
+  "secrets/cliproxyapi-api-key.age".publicKeys = [
+    anish
+    mocha
+  ];
+  "secrets/cliproxyapi-management.age".publicKeys = [
+    anish
+    mocha
+  ];
 }

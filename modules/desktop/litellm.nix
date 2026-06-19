@@ -32,7 +32,6 @@ in
           GENERIC_USER_ROLE_ATTRIBUTE = "litellm_role";
           AUTO_REDIRECT_UI_LOGIN_TO_SSO = "true";
         };
-        settings.general_settings.store_model_in_db = true;
       };
 
       services.webProxy.sites.litellm = ''
