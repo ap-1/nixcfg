@@ -8,6 +8,12 @@
         extraConfig = builtins.readFile ./hyprland.lua;
       };
 
+      xdg.configFile."hypr/modules/wl-kbptr.lua".source = ./modules/wl-kbptr.lua;
+      xdg.configFile."hypr/modules/media-keys.lua".source = ./modules/media-keys.lua;
+      xdg.configFile."hypr/modules/monitors.lua".source = ./modules/monitors.lua;
+      xdg.configFile."hypr/modules/autostart.lua".source = ./modules/autostart.lua;
+      xdg.configFile."hypr/modules/window-rules.lua".source = ./modules/window-rules.lua;
+
       # enabled manually for catppuccin
       programs.foot = {
         enable = true;

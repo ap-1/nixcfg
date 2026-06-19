@@ -1,0 +1,35 @@
+-- Keyboard-driven mouse pointer control
+
+-- Detect clickable elements, type a label, auto-click
+hl.bind("SUPER + semicolon",
+    hl.dsp.exec_cmd("wl-kbptr -o modes=floating,click -o mode_floating.source=detect"))
+
+-- Grid then split (g/h/b to click, Enter/Space to place cursor)
+hl.bind("SUPER + SHIFT + semicolon",
+    hl.dsp.exec_cmd("wl-kbptr -o modes=tile,split"))
+
+hl.bind("SUPER + G", hl.dsp.submap("cursor"))
+
+hl.define_submap("cursor", function()
+    -- Jump to a detected element and click
+    hl.bind("A",
+        hl.dsp.exec_cmd("wl-kbptr -o modes=floating,click -o mode_floating.source=detect"))
+
+    -- Nudge (hold to repeat)
+    hl.bind("H", hl.dsp.exec_cmd("wlrctl pointer move -10 0"), { repeating = true })
+    hl.bind("J", hl.dsp.exec_cmd("wlrctl pointer move 0 10"), { repeating = true })
+    hl.bind("K", hl.dsp.exec_cmd("wlrctl pointer move 0 -10"), { repeating = true })
+    hl.bind("L", hl.dsp.exec_cmd("wlrctl pointer move 10 0"), { repeating = true })
+
+    -- Clicks
+    hl.bind("S", hl.dsp.exec_cmd("wlrctl pointer click left"))
+    hl.bind("D", hl.dsp.exec_cmd("wlrctl pointer click middle"))
+    hl.bind("F", hl.dsp.exec_cmd("wlrctl pointer click right"))
+
+    -- Scroll (hold to repeat)
+    hl.bind("E", hl.dsp.exec_cmd("wlrctl pointer scroll 10 0"), { repeating = true })
+    hl.bind("R", hl.dsp.exec_cmd("wlrctl pointer scroll -10 0"), { repeating = true })
+
+    -- Leave the mode
+    hl.bind("escape", hl.dsp.submap("reset"))
+end)
