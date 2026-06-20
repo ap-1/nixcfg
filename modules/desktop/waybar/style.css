@@ -1,0 +1,25 @@
+* {
+  font-family: "FiraCode Nerd Font Mono", monospace;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+#submap,
+#window,
+#clock,
+#wireplumber,
+#network,
+#tray {
+  padding: 0 8px;
+}

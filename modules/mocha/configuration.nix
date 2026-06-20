@@ -1,7 +1,3 @@
-{ config, ... }:
-let
-  meta = config.flake.meta;
-in
 {
   flake.modules.nixos.mocha-configuration =
     { config, pkgs, ... }:
@@ -37,30 +33,6 @@ in
 
       # Lock screen
       security.pam.services.waylock = { };
-
-      # Set networking options.
-      networking.hostName = "mocha";
-      networking.networkmanager.enable = true;
-
-      hardware.mediatek-mt7927.enable = true;
-
-      age.secrets.headscale-authkey-mocha = {
-        file = ../../secrets/headscale-authkey-mocha.age;
-        owner = "root";
-        group = "root";
-        mode = "0400";
-      };
-
-      services.tailscale.authKeyFile = config.age.secrets.headscale-authkey-mocha.path;
-
-      age.secrets.cloudflare-dns.file = ../../secrets/cloudflare-dns.age;
-
-      services.webProxy = {
-        domain = meta.tailnetDomain;
-        wildcard = true;
-        tailnetOnly = true;
-        credentialsFile = config.age.secrets.cloudflare-dns.path;
-      };
 
       # Set your time zone.
       time.timeZone = "America/New_York";
@@ -104,15 +76,6 @@ in
 
       # USB drive mounting
       services.udisks2.enable = true;
-      zramSwap.enable = true;
-      services.earlyoom.enable = true;
-
-      boot.kernel.sysctl = {
-        "vm.swappiness" = 180;
-        "vm.watermark_boost_factor" = 0;
-        "vm.watermark_scale_factor" = 125;
-        "vm.page-cluster" = 0;
-      };
 
       system.stateVersion = "25.05";
     };
