@@ -26,9 +26,8 @@
           "hyprland/workspaces" = {
             format = "{name}";
             disable-scroll = false;
-            on-scroll-up = "hyprctl dispatch workspace -1";
-            on-scroll-down = "hyprctl dispatch workspace +1";
-            on-click = "activate";
+            on-scroll-up = "hyprctl dispatch 'hl.dsp.focus({workspace = \"-1\"})'";
+            on-scroll-down = "hyprctl dispatch 'hl.dsp.focus({workspace = \"+1\"})'";
           };
 
           "hyprland/submap" = {
