@@ -17,6 +17,9 @@
           ];
           modules-center = [ "hyprland/window" ];
           modules-right = [
+            "mpris"
+            "gamemode"
+            "privacy"
             "wireplumber"
             "network"
             "clock"
@@ -60,6 +63,32 @@
 
           tray = {
             spacing = 8;
+          };
+
+          mpris = {
+            format = "{status_icon} {title}";
+            format-paused = "{status_icon} {title}";
+            format-stopped = "";
+            status-icons = {
+              playing = "▶";
+              paused = "⏸";
+            };
+            max-length = 40;
+          };
+
+          gamemode = {
+            format = "gamemode";
+            format-alt = "gamemode {count}";
+            hide-not-running = true;
+          };
+
+          privacy = {
+            icon-size = 14;
+            modules = [
+              { type = "screenshare"; }
+              { type = "audio-in"; }
+              { type = "audio-out"; }
+            ];
           };
         };
       };

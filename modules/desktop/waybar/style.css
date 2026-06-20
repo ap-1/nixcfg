@@ -32,6 +32,21 @@ window#waybar {
 #clock,
 #wireplumber,
 #network,
+#mpris,
+#gamemode,
+#privacy,
 #tray {
   padding: 0 8px;
+}
+
+#mpris {
+  color: @green;
+}
+
+#gamemode {
+  color: @peach;
+}
+
+#privacy {
+  color: @red;
 }
