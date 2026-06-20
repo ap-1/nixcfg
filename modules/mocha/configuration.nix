@@ -82,6 +82,7 @@ in
           "wheel"
           "networkmanager"
           "media"
+          "ydotool"
         ];
       };
 
