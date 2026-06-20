@@ -25,8 +25,10 @@
 
           "hyprland/workspaces" = {
             format = "{name}";
-            on-scroll-up = "hyprctl dispatch workspace e-1";
-            on-scroll-down = "hyprctl dispatch workspace e+1";
+            disable-scroll = false;
+            on-scroll-up = "hyprctl dispatch workspace -1";
+            on-scroll-down = "hyprctl dispatch workspace +1";
+            on-click = "activate";
           };
 
           "hyprland/submap" = {
@@ -46,7 +48,7 @@
           wireplumber = {
             format = "vol {volume}%";
             format-muted = "vol muted";
-            on-click = "foot -e wiremix";
+            on-click = "foot --app-id=wiremix -e wiremix";
           };
 
           network = {
@@ -54,7 +56,7 @@
             format-ethernet = "eth";
             format-disconnected = "offline";
             tooltip-format-wifi = "{essid} ({signalStrength}%)";
-            on-click = "foot -e impala";
+            on-click = "foot --app-id=impala -e impala";
           };
 
           tray = {

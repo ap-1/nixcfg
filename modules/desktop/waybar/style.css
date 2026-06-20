@@ -15,6 +15,18 @@ window#waybar {
   border-radius: 0;
 }
 
+#workspaces button.active {
+  color: @mauve;
+}
+
+#workspaces button.urgent {
+  color: @red;
+}
+
+#submap {
+  color: @yellow;
+}
+
 #submap,
 #window,
 #clock,

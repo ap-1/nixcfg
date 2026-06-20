@@ -1,7 +1,9 @@
 -- Window and workspace rules
 
--- Float file manager (termfilepickers and $mainMod + E pass --app-id)
+-- Float TUI popups (termfilepickers and $mainMod + E pass --app-id)
 hl.window_rule({ match = { class = "yazi" }, float = true })
+hl.window_rule({ match = { class = "wiremix" }, float = true })
+hl.window_rule({ match = { class = "impala" }, float = true })
 
 -- Always open Roblox in fullscreen
 hl.window_rule({ match = { class = "^(org.vinegarhq.Sober)$" }, fullscreen = true })
