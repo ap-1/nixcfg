@@ -3,6 +3,7 @@ require("modules/media-keys")
 require("modules/monitors")
 require("modules/autostart")
 require("modules/window-rules")
+require("modules/capture")
 
 ---------------------
 ---- MY PROGRAMS ----

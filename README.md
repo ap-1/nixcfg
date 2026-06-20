@@ -8,3 +8,4 @@
 - [Services](docs/services.md)
 - [Secrets](docs/secrets.md)
 - [Theming](docs/theming.md)
+- [Desktop](docs/desktop.md)

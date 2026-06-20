@@ -17,3 +17,7 @@ Spicetify uses the native Catppuccin theme bundled in [spicetify-nix](https://gi
 ## Discord
 
 Discord uses the [Catppuccin Mocha theme](https://github.com/catppuccin/discord) via Moonlight's `customCSS` extension, loaded as a CSS `@import` from `catppuccin.github.io`.
+
+## Slack
+
+## wl-kbptr

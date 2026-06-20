@@ -17,6 +17,7 @@
           ];
           modules-center = [ "hyprland/window" ];
           modules-right = [
+            "custom/recording"
             "mpris"
             "gamemode"
             "privacy"
@@ -50,7 +51,7 @@
           wireplumber = {
             format = "vol {volume}%";
             format-muted = "vol muted";
-            on-click = "foot --app-id=wiremix -e wiremix";
+            on-click = "pkill wiremix || foot --app-id=wiremix -e wiremix";
           };
 
           network = {
@@ -58,7 +59,7 @@
             format-ethernet = "eth";
             format-disconnected = "offline";
             tooltip-format-wifi = "{essid} ({signalStrength}%)";
-            on-click = "foot --app-id=impala -e impala";
+            on-click = "pkill impala || foot --app-id=impala -e impala";
           };
 
           tray = {
@@ -89,6 +90,12 @@
               { type = "audio-in"; }
               { type = "audio-out"; }
             ];
+          };
+
+          "custom/recording" = {
+            exec = "capture status";
+            return-type = "json";
+            signal = 8;
           };
         };
       };

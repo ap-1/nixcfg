@@ -6,6 +6,7 @@
         nh
         ragenix
         ghostty.terminfo # for ssh from cortado
+        jq
       ];
     };
 

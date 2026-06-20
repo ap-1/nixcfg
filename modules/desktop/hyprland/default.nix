@@ -13,6 +13,8 @@
       xdg.configFile."hypr/modules/monitors.lua".source = ./modules/monitors.lua;
       xdg.configFile."hypr/modules/autostart.lua".source = ./modules/autostart.lua;
       xdg.configFile."hypr/modules/window-rules.lua".source = ./modules/window-rules.lua;
+      xdg.configFile."hypr/modules/capture.lua".source = ./modules/capture.lua;
+      xdg.configFile."wl-kbptr/config".source = ./wl-kbptr.conf;
 
       # enabled manually for catppuccin
       programs.foot = {
@@ -24,7 +26,27 @@
       services.dunst.enable = true;
     };
 
-  flake.modules.nixos.hyprland = {
-    programs.ydotool.enable = true;
-  };
+  flake.modules.nixos.hyprland =
+    { pkgs, ... }:
+    {
+      programs.ydotool.enable = true;
+      programs.gpu-screen-recorder.enable = true; # setcap KMS wrapper for promptless capture
+
+      environment.systemPackages = with pkgs; [
+        playerctl
+        grim # screenshot
+        slurp # region selection
+        (writeShellApplication {
+          name = "capture";
+          runtimeInputs = [
+            grim
+            slurp
+            jq
+            wl-clipboard
+            libnotify
+          ];
+          text = builtins.readFile ./capture.sh;
+        })
+      ];
+    };
 }

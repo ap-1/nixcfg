@@ -28,6 +28,7 @@ window#waybar {
 }
 
 #submap,
+#custom-recording,
 #window,
 #clock,
 #wireplumber,
@@ -48,5 +49,9 @@ window#waybar {
 }
 
 #privacy {
+  color: @red;
+}
+
+#custom-recording.recording {
   color: @red;
 }
