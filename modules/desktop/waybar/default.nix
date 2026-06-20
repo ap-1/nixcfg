@@ -40,8 +40,8 @@
           };
 
           clock = {
-            format = "{:%a %d %b %H:%M}";
-            tooltip-format = "{:%Y-%m-%d %H:%M:%S}";
+            format = "{:%a %d %b %I:%M:%S %p}";
+            tooltip-format = "{:%Y-%m-%d %I:%M:%S %p}";
           };
 
           wireplumber = {
