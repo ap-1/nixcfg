@@ -12,6 +12,8 @@
 
       inputs.agenix.nixosModules.default
       inputs.home-manager.darwinModules.home-manager
+      inputs.srvos.darwinModules.desktop
+
       {
         home-manager.backupFileExtension = "backup";
         home-manager.extraSpecialArgs = {

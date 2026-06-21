@@ -680,6 +680,22 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1781687696,
+        "narHash": "sha256-9Eawq3bvi+OY50rdxuVDIvXL+UXFEtlOJABcqWMxr54=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "171e47bc1ee0bf167678a39b4b36f4751f444592",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1754340878,
         "narHash": "sha256-lgmUyVQL9tSnvvIvBp7x1euhkkCho7n3TMzgjdvgPoU=",
         "owner": "nixos",
@@ -776,6 +792,7 @@
         "omp-nix": "omp-nix",
         "preservation": "preservation",
         "spicetify-nix": "spicetify-nix",
+        "srvos": "srvos",
         "stylix": "stylix",
         "xdg-termfilepickers": "xdg-termfilepickers"
       }
@@ -798,6 +815,24 @@
       "original": {
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
+        "type": "github"
+      }
+    },
+    "srvos": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1781754174,
+        "narHash": "sha256-Q5hp6+DYj23gMAvhLXBYNan9EwY9C+oxyU+M1TJDwgo=",
+        "owner": "nix-community",
+        "repo": "srvos",
+        "rev": "18ae1c654f60fb8dafb40c48fe25eb09f1aaddb2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "srvos",
         "type": "github"
       }
     },
@@ -945,7 +980,7 @@
     },
     "treefmt-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1755934250,

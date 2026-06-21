@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.mocha-configuration =
-    { config, pkgs, ... }:
+    { pkgs, ... }:
     {
       # Use the systemd-boot EFI boot loader.
       boot.loader.systemd-boot.enable = true;
@@ -39,12 +39,6 @@
 
       # Enable ly display manager
       services.displayManager.ly.enable = true;
-
-      # Enable sound.
-      services.pipewire = {
-        enable = true;
-        pulse.enable = true;
-      };
 
       # Define user account.
       users.users.anish = {

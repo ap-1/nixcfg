@@ -68,6 +68,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     litellm-nix.url = "git+https://codeberg.org/anish/litellm-nix";
+    srvos.url = "github:nix-community/srvos";
   };
 
   outputs =

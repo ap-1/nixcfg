@@ -2,10 +2,6 @@
   flake.modules.nixos.nix-settings =
     { lib, pkgs, ... }:
     {
-      nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
       nix.package = pkgs.lixPackageSets.stable.lix;
 
       nixpkgs.config.allowUnfreePredicate =
@@ -30,10 +26,6 @@
   flake.modules.darwin.nix-settings =
     { lib, pkgs, ... }:
     {
-      nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
       nix.package = pkgs.lixPackageSets.stable.lix;
 
       nixpkgs.config.allowUnfreePredicate =
@@ -52,9 +44,5 @@
           "shottr"
           "tetrio-desktop"
         ];
-
-      nix.settings = {
-        trusted-users = [ "anish" ];
-      };
     };
 }

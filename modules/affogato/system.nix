@@ -11,6 +11,9 @@
       inputs.disko.nixosModules.disko
       inputs.preservation.nixosModules.preservation
 
+      inputs.srvos.nixosModules.server
+      inputs.srvos.nixosModules.hardware-hetzner-cloud
+
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager.backupFileExtension = "backup";

@@ -11,7 +11,6 @@ in
     }:
     {
       age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
-      age.secrets.affogato-password.file = ../../secrets/affogato-password.age;
       age.secrets.headscale-authkey-affogato = {
         file = ../../secrets/headscale-authkey-affogato.age;
         owner = "root";
@@ -21,33 +20,11 @@ in
 
       services.tailscale.authKeyFile = config.age.secrets.headscale-authkey-affogato.path;
 
-      boot.loader.grub = {
-        enable = true;
-        efiSupport = false;
-      };
-
-      zramSwap.enable = true;
-
-      boot.kernel.sysctl = {
-        "vm.swappiness" = 180;
-        "vm.watermark_boost_factor" = 0;
-        "vm.watermark_scale_factor" = 125;
-        "vm.page-cluster" = 0;
-      };
-
       networking.hostName = "affogato";
-      networking.useDHCP = true;
 
-      time.timeZone = "UTC";
+      services.cloud-init.enable = false;
 
-      services.openssh = {
-        enable = true;
-        openFirewall = false;
-        settings = {
-          PasswordAuthentication = false;
-          PermitRootLogin = "prohibit-password";
-        };
-      };
+      services.openssh.openFirewall = false;
 
       networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 22 ];
 
@@ -63,12 +40,6 @@ in
           meta.sshKey
         ];
       };
-
-      users.mutableUsers = false;
-      users.users.root.hashedPasswordFile = config.age.secrets.affogato-password.path;
-      users.users.anish.hashedPasswordFile = config.age.secrets.affogato-password.path;
-
-      security.sudo.wheelNeedsPassword = false;
 
       programs.zsh.enable = true;
       users.defaultUserShell = pkgs.zsh;
