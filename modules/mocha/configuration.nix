@@ -31,6 +31,12 @@
         enable32Bit = true; # Steam
       };
 
+      # Sunshine capture device
+      services.sunshine.settings = {
+        adapter_name = "/dev/dri/card1";
+        output_name = "0";
+      };
+
       # Lock screen
       security.pam.services.waylock = { };
 
