@@ -10,6 +10,14 @@
         settings.key_rightalt_to_key_win = "enabled";
       };
 
+      services.webProxy.sites.sunshine = ''
+        reverse_proxy https://127.0.0.1:47990 {
+          transport http {
+            tls_insecure_skip_verify
+          }
+        }
+      '';
+
       # Discovery
       services.avahi = {
         enable = true;

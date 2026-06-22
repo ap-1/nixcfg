@@ -27,6 +27,7 @@
       chat = "mocha";
       litellm = "mocha";
       fans = "mocha";
+      sunshine = "mocha";
     };
   };
 }
