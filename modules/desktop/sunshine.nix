@@ -7,6 +7,7 @@
         autoStart = true;
         capSysAdmin = true; # Wayland/Hyprland screen capture
         openFirewall = true;
+        settings.key_rightalt_to_key_win = "enabled";
       };
 
       # Discovery

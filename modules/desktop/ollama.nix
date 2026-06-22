@@ -15,12 +15,17 @@ in
           # pin to the 7800 xt (gfx1101); mask the igpu (gfx1036)
           ROCR_VISIBLE_DEVICES = "0";
           OLLAMA_FLASH_ATTENTION = "1";
-          OLLAMA_KV_CACHE_TYPE = "q8_0";
-          OLLAMA_CONTEXT_LENGTH = "8192";
+          OLLAMA_KV_CACHE_TYPE = "q4_0";
+          OLLAMA_CONTEXT_LENGTH = "32768";
           OLLAMA_MAX_LOADED_MODELS = "1";
           OLLAMA_NUM_PARALLEL = "1";
         };
       };
+
+      services.ollama.loadModels = [
+        "huihui_ai/gemma-4-abliterated:12b-qat"
+        "hf.co/mradermacher/Qwen3.6-27B-abliterated-rMAX-GGUF:Q3_K_L"
+      ];
 
       services.open-webui = {
         enable = true;
