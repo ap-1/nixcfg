@@ -1,6 +1,7 @@
+{ inputs, ... }:
 {
   flake.modules.nixos.sunshine =
-    { ... }:
+    { pkgs, ... }:
     {
       services.sunshine = {
         enable = true;
@@ -8,6 +9,7 @@
         capSysAdmin = true; # Wayland/Hyprland screen capture
         openFirewall = true;
         settings.key_rightalt_to_key_win = "enabled";
+        package = inputs.nixpkgs-sunshine.legacyPackages.${pkgs.stdenv.hostPlatform.system}.sunshine;
       };
 
       # right-alt to meta remap leaks ALT alongside meta (upstream bug)
