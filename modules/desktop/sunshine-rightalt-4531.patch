@@ -1,0 +1,75 @@
+diff -ru a/src/config.cpp b/src/config.cpp
+--- a/src/config.cpp	2026-06-22 11:57:47.184638568 -0400
++++ b/src/config.cpp	2026-06-22 11:58:02.432584025 -0400
+@@ -1187,10 +1187,10 @@
+ 
+     // This config option will only be used by the UI
+     // When editing in the config file itself, use "keybindings"
+-    bool map_rightalt_to_win = false;
+-    bool_f(vars, "key_rightalt_to_key_win", map_rightalt_to_win);
++    input.key_rightalt_to_key_win = false;
++    bool_f(vars, "key_rightalt_to_key_win", input.key_rightalt_to_key_win);
+ 
+-    if (map_rightalt_to_win) {
++    if (input.key_rightalt_to_key_win) {
+       input.keybindings.emplace(0xA5, 0x5B);
+     }
+ 
+diff -ru a/src/config.h b/src/config.h
+--- a/src/config.h	2026-06-22 11:57:47.170638618 -0400
++++ b/src/config.h	2026-06-22 11:57:54.377612786 -0400
+@@ -196,6 +196,7 @@
+     bool ds5_inputtino_randomize_mac;
+ 
+     bool keyboard;
++    bool key_rightalt_to_key_win;
+     bool mouse;
+     bool controller;
+ 
+diff -ru a/src/input.cpp b/src/input.cpp
+--- a/src/input.cpp	2026-06-22 11:57:47.198638518 -0400
++++ b/src/input.cpp	2026-06-22 23:11:00.589320182 -0400
+@@ -178,6 +178,9 @@
+     // Keep track of alt+ctrl+shift key combo
+     int shortcutFlags;
+ 
++    bool left_alt_pressed = false;
++    bool right_alt_pressed = false;
++
+     std::vector<gamepad_t> gamepads;
+     std::unique_ptr<platf::client_input_t> client_context;
+ 
+@@ -727,17 +730,30 @@
+     auto release = util::endian::little(packet->header.magic) == KEY_UP_EVENT_MAGIC;
+     auto keyCode = packet->keyCode & 0x00FF;
+ 
++    if (keyCode == VKEY_LMENU) {
++      input->left_alt_pressed = !release;
++    } else if (keyCode == VKEY_RMENU) {
++      input->right_alt_pressed = !release;
++    }
++
++    // Right-alt maps to meta, so it must not also register as ALT
++    int modifiers = packet->modifiers;
++    if (config::input.key_rightalt_to_key_win &&
++        input->right_alt_pressed && !input->left_alt_pressed) {
++      modifiers &= ~MODIFIER_ALT;
++    }
++
+     // Set synthetic modifier flags if the keyboard packet is requesting modifier
+     // keys that are not current pressed.
+     uint8_t synthetic_modifiers = 0;
+     if (!release && !is_modifier(keyCode)) {
+-      if (!(input->shortcutFlags & input_t::SHIFT) && (packet->modifiers & MODIFIER_SHIFT)) {
++      if (!(input->shortcutFlags & input_t::SHIFT) && (modifiers & MODIFIER_SHIFT)) {
+         synthetic_modifiers |= MODIFIER_SHIFT;
+       }
+-      if (!(input->shortcutFlags & input_t::CTRL) && (packet->modifiers & MODIFIER_CTRL)) {
++      if (!(input->shortcutFlags & input_t::CTRL) && (modifiers & MODIFIER_CTRL)) {
+         synthetic_modifiers |= MODIFIER_CTRL;
+       }
+-      if (!(input->shortcutFlags & input_t::ALT) && (packet->modifiers & MODIFIER_ALT)) {
++      if (!(input->shortcutFlags & input_t::ALT) && (modifiers & MODIFIER_ALT)) {
+         synthetic_modifiers |= MODIFIER_ALT;
+       }
+     }

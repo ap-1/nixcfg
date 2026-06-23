@@ -10,6 +10,16 @@
         settings.key_rightalt_to_key_win = "enabled";
       };
 
+      # right-alt to meta remap leaks ALT alongside meta (upstream bug)
+      # https://github.com/LizardByte/Sunshine/issues/4531
+      nixpkgs.overlays = [
+        (_: prev: {
+          sunshine = prev.sunshine.overrideAttrs (o: {
+            patches = (o.patches or [ ]) ++ [ ./sunshine-rightalt-4531.patch ];
+          });
+        })
+      ];
+
       services.webProxy.sites.sunshine = ''
         reverse_proxy https://127.0.0.1:47990 {
           transport http {
