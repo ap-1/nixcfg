@@ -2,7 +2,10 @@
   flake.modules.nixos.memory =
     { ... }:
     {
-      zramSwap.enable = true;
+      zramSwap = {
+        enable = true;
+        memoryPercent = 100;
+      };
       services.earlyoom.enable = true;
 
       # Copied from Pop!_OS
