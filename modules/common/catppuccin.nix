@@ -13,6 +13,7 @@
         atuin.enable = true;
         bat.enable = true;
         dunst.enable = true;
+        eza.enable = true;
         foot.enable = true;
         ghostty.enable = true;
         hyprland.enable = true;

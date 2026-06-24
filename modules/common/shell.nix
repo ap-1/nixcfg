@@ -20,8 +20,13 @@ in
 
       # enabled manually for catppuccin
       programs.bat.enable = true;
-      programs.eza.enable = true;
       programs.tmux.enable = true;
+
+      programs.eza = {
+        enable = true;
+        git = true;
+        icons = "auto";
+      };
 
       programs.zsh = {
         enable = true;
@@ -35,20 +40,17 @@ in
 
         initContent = lib.mkMerge [
           (lib.mkBefore ''
-            zstyle ':omz:plugins:eza' 'git-status' yes
-            zstyle ':omz:plugins:eza' 'icons' no
-
             export NIX_CONFIG="access-tokens = github.com=$(${lib.getExe pkgs.gh} auth token 2>/dev/null)"
           '')
           ''
             pfetch
           ''
         ];
+      };
 
-        oh-my-zsh = {
-          enable = true;
-          plugins = [ "eza" ];
-        };
+      programs.pay-respects = {
+        enable = true;
+        enableZshIntegration = true;
       };
 
       programs.direnv = {
