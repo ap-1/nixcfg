@@ -30,8 +30,8 @@
       home.packages =
         with pkgs;
         [
-          tetrio-desktop
-          # element-desktop
+          element-desktop
+          signal-desktop
           slack
           jujutsu
           bitwarden-desktop
