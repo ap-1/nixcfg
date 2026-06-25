@@ -4,7 +4,7 @@
 hl.bind("SUPER + semicolon",
     hl.dsp.exec_cmd("pkill wl-kbptr || wl-kbptr -o modes=floating,click -o mode_floating.source=detect"))
 
--- Grid then split (g/h/b to click, Enter/Space to place cursor)
+-- Grid then split (s/d/f to click, Enter/Space to place cursor)
 hl.bind("SUPER + SHIFT + semicolon",
     hl.dsp.exec_cmd("pkill wl-kbptr || wl-kbptr -o modes=tile,split"))
 

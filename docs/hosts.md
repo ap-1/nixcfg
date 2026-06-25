@@ -15,7 +15,7 @@ mocha is the desktop, an mATX AMD build comprising:
 - ADATA XPG Core Reactor II 750 W power supply
 - Lian Li A3-mATX case
 
-The Zen 5 CPU runs an LTO, znver4-tuned [CachyOS kernel](https://github.com/CachyOS/linux-cachyos) (`linuxPackages-cachyos-latest-lto-zen4`) from the [`nix-cachyos-kernel`](https://github.com/xddxdd/nix-cachyos-kernel) overlay, with its binary cache added as a substituter.
+The Zen 5 CPU runs an LTO, znver4-tuned [CachyOS kernel](https://github.com/CachyOS/linux-cachyos) (`linuxPackages-cachyos-latest-lto-zen4`) from the [`nix-cachyos-kernel`](https://github.com/xddxdd/nix-cachyos-kernel) overlay.
 
 The board has no WiFi 7, so wireless comes from the add-in EDUP card, whose MediaTek MT7927 (Filogic 380) chipset the mainline kernel does not yet support. WiFi and Bluetooth come from the [`mt7927-nixos`](https://github.com/cmspam/mt7927-nixos) flake (`hardware.mediatek-mt7927.enable`), which supplies out-of-tree modules binding the `mt7925` driver, patched `btusb` and `btmtk`, extracted firmware, and a udev rule disabling PCIe ASPM.
 
