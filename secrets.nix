@@ -30,6 +30,10 @@ in
     affogato
     mocha
   ];
+  "secrets/cloudflared-tunnel.age".publicKeys = [
+    anish
+    affogato
+  ];
   "secrets/kanidm-admin.age".publicKeys = [
     anish
     affogato

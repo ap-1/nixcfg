@@ -19,22 +19,23 @@ This config follows the [dendritic pattern](https://github.com/mightyiam/dendrit
 
 ## Hosts
 
-- `affogato` is the public NixOS VPS, running the services behind Caddy.
+- `affogato` is the public NixOS VPS, running services behind cloudflared and Caddy.
 - `mocha` is the NixOS desktop.
 - `cortado` is the nix-darwin laptop.
 
-All three join the self-hosted [tailnet](networking.md).
+All three join the self-hosted [tailnet](networking.md). Per-host hardware is in [hosts](hosts.md).
 
-Per-host hardware is in [hosts](hosts.md).
+Every host imports [srvos](https://github.com/nix-community/srvos) base modules: `server` and `hardware-hetzner-cloud` on affogato, `desktop` on mocha and cortado. The common role adds the `mixins-terminfo` and `mixins-trusted-nix-caches` mixins on all hosts.
 
 ## Exposure
 
-Services are reached one of two ways:
+Services are reached one of three ways:
 
-- Public services resolve through Cloudflare to affogato at `<name>.anish.land` and are served by affogato's Caddy under per-name ACME certificates.
+- Most public services on affogato go through a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/) at `<name>.anish.land`, proxied by cloudflared to their localhost port. affogato's IP is not exposed for these services.
+- headscale resolves directly through Cloudflare DNS to affogato at `headscale.anish.land` and is served by Caddy, since its protocol is incompatible with Cloudflare Tunnels.
 - Tailnet services resolve through the mesh's MagicDNS to their host at `<name>.ts.anish.land` and are served by that host's Caddy under one `*.ts.anish.land` ACME certificate.
 
-Both certificates are issued over the Cloudflare DNS-01 challenge, and OIDC-gated services authenticate against [kanidm](https://kanidm.com/). See [services](services.md) for the registry that drives both.
+Caddy certificates are issued over the Cloudflare DNS-01 challenge, and OIDC-gated services authenticate against [kanidm](https://kanidm.com/). See [services](services.md) for the registry that drives all three.
 
 ## Persistence
 

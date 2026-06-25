@@ -19,3 +19,14 @@ resource "cloudflare_dns_record" "affogato_aaaa" {
   ttl     = 300
   proxied = false
 }
+
+resource "cloudflare_dns_record" "tunnel_cname" {
+  for_each = toset(local.tunnel_subdomains)
+
+  zone_id = local.zone_id
+  name    = "${each.key}.anish.land"
+  type    = "CNAME"
+  content = "${var.tunnel_id}.cfargotunnel.com"
+  ttl     = 1
+  proxied = true
+}

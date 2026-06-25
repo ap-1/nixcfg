@@ -7,6 +7,7 @@
       affogato-disko
       affogato-persist
       affogato-web
+      affogato-cloudflared
       affogato-kanidm
       affogato-headscale
       affogato-headplane

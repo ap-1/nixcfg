@@ -6,8 +6,11 @@ locals {
   affogato_ipv6 = "2a01:4f8:1c18:fd::1"
 
   subdomains = [
-    "idp",
     "headscale",
+  ]
+
+  tunnel_subdomains = [
+    "idp",
     "headplane",
     "vault",
     "git",

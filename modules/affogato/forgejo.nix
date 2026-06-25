@@ -55,12 +55,10 @@ in
       systemd.services.forgejo = {
         wants = [
           "kanidm.service"
-          "caddy.service"
           "network-online.target"
         ];
         after = [
           "kanidm.service"
-          "caddy.service"
           "network-online.target"
         ];
 
