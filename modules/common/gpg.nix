@@ -2,7 +2,10 @@
   flake.modules.homeManager.gpg =
     { pkgs, ... }:
     {
-      programs.gpg.enable = true;
+      home.packages = with pkgs; [
+        sequoia-sq
+        sequoia-chameleon-gnupg
+      ];
 
       services.gpg-agent = {
         enable = true;

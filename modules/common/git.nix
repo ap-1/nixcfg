@@ -12,6 +12,7 @@ in
           format = "openpgp";
           key = "B1CA832135A8C503";
           signByDefault = true;
+          signer = "${pkgs.sequoia-chameleon-gnupg}/bin/gpg-sq";
         };
 
         settings = {
@@ -39,6 +40,7 @@ in
             backend = "gpg";
             key = "B1CA832135A8C503";
             behavior = "own";
+            backends.gpg.program = "${pkgs.sequoia-chameleon-gnupg}/bin/gpg-sq";
           };
           ui.default-command = "log";
           templates.commit_trailers = ''format_signed_off_by_trailer(self)'';
