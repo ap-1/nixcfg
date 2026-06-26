@@ -30,6 +30,10 @@
       ];
 
     environment.systemPackages = with pkgs; [
+      (runCommand "age-plugin-pq" { } ''
+        mkdir -p $out/bin
+        ln -s ${age}/bin/age-plugin-pq $out/bin/age-plugin-pq
+      '')
       nh
       rage
       ragenix
@@ -49,6 +53,10 @@
       ];
 
     environment.systemPackages = with pkgs; [
+      (runCommand "age-plugin-pq" { } ''
+        mkdir -p $out/bin
+        ln -s ${age}/bin/age-plugin-pq $out/bin/age-plugin-pq
+      '')
       nh
       rage
       ragenix
