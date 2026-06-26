@@ -1,4 +1,8 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  ...
+}:
 {
   flake.modules.homeManager.common = {
     imports = with config.flake.modules.homeManager; [
@@ -12,31 +16,43 @@
     ];
   };
 
-  flake.modules.nixos.common = {
+  flake.modules.nixos.common = { pkgs, ... }: {
     imports =
       (with config.flake.modules.nixos; [
         tailscale
         web-proxy
         nix-settings
-        packages
         memory
       ])
       ++ [
         inputs.srvos.nixosModules.mixins-terminfo
         inputs.srvos.nixosModules.mixins-trusted-nix-caches
       ];
+
+    environment.systemPackages = with pkgs; [
+      nh
+      rage
+      ragenix
+      jq
+    ];
   };
 
-  flake.modules.darwin.common = {
+  flake.modules.darwin.common = { pkgs, ... }: {
     imports =
       (with config.flake.modules.darwin; [
         tailscale
         nix-settings
-        packages
       ])
       ++ [
         inputs.srvos.darwinModules.mixins-terminfo
         inputs.srvos.darwinModules.mixins-trusted-nix-caches
       ];
+
+    environment.systemPackages = with pkgs; [
+      nh
+      rage
+      ragenix
+      jq
+    ];
   };
 }
