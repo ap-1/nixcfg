@@ -1,6 +1,10 @@
 {
   flake.modules.nixos.nix-settings =
-    { lib, pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      ...
+    }:
     {
       nix.package = pkgs.lixPackageSets.stable.lix;
 
@@ -24,7 +28,11 @@
     };
 
   flake.modules.darwin.nix-settings =
-    { lib, pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      ...
+    }:
     {
       nix.package = pkgs.lixPackageSets.stable.lix;
 

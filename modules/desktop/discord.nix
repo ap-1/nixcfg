@@ -1,6 +1,10 @@
 {
   flake.modules.homeManager.discord =
-    { pkgs, inputs, ... }:
+    {
+      pkgs,
+      inputs,
+      ...
+    }:
     {
       imports = [ inputs.moonlight.homeModules.default ];
 

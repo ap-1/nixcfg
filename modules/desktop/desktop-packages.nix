@@ -1,31 +1,31 @@
 {
-  flake.modules.nixos.desktop-packages =
-    { pkgs, ... }:
-    {
-      nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
+  flake.modules.nixos.desktop-packages = { pkgs, ... }: {
+    nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
 
-      environment.systemPackages = with pkgs; [
-        ly
-        waylock
-        cloudflare-warp
-        wiremix # pipewire tui
-        impala # iwd tui
-        librepods
-      ];
-    };
+    environment.systemPackages = with pkgs; [
+      ly
+      waylock
+      cloudflare-warp
+      wiremix # pipewire tui
+      impala # iwd tui
+      librepods
+    ];
+  };
 
-  flake.modules.darwin.desktop-packages =
-    { pkgs, ... }:
-    {
-      nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
+  flake.modules.darwin.desktop-packages = { pkgs, ... }: {
+    nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
 
-      environment.systemPackages = with pkgs; [
-        darwin.PowerManagement
-      ];
-    };
+    environment.systemPackages = with pkgs; [
+      darwin.PowerManagement
+    ];
+  };
 
   flake.modules.homeManager.desktop-packages =
-    { pkgs, lib, ... }:
+    {
+      pkgs,
+      lib,
+      ...
+    }:
     {
       home.packages =
         with pkgs;

@@ -1,7 +1,10 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: {
   flake.modules.homeManager.firefox =
-    { pkgs, config, ... }:
+    {
+      pkgs,
+      config,
+      ...
+    }:
     {
       programs.firefox = {
         enable = true;
@@ -178,15 +181,11 @@
       };
     };
 
-  flake.modules.nixos.firefox =
-    { ... }:
-    {
-      nixpkgs.overlays = [ inputs.firefox-addons.overlays.default ];
-    };
+  flake.modules.nixos.firefox = { ... }: {
+    nixpkgs.overlays = [ inputs.firefox-addons.overlays.default ];
+  };
 
-  flake.modules.darwin.firefox =
-    { ... }:
-    {
-      nixpkgs.overlays = [ inputs.firefox-addons.overlays.default ];
-    };
+  flake.modules.darwin.firefox = { ... }: {
+    nixpkgs.overlays = [ inputs.firefox-addons.overlays.default ];
+  };
 }

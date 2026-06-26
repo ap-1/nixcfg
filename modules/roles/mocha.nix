@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{ config, ... }: {
   flake.modules.homeManager.mocha = {
     imports = with config.flake.modules.homeManager; [
       filechooser

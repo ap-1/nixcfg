@@ -21,10 +21,10 @@ window_geom_region() { hyprctl activewindow -j | jq -r '"\(.size[0])x\(.size[1])
 
 screenshot() {
   case "$1" in
-    screen) grim - | wl-copy ;;
-    region) grim -g "$(slurp)" - | wl-copy ;;
-    window) grim -g "$(window_geom_grim)" - | wl-copy ;;
-    *) return 1 ;;
+  screen) grim - | wl-copy ;;
+  region) grim -g "$(slurp)" - | wl-copy ;;
+  window) grim -g "$(window_geom_grim)" - | wl-copy ;;
+  *) return 1 ;;
   esac
   note "Screenshot copied" "$1"
 }
@@ -40,10 +40,10 @@ record() {
   mkdir -p "$rec_dir"
   local -a where
   case "$target" in
-    screen) where=(-w "$(focused_monitor)") ;;
-    region) where=(-w region -region "$(slurp -f '%wx%h+%x+%y')") ;;
-    window) where=(-w region -region "$(window_geom_region)") ;;
-    *) return 1 ;;
+  screen) where=(-w "$(focused_monitor)") ;;
+  region) where=(-w region -region "$(slurp -f '%wx%h+%x+%y')") ;;
+  window) where=(-w region -region "$(window_geom_region)") ;;
+  *) return 1 ;;
   esac
   local out
   out="$rec_dir/recording_$(date +%F_%H-%M-%S).mp4"
@@ -85,13 +85,13 @@ menu() {
     'Record: screen' 'Record: region' 'Record: window' \
     'Save replay' | rofi -dmenu -i -p Capture) || return 0
   case "$choice" in
-    'Screenshot: screen') screenshot screen ;;
-    'Screenshot: region') screenshot region ;;
-    'Screenshot: window') screenshot window ;;
-    'Record: screen') record screen ;;
-    'Record: region') record region ;;
-    'Record: window') record window ;;
-    'Save replay') replay_save ;;
+  'Screenshot: screen') screenshot screen ;;
+  'Screenshot: region') screenshot region ;;
+  'Screenshot: window') screenshot window ;;
+  'Record: screen') record screen ;;
+  'Record: region') record region ;;
+  'Record: window') record window ;;
+  'Save replay') replay_save ;;
   esac
 }
 
@@ -105,15 +105,15 @@ status() {
 }
 
 case "${1:-}" in
-  screenshot) screenshot "${2:-}" ;;
-  record) record "${2:-}" ;;
-  replay-save) replay_save ;;
-  replay-daemon) replay_daemon ;;
-  menu) menu ;;
-  status) status ;;
-  *)
-    echo "usage: capture screenshot|record screen|region|window" >&2
-    echo "       capture replay-save|replay-daemon|menu|status" >&2
-    exit 1
-    ;;
+screenshot) screenshot "${2:-}" ;;
+record) record "${2:-}" ;;
+replay-save) replay_save ;;
+replay-daemon) replay_daemon ;;
+menu) menu ;;
+status) status ;;
+*)
+  echo "usage: capture screenshot|record screen|region|window" >&2
+  echo "       capture replay-save|replay-daemon|menu|status" >&2
+  exit 1
+  ;;
 esac

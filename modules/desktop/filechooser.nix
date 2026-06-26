@@ -1,7 +1,10 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: {
   flake.modules.homeManager.filechooser =
-    { pkgs, lib, ... }:
+    {
+      pkgs,
+      lib,
+      ...
+    }:
     {
       imports = [
         inputs.xdg-termfilepickers.homeManagerModules.default

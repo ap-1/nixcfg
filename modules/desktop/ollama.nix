@@ -4,7 +4,11 @@ let
 in
 {
   flake.modules.nixos.ollama =
-    { config, pkgs, ... }:
+    {
+      config,
+      pkgs,
+      ...
+    }:
     {
       age.secrets.open-webui-oauth.file = ../../secrets/open-webui-oauth.age;
 

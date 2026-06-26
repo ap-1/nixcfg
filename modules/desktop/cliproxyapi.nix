@@ -1,7 +1,10 @@
-{ inputs, ... }:
-{
+{ inputs, ... }: {
   flake.modules.nixos.cliproxyapi =
-    { config, pkgs, ... }:
+    {
+      config,
+      pkgs,
+      ...
+    }:
     {
       imports = [
         "${inputs.nixpkgs-cliproxyapi}/nixos/modules/services/misc/cliproxyapi.nix"

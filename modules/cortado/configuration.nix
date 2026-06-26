@@ -1,8 +1,11 @@
 {
   flake.modules.darwin.cortado-configuration =
-    { self, inputs, ... }:
     {
-
+      self,
+      inputs,
+      ...
+    }:
+    {
       # Networking options
       networking.hostName = "cortado";
       networking.localHostName = "cortado";
@@ -34,8 +37,16 @@
       # Drop each once its referenced PR/fix lands.
       nixpkgs.overlays = [
         (_: _: {
-          inherit (import inputs.nixpkgs-discord { system = "aarch64-darwin"; config.allowUnfree = true; })
-            discord discord-canary discord-ptb discord-development;
+          inherit
+            (import inputs.nixpkgs-discord {
+              system = "aarch64-darwin";
+              config.allowUnfree = true;
+            })
+            discord
+            discord-canary
+            discord-ptb
+            discord-development
+            ;
         })
         # `darwin.PowerManagement` ships a stale `xcodeHash`, so
         # `system-applications` (caffeinate) fails its post-unpack hash check.

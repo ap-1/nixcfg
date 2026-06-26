@@ -9,7 +9,11 @@ let
 in
 {
   flake.modules.nixos.affogato-cloudflared =
-    { config, lib, ... }:
+    {
+      config,
+      lib,
+      ...
+    }:
     {
       age.secrets.cloudflared-tunnel.file = ../../secrets/cloudflared-tunnel.age;
 
@@ -18,18 +22,14 @@ in
         tunnels.${tunnelId} = {
           credentialsFile = config.age.secrets.cloudflared-tunnel.path;
           default = "http_status:404";
-          ingress =
-            (lib.mapAttrs' (name: url:
-              lib.nameValuePair "${name}.${meta.domain}" url
-            ) tunnel)
-            // {
-              # kanidm serves HTTPS with a self-signed cert, skip origin TLS verification
-              # https://github.com/kanidm/kanidm/discussions/3455
-              "idp.${meta.domain}" = {
-                service = tunnel.idp;
-                originRequest.noTLSVerify = true;
-              };
+          ingress = (lib.mapAttrs' (name: url: lib.nameValuePair "${name}.${meta.domain}" url) tunnel) // {
+            # kanidm serves HTTPS with a self-signed cert, skip origin TLS verification
+            # https://github.com/kanidm/kanidm/discussions/3455
+            "idp.${meta.domain}" = {
+              service = tunnel.idp;
+              originRequest.noTLSVerify = true;
             };
+          };
         };
       };
     };

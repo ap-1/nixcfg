@@ -16,8 +16,7 @@
         description = "Apps given a database on the shared postgres instance";
         type = lib.types.attrsOf (
           lib.types.submodule (
-            { name, ... }:
-            {
+            { name, ... }: {
               options = {
                 service = lib.mkOption {
                   type = lib.types.nullOr lib.types.str;

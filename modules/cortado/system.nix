@@ -1,4 +1,8 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  ...
+}:
 {
   flake.darwinConfigurations.cortado = inputs.nix-darwin.lib.darwinSystem {
     specialArgs = {

@@ -1,4 +1,8 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  ...
+}:
 {
   flake.nixosConfigurations.mocha = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";

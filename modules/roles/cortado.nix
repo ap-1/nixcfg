@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{ config, ... }: {
   flake.modules.homeManager.cortado = {
     imports = with config.flake.modules.homeManager; [
       cortado-packages

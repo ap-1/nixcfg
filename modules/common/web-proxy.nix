@@ -4,7 +4,11 @@ let
 in
 {
   flake.modules.nixos.web-proxy =
-    { config, lib, ... }:
+    {
+      config,
+      lib,
+      ...
+    }:
     let
       cfg = config.services.webProxy;
     in
