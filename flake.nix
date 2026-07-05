@@ -17,7 +17,7 @@
 
     # System
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin";
+      url = "github:nix-darwin/nix-darwin/pull/1818/head";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
