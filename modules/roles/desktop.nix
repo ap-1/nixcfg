@@ -30,7 +30,6 @@
       immich
       stashapp
       suwayomi
-      # stirling-pdf # libreoffice not cached upstream yet
       llamaServer
       litellm
       cliproxyapi
