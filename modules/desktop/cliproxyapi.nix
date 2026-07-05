@@ -2,12 +2,11 @@
   flake.modules.nixos.cliproxyapi =
     {
       config,
-      pkgs,
       ...
     }:
     {
       imports = [
-        "${inputs.nixpkgs-cliproxyapi}/nixos/modules/services/misc/cliproxyapi.nix"
+        inputs.llm-pkgs.nixosModules.cliproxyapi
       ];
 
       age.secrets.cliproxyapi-api-key.file = ../../secrets/cliproxyapi-api-key.age;
@@ -15,7 +14,6 @@
 
       services.cliproxyapi = {
         enable = true;
-        package = inputs.nixpkgs-cliproxyapi.legacyPackages.${pkgs.stdenv.hostPlatform.system}.cliproxyapi;
         settings = {
           host = "127.0.0.1";
           port = 8317;

@@ -31,9 +31,10 @@
       stashapp
       suwayomi
       # stirling-pdf # libreoffice not cached upstream yet
-      ollama
+      llamaServer
       litellm
       cliproxyapi
+      hindsight
       postgres
       hardware-control
       sunshine

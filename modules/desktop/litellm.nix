@@ -8,7 +8,7 @@ let
 in
 {
   flake.modules.nixos.litellm = { config, ... }: {
-    imports = [ inputs.litellm-nix.nixosModules.default ];
+    imports = [ inputs.llm-pkgs.nixosModules.litellm ];
 
     age.secrets.litellm-env.file = ../../secrets/litellm-env.age;
 

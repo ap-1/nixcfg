@@ -4,7 +4,6 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-cliproxyapi.url = "github:ap-1/nixpkgs/cliproxyapi";
     nixpkgs-discord.url = "github:ap-1/nixpkgs/discord-canary-osx-0.0.1159";
     nixpkgs-sunshine.url = "github:ap-1/nixpkgs/sunshine-update-2026.619";
 
@@ -46,8 +45,8 @@
       url = "github:cmspam/mt7927-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    litellm-nix = {
-      url = "git+https://codeberg.org/anish/litellm-nix";
+    llm-pkgs = {
+      url = "git+https://codeberg.org/anish/llm-pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
