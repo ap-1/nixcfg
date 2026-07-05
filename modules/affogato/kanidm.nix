@@ -92,7 +92,7 @@ in
         lib.nameValuePair "kanidm-oauth2-${name}" (mkKanidmSecret ../../secrets/kanidm-oauth2-${name}.age)
       ) oauth2;
 
-      users.users.kanidm.extraGroups = [ "caddy" ];
+      users.users.kanidm.extraGroups = [ "acme" ];
 
       services.kanidm = {
         package = pkgs.kanidmWithSecretProvisioning_1_10;
