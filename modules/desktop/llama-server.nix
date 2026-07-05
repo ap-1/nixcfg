@@ -52,7 +52,7 @@ in
             "--host 127.0.0.1"
             "--port ${toString chatPort}"
             "-hf ${chatModel}"
-            "--flash-attn"
+            "--flash-attn on"
             "--cache-type-k q4_0"
             "-c 32768"
             "-np 1"
