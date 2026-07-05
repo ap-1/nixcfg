@@ -12,7 +12,7 @@
         "swift"
         "svelte"
         "toml"
-        "biome"
+        "oxc"
         "nginx"
         "discord-presence"
         "git-firefly"
