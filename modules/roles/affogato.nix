@@ -13,6 +13,7 @@
       affogato-vaultwarden
       affogato-forgejo
       affogato-atuin
+      affogato-memory
     ];
   };
 }

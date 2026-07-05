@@ -3,7 +3,6 @@
     {
       config,
       lib,
-      pkgs,
       modulesPath,
       ...
     }:
@@ -21,6 +20,8 @@
       boot.initrd.kernelModules = [ ];
       boot.kernelModules = [ "kvm-amd" ];
       boot.extraModulePackages = [ ];
+
+      boot.initrd.supportedFilesystems = [ "btrfs" ];
 
       fileSystems."/" = {
         device = "/dev/disk/by-uuid/35ec55c3-6916-450d-91af-c054f15144d7";
@@ -44,7 +45,7 @@
       };
 
       swapDevices = [
-        { device = "/dev/disk/by-uuid/96a75477-f3b8-4815-8be7-5e0a74ac5357"; }
+        { device = "/dev/disk/by-uuid/4db2cb68-8a0b-4a18-805c-516a799efd6f"; }
       ];
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

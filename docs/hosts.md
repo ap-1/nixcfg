@@ -19,9 +19,11 @@ The Zen 5 CPU runs an LTO, znver4-tuned [CachyOS kernel](https://github.com/Cach
 
 The board has no WiFi 7, so wireless comes from the add-in EDUP card, whose MediaTek MT7927 (Filogic 380) chipset the mainline kernel does not yet support. WiFi and Bluetooth come from the [`mt7927-nixos`](https://github.com/cmspam/mt7927-nixos) flake (`hardware.mediatek-mt7927.enable`), which supplies out-of-tree modules binding the `mt7925` driver, patched `btusb` and `btmtk`, extracted firmware, and a udev rule disabling PCIe ASPM.
 
+Memory management uses a 32 GB swap partition with zswap (40% pool, zstd) and earlyoom.
+
 ## affogato
 
-affogato is a [Hetzner Cloud](https://www.hetzner.com/cloud) cost-optimized x86 VPS in Nuremberg (nbg1), with an AMD EPYC processor (4 vCPU), 8 GB of RAM, around 80 GB of disk, and zram swap. Its root filesystem is ephemeral ([persistence](architecture.md#persistence)).
+affogato is a [Hetzner Cloud](https://www.hetzner.com/cloud) cost-optimized x86 VPS in Nuremberg (nbg1), with an AMD EPYC processor (4 vCPU), 8 GB of RAM, around 80 GB of disk, a 4 GB swap partition, and zswap (25% pool, zstd). OOM is handled by systemd-oomd. Its root filesystem is ephemeral ([persistence](architecture.md#persistence)).
 
 ## cortado
 

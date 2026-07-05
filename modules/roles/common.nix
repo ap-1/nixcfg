@@ -23,7 +23,6 @@
         tailscale
         web-proxy
         nix-settings
-        memory
       ])
       ++ [
         inputs.srvos.nixosModules.mixins-terminfo
