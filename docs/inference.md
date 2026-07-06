@@ -7,7 +7,7 @@ mocha runs LLM inference through [Open WebUI](https://openwebui.com/) at `chat.t
 
 ## llama-server
 
-Two `llama-server` instances (from the `llama-cpp-rocm` package) run on the discrete GPU, with the iGPU masked via `ROCR_VISIBLE_DEVICES`. One serves the chat model with flash attention and q4_0 KV cache to fit 32k context in 16 GB VRAM. The other serves bge-m3 embeddings for Hindsight.
+Three `llama-server` instances (from the `llama-cpp-rocm` package) run on the discrete GPU, with the iGPU masked via `ROCR_VISIBLE_DEVICES`. One serves the chat model with flash attention and q4_0 KV cache to fit 32k context in 16 GB VRAM. The other two serve bge-m3 embeddings and bge-reranker-v2-m3 reranking for Hindsight.
 
 ## Open WebUI
 
@@ -15,7 +15,7 @@ Two `llama-server` instances (from the `llama-cpp-rocm` package) run on the disc
 
 ## Hindsight
 
-[Hindsight](https://github.com/vectorize-io/hindsight) provides persistent agent memory backed by pgvector in PostgreSQL. It uses the dedicated bge-m3 llama-server instance for embeddings and routes LLM queries through LiteLLM. The NixOS module comes from `llm-pkgs`.
+[Hindsight](https://github.com/vectorize-io/hindsight) provides persistent agent memory backed by pgvector in PostgreSQL. It uses dedicated llama-server instances for bge-m3 embeddings and bge-reranker-v2-m3 reranking, and routes LLM queries through LiteLLM. The NixOS module comes from `llm-pkgs`.
 
 ## LiteLLM
 

@@ -1,4 +1,10 @@
 {
+  flake.ports = {
+    llama-server-chat = 11434;
+    llama-server-embeddings = 11435;
+    llama-server-reranker = 11436;
+  };
+
   flake.services = {
     # caddy virtual host at <name>.<domain> with A/AAAA dns records
     public = {
@@ -20,6 +26,7 @@
       suwayomi = "mocha";
       pdf = "mocha";
       chat = "mocha";
+      hindsight = "mocha";
       litellm = "mocha";
       fans = "mocha";
       sunshine = "mocha";

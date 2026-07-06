@@ -107,4 +107,8 @@ in
     anish
     mocha
   ];
+  "secrets/hindsight-env.age".publicKeys = [
+    anish
+    mocha
+  ];
 }

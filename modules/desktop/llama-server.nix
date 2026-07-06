@@ -1,6 +1,7 @@
 { config, ... }:
 let
   meta = config.flake.meta;
+  ports = config.flake.ports;
 in
 {
   flake.modules.nixos.llamaServer =
@@ -13,78 +14,71 @@ in
     let
       llama-cpp = pkgs.llama-cpp-rocm;
 
-      chatModel = "huihui-ai/Huihui-gemma-4-12B-it-qat-q4_0-unquantized-abliterated-GGUF";
-      # chatModel = "mradermacher/Qwen3.6-27B-abliterated-rMAX-GGUF:Q3_K_L";
-
-      embeddingsModel = "gpustack/bge-m3-GGUF";
-
-      chatPort = 11434;
-      embeddingsPort = 11435;
-
-      commonEnv = {
-        # pin to the 7800 xt (gfx1101), mask the igpu (gfx1036)
-        ROCR_VISIBLE_DEVICES = "0";
-      };
-
-      commonServiceConfig = {
-        Type = "simple";
-        DynamicUser = true;
-        SupplementaryGroups = [
-          "render"
-          "video"
-        ];
-        Restart = "on-failure";
-        RestartSec = 5;
-      };
+      mkServer =
+        name:
+        {
+          model,
+          port,
+          extraFlags ? [ ],
+          context ? 8192,
+        }:
+        {
+          description = "llama.cpp ${name}";
+          after = [ "network.target" ];
+          wantedBy = [ "multi-user.target" ];
+          environment.ROCR_VISIBLE_DEVICES = "0";
+          serviceConfig = {
+            Type = "simple";
+            DynamicUser = true;
+            SupplementaryGroups = [
+              "render"
+              "video"
+            ];
+            Restart = "on-failure";
+            RestartSec = 5;
+            StateDirectory = "llama-server-${name}";
+            ExecStart = lib.concatStringsSep " " (
+              [
+                "${llama-cpp}/bin/llama-server"
+                "--host 127.0.0.1"
+                "--port ${toString port}"
+                "-hf ${model}"
+                "-c ${toString context}"
+                "-np 1"
+              ]
+              ++ extraFlags
+            );
+            Environment = [
+              "LLAMA_CACHE=/var/lib/llama-server-${name}"
+              "HOME=/var/lib/llama-server-${name}"
+            ];
+          };
+        };
     in
     {
       age.secrets.open-webui-oauth.file = ../../secrets/open-webui-oauth.age;
 
-      systemd.services.llama-server-chat = {
-        description = "llama.cpp chat model";
-        after = [ "network.target" ];
-        wantedBy = [ "multi-user.target" ];
-        environment = commonEnv;
-        serviceConfig = commonServiceConfig // {
-          StateDirectory = "llama-server-chat";
-          ExecStart = lib.concatStringsSep " " [
-            "${llama-cpp}/bin/llama-server"
-            "--host 127.0.0.1"
-            "--port ${toString chatPort}"
-            "-hf ${chatModel}"
-            "--flash-attn on"
-            "--cache-type-k q4_0"
-            "-c 32768"
-            "-np 1"
-          ];
-          Environment = [
-            "LLAMA_CACHE=/var/lib/llama-server-chat"
-            "HOME=/var/lib/llama-server-chat"
-          ];
-        };
+      systemd.services.llama-server-chat = mkServer "chat" {
+        model = "huihui-ai/Huihui-gemma-4-12B-it-qat-q4_0-unquantized-abliterated-GGUF";
+        # model = "mradermacher/Qwen3.6-27B-abliterated-rMAX-GGUF:Q3_K_L";
+        port = ports.llama-server-chat;
+        context = 32768;
+        extraFlags = [
+          "--flash-attn on"
+          "--cache-type-k q4_0"
+        ];
       };
 
-      systemd.services.llama-server-embeddings = {
-        description = "llama.cpp embeddings (bge-m3)";
-        after = [ "network.target" ];
-        wantedBy = [ "multi-user.target" ];
-        environment = commonEnv;
-        serviceConfig = commonServiceConfig // {
-          StateDirectory = "llama-server-embeddings";
-          ExecStart = lib.concatStringsSep " " [
-            "${llama-cpp}/bin/llama-server"
-            "--host 127.0.0.1"
-            "--port ${toString embeddingsPort}"
-            "-hf ${embeddingsModel}"
-            "--embeddings"
-            "-c 8192"
-            "-np 1"
-          ];
-          Environment = [
-            "LLAMA_CACHE=/var/lib/llama-server-embeddings"
-            "HOME=/var/lib/llama-server-embeddings"
-          ];
-        };
+      systemd.services.llama-server-embeddings = mkServer "embeddings" {
+        model = "gpustack/bge-m3-GGUF";
+        port = ports.llama-server-embeddings;
+        extraFlags = [ "--embeddings" ];
+      };
+
+      systemd.services.llama-server-reranker = mkServer "reranker" {
+        model = "gpustack/bge-reranker-v2-m3-GGUF";
+        port = ports.llama-server-reranker;
+        extraFlags = [ "--reranking" ];
       };
 
       services.open-webui = {
@@ -96,7 +90,7 @@ in
           HOME = "/var/lib/open-webui";
           ENABLE_OLLAMA_API = "False";
           ENABLE_OPENAI_API = "True";
-          OPENAI_API_BASE_URLS = "http://127.0.0.1:${toString chatPort}/v1;http://127.0.0.1:4000/v1";
+          OPENAI_API_BASE_URLS = "http://127.0.0.1:${toString ports.llama-server-chat}/v1;http://127.0.0.1:4000/v1";
           OPENAI_API_KEYS = "none;unused";
           WEBUI_URL = "https://chat.${meta.tailnetDomain}";
           ENABLE_OAUTH_SIGNUP = "True";

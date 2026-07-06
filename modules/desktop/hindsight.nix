@@ -1,9 +1,14 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
+let
+  ports = config.flake.ports;
+in
 {
   flake.modules.nixos.hindsight =
     { config, ... }:
     {
       imports = [ inputs.llm-pkgs.nixosModules.hindsight ];
+
+      age.secrets.hindsight-env.file = ../../secrets/hindsight-env.age;
 
       services.postgresApps.hindsight.service = "hindsight";
       services.postgresql.extensions = ps: [ ps.pgvector ];
@@ -33,18 +38,19 @@
 
           # embeddings via local llama-server openai-compatible endpoint
           HINDSIGHT_API_EMBEDDINGS_PROVIDER = "openai";
-          HINDSIGHT_API_EMBEDDINGS_OPENAI_BASE_URL = "http://127.0.0.1:11435/v1";
+          HINDSIGHT_API_EMBEDDINGS_OPENAI_BASE_URL = "http://127.0.0.1:${toString ports.llama-server-embeddings}/v1";
           HINDSIGHT_API_EMBEDDINGS_OPENAI_MODEL = "bge-m3";
           HINDSIGHT_API_EMBEDDINGS_OPENAI_API_KEY = "none";
 
-          # the slim build ships no local reranker
-          HINDSIGHT_API_RERANKER_PROVIDER = "none";
+          HINDSIGHT_API_RERANKER_PROVIDER = "litellm";
+          HINDSIGHT_API_RERANKER_BASE_URL = "http://127.0.0.1:${toString ports.llama-server-reranker}";
 
-          # llm through the litellm proxy; set HINDSIGHT_API_LLM_MODEL and add a
-          # litellm key via environmentFile once claude is wired into cliproxyapi
+          # api key set via environmentFile
           HINDSIGHT_API_LLM_PROVIDER = "litellm";
           HINDSIGHT_API_LLM_BASE_URL = "http://127.0.0.1:4000";
+          HINDSIGHT_API_AUDIT_LOG_ENABLED = "true";
         };
+        environmentFile = config.age.secrets.hindsight-env.path;
       };
 
       services.webProxy.sites.hindsight = "reverse_proxy http://127.0.0.1:9999";
