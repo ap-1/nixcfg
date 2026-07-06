@@ -27,7 +27,6 @@
       homebrew = {
         enable = true;
         onActivation.cleanup = "none";
-        casks = [ "zed" ];
       };
 
       # The platform the configuration will be used on.
