@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, inputs, ... }:
 let
   meta = config.flake.meta;
 in
@@ -11,6 +11,8 @@ in
       ...
     }:
     {
+      imports = [ inputs.nix-index-database.homeModules.nix-index ];
+
       home.packages = with pkgs; [
         devenv
         license-go
@@ -52,6 +54,13 @@ in
         enable = true;
         enableZshIntegration = true;
       };
+
+      programs.nix-index = {
+        enable = true;
+        # pay-respects owns command_not_found_handler
+        enableZshIntegration = false;
+      };
+      programs.nix-index-database.comma.enable = true;
 
       programs.direnv = {
         enable = true;
