@@ -10,6 +10,10 @@ This config uses [Catppuccin Mocha](https://catppuccin.com/) (mauve accent) as t
 - Monospace font (FiraCode Nerd Font Mono)
 - Starship (`catppuccin/nix`'s starship module uses IFD via `lib.importTOML`)
 
+## Neovim
+
+Neovim opts out of `catppuccin/nix` in favor of managing theming natively via [`vim.pack`](https://neovim.io/doc/user/pack/).
+
 ## Spicetify
 
 Spicetify uses the native Catppuccin theme bundled in [spicetify-nix](https://github.com/Gerg-L/spicetify-nix).

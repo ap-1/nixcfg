@@ -9,5 +9,6 @@
 - [Secrets](docs/secrets.md)
 - [Theming](docs/theming.md)
 - [Desktop](docs/desktop.md)
+- [Neovim](docs/neovim.md)
 - [Inference](docs/inference.md)
 - [Gaming](docs/gaming.md)

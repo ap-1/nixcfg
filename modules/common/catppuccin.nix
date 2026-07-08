@@ -15,7 +15,6 @@
       ghostty.enable = true;
       hyprland.enable = true;
       mangohud.enable = true;
-      nvim.enable = true;
       rofi.enable = true;
       tmux.enable = true;
       yazi.enable = true;

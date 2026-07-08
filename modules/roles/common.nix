@@ -23,6 +23,7 @@
         tailscale
         web-proxy
         nix-settings
+        neovim
       ])
       ++ [
         inputs.srvos.nixosModules.mixins-terminfo
@@ -47,6 +48,7 @@
         gpg
         tailscale
         nix-settings
+        neovim
       ])
       ++ [
         inputs.srvos.darwinModules.mixins-terminfo

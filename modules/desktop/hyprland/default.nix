@@ -6,12 +6,7 @@
       extraConfig = builtins.readFile ./hyprland.lua;
     };
 
-    xdg.configFile."hypr/modules/wl-kbptr.lua".source = ./modules/wl-kbptr.lua;
-    xdg.configFile."hypr/modules/media-keys.lua".source = ./modules/media-keys.lua;
-    xdg.configFile."hypr/modules/monitors.lua".source = ./modules/monitors.lua;
-    xdg.configFile."hypr/modules/autostart.lua".source = ./modules/autostart.lua;
-    xdg.configFile."hypr/modules/window-rules.lua".source = ./modules/window-rules.lua;
-    xdg.configFile."hypr/modules/capture.lua".source = ./modules/capture.lua;
+    xdg.configFile."hypr/modules".source = ./modules;
     xdg.configFile."wl-kbptr/config".source = ./wl-kbptr.conf;
 
     # enabled manually for catppuccin
