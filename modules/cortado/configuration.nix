@@ -27,6 +27,7 @@
       homebrew = {
         enable = true;
         onActivation.cleanup = "none";
+        casks = [ "bluebubbles" ];
       };
 
       # The platform the configuration will be used on.

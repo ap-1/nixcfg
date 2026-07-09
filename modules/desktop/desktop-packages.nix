@@ -38,6 +38,7 @@
           rustup
         ]
         ++ lib.optionals stdenv.isLinux [
+          bluebubbles
           prismlauncher
           foot # linux terminal emulator
           libnotify

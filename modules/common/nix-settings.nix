@@ -24,6 +24,7 @@
           "steam-unwrapped"
           "tetrio-desktop"
           "open-webui"
+          "objectbox-linux" # bluebubbles
         ];
     };
 
