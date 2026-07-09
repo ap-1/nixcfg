@@ -60,57 +60,6 @@
             }
           );
         })
-        # `llvmPackages_18.compiler-rt-libc` fails on Darwin because the Apple
-        # SDK bump to libcxx 21 dropped clang-18 fallbacks for
-        # `__builtin_ctzg`/`__builtin_clzg`, so the C++ components of
-        # compiler-rt 18 no longer compile. Mirror the fix from PR #523142.
-        # https://github.com/NixOS/nixpkgs/pull/523142
-        (_: prev: {
-          llvmPackages_18 = prev.llvmPackages_18.overrideScope (
-            _: lsuper: {
-              compiler-rt-libc = lsuper.compiler-rt-libc.overrideAttrs (old: {
-                cmakeFlags = (old.cmakeFlags or [ ]) ++ [
-                  "-DCOMPILER_RT_BUILD_XRAY:BOOL=OFF"
-                  "-DCOMPILER_RT_BUILD_LIBFUZZER:BOOL=OFF"
-                  "-DCOMPILER_RT_BUILD_MEMPROF:BOOL=OFF"
-                  "-DCOMPILER_RT_BUILD_ORC:BOOL=OFF"
-                ];
-              });
-            }
-          );
-        })
-        # bitwarden-desktop's build calls macOS `security` during electron-builder's
-        # code-signing pass (for the hardcoded provisioning profile reference),
-        # which isn't available in the Nix sandbox. Substitute the upstream signed
-        # DMG until nixpkgs lands a fix.
-        # https://github.com/NixOS/nixpkgs/issues/526914
-        (_: prev: {
-          bitwarden-desktop = prev.stdenvNoCC.mkDerivation {
-            pname = "bitwarden-desktop";
-            version = "2026.5.0";
-            src = prev.fetchurl {
-              url = "https://github.com/bitwarden/clients/releases/download/desktop-v2026.5.0/Bitwarden-2026.5.0-universal.dmg";
-              hash = "sha256-THP1ro+VmWQ57JbIy1wS7vAdZnz4v746VKYrJrduZOM=";
-            };
-            nativeBuildInputs = [ prev.undmg ];
-            sourceRoot = ".";
-            installPhase = ''
-              mkdir -p $out/Applications $out/bin
-              cp -R Bitwarden.app $out/Applications/
-              ln -s $out/Applications/Bitwarden.app/Contents/MacOS/Bitwarden $out/bin/bitwarden
-            '';
-            meta = with prev.lib; {
-              description = "Bitwarden desktop client";
-              homepage = "https://bitwarden.com";
-              license = licenses.gpl3;
-              mainProgram = "bitwarden";
-              platforms = [
-                "x86_64-darwin"
-                "aarch64-darwin"
-              ];
-            };
-          };
-        })
       ];
     };
 }
