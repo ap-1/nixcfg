@@ -656,11 +656,11 @@
     },
     "nixpkgs-sunshine": {
       "locked": {
-        "lastModified": 1781926719,
-        "narHash": "sha256-39LubRvKmdG0CbA+EnRo2pGX57dmuZU3OENVMcacGZM=",
+        "lastModified": 1783576106,
+        "narHash": "sha256-SbystgU11IqK2BOKyW/0og2MsPX4A1nGKjEs8alfxvI=",
         "owner": "ap-1",
         "repo": "nixpkgs",
-        "rev": "c2e8ea8085652348daf2209711a44160fda157e9",
+        "rev": "ae4b9cb233697b8ba052a337ab111f2d10cb2b0b",
         "type": "github"
       },
       "original": {
