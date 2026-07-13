@@ -29,3 +29,7 @@ Slack uses a 4-color Catppuccin Mocha theme string (`#1E1E2E,#CBA6F7,#A6E3A1,#EB
 ## wl-kbptr
 
 [wl-kbptr](https://github.com/moverest/wl-kbptr) uses a hand-mapped Catppuccin Mocha palette in its config: base and crust for backgrounds, mauve for borders, text and yellow for labels, green and red for split directions, and overlay0 for history borders.
+
+## Firefox
+
+Firefox's chrome and content are styled by [gwfox](https://github.com/akkva/gwfox), applied through its `userChrome.css` and `userContent.css`.

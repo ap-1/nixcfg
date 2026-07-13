@@ -69,7 +69,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gwfox = {
-      url = "github:akkva/gwfox/42fb1a2310e64126054f8f95f7b27cc3ce1ccd87";
+      url = "github:akkva/gwfox/2bd70d4142737c70832e44d742ed97a49c026f03";
       flake = false;
     };
     xdg-termfilepickers = {
