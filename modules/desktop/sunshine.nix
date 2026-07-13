@@ -9,6 +9,11 @@
       package = inputs.nixpkgs-sunshine.legacyPackages.${pkgs.stdenv.hostPlatform.system}.sunshine;
     };
 
+    programs.moonlight-qt = {
+      enable = true;
+      capSysNice = true;
+    };
+
     services.webProxy.sites.sunshine = ''
       reverse_proxy https://127.0.0.1:47990 {
         transport http {
@@ -46,7 +51,7 @@
     environment.systemPackages = [ pkgs.sunshine ];
   };
 
-  flake.modules.homeManager.sunshine = { pkgs, ... }: {
-    home.packages = [ pkgs.moonlight-qt ];
+  flake.modules.homeManager.sunshine = { pkgs, lib, ... }: {
+    home.packages = lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ pkgs.moonlight-qt ];
   };
 }
