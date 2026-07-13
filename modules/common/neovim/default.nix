@@ -27,7 +27,7 @@
 
           # linters
           markdownlint-cli2
-          # snapshot tests broken upstream on this pin
+          # TODO: snapshot tests broken upstream on this pin
           (statix.overrideAttrs (_: {
             doCheck = false;
           }))
