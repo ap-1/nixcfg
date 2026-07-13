@@ -13,12 +13,14 @@ in
     {
       imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
-      home.packages = with pkgs; [
-        devenv
+      home.packages = [
+        inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.devenv
+      ]
+      ++ (with pkgs; [
         license-go
         pfetch
         tree
-      ];
+      ]);
 
       # enabled manually for catppuccin
       programs.bat.enable = true;
