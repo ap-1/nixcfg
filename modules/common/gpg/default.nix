@@ -24,10 +24,29 @@ let
       cargoCheckFeatures = [ "crypto-openssl" ];
     });
   };
+
+  # crypto-rust backend and a bumped lock pull sequoia-openpgp 2.4, so gpg-sq handles pqc keys
+  chameleonPqcOverlay = _: prev: {
+    sequoia-chameleon-gnupg = prev.sequoia-chameleon-gnupg.overrideAttrs (old: {
+      nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ prev.capnproto ];
+      cargoDeps = prev.rustPlatform.importCargoLock {
+        lockFile = ./Cargo.lock;
+      };
+      postPatch = (old.postPatch or "") + ''
+        cp ${./Cargo.lock} Cargo.lock
+      '';
+      cargoBuildNoDefaultFeatures = true;
+      cargoBuildFeatures = [
+        "sequoia-openpgp/crypto-rust"
+        "sequoia-openpgp/allow-experimental-crypto"
+        "sequoia-openpgp/allow-variable-time-crypto"
+      ];
+    });
+  };
 in
 {
-  flake.modules.nixos.gpg.nixpkgs.overlays = [ sqPqcOverlay ];
-  flake.modules.darwin.gpg.nixpkgs.overlays = [ sqPqcOverlay ];
+  flake.modules.nixos.gpg.nixpkgs.overlays = [ sqPqcOverlay chameleonPqcOverlay ];
+  flake.modules.darwin.gpg.nixpkgs.overlays = [ sqPqcOverlay chameleonPqcOverlay ];
 
   flake.modules.homeManager.gpg =
     { pkgs, ... }:

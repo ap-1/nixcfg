@@ -9,7 +9,8 @@
       (with config.flake.modules.homeManager; [
         zed-editor
         firefox
-        # spicetify # snapcraft CDN 503
+        mailvelope-gnupg
+        spicetify
         discord
         desktop-packages
         sunshine
