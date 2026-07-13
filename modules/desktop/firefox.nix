@@ -47,6 +47,7 @@
               # Misc
               bitwarden
               pay-by-privacy
+              mailvelope
             ];
           };
 
