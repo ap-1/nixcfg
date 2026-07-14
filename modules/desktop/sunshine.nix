@@ -1,4 +1,8 @@
-{ inputs, ... }: {
+{ inputs, config, ... }:
+let
+  meta = config.flake.meta;
+in
+{
   flake.modules.nixos.sunshine = { pkgs, ... }: {
     services.sunshine = {
       enable = true;
@@ -6,6 +10,7 @@
       capSysAdmin = true; # Wayland/Hyprland screen capture
       openFirewall = true;
       settings.key_rightalt_to_key_win = "enabled";
+      settings.csrf_allowed_origins = "https://sunshine.${meta.tailnetDomain}";
       package = inputs.nixpkgs-sunshine.legacyPackages.${pkgs.stdenv.hostPlatform.system}.sunshine;
     };
 
