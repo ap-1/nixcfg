@@ -9,7 +9,6 @@
       (with config.flake.modules.homeManager; [
         zed-editor
         firefox
-        mailvelope-gnupg
         spicetify
         discord
         desktop-packages
