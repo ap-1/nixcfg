@@ -48,9 +48,7 @@
             discord-development
             ;
         })
-        # `darwin.PowerManagement` ships a stale `xcodeHash`, so
-        # `system-applications` (caffeinate) fails its post-unpack hash check.
-        # https://github.com/NixOS/nixpkgs/pull/541649
+        # TODO: https://github.com/NixOS/nixpkgs/pull/541649
         (_: prev: {
           darwin = prev.darwin.overrideScope (
             _: dsuper: {
