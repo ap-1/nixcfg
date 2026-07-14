@@ -50,7 +50,7 @@
         })
         # `darwin.PowerManagement` ships a stale `xcodeHash`, so
         # `system-applications` (caffeinate) fails its post-unpack hash check.
-        # https://github.com/NixOS/nixpkgs/blob/nixos-26.05/pkgs/os-specific/darwin/by-name/po/PowerManagement/package.nix
+        # https://github.com/NixOS/nixpkgs/pull/541649
         (_: prev: {
           darwin = prev.darwin.overrideScope (
             _: dsuper: {
@@ -60,6 +60,29 @@
             }
           );
         })
+        # ld64's libc++ hardening asserts (Trace/BPT trap: 5) on real links under macOS 26+; route
+        # affected packages through lld until NixOS/nixpkgs#536365 disables that hardening upstream.
+        (final: prev:
+          let
+            useLld =
+              pkg:
+              pkg.overrideAttrs (old: {
+                nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ final.lld ];
+                env = (old.env or { }) // {
+                  NIX_CFLAGS_LINK = ((old.env or { }).NIX_CFLAGS_LINK or "") + " -fuse-ld=lld";
+                };
+              });
+          in
+          {
+            moonlight-qt = useLld prev.moonlight-qt;
+            lima = useLld prev.lima;
+            colima = useLld prev.colima;
+            sunshine = useLld prev.sunshine;
+            proxmark3 = useLld prev.proxmark3;
+            bitwarden-desktop = useLld prev.bitwarden-desktop;
+            zed-editor = useLld prev.zed-editor;
+          }
+        )
       ];
     };
 }
