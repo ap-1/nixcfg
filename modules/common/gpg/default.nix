@@ -22,6 +22,18 @@ let
       cargoBuildFeatures = [ "crypto-openssl" ];
       cargoCheckNoDefaultFeatures = true;
       cargoCheckFeatures = [ "crypto-openssl" ];
+      # upstream's fixed /tmp asset dir collides between unsandboxed darwin build users
+      preBuild = (old.preBuild or "") + ''
+        export ASSET_OUT_DIR="$NIX_BUILD_TOP/sq-assets/"
+        mkdir -p "$ASSET_OUT_DIR"
+      '';
+      postInstall = ''
+        installManPage "$ASSET_OUT_DIR"/man-pages/*.*
+        installShellCompletion --cmd sq \
+          --bash "$ASSET_OUT_DIR"/shell-completions/sq.bash \
+          --fish "$ASSET_OUT_DIR"/shell-completions/sq.fish \
+          --zsh "$ASSET_OUT_DIR"/shell-completions/_sq
+      '';
     });
   };
 
