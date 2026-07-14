@@ -1,40 +1,15 @@
+{ inputs, ... }:
 let
+  # nixpkgs sequoia-sq uses the pqc-less nettle backend; pull the pending 1.4.0 PR branch and build on openssl
   sqPqcOverlay = _: prev: {
-    sequoia-sq = prev.sequoia-sq.overrideAttrs (old: {
-      version = "1.4.0-pqc.1";
-      src = prev.fetchFromGitLab {
-        owner = "sequoia-pgp";
-        repo = "sequoia-sq";
-        tag = "v1.4.0-pqc.1";
-        hash = "sha256-ep3il5In0ecyNWHvCo0yh4yL92VTy3/FligzKkY+SJQ=";
-      };
-      cargoDeps = prev.rustPlatform.fetchCargoVendor {
-        name = "sequoia-sq-1.4.0-pqc.1-vendor";
-        src = prev.fetchFromGitLab {
-          owner = "sequoia-pgp";
-          repo = "sequoia-sq";
-          tag = "v1.4.0-pqc.1";
-          hash = "sha256-ep3il5In0ecyNWHvCo0yh4yL92VTy3/FligzKkY+SJQ=";
-        };
-        hash = "sha256-NYUYQCKG4XWchvuEzzAD+R25Wk0YrHN4ISVtQnhPkcM=";
-      };
-      cargoBuildNoDefaultFeatures = true;
-      cargoBuildFeatures = [ "crypto-openssl" ];
-      cargoCheckNoDefaultFeatures = true;
-      cargoCheckFeatures = [ "crypto-openssl" ];
-      # upstream's fixed /tmp asset dir collides between unsandboxed darwin build users
-      preBuild = (old.preBuild or "") + ''
-        export ASSET_OUT_DIR="$NIX_BUILD_TOP/sq-assets/"
-        mkdir -p "$ASSET_OUT_DIR"
-      '';
-      postInstall = ''
-        installManPage "$ASSET_OUT_DIR"/man-pages/*.*
-        installShellCompletion --cmd sq \
-          --bash "$ASSET_OUT_DIR"/shell-completions/sq.bash \
-          --fish "$ASSET_OUT_DIR"/shell-completions/sq.fish \
-          --zsh "$ASSET_OUT_DIR"/shell-completions/_sq
-      '';
-    });
+    sequoia-sq =
+      inputs.nixpkgs-sequoia.legacyPackages.${prev.stdenv.hostPlatform.system}.sequoia-sq.overrideAttrs
+        (_: {
+          cargoBuildNoDefaultFeatures = true;
+          cargoBuildFeatures = [ "crypto-openssl" ];
+          cargoCheckNoDefaultFeatures = true;
+          cargoCheckFeatures = [ "crypto-openssl" ];
+        });
   };
 
   # crypto-rust backend and a bumped lock pull sequoia-openpgp 2.4, so gpg-sq handles pqc keys
