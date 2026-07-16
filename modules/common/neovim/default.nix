@@ -31,6 +31,7 @@
           (statix.overrideAttrs (_: {
             doCheck = false;
           }))
+          deadnix
           yamllint
           editorconfig-checker
         ];

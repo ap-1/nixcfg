@@ -2,7 +2,7 @@ local lint = require("lint")
 
 lint.linters_by_ft = {
 	markdown = { "markdownlint-cli2" },
-	nix = { "statix" },
+	nix = { "statix", "deadnix" },
 	yaml = { "yamllint" },
 }
 
