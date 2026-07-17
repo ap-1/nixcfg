@@ -18,7 +18,7 @@ in
       ]
       ++ (with pkgs; [
         license-go
-        pfetch
+        microfetch
         tree
       ]);
 
@@ -47,7 +47,7 @@ in
             export NIX_CONFIG="access-tokens = github.com=$(${lib.getExe pkgs.gh} auth token 2>/dev/null)"
           '')
           ''
-            pfetch
+            microfetch
           ''
         ];
       };
