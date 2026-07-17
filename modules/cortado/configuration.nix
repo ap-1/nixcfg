@@ -48,16 +48,6 @@
             discord-development
             ;
         })
-        # TODO: https://github.com/NixOS/nixpkgs/pull/541649
-        (_: prev: {
-          darwin = prev.darwin.overrideScope (
-            _: dsuper: {
-              PowerManagement = dsuper.PowerManagement.overrideAttrs (_: {
-                xcodeHash = "sha256-8dASJnzc7yZ4LNbanNjWuCoJunxAz/7R1Ulj/zOrkkI=";
-              });
-            }
-          );
-        })
         # ld64's libc++ hardening asserts (Trace/BPT trap: 5) on real links under macOS 26+; route
         # affected packages through lld until NixOS/nixpkgs#536365 disables that hardening upstream.
         (final: prev:
