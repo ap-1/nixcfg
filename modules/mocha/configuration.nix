@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake.modules.nixos.mocha-configuration = { pkgs, ... }: {
     # Use the systemd-boot EFI boot loader.
@@ -10,6 +11,10 @@
       "amd_pstate=active"
       "amdgpu.dc=1"
     ];
+
+    # CachyOS kernel (LTO, znver4-tuned)
+    nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ];
+    boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
 
     # Btrfs optimizations
     fileSystems."/".options = [

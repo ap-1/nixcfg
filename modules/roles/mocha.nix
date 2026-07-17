@@ -17,7 +17,6 @@
       mocha-networking
       mocha-memory
       media-server
-      cachyos-kernel
     ];
   };
 }
