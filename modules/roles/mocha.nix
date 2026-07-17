@@ -17,6 +17,7 @@
       mocha-networking
       mocha-memory
       media-server
+      ncro
     ];
   };
 }

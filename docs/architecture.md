@@ -45,6 +45,10 @@ affogato's root filesystem is a tmpfs, recreated empty on every boot; only the `
 
 Applications that need PostgreSQL share one local instance per host, each declaring its database through a shared module that provisions the database and its role. Every database is dumped nightly.
 
+## Binary caches
+
+The NixOS hosts route all substitution through [ncro](https://github.com/feel-co/ncro) (shared `ncro` module), a local cache optimizer on `localhost:5000` forced as the sole substituter. Its upstreams and their signing keys are defined in that module; cortado (darwin) uses direct substituters.
+
 ## Deploying
 
 Each host is built locally with `nh os switch ~/nixcfg` (aliased to `update`).
