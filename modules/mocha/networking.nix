@@ -20,6 +20,13 @@ in
 
     services.tailscale.authKeyFile = config.age.secrets.headscale-authkey-mocha.path;
 
+    # mosh: durable, roaming-resilient shell into this box, exposed tailnet-only
+    programs.mosh.enable = true;
+    programs.mosh.openFirewall = false;
+    networking.firewall.interfaces.tailscale0.allowedUDPPortRanges = [
+      { from = 60000; to = 61000; }
+    ];
+
     age.secrets.cloudflare-dns.file = ../../secrets/cloudflare-dns.age;
 
     services.webProxy = {

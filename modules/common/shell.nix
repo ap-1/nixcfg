@@ -24,7 +24,15 @@ in
 
       # enabled manually for catppuccin
       programs.bat.enable = true;
-      programs.tmux.enable = true;
+      programs.tmux = {
+        enable = true;
+        mouse = true;
+        historyLimit = 50000;
+        extraConfig = ''
+          set -g set-clipboard on
+          set -as terminal-features ',*:clipboard'
+        '';
+      };
 
       programs.eza = {
         enable = true;
