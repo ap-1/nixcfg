@@ -163,11 +163,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783674541,
-        "narHash": "sha256-vmUhEF/jBCZJeK0dInOls+HOAR0yiiQusN1+FZKaJss=",
+        "lastModified": 1784366307,
+        "narHash": "sha256-VKatYOZwLQ+MuNkWH6/gZYxrNeSK1Mqb7mC0H1WSu+M=",
         "owner": "catppuccin",
         "repo": "nix",
-        "rev": "96799f24cf1366fe88e1293c3d27521a8f2129cf",
+        "rev": "673f730d0fc8db3468c51575f1d3d777cc55e51f",
         "type": "github"
       },
       "original": {
@@ -229,11 +229,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1784295025,
-        "narHash": "sha256-BcLx1u46dS81qO3Vpm6xqebbtWKDcBcPeQtD3ClEmkY=",
+        "lastModified": 1784325378,
+        "narHash": "sha256-Gof6j4d43yX2qSLLp78JILke346IggDFIxTgl3ecVQE=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "46adb0ff57f6ec39b80497cc01ed261a699b3eac",
+        "rev": "5f1cf17be0fc48689bd0ecb810de6d2e06d259a1",
         "type": "github"
       },
       "original": {
@@ -271,11 +271,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1784260973,
-        "narHash": "sha256-IMXGG7aDpVutpujfNZncXcmW3x6ghuplk9+a+NUacBg=",
+        "lastModified": 1784402804,
+        "narHash": "sha256-NKjHErNuyO2x+YBUNOJy/8uKXfuMX60SLFuvZiMYdA8=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "2e2eb0656979f276904506839505f3d8fc2cdba0",
+        "rev": "775bd8e526823ab58efe5d1fc269f2a60c3de2c1",
         "type": "gitlab"
       },
       "original": {
@@ -564,11 +564,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784129366,
-        "narHash": "sha256-N5JiyICSeQF14x+OQebNyPpYowOT9Rs1iKyeCylSzOA=",
+        "lastModified": 1784407317,
+        "narHash": "sha256-iZrxHToDJWnvt+5LGAtvuQMTy1NZYlNEKbKaVtBJNcc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "165228b0efefc3e635e5174020c40ea64271dc25",
+        "rev": "39411a8e12a5526d992e65bc7e3dc9a4414d6713",
         "type": "github"
       },
       "original": {
@@ -600,11 +600,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1783304727,
-        "narHash": "sha256-gWftfFN6vftvgneZX/+IktXG2vkEWnRJuQV4TqEFMwY=",
+        "lastModified": 1784429314,
+        "narHash": "sha256-EKeHhuseAnK8qrn9zbJrUaqMucsJiIo6Ix6enLaygaY=",
         "ref": "refs/heads/main",
-        "rev": "ccd3418b26a5860b6f3cef47b363a791b492a1ff",
-        "revCount": 6,
+        "rev": "1957a4747a8be8c661ad44ed586ff99ab020354f",
+        "revCount": 7,
         "type": "git",
         "url": "https://codeberg.org/anish/llm-pkgs"
       },
@@ -637,11 +637,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783826614,
-        "narHash": "sha256-PqiRM0YBYeXt7YdSgoPC01GCWEV0sH9Lo8TPZNhekME=",
+        "lastModified": 1784397253,
+        "narHash": "sha256-v5MKY9pDJcaO8z073l2xFCvNoY0dxNS1zKQqCzORXEo=",
         "owner": "moonlight-mod",
         "repo": "moonlight",
-        "rev": "b609b754e566462e860e8ba5e8ce9919d793724f",
+        "rev": "77758863bd9bb52163d43ab0d7f95407b67afeae",
         "type": "github"
       },
       "original": {
@@ -658,11 +658,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784186642,
-        "narHash": "sha256-kuPuc2BwdZhD+rVr8FbJUBbbtwAiqdX3KmHB4RNr810=",
+        "lastModified": 1784380934,
+        "narHash": "sha256-pX3U0iMHbZ2C5IeDnc7IcMKZKQFvMBD/1K0C7MHwCc8=",
         "owner": "cmspam",
         "repo": "mt7927-nixos",
-        "rev": "ec7aad6ef033bf2262d7ee5bf602bb5f17e69404",
+        "rev": "4563174e7623ed6fbd8b93b4b3c7881cd7df2c7b",
         "type": "github"
       },
       "original": {
@@ -916,22 +916,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-sequoia": {
-      "locked": {
-        "lastModified": 1783998326,
-        "narHash": "sha256-B8B77dOeKa0+6J8sH6KKLMp8qRpSnzj78LbdD4CISt4=",
-        "owner": "ap-1",
-        "repo": "nixpkgs",
-        "rev": "c2350040b90be1daa6dd40bc8502d0b72423c716",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ap-1",
-        "ref": "sequoia",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-src": {
       "flake": false,
       "locked": {
@@ -983,11 +967,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1784120854,
-        "narHash": "sha256-KesHgItiZPgGX740axSiQLcIQ8D24MDqNpkKYWIek8k=",
+        "lastModified": 1784356753,
+        "narHash": "sha256-12KrbMiWLcf8m7pCvAtZh1ZrgF85ZXDXvfR/fWTKy84=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "753cc8a3a87467296ddd1fa93f0cc3e81120ee46",
+        "rev": "61b7c44c4073f0b827768aff0049561b5110ea5a",
         "type": "github"
       },
       "original": {
@@ -1045,11 +1029,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784271946,
-        "narHash": "sha256-NPuFeW+TKeLHU29Apapj1UdPkMXAS049NMCTxztJ8zI=",
+        "lastModified": 1784415854,
+        "narHash": "sha256-PShHg/pFS4owK770E5HLOEViJNWl51hcEPNUO7edk2w=",
         "ref": "refs/heads/main",
-        "rev": "47e24e8b8484656f1ec72ec216a28132e97734b2",
-        "revCount": 277,
+        "rev": "93a71a0ab703bfb44bef2645a45dba120560877c",
+        "revCount": 286,
         "type": "git",
         "url": "https://git.molez.org/mandlm/omp-nix"
       },
@@ -1094,7 +1078,6 @@
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-discord": "nixpkgs-discord",
-        "nixpkgs-sequoia": "nixpkgs-sequoia",
         "nixpkgs-sunshine": "nixpkgs-sunshine",
         "omp-nix": "omp-nix",
         "preservation": "preservation",
@@ -1359,11 +1342,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780220602,
-        "narHash": "sha256-eynAfOmbmxJnkp7YewvCEbShNnnYJ9gLLqkzsYtBPeM=",
+        "lastModified": 1784369104,
+        "narHash": "sha256-47cxbcZODibHv3rELFQ9vZly0vUNkND/atn/U7HLeb0=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "db947814a175b7ca6ded66e21383d938df01c227",
+        "rev": "df3c0640565d04a0261253cdd89fce78ec50168a",
         "type": "github"
       },
       "original": {

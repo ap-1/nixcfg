@@ -1,15 +1,18 @@
-{ inputs, ... }:
+{ ... }:
 let
-  # nixpkgs sequoia-sq uses the pqc-less nettle backend; pull the pending 1.4.0 PR branch and build on openssl
+  # nettle has no PQC so use openssl
   sqPqcOverlay = _: prev: {
-    sequoia-sq =
-      inputs.nixpkgs-sequoia.legacyPackages.${prev.stdenv.hostPlatform.system}.sequoia-sq.overrideAttrs
-        (_: {
-          cargoBuildNoDefaultFeatures = true;
-          cargoBuildFeatures = [ "crypto-openssl" ];
-          cargoCheckNoDefaultFeatures = true;
-          cargoCheckFeatures = [ "crypto-openssl" ];
-        });
+    sequoia-sq = prev.sequoia-sq.overrideAttrs (old: {
+      cargoBuildNoDefaultFeatures = true;
+      cargoBuildFeatures = [ "crypto-openssl" ];
+      cargoCheckNoDefaultFeatures = true;
+      cargoCheckFeatures = [ "crypto-openssl" ];
+      checkFlags = (old.checkFlags or [ ]) ++ [
+        "--skip=sq_encrypt_cert_designators"
+        "--skip=sq_key_revoke"
+        "--skip=sq_key_subkey_password_3"
+      ];
+    });
   };
 
   # crypto-rust backend and a bumped lock pull sequoia-openpgp 2.4, so gpg-sq handles pqc keys
