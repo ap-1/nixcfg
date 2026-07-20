@@ -17,6 +17,11 @@ in
         license-go
         microfetch
         tree
+        sesh
+        fzf
+        mosh
+        (writeShellScriptBin "dev" (builtins.readFile ./dev.sh))
+        (writeShellScriptBin "dev-run" (builtins.readFile ./dev-run.sh))
       ];
 
       programs.devenv = {
@@ -27,6 +32,10 @@ in
 
       # enabled manually for catppuccin
       programs.bat.enable = true;
+      programs.fzf = {
+        enable = true;
+        enableZshIntegration = false;
+      };
       programs.tmux = {
         enable = true;
         mouse = true;

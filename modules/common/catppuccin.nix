@@ -12,6 +12,7 @@
       dunst.enable = true;
       eza.enable = true;
       foot.enable = true;
+      fzf.enable = true;
       ghostty.enable = true;
       hyprland.enable = true;
       mangohud.enable = true;
