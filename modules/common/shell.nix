@@ -13,14 +13,17 @@ in
     {
       imports = [ inputs.nix-index-database.homeModules.nix-index ];
 
-      home.packages = [
-        inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.devenv
-      ]
-      ++ (with pkgs; [
+      home.packages = with pkgs; [
         license-go
         microfetch
         tree
-      ]);
+      ];
+
+      programs.devenv = {
+        enable = true;
+        enableZshIntegration = true;
+        package = inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.devenv;
+      };
 
       # enabled manually for catppuccin
       programs.bat.enable = true;
@@ -72,17 +75,9 @@ in
       };
       programs.nix-index-database.comma.enable = true;
 
-      programs.direnv = {
-        enable = true;
-        silent = true;
-        nix-direnv.enable = true;
-        enableZshIntegration = true;
-      };
-
       programs.starship = {
         enable = true;
         enableZshIntegration = true;
-        settings.direnv.disabled = false;
       };
 
       programs.zoxide = {

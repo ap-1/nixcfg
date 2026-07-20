@@ -26,7 +26,6 @@
       mutableUserSettings = false;
       userSettings = {
         vim_mode = true;
-        load_direnv = "shell_hook";
         base_keymap = "VSCode";
       };
     };
