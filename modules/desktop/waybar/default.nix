@@ -20,6 +20,7 @@
           "gamemode"
           "privacy"
           "wireplumber"
+          "bluetooth"
           "network"
           "clock"
           "tray"
@@ -50,6 +51,17 @@
           format = "vol {volume}%";
           format-muted = "vol muted";
           on-click = "pkill wiremix || foot --app-id=wiremix -e wiremix";
+        };
+
+        bluetooth = {
+          format = "bt";
+          format-off = "bt off";
+          format-disabled = "";
+          format-connected = "bt {num_connections}";
+          tooltip-format = "{controller_alias}";
+          tooltip-format-connected = "{device_enumerate}";
+          tooltip-format-enumerate-connected = "{device_alias}";
+          on-click = "pkill bluetui || foot --app-id=bluetui -e bluetui";
         };
 
         network = {

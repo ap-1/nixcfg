@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.modules.homeManager.stylix = { pkgs, ... }: {
+  flake.modules.homeManager.stylix = { pkgs, lib, ... }: {
     imports = [ inputs.stylix.homeModules.stylix ];
 
     stylix = {
@@ -20,5 +20,8 @@
 
       targets.starship.enable = true;
     };
+
+    # home-manager needs home.pointerCursor with explicit .enable
+    home.pointerCursor.enable = lib.mkIf pkgs.stdenv.hostPlatform.isLinux true;
   };
 }

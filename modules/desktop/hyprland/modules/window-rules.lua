@@ -4,6 +4,7 @@
 hl.window_rule({ match = { class = "yazi" }, float = true })
 hl.window_rule({ match = { class = "wiremix" }, float = true })
 hl.window_rule({ match = { class = "impala" }, float = true })
+hl.window_rule({ match = { class = "bluetui" }, float = true })
 
 -- Always open Roblox in fullscreen
 hl.window_rule({ match = { class = "^(org.vinegarhq.Sober)$" }, fullscreen = true })
