@@ -2,6 +2,7 @@
   flake.modules.homeManager.zed-editor = { pkgs, ... }: {
     programs.zed-editor = {
       enable = true;
+      installRemoteServer = true;
       extensions = [
         "nix"
         "ini"
