@@ -37,6 +37,7 @@
           jujutsu
           bitwarden-desktop
           rustup
+          elan
         ]
         ++ lib.optionals stdenv.isLinux [
           bluebubbles

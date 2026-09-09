@@ -7,7 +7,6 @@
       typst
       bun
       uv
-      elan
       openbao
       ffmpeg-headless
       yt-dlp
