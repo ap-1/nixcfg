@@ -11,6 +11,7 @@
         "typst"
         "terraform"
         "swift"
+        "lean4"
         "svelte"
         "toml"
         "oxc"
