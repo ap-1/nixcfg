@@ -15,10 +15,16 @@
         moonlight
       ])
       ++ [
-        inputs.omp-nix.homeManagerModules.omp
+        inputs.oh-my-pi.homeManagerModules.default
       ];
 
-    oh-my-pi.enable = true;
+    programs.omp = {
+      enable = true;
+      settings = {
+        setupVersion = 1;
+	theme.dark = "dark-catppuccin";
+      };
+    };
   };
 
   flake.modules.nixos.desktop = {

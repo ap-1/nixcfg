@@ -99,8 +99,8 @@
       url = "github:hgaiser/moonshine/v0.14.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    omp-nix = {
-      url = "git+https://git.molez.org/mandlm/omp-nix";
+    oh-my-pi = {
+      url = "github:can1357/oh-my-pi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     openwhispr = {
