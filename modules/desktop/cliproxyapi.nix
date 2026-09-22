@@ -1,14 +1,10 @@
-{ inputs, ... }: {
+{
   flake.modules.nixos.cliproxyapi =
     {
       config,
       ...
     }:
     {
-      imports = [
-        inputs.llm-pkgs.nixosModules.cliproxyapi
-      ];
-
       age.secrets.cliproxyapi-api-key.file = ../../secrets/cliproxyapi-api-key.age;
       age.secrets.cliproxyapi-management.file = ../../secrets/cliproxyapi-management.age;
 

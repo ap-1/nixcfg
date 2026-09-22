@@ -26,6 +26,7 @@ in
         pkg:
         builtins.elem (lib.getName pkg) [
           "discord-canary"
+          "discord-canary-unwrapped"
           "slack"
           "cloudflare-warp"
           "firefox-bin"
@@ -38,6 +39,7 @@ in
           "steam-unwrapped"
           "tetrio-desktop"
           "open-webui"
+          "bluebubbles"
           "objectbox-linux" # bluebubbles
         ];
     };

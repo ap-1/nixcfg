@@ -6,7 +6,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-discord.url = "github:ap-1/nixpkgs/discord-canary-osx-0.0.1159";
     nixpkgs-sunshine.url = "github:ap-1/nixpkgs/sunshine-update-2026.619";
-    nixpkgs-moonshine.url = "github:ap-1/nixpkgs/moonshine";
 
     # Flake infrastructure
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -18,7 +17,7 @@
 
     # System
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/pull/1818/head";
+      url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -62,6 +61,10 @@
       url = "git+https://tangled.org/tangled.org/core";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tobi = {
+      url = "git+https://tangled.org/ptr.pet/tobi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Desktop
     stylix = {
@@ -77,11 +80,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gwfox = {
-      url = "github:akkva/gwfox/2bd70d4142737c70832e44d742ed97a49c026f03";
+      url = "github:akkva/gwfox/v156.0.2";
       flake = false;
     };
     xdg-termfilepickers = {
-      url = "github:Guekka/xdg-desktop-portal-termfilepickers/9a4a40fee7a6973f581404b6fa1f1107026d05f8";
+      url = "github:Guekka/xdg-desktop-portal-termfilepickers/ad586ca83c9fdb204f641b2dd33a4f7940158aa8";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix = {

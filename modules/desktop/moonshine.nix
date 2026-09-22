@@ -3,7 +3,6 @@
   flake.modules.nixos.moonshine =
     { pkgs, ... }:
     let
-      moonshine = inputs.nixpkgs-moonshine.legacyPackages.${pkgs.stdenv.hostPlatform.system}.moonshine;
       # shut down a running desktop Steam so the streamed instance becomes primary
       steamShutdown = [
         [
@@ -21,7 +20,7 @@
         openFirewall = true;
         user = "anish";
         uid = 1000;
-        package = moonshine;
+        package = pkgs.moonshine;
 
         settings = {
           name = "Moonshine";

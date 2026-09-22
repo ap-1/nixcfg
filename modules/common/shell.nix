@@ -19,9 +19,8 @@ in
         tree
         sesh
         fzf
-        mosh
-        (writeShellScriptBin "dev" (builtins.readFile ./dev.sh))
-        (writeShellScriptBin "dev-run" (builtins.readFile ./dev-run.sh))
+        trzsz-ssh
+        inputs.tobi.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
 
       programs.devenv = {
