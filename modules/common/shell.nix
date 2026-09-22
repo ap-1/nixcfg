@@ -57,7 +57,7 @@ in
 
         shellAliases = {
           cat = "bat --style=plain --paging=never";
-          update = if pkgs.stdenv.isDarwin then "nh darwin switch ~/nixcfg" else "nh os switch ~/nixcfg";
+          update = if pkgs.stdenv.hostPlatform.isDarwin then "nh darwin switch ~/nixcfg" else "nh os switch ~/nixcfg";
         };
 
         initContent = lib.mkMerge [

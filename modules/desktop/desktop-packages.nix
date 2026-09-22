@@ -39,7 +39,7 @@
           rustup
           elan
         ]
-        ++ lib.optionals stdenv.isLinux [
+        ++ lib.optionals stdenv.hostPlatform.isLinux [
           bluebubbles
           prismlauncher
           foot # linux terminal emulator

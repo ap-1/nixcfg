@@ -166,12 +166,12 @@
             "browser.newtabpage.activity-stream.nova.enabled" = false;
             "sidebar.animation.enabled" = false;
           }
-          // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
+          // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
             "widget.use-xdg-desktop-portal.file-picker" = 1;
             # also gwfox theme requirement
             "widget.gtk.rounded-bottom-corners.enabled" = true;
           }
-          // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
+          // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
             # also gwfox theme requirement
             "widget.macos.native-context-menus" = false;
           };
