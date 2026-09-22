@@ -57,7 +57,12 @@ in
 
         shellAliases = {
           cat = "bat --style=plain --paging=never";
-          update = if pkgs.stdenv.hostPlatform.isDarwin then "nh darwin switch ~/nixcfg" else "nh os switch ~/nixcfg";
+          # tobi keeps activation alive if the ssh/wifi/tailscale session drops
+          update =
+            if pkgs.stdenv.hostPlatform.isDarwin then
+              "nh darwin switch ~/nixcfg"
+            else
+              "tobi -- nh os switch ~/nixcfg";
         };
 
         initContent = lib.mkMerge [
