@@ -1,4 +1,7 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
+let
+  meta = config.flake.meta;
+in
 {
   flake.modules.nixos.mocha-configuration = { pkgs, ... }: {
     # Use the systemd-boot EFI boot loader.
@@ -59,6 +62,7 @@
         "media"
         "ydotool"
       ];
+      openssh.authorizedKeys.keys = [ meta.sshKey ];
     };
 
     users.defaultUserShell = pkgs.zsh;
