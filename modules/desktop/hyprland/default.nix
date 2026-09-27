@@ -22,6 +22,7 @@
   flake.modules.nixos.hyprland = { pkgs, ... }: {
     programs.ydotool.enable = true;
     programs.gpu-screen-recorder.enable = true; # setcap KMS wrapper for promptless capture
+    services.gnome.at-spi2-core.enable = true; # accessibility bus for omp computer use AX
 
     environment.systemPackages = with pkgs; [
       playerctl

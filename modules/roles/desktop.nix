@@ -22,7 +22,8 @@
       enable = true;
       settings = {
         setupVersion = 1;
-	theme.dark = "dark-catppuccin";
+        theme.dark = "dark-catppuccin";
+        computer.enabled = true;
       };
     };
   };
