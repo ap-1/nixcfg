@@ -1036,6 +1036,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-omp": {
+      "locked": {
+        "lastModified": 1790477198,
+        "narHash": "sha256-QgYm+V6FjfBn3lztfA5fz5jUzM7c3ALtLeVEbplxygc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b6d2175d999934467c5e4646f378566a979b53c8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b6d2175d999934467c5e4646f378566a979b53c8",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1790448801,
@@ -1207,6 +1223,7 @@
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-discord": "nixpkgs-discord",
+        "nixpkgs-omp": "nixpkgs-omp",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "oh-my-pi": "oh-my-pi",
         "openwhispr": "openwhispr",

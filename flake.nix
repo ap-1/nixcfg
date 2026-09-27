@@ -6,6 +6,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-discord.url = "github:ap-1/nixpkgs/discord-canary-osx-0.0.1159";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable"; # TODO: sunshine
+    nixpkgs-omp.url = "github:NixOS/nixpkgs/b6d2175d999934467c5e4646f378566a979b53c8";
 
     # Flake infrastructure
     flake-parts.url = "github:hercules-ci/flake-parts";

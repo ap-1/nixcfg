@@ -4,7 +4,7 @@
   ...
 }:
 {
-  flake.modules.homeManager.desktop = {
+  flake.modules.homeManager.desktop = { pkgs, ... }: {
     imports =
       (with config.flake.modules.homeManager; [
         zed-editor
@@ -20,6 +20,7 @@
 
     programs.omp = {
       enable = true;
+      package = inputs.nixpkgs-omp.legacyPackages.${pkgs.stdenv.hostPlatform.system}.omp;
       settings = {
         setupVersion = 1;
         theme.dark = "dark-catppuccin";
