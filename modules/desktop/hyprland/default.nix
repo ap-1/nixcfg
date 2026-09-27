@@ -9,6 +9,9 @@
     xdg.configFile."hypr/modules".source = ./modules;
     xdg.configFile."wl-kbptr/config".source = ./wl-kbptr.conf;
 
+    # expose AX trees for omp computer use
+    dconf.settings."org/gnome/desktop/interface".toolkit-accessibility = true;
+
     # enabled manually for catppuccin
     programs.foot = {
       enable = true;
