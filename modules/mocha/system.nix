@@ -13,7 +13,6 @@
       config.flake.modules.nixos.desktop
 
       inputs.agenix.nixosModules.default
-      inputs.mt7927.nixosModules.default
       inputs.srvos.nixosModules.desktop
 
       inputs.home-manager.nixosModules.home-manager

@@ -1,4 +1,4 @@
-{ config, inputs, ... }:
+{ config, ... }:
 let
   meta = config.flake.meta;
 in
@@ -9,18 +9,15 @@ in
     networking.networkmanager.wifi.backend = "iwd";
     networking.wireless.iwd.enable = true;
 
-    hardware.mediatek-mt7927.enable = true;
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;
     };
 
-    # TODO: https://github.com/cmspam/mt7927-nixos/pull/3/
+    # TODO: not in linux-firmware yet (https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/946)
     hardware.firmware = [
-      (pkgs.runCommandLocal "mt7927-bt-firmware-path" { } ''
-        src=${inputs.mt7927.packages.${pkgs.stdenv.hostPlatform.system}.default}
-        install -Dm644 \
-          "$src/lib/firmware/mediatek/mt6639/BT_RAM_CODE_MT6639_2_1_hdr.bin" \
+      (pkgs.runCommandLocal "mt7927-bt-firmware" { } ''
+        install -Dm644 ${./BT_RAM_CODE_MT6639_2_1_hdr.bin} \
           "$out/lib/firmware/mediatek/mt7927/BT_RAM_CODE_MT6639_2_1_hdr.bin"
       '')
     ];

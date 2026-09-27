@@ -735,22 +735,6 @@
         "url": "https://cdn.jsdelivr.net/npm/mathjax@4.1.2/tex-svg.js"
       }
     },
-    "mediatek-mt7927-dkms": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1789666901,
-        "narHash": "sha256-apygKvayW+3TljjRTrGxriDcMju7njCdQHH3pRgHESo=",
-        "owner": "jetm",
-        "repo": "mediatek-mt7927-dkms",
-        "rev": "c1c3d78dc3922a6e7c794300ae5f45ced687c05b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jetm",
-        "repo": "mediatek-mt7927-dkms",
-        "type": "github"
-      }
-    },
     "mermaid-src": {
       "flake": false,
       "locked": {
@@ -824,27 +808,6 @@
         "owner": "hgaiser",
         "ref": "v0.14.1",
         "repo": "moonshine",
-        "type": "github"
-      }
-    },
-    "mt7927": {
-      "inputs": {
-        "mediatek-mt7927-dkms": "mediatek-mt7927-dkms",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1790087334,
-        "narHash": "sha256-7aniR2k4r8hgc7Absxc82BVtFEVKtlCde9vXGa3u+mg=",
-        "owner": "cmspam",
-        "repo": "mt7927-nixos",
-        "rev": "911dbb7074b795fb77042d3aec557acbc23664f1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cmspam",
-        "repo": "mt7927-nixos",
         "type": "github"
       }
     },
@@ -1237,7 +1200,6 @@
         "llm-pkgs": "llm-pkgs",
         "moonlight": "moonlight",
         "moonshine": "moonshine",
-        "mt7927": "mt7927",
         "ncro": "ncro",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nix-darwin": "nix-darwin",

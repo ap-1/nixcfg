@@ -41,10 +41,6 @@
     preservation.url = "github:nix-community/preservation";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
-    mt7927 = {
-      url = "github:cmspam/mt7927-nixos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     llm-pkgs = {
       url = "git+https://codeberg.org/anish/llm-pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
