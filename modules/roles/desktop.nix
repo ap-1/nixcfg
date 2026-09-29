@@ -20,7 +20,7 @@
 
     programs.omp = {
       enable = true;
-      package = inputs.nixpkgs-omp.legacyPackages.${pkgs.stdenv.hostPlatform.system}.omp;
+      package = pkgs.omp;
       settings = {
         setupVersion = 1;
         theme.dark = "dark-catppuccin";

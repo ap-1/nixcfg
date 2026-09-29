@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ config, ... }:
 let
   meta = config.flake.meta;
 in
@@ -11,7 +11,6 @@ in
       openFirewall = true;
       settings.key_rightalt_to_key_win = "enabled";
       settings.csrf_allowed_origins = "https://sunshine.${meta.tailnetDomain}";
-      package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.sunshine;
     };
 
     services.webProxy.sites.sunshine = ''
