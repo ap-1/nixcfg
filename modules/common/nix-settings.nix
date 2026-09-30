@@ -20,7 +20,16 @@ in
     {
       nix.package = pkgs.lixPackageSets.stable.lix;
 
-      nix.settings = devenvCaches;
+      nix.settings = devenvCaches // {
+        # systemd-nspawn container tests in nixpkgs
+        auto-allocate-uids = true;
+        use-cgroups = true;
+        extra-system-features = [ "uid-range" ];
+        experimental-features = [
+          "auto-allocate-uids"
+          "cgroups"
+        ];
+      };
 
       nixpkgs.config.allowUnfreePredicate =
         pkg:
