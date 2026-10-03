@@ -731,11 +731,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790035625,
-        "narHash": "sha256-H3HnHYgX4oaZMDt54nEcFsmk43Jrj+frE0FrMi2GJ6M=",
+        "lastModified": 1790891945,
+        "narHash": "sha256-ZOoDMYxlRfEtG8D97CI5gMp1uEnCRqWo6XD0QdRsyaw=",
         "owner": "moonlight-mod",
         "repo": "moonlight",
-        "rev": "8dbf49f05d0ed1ce24cd253a2952dc960705f075",
+        "rev": "c7d0a1ddbb1873f62dcfea75b38ebdac044ecfd8",
         "type": "github"
       },
       "original": {
@@ -910,22 +910,6 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixpkgs-26.05-darwin",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-discord": {
-      "locked": {
-        "lastModified": 1786565100,
-        "narHash": "sha256-EwKeK1kKzAVlyudZ80QeRWQnY/3CteolJpmeLuGak10=",
-        "owner": "ap-1",
-        "repo": "nixpkgs",
-        "rev": "fac903b4e0c5ffb18dccbba7bb381f73482898b4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ap-1",
-        "ref": "discord-canary-osx-0.0.1159",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -1144,7 +1128,6 @@
         "nix-flatpak": "nix-flatpak",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-discord": "nixpkgs-discord",
         "oh-my-pi": "oh-my-pi",
         "openwhispr": "openwhispr",
         "preservation": "preservation",
