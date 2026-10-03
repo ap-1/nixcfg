@@ -5,6 +5,14 @@
       config,
       ...
     }:
+    let
+      gwfox = pkgs.fetchFromGitHub {
+        owner = "akkva";
+        repo = "gwfox";
+        tag = "v157.0.2";
+        hash = "sha256-KhfyO+tDV76KePpCPeTGqtbPYNLqi4leDDQ81KUs3mw=";
+      };
+    in
     {
       programs.firefox = {
         enable = true;
@@ -164,6 +172,7 @@
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
             "svg.context-properties.content.enabled" = true;
             "browser.newtabpage.activity-stream.nova.enabled" = false;
+            "browser.nova.enabled" = false;
             "sidebar.animation.enabled" = false;
           }
           // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
@@ -176,8 +185,8 @@
             "widget.macos.native-context-menus" = false;
           };
 
-          userChrome = builtins.readFile "${inputs.gwfox}/userChrome.css";
-          userContent = builtins.readFile "${inputs.gwfox}/userContent.css";
+          userChrome = builtins.readFile "${gwfox}/userChrome.css";
+          userContent = builtins.readFile "${gwfox}/userContent.css";
         };
       };
     };

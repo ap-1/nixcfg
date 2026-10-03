@@ -73,10 +73,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    gwfox = {
-      url = "github:akkva/gwfox/v156.0.2";
-      flake = false;
-    };
     xdg-termfilepickers = {
       url = "github:Guekka/xdg-desktop-portal-termfilepickers/ad586ca83c9fdb204f641b2dd33a4f7940158aa8";
       inputs.nixpkgs.follows = "nixpkgs";
