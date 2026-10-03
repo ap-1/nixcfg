@@ -93,6 +93,8 @@
       url = "github:hgaiser/moonshine/v0.14.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # TODO: drop once NixOS/nixpkgs#568908 lands in nixos-unstable
+    nixpkgs-sunshine.url = "github:ap-1/nixpkgs/sunshine-darwin-tray";
     oh-my-pi = {
       url = "github:can1357/oh-my-pi";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, inputs, ... }:
 let
   meta = config.flake.meta;
 in
@@ -6,6 +6,7 @@ in
   flake.modules.nixos.sunshine = { pkgs, ... }: {
     services.sunshine = {
       enable = true;
+      package = inputs.nixpkgs-sunshine.legacyPackages.${pkgs.stdenv.hostPlatform.system}.sunshine;
       autoStart = true;
       capSysAdmin = true; # Wayland/Hyprland screen capture
       openFirewall = true;
@@ -47,6 +48,8 @@ in
   };
 
   flake.modules.darwin.sunshine = { pkgs, ... }: {
-    environment.systemPackages = [ pkgs.sunshine ];
+    environment.systemPackages = [
+      inputs.nixpkgs-sunshine.legacyPackages.${pkgs.stdenv.hostPlatform.system}.sunshine
+    ];
   };
 }
