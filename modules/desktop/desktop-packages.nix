@@ -5,7 +5,6 @@
     environment.systemPackages = with pkgs; [
       ly
       waylock
-      cloudflare-warp
       wiremix # pipewire tui
       impala # iwd tui
       bluetui

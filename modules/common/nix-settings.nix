@@ -37,7 +37,6 @@ in
           "discord-canary"
           "discord-canary-unwrapped"
           "slack"
-          "cloudflare-warp"
           "firefox-bin"
           "firefox-bin-unwrapped"
           "enhancer-for-youtube"
@@ -69,7 +68,6 @@ in
         builtins.elem (lib.getName pkg) [
           "discord-canary"
           "slack"
-          "cloudflare-warp"
           "tailscale-gui"
           "firefox-bin"
           "firefox-bin-unwrapped"
