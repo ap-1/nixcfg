@@ -1,15 +1,30 @@
 { inputs, ... }: {
+  flake.modules.nixos.filechooser =
+    { pkgs, lib, ... }:
+    {
+      imports = [
+        "${inputs.nixpkgs-termfilepickers}/nixos/modules/config/xdg/portals/termfilepickers.nix"
+      ];
+
+      xdg.portal.termfilepickers = {
+        enable = true;
+        package =
+          inputs.nixpkgs-termfilepickers.legacyPackages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-termfilepickers;
+        # --app-id is used by a hyprland windowrule
+        settings.terminal_command = [
+          (lib.getExe pkgs.foot)
+          "--app-id=yazi"
+        ];
+      };
+    };
+
   flake.modules.homeManager.filechooser =
     {
+      osConfig,
       pkgs,
-      lib,
       ...
     }:
     {
-      imports = [
-        inputs.xdg-termfilepickers.homeManagerModules.default
-      ];
-
       programs.yazi = {
         enable = true;
         enableZshIntegration = true;
@@ -25,28 +40,13 @@
         '';
       };
 
-      services.xdg-desktop-portal-termfilepickers = {
-        enable = true;
-        package = inputs.xdg-termfilepickers.packages.${pkgs.stdenv.hostPlatform.system}.default;
-        config = {
-          # --app-id is used by a hyprland windowrule
-          terminal_command = [
-            (lib.getExe pkgs.foot)
-            "--app-id=yazi"
-          ];
-        };
-      };
-
-      systemd.user.services.xdg-desktop-portal-termfilepickers = {
-        Unit = {
-          PartOf = lib.mkForce [ "xdg-desktop-portal.service" ];
-          After = lib.mkAfter [ "xdg-desktop-portal.service" ];
-        };
-      };
-
       xdg.portal = {
         enable = true;
-        extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+        # home-manager points xdg-desktop-portal at its own portals dir, hiding system portals
+        extraPortals = [
+          pkgs.xdg-desktop-portal-hyprland
+          osConfig.xdg.portal.termfilepickers.package
+        ];
         config = {
           common = {
             default = [ "hyprland" ];

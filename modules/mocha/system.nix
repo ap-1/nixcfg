@@ -22,7 +22,6 @@
           inherit inputs;
           inherit (inputs)
             nix-flatpak
-            xdg-termfilepickers
             firefox-addons
             spicetify-nix
             ;
@@ -37,7 +36,6 @@
             config.flake.modules.homeManager.desktop
             config.flake.modules.homeManager.mocha
 
-            inputs.xdg-termfilepickers.homeManagerModules.default
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
           ];
 

@@ -73,10 +73,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    xdg-termfilepickers = {
-      url = "github:Guekka/xdg-desktop-portal-termfilepickers/ad586ca83c9fdb204f641b2dd33a4f7940158aa8";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -86,11 +82,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     moonshine = {
-      url = "github:hgaiser/moonshine/v0.14.1";
+      url = "github:hgaiser/moonshine/v0.16.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TODO: drop once NixOS/nixpkgs#568908 lands in nixos-unstable
-    nixpkgs-sunshine.url = "github:ap-1/nixpkgs/sunshine-darwin-tray";
+    # TODO: https://github.com/NixOS/nixpkgs/pull/570308
+    nixpkgs-termfilepickers.url = "github:ap-1/nixpkgs/xdg-desktop-portal-termfilepickers";
     oh-my-pi = {
       url = "github:can1357/oh-my-pi";
       inputs.nixpkgs.follows = "nixpkgs";

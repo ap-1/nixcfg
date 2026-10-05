@@ -19,6 +19,7 @@
       media-server
       ncro
       distributed-builds
+      filechooser
     ];
   };
 }
