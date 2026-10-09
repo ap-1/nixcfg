@@ -4,9 +4,9 @@
 
 mocha is the desktop, an mATX AMD build comprising:
 
-- AMD Ryzen 5 9600X (6 cores, 12 threads)
+- AMD Ryzen 9 9950X (16 cores, 32 threads)
 - PowerColor Hellhound Radeon RX 7800 XT (16 GB VRAM)
-- Klevv CRAS V 32 GB DDR5-6000 CL30 (2 * 16 GB)
+- Klevv CRAS V 64 GB DDR5-6400 CL32 (2 * 32 GB)
 - Klevv CRAS C910 2 TB NVMe SSD (PCIe 4.0 x4)
 - MSI PRO B650M-A WiFi motherboard
 - EDUP BE9300 WiFi 7 card (MediaTek MT7927)

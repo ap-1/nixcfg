@@ -39,7 +39,7 @@ in
 
     # Sunshine capture device
     services.sunshine.settings = {
-      adapter_name = "/dev/dri/card1";
+      adapter_name = "/dev/dri/by-path/pci-0000:03:00.0-card";
       output_name = "0";
     };
 
