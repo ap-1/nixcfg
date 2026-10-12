@@ -12,6 +12,15 @@ in
         "--ssh"
         "--advertise-exit-node"
       ];
+      # TODO: https://github.com/tailscale/tailscale/pull/21758
+      package = pkgs.tailscale.overrideAttrs (old: {
+        patches = (old.patches or [ ]) ++ [
+          (pkgs.fetchpatch {
+            url = "https://github.com/tailscale/tailscale/commit/d73d357b953a283bf736e422f57107efc66894e0.patch";
+            hash = "sha256-WffaDq3XvpxqySbR38YVNQTATdAj6YltfpATO0E86zM=";
+          })
+        ];
+      });
     };
 
     # Apply UDP GRO forwarding each time an interface comes up
