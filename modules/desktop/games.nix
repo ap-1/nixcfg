@@ -4,14 +4,6 @@
       "openssl-1.1.1w"
     ];
 
-    nixpkgs.overlays = [
-      (final: prev: {
-        openldap = prev.openldap.overrideAttrs (_: {
-          doCheck = false;
-        });
-      })
-    ];
-
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;
