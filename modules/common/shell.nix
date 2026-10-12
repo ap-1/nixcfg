@@ -34,6 +34,7 @@ in
         })
         fzf
         trzsz-ssh
+        npb
         inputs.tobi.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
 
