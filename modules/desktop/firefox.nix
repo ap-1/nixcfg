@@ -56,6 +56,7 @@
               bitwarden
               pay-by-privacy
               mailvelope
+              auto-tab-discard
             ];
           };
 
