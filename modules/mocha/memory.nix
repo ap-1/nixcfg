@@ -12,5 +12,12 @@
     };
 
     services.earlyoom.enable = true;
+
+    nix.settings = {
+      max-jobs = 16;
+      cores = 4;
+    };
+
+    systemd.slices."system-nix\\x2ddaemon".sliceConfig.MemoryHigh = "40G";
   };
 }
