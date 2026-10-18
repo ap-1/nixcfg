@@ -1,10 +1,17 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
+let
+  hosts = config.flake.hosts;
+in
 {
-  flake.modules.nixos.iets = {
-    imports = [ inputs.iets.nixosModules.default ];
+  flake.modules.nixos.iets =
+    { config, ... }:
+    {
+      imports = [ inputs.iets.nixosModules.default ];
 
-    iets.classic.enable = true;
-  };
+      iets.classic.enable = true;
+
+      environment.variables.IETS_WORKERS = toString hosts.${config.networking.hostName}.ietsWorkers;
+    };
 
   flake.modules.darwin.iets =
     {
@@ -21,5 +28,7 @@
         iets
         (lib.hiPrio (inputs.iets.lib.mkClassic pkgs iets config.nix.package))
       ];
+
+      environment.variables.IETS_WORKERS = toString hosts.${config.networking.hostName}.ietsWorkers;
     };
 }

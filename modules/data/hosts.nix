@@ -2,6 +2,9 @@
   flake.hosts = {
     cortado = {
       sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN58RgxMAtPo7du0WeUKvhSx05rcBHqSHI9M0txrvsV8";
+      maxJobs = 6;
+      cores = 4;
+      ietsWorkers = 8;
       tailnet = {
         ipv4 = "100.64.0.1";
         ipv6 = "fd7a:115c:a1e0::1";
@@ -9,6 +12,9 @@
     };
     mocha = {
       sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBu43o7nsVIt9KB1hpc+vCEY1CkROhQ01ZulhwtEs2j root@ap-1";
+      maxJobs = 8;
+      cores = 8;
+      ietsWorkers = 12;
       tailnet = {
         ipv4 = "100.64.0.2";
         ipv6 = "fd7a:115c:a1e0::2";
@@ -16,6 +22,9 @@
     };
     affogato = {
       sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKJuVngSRaPAgi3U7p3QQkItSHEga9Dh4kmzFdeEMhWz root@affogato";
+      maxJobs = 1;
+      cores = 3;
+      ietsWorkers = 4;
       tailnet = {
         ipv4 = "100.64.0.3";
         ipv6 = "fd7a:115c:a1e0::3";

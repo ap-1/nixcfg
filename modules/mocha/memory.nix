@@ -13,11 +13,7 @@
 
     services.earlyoom.enable = true;
 
-    nix.settings = {
-      max-jobs = 16;
-      cores = 4;
-    };
-
+    # TODO: raise to 64G
     systemd.slices."system-nix\\x2ddaemon".sliceConfig.MemoryHigh = "40G";
   };
 }

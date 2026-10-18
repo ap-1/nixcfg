@@ -29,8 +29,14 @@ let
   };
 in
 {
-  flake.modules.nixos.gpg.nixpkgs.overlays = [ sqPqcOverlay chameleonPqcOverlay ];
-  flake.modules.darwin.gpg.nixpkgs.overlays = [ sqPqcOverlay chameleonPqcOverlay ];
+  flake.modules.nixos.gpg.nixpkgs.overlays = [
+    sqPqcOverlay
+    chameleonPqcOverlay
+  ];
+  flake.modules.darwin.gpg.nixpkgs.overlays = [
+    sqPqcOverlay
+    chameleonPqcOverlay
+  ];
 
   flake.modules.homeManager.gpg =
     { pkgs, ... }:
@@ -45,7 +51,8 @@ in
         enableZshIntegration = true;
         defaultCacheTtl = 604800;
         maxCacheTtl = 604800;
-        pinentry.package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.pinentry_mac else pkgs.pinentry-curses;
+        pinentry.package =
+          if pkgs.stdenv.hostPlatform.isDarwin then pkgs.pinentry_mac else pkgs.pinentry-curses;
       };
     };
 }

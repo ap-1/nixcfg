@@ -8,7 +8,6 @@ let
       sshUser = "anish";
       systems = [ "aarch64-darwin" ];
       protocol = "ssh-ng";
-      maxJobs = 8;
       speedFactor = 2;
       supportedFeatures = [ "big-parallel" ];
     };
@@ -17,7 +16,6 @@ let
       sshUser = "anish";
       systems = [ "x86_64-linux" ];
       protocol = "ssh-ng";
-      maxJobs = 12;
       speedFactor = 2;
       supportedFeatures = [
         "big-parallel"
@@ -37,13 +35,25 @@ let
       others = lib.filterAttrs (name: _: name != config.networking.hostName) builders;
     in
     {
-      nix.distributedBuilds = true;
-      nix.settings.builders-use-substitutes = true;
-      nix.settings.trusted-users = [
-        "root"
-        adminGroup
-      ];
-      nix.buildMachines = lib.mapAttrsToList (name: b: b // { hostName = tailnetName name; }) others;
+      nix = {
+        distributedBuilds = true;
+        settings = {
+          builders-use-substitutes = true;
+          trusted-users = [
+            "root"
+            adminGroup
+          ];
+        };
+        buildMachines = lib.mapAttrsToList (
+          name: b:
+          b
+          // {
+            hostName = tailnetName name;
+            inherit (hosts.${name}) maxJobs;
+          }
+        ) others;
+      };
+
       programs.ssh.knownHosts = lib.mapAttrs' (
         name: _: lib.nameValuePair (tailnetName name) { publicKey = hosts.${name}.sshKey; }
       ) others;

@@ -1,4 +1,7 @@
+{ config, ... }:
 let
+  hosts = config.flake.hosts;
+
   devenvCaches = {
     substituters = [
       "https://devenv.cachix.org"
@@ -13,14 +16,21 @@ in
 {
   flake.modules.nixos.nix-settings =
     {
+      config,
       lib,
       pkgs,
       ...
     }:
+    let
+      host = hosts.${config.networking.hostName};
+    in
     {
       nix.package = pkgs.lixPackageSets.stable.lix;
 
       nix.settings = devenvCaches // {
+        max-jobs = host.maxJobs;
+        inherit (host) cores;
+
         # systemd-nspawn container tests in nixpkgs
         auto-allocate-uids = true;
         use-cgroups = true;
@@ -54,14 +64,21 @@ in
 
   flake.modules.darwin.nix-settings =
     {
+      config,
       lib,
       pkgs,
       ...
     }:
+    let
+      host = hosts.${config.networking.hostName};
+    in
     {
       nix.package = pkgs.lixPackageSets.stable.lix;
 
-      nix.settings = devenvCaches;
+      nix.settings = devenvCaches // {
+        max-jobs = host.maxJobs;
+        inherit (host) cores;
+      };
 
       nixpkgs.config.allowUnfreePredicate =
         pkg:
