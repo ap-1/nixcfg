@@ -49,6 +49,10 @@ Applications that need PostgreSQL share one local instance per host, each declar
 
 The NixOS hosts route all substitution through [ncro](https://github.com/feel-co/ncro) (shared `ncro` module), a local cache optimizer on `localhost:5000` forced as the sole substituter. Its upstreams and their signing keys are defined in that module; cortado (darwin) uses direct substituters.
 
+## Evaluation
+
+Every host replaces the `nix` commands with [iets](https://github.com/numtide/iets), a Rust reimplementation of the Nix evaluator. Anything iets does not implement, including IFD, falls back to Lix.
+
 ## Deploying
 
 Each host is built locally with `nh os switch ~/nixcfg` (aliased to `update`).

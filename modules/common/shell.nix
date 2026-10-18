@@ -75,9 +75,9 @@ in
           # tobi keeps activation alive if the ssh/wifi/tailscale session drops
           update =
             if pkgs.stdenv.hostPlatform.isDarwin then
-              "nh darwin switch ~/nixcfg"
+              "nh darwin switch --no-nom ~/nixcfg"
             else
-              "tobi -- nh os switch ~/nixcfg";
+              "tobi -- nh os switch --no-nom ~/nixcfg";
         };
 
         initContent = lib.mkMerge [

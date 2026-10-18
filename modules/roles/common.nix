@@ -23,6 +23,7 @@
         tailscale
         web-proxy
         nix-settings
+        iets
         neovim
       ])
       ++ [
@@ -48,6 +49,7 @@
         gpg
         tailscale
         nix-settings
+        iets
         neovim
       ])
       ++ [

@@ -9,9 +9,9 @@ let
       ...
     }:
     let
-      src = pkgs.fetchzip {
+      src = builtins.fetchTarball {
         url = "https://codeberg.org/ScottyLabs/umvpn/archive/46c22299d27f9c22a3ef81686749fe3c9678e8d5fdf76865c4c6c8e82c37ae1d.tar.gz";
-        hash = "sha256-uHDZDFiPtrteOWh162bixw1zYZvSGNVuAWU+8bQvPok=";
+        sha256 = "sha256-uHDZDFiPtrteOWh162bixw1zYZvSGNVuAWU+8bQvPok=";
       };
       umvpnPkg = pkgs.callPackage "${src}/nix/package.nix" { };
     in

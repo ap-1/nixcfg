@@ -6,6 +6,7 @@ This config uses [Catppuccin Mocha](https://catppuccin.com/) (mauve accent) as t
 
 [Stylix](https://github.com/nix-community/stylix) is used for other theming needs:
 
+- Base16 palette (Catppuccin Mocha)
 - Cursor (`apple-cursor`, size 24)
 - Monospace font (FiraCode Nerd Font Mono)
 - Starship (`catppuccin/nix`'s starship module uses IFD via `lib.importTOML`)

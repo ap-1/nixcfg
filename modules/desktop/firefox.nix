@@ -6,11 +6,9 @@
       ...
     }:
     let
-      gwfox = pkgs.fetchFromGitHub {
-        owner = "akkva";
-        repo = "gwfox";
-        tag = "v157.0.2";
-        hash = "sha256-KhfyO+tDV76KePpCPeTGqtbPYNLqi4leDDQ81KUs3mw=";
+      gwfox = builtins.fetchTarball {
+        url = "https://github.com/akkva/gwfox/archive/refs/tags/v158.0.7.tar.gz";
+        sha256 = "sha256-n5/nY516i08+QjQa3G5BWSuomMTIGV2AyWWIVAdcveA=";
       };
     in
     {
@@ -172,8 +170,8 @@
             # gwfox theme requirements
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
             "svg.context-properties.content.enabled" = true;
-            "browser.newtabpage.activity-stream.nova.enabled" = false;
-            "browser.nova.enabled" = false;
+            "browser.newtabpage.activity-stream.nova.enabled" = true;
+            "browser.nova.enabled" = true;
             "sidebar.animation.enabled" = false;
           }
           // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {

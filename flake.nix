@@ -59,6 +59,10 @@
       url = "git+https://tangled.org/ptr.pet/tobi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    iets = {
+      url = "github:numtide/iets";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Desktop
     stylix = {
