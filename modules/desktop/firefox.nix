@@ -167,6 +167,9 @@
             "security.webauth.webauthn" = true;
             "security.webauth.webauthn_enable_usbtoken" = true;
 
+            # webgpu
+            "dom.webgpu.enabled" = true;
+
             # gwfox theme requirements
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
             "svg.context-properties.content.enabled" = true;
