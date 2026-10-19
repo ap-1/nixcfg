@@ -52,6 +52,9 @@ in
     # Enable ly display manager
     services.displayManager.ly.enable = true;
 
+    # Keyring
+    services.oo7.enable = true;
+
     # Define user account.
     users.users.anish = {
       isNormalUser = true;

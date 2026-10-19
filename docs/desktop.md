@@ -15,6 +15,10 @@ mocha runs [Hyprland](https://hyprland.org/) configured in Lua, with modules spl
 
 File dialogs are routed through [xdg-desktop-portal-termfilepickers](https://github.com/Guekka/xdg-desktop-portal-termfilepickers), which opens [yazi](https://yazi-rs.github.io/) in a foot terminal instead of the GTK file picker.
 
+## Keyring
+
+[oo7](https://github.com/linux-credentials/oo7) provides the Secret Service API and unlocks at login.
+
 ## Capture
 
 `SUPER+R` opens the capture submap:
