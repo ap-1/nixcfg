@@ -27,6 +27,15 @@ let
 
   tailnetName = name: "${name}.${meta.tailnetDomain}";
 
+  nixbuild = "eu.nixbuild.net";
+  nixbuildFeatures = [
+    "benchmark"
+    "big-parallel"
+    "ca-derivations"
+    "nixos-test"
+    "uid-range"
+  ];
+
   # offload to every builder except the host itself
   mkOffload =
     adminGroup:
@@ -35,6 +44,8 @@ let
       others = lib.filterAttrs (name: _: name != config.networking.hostName) builders;
     in
     {
+      age.secrets.nixbuild-ssh-key.file = ../../secrets/nixbuild-ssh-key.age;
+
       nix = {
         distributedBuilds = true;
         settings = {
@@ -44,19 +55,50 @@ let
             adminGroup
           ];
         };
-        buildMachines = lib.mapAttrsToList (
-          name: b:
-          b
-          // {
-            hostName = tailnetName name;
-            inherit (hosts.${name}) maxJobs;
-          }
-        ) others;
+        buildMachines =
+          lib.mapAttrsToList (
+            name: b:
+            b
+            // {
+              hostName = tailnetName name;
+              inherit (hosts.${name}) maxJobs;
+            }
+          ) others
+          ++ [
+            {
+              hostName = nixbuild;
+              system = "x86_64-linux";
+              protocol = "ssh-ng";
+              maxJobs = 100;
+              supportedFeatures = nixbuildFeatures ++ [ "kvm" ];
+            }
+            {
+              hostName = nixbuild;
+              system = "aarch64-linux";
+              protocol = "ssh-ng";
+              maxJobs = 100;
+              supportedFeatures = nixbuildFeatures;
+            }
+          ];
       };
 
-      programs.ssh.knownHosts = lib.mapAttrs' (
-        name: _: lib.nameValuePair (tailnetName name) { publicKey = hosts.${name}.sshKey; }
-      ) others;
+      programs.ssh = {
+        knownHosts =
+          lib.mapAttrs' (
+            name: _: lib.nameValuePair (tailnetName name) { publicKey = hosts.${name}.sshKey; }
+          ) others
+          // {
+            nixbuild = {
+              hostNames = [ nixbuild ];
+              publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPIQCZc54poJ8vqawd8TraNryQeJnvH1eLpIDgbiqymM";
+            };
+          };
+        extraConfig = ''
+          Host ${nixbuild}
+            ServerAliveInterval 60
+            IdentityFile ${config.age.secrets.nixbuild-ssh-key.path}
+        '';
+      };
     };
 in
 {
