@@ -9,6 +9,7 @@
       impala # iwd tui
       bluetui
       librepods
+      bitwarden-desktop
     ];
   };
 
@@ -34,9 +35,11 @@
           signal-desktop
           slack
           jujutsu
-          bitwarden-desktop
           rustup
           elan
+        ]
+        ++ lib.optionals stdenv.hostPlatform.isDarwin [
+          bitwarden-desktop
         ]
         ++ lib.optionals stdenv.hostPlatform.isLinux [
           bluebubbles

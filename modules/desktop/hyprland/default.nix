@@ -6,6 +6,8 @@
       extraConfig = builtins.readFile ./hyprland.lua;
     };
 
+    services.hyprpolkitagent.enable = true;
+
     xdg.configFile."hypr/modules".source = ./modules;
     xdg.configFile."wl-kbptr/config".source = ./wl-kbptr.conf;
 
