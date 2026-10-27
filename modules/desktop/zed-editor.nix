@@ -19,6 +19,8 @@
         "discord-presence"
         "git-firefly"
         "lua"
+        "make"
+        "sql"
       ];
       extraPackages = with pkgs; [
         nixd
