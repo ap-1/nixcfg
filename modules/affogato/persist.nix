@@ -1,8 +1,5 @@
 {
   flake.modules.nixos.affogato-persist = {
-    # required by preservation
-    boot.initrd.systemd.enable = true;
-
     preservation = {
       enable = true;
       preserveAt."/persist" = {
