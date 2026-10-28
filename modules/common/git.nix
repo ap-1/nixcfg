@@ -52,7 +52,5 @@ in
         git_protocol = "ssh";
       };
     };
-
-    home.packages = with pkgs; [ codeberg-cli ];
   };
 }
