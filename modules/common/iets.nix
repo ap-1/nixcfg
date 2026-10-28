@@ -4,11 +4,14 @@ let
 in
 {
   flake.modules.nixos.iets =
-    { config, ... }:
+    { config, pkgs, ... }:
     {
       imports = [ inputs.iets.nixosModules.default ];
 
-      iets.classic.enable = true;
+      iets.classic = {
+        enable = true;
+        nix = pkgs.lixPackageSets.stable.lix;
+      };
 
       environment.variables.IETS_WORKERS = toString hosts.${config.networking.hostName}.ietsWorkers;
     };

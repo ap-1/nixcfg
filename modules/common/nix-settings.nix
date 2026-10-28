@@ -25,8 +25,6 @@ in
       host = hosts.${config.networking.hostName};
     in
     {
-      nix.package = pkgs.lixPackageSets.stable.lix;
-
       nix.settings = devenvCaches // {
         max-jobs = host.maxJobs;
         inherit (host) cores;
