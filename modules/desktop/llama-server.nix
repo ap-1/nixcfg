@@ -56,6 +56,17 @@ in
         };
     in
     {
+      nixpkgs.overlays = [
+        (_: prev: {
+          pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+            (pyfinal: pyprev: {
+              # mcp is only a test input
+              posthog = pyprev.posthog.override { mcp = pyfinal.mcp_1; };
+            })
+          ];
+        })
+      ];
+
       age.secrets.open-webui-oauth.file = ../../secrets/open-webui-oauth.age;
 
       systemd.services.llama-server-chat = mkServer "chat" {
