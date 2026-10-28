@@ -12,6 +12,25 @@ let
       "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
     ];
   };
+
+  # TODO: https://git.lix.systems/lix-project/lix/commit/dbf019f3bfdff94644bf76cfbcb533cbecebaca9
+  lixOverlay = final: prev: {
+    lixPackageSets = prev.lixPackageSets // {
+      stable = prev.lixPackageSets.stable.overrideScope (
+        _: lprev: {
+          lix = lprev.lix.overrideAttrs (old: {
+            patches = (old.patches or [ ]) ++ [
+              (final.fetchpatch {
+                url = "https://git.lix.systems/lix-project/lix/commit/dbf019f3bfdff94644bf76cfbcb533cbecebaca9.patch";
+                includes = [ "lix/libstore/build/derivation-goal.cc" ];
+                hash = "sha256-OWdgIlOYXEDSOQC2zWTnP2l5/dBRsG50tqz/Lfc/Zp0=";
+              })
+            ];
+          });
+        }
+      );
+    };
+  };
 in
 {
   flake.modules.nixos.nix-settings =
@@ -25,6 +44,8 @@ in
       host = hosts.${config.networking.hostName};
     in
     {
+      nixpkgs.overlays = [ lixOverlay ];
+
       nix.settings = devenvCaches // {
         max-jobs = host.maxJobs;
         inherit (host) cores;
@@ -71,6 +92,8 @@ in
       host = hosts.${config.networking.hostName};
     in
     {
+      nixpkgs.overlays = [ lixOverlay ];
+
       nix.package = pkgs.lixPackageSets.stable.lix;
 
       nix.settings = devenvCaches // {
