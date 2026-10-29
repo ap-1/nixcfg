@@ -94,6 +94,17 @@ in
 
       services.open-webui = {
         enable = true;
+        # TODO: https://github.com/NixOS/nixpkgs/pull/580342
+        package = pkgs.open-webui.override {
+          python3Packages =
+            let
+              python = pkgs.python3.override {
+                self = python;
+                packageOverrides = pyfinal: _: { mcp = pyfinal.mcp_1; };
+              };
+            in
+            python.pkgs;
+        };
         host = "127.0.0.1";
         port = 3000;
         environmentFile = config.age.secrets.open-webui-oauth.path;
