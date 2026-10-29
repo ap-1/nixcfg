@@ -667,11 +667,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1793172837,
-        "narHash": "sha256-6K/6+EB3o/nN4eBW/Kb/5T2j3BbSVxsAVR5y+2CrXBA=",
+        "lastModified": 1793236975,
+        "narHash": "sha256-btZZL+G7Pw1e9UculWF1bCr+jEOtDVapt4FTz5zO8A0=",
         "ref": "refs/heads/main",
-        "rev": "86a8eb66f94e3ddcc5a3448bc12031aaa9789787",
-        "revCount": 12,
+        "rev": "c071bfbf87873fdecf95d2183408deb49871cbb1",
+        "revCount": 13,
         "type": "git",
         "url": "https://codeberg.org/anish/llm-pkgs"
       },
