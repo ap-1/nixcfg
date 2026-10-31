@@ -54,6 +54,7 @@ in
 
     # Keyring
     services.oo7.enable = true;
+    services.dbus.packages = [ pkgs.gcr_3 ];
 
     # Define user account.
     users.users.anish = {
