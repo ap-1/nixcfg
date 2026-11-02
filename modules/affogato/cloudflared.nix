@@ -32,5 +32,8 @@ in
           };
         };
       };
+
+      # only allow post-quantum connections to cloudflare
+      systemd.services."cloudflared-tunnel-${tunnelId}".environment.TUNNEL_POST_QUANTUM = "true";
     };
 }

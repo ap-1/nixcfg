@@ -4,21 +4,13 @@ let
 in
 {
   flake.modules.nixos.mocha-networking = { config, pkgs, ... }: {
-    networking.hostName = "mocha";
-    networking.networkmanager.enable = true;
-    networking.networkmanager.wifi.backend = "iwd";
-    networking.wireless.iwd.enable = true;
-
-    services.resolved.settings.Resolve = {
-      DNS = [
-        "1.1.1.1#cloudflare-dns.com"
-        "1.0.0.1#cloudflare-dns.com"
-        "2606:4700:4700::1111#cloudflare-dns.com"
-        "2606:4700:4700::1001#cloudflare-dns.com"
-      ];
-      DNSOverTLS = true;
-      # route all lookups here instead of dhcp-provided servers
-      Domains = [ "~." ];
+    networking = {
+      hostName = "mocha";
+      networkmanager = {
+        enable = true;
+        wifi.backend = "iwd";
+      };
+      wireless.iwd.enable = true;
     };
 
     hardware.bluetooth = {

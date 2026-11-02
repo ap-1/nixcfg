@@ -19,6 +19,7 @@
   flake.modules.nixos.common = { pkgs, ... }: {
     imports =
       (with config.flake.modules.nixos; [
+        dns
         gpg
         tailscale
         web-proxy
@@ -46,6 +47,7 @@
   flake.modules.darwin.common = { pkgs, ... }: {
     imports =
       (with config.flake.modules.darwin; [
+        dns
         gpg
         tailscale
         nix-settings

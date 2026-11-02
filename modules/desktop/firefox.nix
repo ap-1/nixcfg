@@ -1,4 +1,8 @@
-{ inputs, ... }: {
+{ config, inputs, ... }:
+let
+  meta = config.flake.meta;
+in
+{
   flake.modules.homeManager.firefox =
     {
       pkgs,
@@ -24,7 +28,9 @@
           DNSOverHTTPS = {
             Enabled = true;
             ProviderURL = "https://mozilla.cloudflare-dns.com/dns-query";
-            Fallback = true;
+            Fallback = false;
+            # tailnet names only exist in MagicDNS
+            ExcludedDomains = [ meta.tailnetDomain ];
             Locked = true;
           };
         };

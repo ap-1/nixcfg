@@ -7,9 +7,16 @@
     }:
     {
       # Networking options
-      networking.hostName = "cortado";
-      networking.localHostName = "cortado";
-      networking.computerName = "cortado";
+      networking = {
+        hostName = "cortado";
+        localHostName = "cortado";
+        computerName = "cortado";
+        knownNetworkServices = [
+          "Wi-Fi"
+          "USB 10/100/1000 LAN"
+          "Thunderbolt Bridge"
+        ];
+      };
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
