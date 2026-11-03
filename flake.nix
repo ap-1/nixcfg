@@ -97,6 +97,8 @@
       url = "github:can1357/oh-my-pi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # TODO: https://github.com/lambda-symbolics/autolith/pull/187
+    autolith.url = "github:ap-1/autolith/allrefs";
     openwhispr = {
       url = "github:OpenWhispr/openwhispr";
       inputs.nixpkgs.follows = "nixpkgs";

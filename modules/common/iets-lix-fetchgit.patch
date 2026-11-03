@@ -1,0 +1,18 @@
+diff --git a/src/source/remote.rs b/src/source/remote.rs
+index 2f12a98..2d234e0 100644
+--- a/src/source/remote.rs
++++ b/src/source/remote.rs
+@@ -737,10 +737,12 @@ pub fn fetch_git_with_nix(
+     shown: &str,
+     pos: Pos,
+ ) -> EvalResult<serde_json::Map<String, Value>> {
++    let mut args = args.clone();
++    args.remove("exportIgnore");
+     let expr = format!(
+         "let r = builtins.fetchGit (builtins.fromJSON {}); \
+          in builtins.toJSON (builtins.removeAttrs r [ \"outPath\" ] // {{ path = r.outPath; }})",
+-        nix_string_literal(&attrs_to_json(args))
++        nix_string_literal(&attrs_to_json(&args))
+     );
+     let missing = || format!("iets: builtins.fetchGit of '{shown}' needs nix on PATH");
+     let what = format!("the Git repository '{shown}'");

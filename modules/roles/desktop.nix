@@ -27,6 +27,8 @@
         computer.enabled = true;
       };
     };
+
+    home.packages = [ inputs.autolith.packages.${pkgs.stdenv.hostPlatform.system}.default ];
   };
 
   flake.modules.nixos.desktop = {

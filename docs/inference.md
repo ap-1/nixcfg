@@ -30,3 +30,7 @@ The NixOS module comes from [`llm-pkgs`](https://codeberg.org/anish/llm-pkgs), w
 ## Oh My Pi
 
 [Oh My Pi](https://ohmypi.dev/) is a coding agent harness, packaged for NixOS/nix-darwin by [`omp-nix`](https://git.molez.org/mandlm/omp-nix) and installed on desktop hosts. It connects to LiteLLM for cloud model access.
+
+## Autolith
+
+[Autolith](https://autolith.rocks/) is a second coding agent harness, installed on desktop hosts alongside Oh My Pi.
