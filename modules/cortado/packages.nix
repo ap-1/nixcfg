@@ -16,6 +16,9 @@
       # applications
       shottr
       iina
+      monitorcontrol
+      mos
+      scroll-reverser
     ];
   };
 }

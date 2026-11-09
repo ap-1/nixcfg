@@ -11,8 +11,8 @@ in
     }:
     let
       gwfox = builtins.fetchTarball {
-        url = "https://github.com/akkva/gwfox/archive/refs/tags/v158.0.7.tar.gz";
-        sha256 = "sha256-n5/nY516i08+QjQa3G5BWSuomMTIGV2AyWWIVAdcveA=";
+        url = "https://github.com/akkva/gwfox/archive/refs/tags/v159.0.2.tar.gz";
+        sha256 = "sha256-TLol6h78ma7dqi93iZ7yaMVmKbbxulBBNARIMT3aqZg=";
       };
     in
     {

@@ -16,6 +16,7 @@
 
       inputs.agenix.nixosModules.default
       inputs.home-manager.darwinModules.home-manager
+      inputs.nix-homebrew.darwinModules.nix-homebrew
       inputs.srvos.darwinModules.desktop
 
       {

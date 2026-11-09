@@ -114,6 +114,7 @@ in
           "apple_cursor"
           "spotify"
           "shottr"
+          "mos"
           "tetrio-desktop"
         ];
     };

@@ -28,15 +28,6 @@
       # Unlock sudo via fingerprint
       security.pam.services.sudo_local.touchIdAuth = true;
 
-      # Homebrew
-      system.primaryUser = "anish";
-
-      homebrew = {
-        enable = true;
-        onActivation.cleanup = "none";
-        casks = [ "bluebubbles" ];
-      };
-
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
     };
