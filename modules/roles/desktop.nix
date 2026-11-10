@@ -51,6 +51,7 @@
       games
       umvpn
       openwhispr
+      bootvine
     ];
   };
 
