@@ -18,7 +18,6 @@ vim.lsp.enable({
 	"ty",
 	"oxlint",
 	"tofu_ls",
-	"marksman",
 	"yamlls",
 })
 

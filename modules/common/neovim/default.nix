@@ -19,7 +19,6 @@
           taplo
           ruff
           ty
-          marksman
           yaml-language-server
           oxlint
           tofu-ls
