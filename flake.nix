@@ -57,7 +57,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tobi = {
-      url = "git+https://tangled.org/ptr.pet/tobi";
+      url = "git+https://tangled.org/ptr.pet/tobi?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     iets = {
