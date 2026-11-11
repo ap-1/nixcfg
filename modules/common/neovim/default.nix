@@ -27,10 +27,7 @@
 
           # linters
           markdownlint-cli2
-          # TODO: snapshot tests broken upstream on this pin
-          (statix.overrideAttrs (_: {
-            doCheck = false;
-          }))
+          statix
           deadnix
           yamllint
           editorconfig-checker

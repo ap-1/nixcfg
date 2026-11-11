@@ -1,11 +1,6 @@
 { config, inputs, ... }:
 let
   hosts = config.flake.hosts;
-  ietsFor =
-    pkgs:
-    inputs.iets.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
-      patches = (old.patches or [ ]) ++ [ ./iets-lix-fetchgit.patch ];
-    });
 in
 {
   flake.modules.nixos.iets =
@@ -16,14 +11,14 @@ in
       ...
     }:
     let
-      iets = ietsFor pkgs;
+      iets = inputs.iets.packages.${pkgs.stdenv.hostPlatform.system}.default;
     in
     {
       imports = [ inputs.iets.nixosModules.default ];
 
       iets.classic = {
         enable = true;
-        nix = pkgs.lixPackageSets.stable.lix;
+        nix = pkgs.lixPackageSets.lix_2_96.lix;
       };
 
       environment.systemPackages = [ (lib.hiPrio iets) ];
@@ -40,7 +35,7 @@ in
       ...
     }:
     let
-      iets = ietsFor pkgs;
+      iets = inputs.iets.packages.${pkgs.stdenv.hostPlatform.system}.default;
     in
     {
       environment.systemPackages = [

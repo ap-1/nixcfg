@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.stashapp = { config, ... }: {
+  flake.modules.nixos.stashapp = { config, pkgs, ... }: {
     age.secrets.stash-jwt = {
       file = ../../secrets/stash-jwt.age;
       owner = "stash";
@@ -20,6 +20,12 @@
 
     services.stash = {
       enable = true;
+      # TODO: https://github.com/NixOS/nixpkgs/pull/586418
+      package = (pkgs.stash.override { buildGoModule = pkgs.buildGo126Module; }).overrideAttrs {
+        preConfigure = ''
+          export HOME=$(mktemp -d)
+        '';
+      };
       mutableSettings = false;
       username = "anish";
       passwordFile = config.age.secrets.stash-password.path;

@@ -48,8 +48,9 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # TODO: https://github.com/manic-systems/ncro/pull/138
     ncro = {
-      url = "github:feel-co/ncro";
+      url = "github:SuperSandro2000/ncro/patch-1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tangled = {
@@ -96,14 +97,13 @@
     };
     # TODO: https://github.com/NixOS/nixpkgs/pull/570308
     nixpkgs-termfilepickers.url = "github:ap-1/nixpkgs/xdg-desktop-portal-termfilepickers";
-    # TODO: https://github.com/NixOS/nixpkgs/pull/579717
-    nixpkgs-ghostty.url = "github:NixOS/nixpkgs/6b9287bf90bf1cdd453fe2e17c88ecb9204057e7";
+    # TODO: https://github.com/NixOS/nixpkgs/pull/585738
+    nixpkgs-omp.url = "github:NixOS/nixpkgs/9f7285cd58340385b697209d12d259b72f084a1a";
     oh-my-pi = {
       url = "github:can1357/oh-my-pi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TODO: https://github.com/lambda-symbolics/autolith/pull/187
-    autolith.url = "github:ap-1/autolith/allrefs";
+    autolith.url = "github:lambda-symbolics/autolith";
     openwhispr = {
       url = "github:OpenWhispr/openwhispr";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -17,24 +17,17 @@ in
         license-go
         microfetch
         tree
-        # TODO: https://github.com/NixOS/nixpkgs/pull/573101
-        (sesh.override {
-          go-mockery = go-mockery.overrideAttrs (
-            finalAttrs: _: {
-              version = "3.8.1";
-              src = fetchFromGitHub {
-                owner = "vektra";
-                repo = "mockery";
-                tag = "v${finalAttrs.version}";
-                hash = "sha256-HCbnifYWE/3CG85dt0FPWT9hLSQbgOXuOKTBJHO0S2U=";
-              };
-              vendorHash = "sha256-ksfAHdPdOd8ELS0CSBg+E7KPd5xX/uGeLPn9HiItjdI=";
-            }
-          );
-        })
+        sesh
         fzf
         trzsz-ssh
-        npb
+        # TODO: https://github.com/NixOS/nixpkgs/pull/584771
+        (npb.overrideAttrs (old: {
+          nativeBuildInputs = old.nativeBuildInputs ++ [ pkg-config ];
+          buildInputs = (old.buildInputs or [ ]) ++ [
+            sqlite
+            zstd
+          ];
+        }))
         inputs.tobi.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
 

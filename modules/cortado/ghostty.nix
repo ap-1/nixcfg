@@ -1,8 +1,8 @@
-{ inputs, ... }: {
+{ ... }: {
   flake.modules.homeManager.ghostty = { pkgs, ... }: {
     programs.ghostty = {
       enable = true;
-      package = inputs.nixpkgs-ghostty.legacyPackages.${pkgs.stdenv.hostPlatform.system}.ghostty-bin;
+      package = pkgs.ghostty-bin;
       settings = {
         window-decoration = true;
         background-blur-radius = 20;
