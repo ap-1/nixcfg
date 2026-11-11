@@ -26,7 +26,7 @@ resource "cloudflare_dns_record" "tunnel_cname" {
   zone_id = local.zone_id
   name    = "${each.key}.anish.land"
   type    = "CNAME"
-  content = "${var.tunnel_id}.cfargotunnel.com"
+  content = "${local.affogato_tunnel_id}.cfargotunnel.com"
   ttl     = 1
   proxied = true
 }
