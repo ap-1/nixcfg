@@ -13,8 +13,12 @@
       casks = [
         "bluebubbles"
         "citrix-workspace"
+        "figma"
+        "macfuse"
         "mouseless"
         "obs"
+        "qflipper"
+        "switchresx"
       ];
     };
   };
