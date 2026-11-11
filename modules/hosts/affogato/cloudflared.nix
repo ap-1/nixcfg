@@ -2,10 +2,7 @@
 let
   meta = config.flake.meta;
   tunnel = config.flake.services.tunnel;
-
-  # created with: cloudflared tunnel create affogato
-  # credential json stored as agenix secret
-  tunnelId = "57460d10-8d73-4518-846e-099860cb6200";
+  tunnelId = config.flake.hosts.affogato.cloudflareTunnel;
 in
 {
   flake.modules.nixos.affogato-cloudflared =

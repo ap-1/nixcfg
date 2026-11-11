@@ -43,6 +43,7 @@
       };
       publicIpv4 = "167.233.47.157";
       publicIpv6 = "2a01:4f8:1c18:fd::1";
+      cloudflareTunnel = "57460d10-8d73-4518-846e-099860cb6200"; # cloudflared tunnel create affogato
     };
   };
 }

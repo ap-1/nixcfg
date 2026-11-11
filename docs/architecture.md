@@ -8,10 +8,11 @@ This config follows the [dendritic pattern](https://github.com/mightyiam/dendrit
 - `hosts/<name>/` holds the modules specific to one host, plus that host's `system.nix`.
 - `roles/` bundle those modules under a name (`common`, `desktop`, and one per host) for a configuration to import.
 - `data/` hold flake-level data registries, read elsewhere via `config.flake.*`.
+- `terranix/` holds the [terranix](https://terranix.org/) configuration for Cloudflare DNS.
 
 ## Composition
 
-`flake.nix` calls `mkFlake` with two imports. `flake-parts.flakeModules.modules` provides the `flake.modules.<class>.<name>` option, and `import-tree ./modules` pulls every module file into that single evaluation. Each file then contributes one part of the flake:
+`flake.nix` calls `mkFlake` with the treefmt and terranix flake modules plus two that shape the config. `flake-parts.flakeModules.modules` provides the `flake.modules.<class>.<name>` option, and `import-tree ./modules` pulls every module file into that single evaluation. Each file then contributes one part of the flake:
 
 - feature modules and roles populate `flake.modules.{nixos,homeManager,darwin}`; a role is a module whose `imports` reference other modules as `config.flake.modules.<class>.<name>`.
 - data files set `flake.{meta,hosts,services}`, readable from any module through `config.flake.*`.

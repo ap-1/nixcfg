@@ -12,6 +12,8 @@ flake.services = {
 
 A `services.public` entry maps a name to the Caddy site block that fronts it, served at `<name>.anish.land` with a per-name ACME certificate and direct `A`/`AAAA` DNS records. A `services.tunnel` entry maps a name to the localhost URL that cloudflared proxies to, served at `<name>.anish.land` through a Cloudflare Tunnel with `CNAME` DNS records. A `services.tailnet` entry maps a name to the host that serves it, and the name becomes a headscale DNS record at `<name>.ts.anish.land`.
 
+The Cloudflare records for `public` and `tunnel` entries come from the `cloudflare` terranix configuration, applied with `nix run .#cloudflare`.
+
 ## Reverse proxy and certificates
 
 Hosts that expose services through Caddy import a shared proxy module that turns a set of named Caddy site blocks into virtual hosts and provisions the ACME certificates they use. Certificates are issued over the Cloudflare DNS-01 challenge, which requires the Cloudflare API token as a [secret](secrets.md).
@@ -23,7 +25,6 @@ affogato uses Caddy only for `services.public`, issuing a per-name certificate a
 Most public services on affogato are served through a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/), which hides affogato's IP and requires no inbound ports. cloudflared makes an outbound connection to Cloudflare's edge and proxies incoming requests to each service's localhost port. A tunnel service comprises:
 
 - an entry in `services.tunnel.<name>` whose value is the localhost URL;
-- a matching `<name>` in the OpenTofu Cloudflare `tunnel_subdomains` list, applied with `tofu apply`, which publishes a `CNAME` record pointing the name at the tunnel;
 - a module binding the app to its local port, imported by affogato's role.
 
 kanidm's HTTPS origin has TLS verification disabled since it uses an internal certificate.
@@ -35,7 +36,6 @@ headscale cannot go through a Cloudflare Tunnel because it uses custom HTTP upgr
 A direct public service is fronted by Caddy with its own ACME certificate and direct DNS records:
 
 - an entry in `services.public.<name>` whose value is its Caddy site block;
-- a matching `<name>` in the OpenTofu Cloudflare `subdomains` list, which publishes `A` and `AAAA` records pointing at affogato;
 - a module binding the app to its local port, imported by affogato's role.
 
 A stateful service additionally has its state directory in affogato's [preservation set](architecture.md#persistence).

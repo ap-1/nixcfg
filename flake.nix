@@ -12,6 +12,10 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    terranix = {
+      url = "github:terranix/terranix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # System
     nix-darwin = {
@@ -112,6 +116,7 @@
       imports = [
         inputs.flake-parts.flakeModules.modules
         inputs.treefmt-nix.flakeModule
+        inputs.terranix.flakeModule
         (inputs.import-tree ./modules)
       ];
 
@@ -129,7 +134,6 @@
             nixfmt.enable = true;
             shfmt.enable = true;
             stylua.enable = true;
-            terraform.enable = true;
           };
         };
       };
