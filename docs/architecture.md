@@ -33,7 +33,7 @@ affogato imports the [srvos](https://github.com/nix-community/srvos) `server` an
 Services are reached one of three ways:
 
 - Most public services on affogato go through a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/) at `<name>.anish.land`, proxied by cloudflared to their localhost port. affogato's IP is not exposed for these services.
-- headscale, the PDS, and the knot resolve directly through Cloudflare DNS to affogato and are served by Caddy, since none of them works behind a Cloudflare Tunnel.
+- headscale and the PDS resolve directly through Cloudflare DNS to affogato and are served by Caddy, since neither works behind a Cloudflare Tunnel.
 - Tailnet services resolve through the mesh's MagicDNS to their host at `<name>.ts.anish.land` and are served by that host's Caddy under one `*.ts.anish.land` ACME certificate.
 
 Caddy certificates are issued over the Cloudflare DNS-01 challenge, and OIDC-gated services authenticate against [kanidm](https://kanidm.com/). See [services](services.md) for the registry that drives all three.

@@ -57,10 +57,6 @@
       url = "github:SuperSandro2000/ncro/patch-1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    tangled = {
-      url = "git+https://tangled.org/tangled.org/core";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     tobi = {
       url = "git+https://tangled.org/ptr.pet/tobi?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";

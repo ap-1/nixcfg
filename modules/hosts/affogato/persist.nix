@@ -13,9 +13,7 @@
           "/var/lib/headscale"
           "/var/lib/headplane"
           "/var/lib/vaultwarden"
-          "/var/lib/forgejo"
           "/var/lib/tranquil-pds"
-          "/var/lib/tangled-knot"
           "/var/lib/postgresql"
           "/var/backup/postgresql"
           {

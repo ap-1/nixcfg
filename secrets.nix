@@ -75,10 +75,6 @@ in
     anish
     cortado
   ];
-  "secrets/kanidm-oauth2-forgejo.age".publicKeys = [
-    anish
-    affogato
-  ];
   "secrets/kanidm-oauth2-immich.age".publicKeys = [
     anish
     affogato

@@ -30,12 +30,6 @@ let
       group = "vaultwarden.access";
       enableLegacyCrypto = true;
     };
-    forgejo = {
-      display = "Forgejo";
-      subdomain = "git";
-      callback = "/user/oauth2/kanidm/callback";
-      group = "forgejo.access";
-    };
     pds = {
       display = "Tranquil PDS";
       subdomain = "pds";

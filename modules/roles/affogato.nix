@@ -11,9 +11,7 @@
       affogato-headscale
       affogato-headplane
       affogato-vaultwarden
-      affogato-forgejo
       affogato-tranquil-pds
-      affogato-tangled-knot
       affogato-atuin
       affogato-postgres
       affogato-memory
