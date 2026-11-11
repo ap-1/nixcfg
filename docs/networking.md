@@ -22,7 +22,7 @@ sudo tailscale up --login-server=https://headscale.anish.land --auth-key=<key> -
 
 MagicDNS uses `base_domain = ts.anish.land`, so nodes resolve as `<host>.ts.anish.land`. Service aliases that aren't nodes are headscale `extra_records` generated from `flake.services.tailnet`.
 
-nix-darwin's tailscale module only writes a resolver for Tailscale's own `ts.net` suffix, so the shared darwin module adds `/etc/resolver/ts.anish.land` pointing at `100.100.100.100`.
+On macOS, tailscaled writes `/etc/resolver/ts.anish.land` itself.
 
 ## Access
 
