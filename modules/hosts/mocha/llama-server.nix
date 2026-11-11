@@ -113,7 +113,7 @@ in
         })
       ];
 
-      age.secrets.open-webui-oauth.file = ../../secrets/open-webui-oauth.age;
+      age.secrets.open-webui-oauth.file = ../../../secrets/open-webui-oauth.age;
 
       systemd.services.llama-server-chat = mkServer "chat" {
         model = "huihui-ai/Huihui-gemma-4-12B-it-qat-q4_0-unquantized-abliterated-GGUF";

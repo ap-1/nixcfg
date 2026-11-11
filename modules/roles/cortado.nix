@@ -10,7 +10,6 @@
     imports = with config.flake.modules.darwin; [
       cortado-configuration
       cortado-homebrew
-      distributed-builds
     ];
   };
 }

@@ -5,8 +5,8 @@
       ...
     }:
     {
-      age.secrets.cliproxyapi-api-key.file = ../../secrets/cliproxyapi-api-key.age;
-      age.secrets.cliproxyapi-management.file = ../../secrets/cliproxyapi-management.age;
+      age.secrets.cliproxyapi-api-key.file = ../../../secrets/cliproxyapi-api-key.age;
+      age.secrets.cliproxyapi-management.file = ../../../secrets/cliproxyapi-management.age;
 
       services.cliproxyapi = {
         enable = true;

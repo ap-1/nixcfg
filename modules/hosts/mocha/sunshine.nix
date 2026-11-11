@@ -45,10 +45,4 @@ in
       "uinput"
     ];
   };
-
-  flake.modules.darwin.sunshine = { pkgs, ... }: {
-    environment.systemPackages = [
-      pkgs.sunshine
-    ];
-  };
 }

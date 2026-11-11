@@ -17,8 +17,18 @@
       mocha-networking
       mocha-memory
       media-server
-      ncro
-      distributed-builds
+      immich
+      stashapp
+      suwayomi
+      llamaServer
+      litellm
+      cliproxyapi
+      hindsight
+      postgres
+      hardware-control
+      sunshine
+      games
+      flatpak
       filechooser
     ];
   };

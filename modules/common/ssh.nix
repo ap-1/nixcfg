@@ -1,4 +1,6 @@
 {
+  flake.modules.nixos.ssh.services.openssh.enable = true;
+
   flake.modules.homeManager.ssh =
     {
       pkgs,

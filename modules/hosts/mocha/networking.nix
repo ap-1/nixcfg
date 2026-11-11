@@ -4,19 +4,7 @@ let
 in
 {
   flake.modules.nixos.mocha-networking = { config, pkgs, ... }: {
-    networking = {
-      hostName = "mocha";
-      networkmanager = {
-        enable = true;
-        wifi.backend = "iwd";
-      };
-      wireless.iwd.enable = true;
-    };
-
-    hardware.bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
+    networking.hostName = "mocha";
 
     # TODO: not in linux-firmware yet (https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/946)
     hardware.firmware = [
@@ -27,7 +15,7 @@ in
     ];
 
     age.secrets.headscale-authkey-mocha = {
-      file = ../../secrets/headscale-authkey-mocha.age;
+      file = ../../../secrets/headscale-authkey-mocha.age;
       owner = "root";
       group = "root";
       mode = "0400";
@@ -35,7 +23,7 @@ in
 
     services.tailscale.authKeyFile = config.age.secrets.headscale-authkey-mocha.path;
 
-    age.secrets.cloudflare-dns.file = ../../secrets/cloudflare-dns.age;
+    age.secrets.cloudflare-dns.file = ../../../secrets/cloudflare-dns.age;
 
     services.webProxy = {
       domain = meta.tailnetDomain;

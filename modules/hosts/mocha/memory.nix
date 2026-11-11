@@ -13,7 +13,6 @@
 
     services.earlyoom.enable = true;
 
-    # TODO: raise to 64G
     systemd.slices."system-nix\\x2ddaemon".sliceConfig.MemoryHigh = "40G";
   };
 }

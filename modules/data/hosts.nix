@@ -10,6 +10,18 @@
         ipv6 = "fd7a:115c:a1e0::1";
       };
     };
+    macchiato = {
+      # TODO: macchiato host key
+      sshKey = "ssh-ed25519 TODO";
+      maxJobs = 6;
+      cores = 4;
+      ietsWorkers = 8;
+      # TODO: confirm once joined
+      tailnet = {
+        ipv4 = "100.64.0.5";
+        ipv6 = "fd7a:115c:a1e0::5";
+      };
+    };
     mocha = {
       sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBu43o7nsVIt9KB1hpc+vCEY1CkROhQ01ZulhwtEs2j root@ap-1";
       maxJobs = 8;

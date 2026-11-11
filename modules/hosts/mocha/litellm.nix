@@ -10,7 +10,7 @@ in
   flake.modules.nixos.litellm = { config, ... }: {
     imports = [ inputs.llm-pkgs.nixosModules.litellm ];
 
-    age.secrets.litellm-env.file = ../../secrets/litellm-env.age;
+    age.secrets.litellm-env.file = ../../../secrets/litellm-env.age;
 
     services.postgresApps.litellm.service = "litellm";
 

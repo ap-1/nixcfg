@@ -90,12 +90,12 @@ in
     }:
     {
       age.secrets = {
-        kanidm-admin = mkKanidmSecret ../../secrets/kanidm-admin.age;
-        kanidm-idm-admin = mkKanidmSecret ../../secrets/kanidm-idm-admin.age;
+        kanidm-admin = mkKanidmSecret ../../../secrets/kanidm-admin.age;
+        kanidm-idm-admin = mkKanidmSecret ../../../secrets/kanidm-idm-admin.age;
       }
       // lib.mapAttrs' (
         name: _:
-        lib.nameValuePair "kanidm-oauth2-${name}" (mkKanidmSecret ../../secrets/kanidm-oauth2-${name}.age)
+        lib.nameValuePair "kanidm-oauth2-${name}" (mkKanidmSecret ../../../secrets/kanidm-oauth2-${name}.age)
       ) oauth2;
 
       users.users.kanidm.extraGroups = [ "acme" ];

@@ -11,7 +11,7 @@ in
 {
   flake.modules.nixos.affogato-headscale = { config, ... }: {
     age.secrets.headscale-oidc = {
-      file = ../../secrets/kanidm-oauth2-headscale.age;
+      file = ../../../secrets/kanidm-oauth2-headscale.age;
       owner = "headscale";
       group = "headscale";
       mode = "0440";

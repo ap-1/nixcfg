@@ -15,7 +15,7 @@ in
       ...
     }:
     {
-      age.secrets.cloudflared-tunnel.file = ../../secrets/cloudflared-tunnel.age;
+      age.secrets.cloudflared-tunnel.file = ../../../secrets/cloudflared-tunnel.age;
 
       services.cloudflared = {
         enable = true;

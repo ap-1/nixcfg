@@ -3,8 +3,6 @@
     nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
 
     environment.systemPackages = with pkgs; [
-      ly
-      waylock
       wiremix # pipewire tui
       impala # iwd tui
       bluetui
@@ -33,10 +31,12 @@
         [
           element-desktop
           signal-desktop
-          slack
           jujutsu
           rustup
           elan
+        ]
+        ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform slack) [
+          slack
         ]
         ++ lib.optionals stdenv.hostPlatform.isDarwin [
           bitwarden-desktop

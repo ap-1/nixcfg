@@ -24,7 +24,7 @@ in
         })
       ];
 
-      age.secrets.hindsight-env.file = ../../secrets/hindsight-env.age;
+      age.secrets.hindsight-env.file = ../../../secrets/hindsight-env.age;
 
       services.postgresApps.hindsight.service = "hindsight";
       services.postgresql.extensions = ps: [ ps.pgvector ];

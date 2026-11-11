@@ -1,17 +1,17 @@
 {
   flake.modules.nixos.stashapp = { config, pkgs, ... }: {
     age.secrets.stash-jwt = {
-      file = ../../secrets/stash-jwt.age;
+      file = ../../../secrets/stash-jwt.age;
       owner = "stash";
       group = "stash";
     };
     age.secrets.stash-session = {
-      file = ../../secrets/stash-session.age;
+      file = ../../../secrets/stash-session.age;
       owner = "stash";
       group = "stash";
     };
     age.secrets.stash-password = {
-      file = ../../secrets/stash-password.age;
+      file = ../../../secrets/stash-password.age;
       owner = "stash";
       group = "stash";
     };

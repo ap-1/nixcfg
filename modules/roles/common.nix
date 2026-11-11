@@ -26,6 +26,10 @@
         nix-settings
         iets
         neovim
+        distributed-builds
+        ncro
+        users
+        ssh
       ])
       ++ [
         inputs.srvos.nixosModules.mixins-terminfo
@@ -53,6 +57,8 @@
         nix-settings
         iets
         neovim
+        distributed-builds
+        ncro
       ])
       ++ [
         inputs.srvos.darwinModules.mixins-terminfo

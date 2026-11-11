@@ -19,6 +19,7 @@
       monitorcontrol
       mos
       scroll-reverser
+      sunshine
     ];
   };
 }

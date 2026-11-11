@@ -28,3 +28,7 @@ affogato is a [Hetzner Cloud](https://www.hetzner.com/cloud) cost-optimized x86 
 ## cortado
 
 cortado is a 14-inch MacBook Pro (Mac15,6) with an Apple M3 Pro (12 cores, 6 performance and 6 efficiency), 36 GB of RAM, and a 1 TB SSD.
+
+## macchiato
+
+macchiato is [nixos-apple-silicon](https://github.com/nix-community/nixos-apple-silicon) on the same MacBook as cortado.

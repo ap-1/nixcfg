@@ -17,8 +17,6 @@
       affogato-atuin
       affogato-postgres
       affogato-memory
-      distributed-builds
-      ncro
     ];
   };
 }

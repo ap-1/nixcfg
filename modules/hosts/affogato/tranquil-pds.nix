@@ -6,7 +6,7 @@ let
 in
 {
   flake.modules.nixos.affogato-tranquil-pds = { config, ... }: {
-    age.secrets.tranquil-pds-env.file = ../../secrets/tranquil-pds-env.age;
+    age.secrets.tranquil-pds-env.file = ../../../secrets/tranquil-pds-env.age;
 
     services.tranquil-pds = {
       enable = true;

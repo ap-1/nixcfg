@@ -5,7 +5,7 @@ let
 in
 {
   flake.modules.nixos.affogato-web = { config, ... }: {
-    age.secrets.cloudflare-dns.file = ../../secrets/cloudflare-dns.age;
+    age.secrets.cloudflare-dns.file = ../../../secrets/cloudflare-dns.age;
 
     services.webProxy = {
       domain = meta.domain;

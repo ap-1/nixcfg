@@ -5,7 +5,7 @@ in
 {
   flake.modules.nixos.immich = { config, ... }: {
     age.secrets.kanidm-oauth2-immich = {
-      file = ../../secrets/kanidm-oauth2-immich.age;
+      file = ../../../secrets/kanidm-oauth2-immich.age;
       owner = "immich";
       group = "immich";
     };

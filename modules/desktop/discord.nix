@@ -1,21 +1,25 @@
 {
   flake.modules.homeManager.discord =
     {
+      lib,
       pkgs,
       inputs,
       ...
     }:
+    let
+      available = lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.discord-canary;
+    in
     {
       imports = [ inputs.moonlight.homeModules.default ];
 
-      home.packages = [
+      home.packages = lib.optionals available [
         (pkgs.discord-canary.override {
           withMoonlight = true;
           moonlight = inputs.moonlight.packages.${pkgs.stdenv.hostPlatform.system}.moonlight;
         })
       ];
 
-      programs.moonlight = {
+      programs.moonlight = lib.mkIf available {
         enable = true;
         configs.canary = {
           extensions = {

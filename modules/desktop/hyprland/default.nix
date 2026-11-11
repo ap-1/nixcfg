@@ -11,9 +11,6 @@
     xdg.configFile."hypr/modules".source = ./modules;
     xdg.configFile."wl-kbptr/config".source = ./wl-kbptr.conf;
 
-    # expose AX trees for omp computer use
-    dconf.settings."org/gnome/desktop/interface".toolkit-accessibility = true;
-
     # enabled manually for catppuccin
     programs.foot = {
       enable = true;
@@ -25,12 +22,30 @@
   };
 
   flake.modules.nixos.hyprland = { pkgs, ... }: {
+    programs.hyprland.enable = true;
+    environment.variables.NIXOS_OZONE_WL = 1; # Configure Electron / CEF apps to use Wayland
+
     programs.ydotool.enable = true;
+    users.users.anish.extraGroups = [ "ydotool" ];
+
+    # Lock screen
+    security.pam.services.waylock = { };
+
+    services.displayManager.ly.enable = true;
+
+    # Keyring
+    services.oo7.enable = true;
+    services.dbus.packages = [ pkgs.gcr_3 ];
+
+    # USB drive mounting
+    services.udisks2.enable = true;
+
     programs.gpu-screen-recorder.enable = true; # setcap KMS wrapper for promptless capture
-    services.gnome.at-spi2-core.enable = true; # accessibility bus for omp computer use AX
 
     environment.systemPackages = with pkgs; [
+      waylock
       playerctl
+      brightnessctl
       grim # screenshot
       slurp # region selection
       (writeShellApplication {

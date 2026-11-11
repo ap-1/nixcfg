@@ -1,6 +1,9 @@
 {
   flake.modules.nixos.media-server = { ... }: {
-    users.groups.media = { };
+    users = {
+      groups.media = { };
+      users.anish.extraGroups = [ "media" ];
+    };
 
     systemd.tmpfiles.rules = [
       "d /media 2775 root media -"

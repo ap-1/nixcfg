@@ -27,6 +27,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    nixos-apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     # System modules
     agenix = {
@@ -39,7 +44,6 @@
     };
     preservation.url = "github:nix-community/preservation";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     llm-pkgs = {
       url = "git+https://codeberg.org/anish/llm-pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -104,10 +108,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     autolith.url = "github:lambda-symbolics/autolith";
-    openwhispr = {
-      url = "github:OpenWhispr/openwhispr";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -121,6 +121,7 @@
 
       systems = [
         "x86_64-linux"
+        "aarch64-linux"
         "aarch64-darwin"
       ];
 

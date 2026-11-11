@@ -12,7 +12,7 @@ in
     }:
     {
       age.secrets.forgejo-oauth2-secret = {
-        file = ../../secrets/kanidm-oauth2-forgejo.age;
+        file = ../../../secrets/kanidm-oauth2-forgejo.age;
         owner = "forgejo";
         group = "forgejo";
         mode = "0440";

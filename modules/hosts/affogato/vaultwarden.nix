@@ -5,7 +5,7 @@ in
 {
   flake.modules.nixos.affogato-vaultwarden = { config, ... }: {
     age.secrets.vaultwarden = {
-      file = ../../secrets/vaultwarden.age;
+      file = ../../../secrets/vaultwarden.age;
       owner = "vaultwarden";
       group = "vaultwarden";
       mode = "0440";

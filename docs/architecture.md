@@ -5,7 +5,7 @@ This config follows the [dendritic pattern](https://github.com/mightyiam/dendrit
 ## Layout
 
 - `common/` and `desktop/` hold feature modules grouped by scope. `common/` applies to every host, `desktop/` to the graphical hosts. Each defines a `flake.modules.{nixos,homeManager,darwin}.<name>`.
-- `affogato/`, `mocha/` and `cortado/` hold the modules specific to one host, plus that host's `system.nix`.
+- `hosts/<name>/` holds the modules specific to one host, plus that host's `system.nix`.
 - `roles/` bundle those modules under a name (`common`, `desktop`, and one per host) for a configuration to import.
 - `data/` hold flake-level data registries, read elsewhere via `config.flake.*`.
 
@@ -21,25 +21,26 @@ This config follows the [dendritic pattern](https://github.com/mightyiam/dendrit
 
 - `affogato` is the public NixOS VPS, running services behind cloudflared and Caddy.
 - `mocha` is the NixOS desktop.
-- `cortado` is the nix-darwin laptop.
+- `cortado` is nix-darwin on the MacBook.
+- `macchiato` is NixOS on the MacBook, through [nixos-apple-silicon](https://github.com/nix-community/nixos-apple-silicon).
 
-All three join the self-hosted [tailnet](networking.md). Per-host hardware is in [hosts](hosts.md).
+All four join the self-hosted [tailnet](networking.md). Per-host hardware is in [hosts](hosts.md).
 
-Every host imports [srvos](https://github.com/nix-community/srvos) base modules: `server` and `hardware-hetzner-cloud` on affogato, `desktop` on mocha and cortado. The common role adds the `mixins-terminfo` and `mixins-trusted-nix-caches` mixins on all hosts.
+affogato imports the [srvos](https://github.com/nix-community/srvos) `server` and `hardware-hetzner-cloud` modules, and mocha, cortado, and macchiato import its `desktop` module. The common role adds the `mixins-terminfo` and `mixins-trusted-nix-caches` mixins on all hosts.
 
 ## Exposure
 
 Services are reached one of three ways:
 
 - Most public services on affogato go through a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/) at `<name>.anish.land`, proxied by cloudflared to their localhost port. affogato's IP is not exposed for these services.
-- headscale, the PDS and the knot resolve directly through Cloudflare DNS to affogato and are served by Caddy, since none of them works behind a Cloudflare Tunnel.
+- headscale, the PDS, and the knot resolve directly through Cloudflare DNS to affogato and are served by Caddy, since none of them works behind a Cloudflare Tunnel.
 - Tailnet services resolve through the mesh's MagicDNS to their host at `<name>.ts.anish.land` and are served by that host's Caddy under one `*.ts.anish.land` ACME certificate.
 
 Caddy certificates are issued over the Cloudflare DNS-01 challenge, and OIDC-gated services authenticate against [kanidm](https://kanidm.com/). See [services](services.md) for the registry that drives all three.
 
 ## Persistence
 
-affogato's root filesystem is a tmpfs, recreated empty on every boot; only the `/nix` and `/persist` btrfs subvolumes survive. State is carried across reboots by the [preservation](https://github.com/nix-community/preservation) module, which restores a fixed set of paths from `/persist`. These cover service state under `/var/lib`, the nightly database dumps, systemd and nixos state, machine identity (`/etc/machine-id` and the SSH host keys), logs, and the `anish` home. Anything outside that set does not survive a reboot. mocha and cortado use ordinary persistent root filesystems.
+affogato's root filesystem is a tmpfs, recreated empty on every boot; only the `/nix` and `/persist` btrfs subvolumes survive. State is carried across reboots by the [preservation](https://github.com/nix-community/preservation) module, which restores a fixed set of paths from `/persist`. These cover service state under `/var/lib`, the nightly database dumps, systemd and nixos state, machine identity (`/etc/machine-id` and the SSH host keys), logs, and the `anish` home. mocha, cortado, and macchiato use ordinary persistent root filesystems.
 
 ## Databases
 
@@ -47,7 +48,7 @@ Applications that need PostgreSQL share one local instance per host, each declar
 
 ## Binary caches
 
-The NixOS hosts route all substitution through [ncro](https://github.com/feel-co/ncro) (shared `ncro` module), a local cache optimizer on `localhost:5000` forced as the sole substituter. Its upstreams and their signing keys are defined in that module; cortado (darwin) uses direct substituters.
+Every host routes all substitution through [ncro](https://github.com/feel-co/ncro) (shared `ncro` module), a local cache optimizer on `localhost:5000` forced as the sole substituter. Its upstreams and their signing keys are defined in that module.
 
 ## Evaluation
 

@@ -1,9 +1,10 @@
 { inputs, ... }:
-{
-  flake.modules.nixos.ncro =
+let
+  mkNcro =
+    ncroModule:
     { lib, ... }:
     {
-      imports = [ inputs.ncro.nixosModules.ncro ];
+      imports = [ ncroModule ];
 
       services.ncro = {
         enable = true;
@@ -58,4 +59,8 @@
       # Route all substitution on this host through ncro
       nix.settings.substituters = lib.mkForce [ "http://localhost:5000" ];
     };
+in
+{
+  flake.modules.nixos.ncro = mkNcro inputs.ncro.nixosModules.ncro;
+  flake.modules.darwin.ncro = mkNcro inputs.ncro.darwinModules.ncro;
 }

@@ -5,21 +5,21 @@ in
 {
   flake.modules.nixos.affogato-headplane = { config, ... }: {
     age.secrets.headplane-cookie-secret = {
-      file = ../../secrets/headplane-cookie-secret.age;
+      file = ../../../secrets/headplane-cookie-secret.age;
       owner = config.services.headscale.user;
       group = config.services.headscale.group;
       mode = "0440";
     };
 
     age.secrets.headscale-api-key = {
-      file = ../../secrets/headscale-api-key.age;
+      file = ../../../secrets/headscale-api-key.age;
       owner = config.services.headscale.user;
       group = config.services.headscale.group;
       mode = "0440";
     };
 
     age.secrets.headplane-oauth2-secret = {
-      file = ../../secrets/kanidm-oauth2-headplane.age;
+      file = ../../../secrets/kanidm-oauth2-headplane.age;
       owner = config.services.headscale.user;
       group = config.services.headscale.group;
       mode = "0440";
