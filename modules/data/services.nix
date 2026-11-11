@@ -1,5 +1,7 @@
 {
   flake.ports = {
+    # 5000 is AirPlay Receiver on macOS
+    ncro = 5050;
     llama-server-chat = 11434;
     llama-server-embeddings = 11435;
     llama-server-reranker = 11436;

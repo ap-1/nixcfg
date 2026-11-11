@@ -49,7 +49,7 @@ Applications that need PostgreSQL share one local instance per host, each declar
 
 ## Binary caches
 
-Every host routes all substitution through [ncro](https://github.com/feel-co/ncro) (shared `ncro` module), a local cache optimizer on `localhost:5000` forced as the sole substituter. Its upstreams and their signing keys are defined in that module.
+Every host routes all substitution through [ncro](https://github.com/feel-co/ncro) (shared `ncro` module), a local cache optimizer on localhost forced as the sole substituter. Its upstreams and their signing keys are defined in that module.
 
 ## Evaluation
 

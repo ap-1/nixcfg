@@ -1,5 +1,7 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 let
+  port = config.flake.ports.ncro;
+
   mkNcro =
     ncroModule:
     { lib, ... }:
@@ -8,9 +10,8 @@ let
 
       services.ncro = {
         enable = true;
+        inherit port;
         settings = {
-          server.listen = ":5000";
-
           upstreams = [
             {
               url = "https://cache.nixos.org";
@@ -57,7 +58,7 @@ let
       };
 
       # Route all substitution on this host through ncro
-      nix.settings.substituters = lib.mkForce [ "http://localhost:5000" ];
+      nix.settings.substituters = lib.mkForce [ "http://localhost:${toString port}" ];
     };
 in
 {
