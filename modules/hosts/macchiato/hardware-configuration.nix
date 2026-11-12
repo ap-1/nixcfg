@@ -1,5 +1,4 @@
 {
-  # TODO: UUIDs from nixos-generate-config
   flake.modules.nixos.macchiato-hardware-configuration =
     { lib, modulesPath, ... }:
     {
@@ -16,12 +15,13 @@
       boot.extraModulePackages = [ ];
 
       fileSystems."/" = {
-        device = "/dev/disk/by-uuid/00000000-0000-0000-0000-000000000000";
+        device = "/dev/disk/by-label/nixos";
         fsType = "ext4";
       };
 
       fileSystems."/boot" = {
-        device = "/dev/disk/by-uuid/0000-0000";
+        # TODO: partuuid of the ESP that alx.sh creates
+        device = "/dev/disk/by-partuuid/00000000-0000-0000-0000-000000000000";
         fsType = "vfat";
         options = [
           "fmask=0022"
