@@ -43,7 +43,10 @@
     programs.gpu-screen-recorder.enable = true; # setcap KMS wrapper for promptless capture
 
     environment.systemPackages = with pkgs; [
-      waylock
+      # TODO: https://hydra.nixos.org/build/352556926
+      (waylock.overrideAttrs (old: {
+        zigBuildFlags = old.zigBuildFlags ++ lib.optional stdenv.hostPlatform.isAarch64 "-Dllvm";
+      }))
       playerctl
       brightnessctl
       grim # screenshot
