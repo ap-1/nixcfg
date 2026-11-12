@@ -4,6 +4,8 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # TODO: https://hydra.nixos.org/build/352349763
+    nixpkgs-atuin.url = "github:NixOS/nixpkgs/9397dcb09c9598a33509fbc0cce699bd4e6c84d5";
 
     # Flake infrastructure
     flake-parts.url = "github:hercules-ci/flake-parts";

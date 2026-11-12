@@ -110,6 +110,10 @@ in
 
       programs.atuin = {
         enable = true;
+        # TODO: https://hydra.nixos.org/build/352349763
+        package = lib.mkIf (
+          pkgs.stdenv.hostPlatform.system == "aarch64-linux"
+        ) inputs.nixpkgs-atuin.legacyPackages.aarch64-linux.atuin;
         enableZshIntegration = true;
         settings.sync_address = "http://affogato.${meta.tailnetDomain}:8888";
       };
