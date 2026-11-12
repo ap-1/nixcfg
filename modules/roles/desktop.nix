@@ -1,10 +1,6 @@
+{ config, ... }:
 {
-  config,
-  inputs,
-  ...
-}:
-{
-  flake.modules.homeManager.desktop = { pkgs, ... }: {
+  flake.modules.homeManager.desktop = {
     imports = with config.flake.modules.homeManager; [
       zed-editor
       firefox
@@ -14,8 +10,6 @@
       moonlight
       omp
     ];
-
-    home.packages = [ inputs.autolith.packages.${pkgs.stdenv.hostPlatform.system}.default ];
   };
 
   flake.modules.nixos.desktop = {

@@ -107,7 +107,6 @@
       url = "github:can1357/oh-my-pi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    autolith.url = "github:lambda-symbolics/autolith";
   };
 
   outputs =
