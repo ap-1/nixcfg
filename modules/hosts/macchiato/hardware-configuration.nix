@@ -20,8 +20,7 @@
       };
 
       fileSystems."/boot" = {
-        # TODO: partuuid of the ESP that alx.sh creates
-        device = "/dev/disk/by-partuuid/00000000-0000-0000-0000-000000000000";
+        device = "/dev/disk/by-partuuid/a87b4888-3b42-4061-92e1-a01b72eeaae8";
         fsType = "vfat";
         options = [
           "fmask=0022"
