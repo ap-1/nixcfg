@@ -12,6 +12,7 @@ let
   all = [
     anish
     cortado
+    macchiato
     mocha
     affogato
   ];
@@ -124,11 +125,13 @@ in
   "secrets/umvpn-password.age".publicKeys = [
     anish
     cortado
+    macchiato
     mocha
   ];
   "secrets/umvpn-passkey.age".publicKeys = [
     anish
     cortado
+    macchiato
     mocha
   ];
 }
