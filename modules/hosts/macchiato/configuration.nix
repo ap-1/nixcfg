@@ -9,6 +9,7 @@
     };
 
     boot.blacklistedKernelModules = [ "appledrm" ];
+    boot.extraModprobeConfig = "options appledrm enable_verbose_logging=1";
 
     # TODO: drop once m1n1 tags a release after v2.0.0
     boot.m1n1Package = pkgs.m1n1.overrideAttrs {
