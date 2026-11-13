@@ -22,6 +22,7 @@
           "wireplumber"
           "bluetooth"
           "network"
+          "battery"
           "clock"
           "tray"
         ];
@@ -70,6 +71,10 @@
           format-disconnected = "offline";
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           on-click = "pkill impala || foot --app-id=impala -e impala";
+        };
+
+        battery = {
+          format = "bat {capacity}%";
         };
 
         tray = {
