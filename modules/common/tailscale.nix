@@ -3,39 +3,52 @@ let
   meta = config.flake.meta;
 in
 {
-  flake.modules.nixos.tailscale = { pkgs, ... }: {
-    services.tailscale = {
-      enable = true;
-      useRoutingFeatures = "both"; # IP forwarding
-      extraUpFlags = [
-        "--login-server=https://headscale.${meta.domain}"
-        "--ssh"
-        "--advertise-exit-node"
-      ];
-      # TODO: https://github.com/tailscale/tailscale/pull/21758
-      package = pkgs.tailscale.overrideAttrs (old: {
-        patches = (old.patches or [ ]) ++ [
-          (pkgs.fetchpatch {
-            url = "https://github.com/tailscale/tailscale/commit/d73d357b953a283bf736e422f57107efc66894e0.patch";
-            hash = "sha256-WffaDq3XvpxqySbR38YVNQTATdAj6YltfpATO0E86zM=";
-          })
-        ];
-      });
-    };
+  flake.modules.nixos.tailscale =
+    { config, pkgs, ... }:
+    let
+      authKey = "headscale-authkey-${config.networking.hostName}";
+    in
+    {
+      age.secrets.${authKey} = {
+        file = ../../secrets/${authKey}.age;
+        owner = "root";
+        group = "root";
+        mode = "0400";
+      };
 
-    # Apply UDP GRO forwarding each time an interface comes up
-    networking.networkmanager.dispatcherScripts = [
-      {
-        source = pkgs.writeScript "tailscale-udp-gro" ''
-          #!${pkgs.runtimeShell}
-          if [ "$2" = "up" ]; then
-            ${pkgs.ethtool}/bin/ethtool -K "$1" rx-udp-gro-forwarding on rx-gro-list off 2>/dev/null || true
-          fi
-        '';
-        type = "basic";
-      }
-    ];
-  };
+      services.tailscale = {
+        enable = true;
+        useRoutingFeatures = "both"; # IP forwarding
+        extraUpFlags = [
+          "--login-server=https://headscale.${meta.domain}"
+          "--ssh"
+          "--advertise-exit-node"
+        ];
+        authKeyFile = config.age.secrets.${authKey}.path;
+        # TODO: https://github.com/tailscale/tailscale/pull/21758
+        package = pkgs.tailscale.overrideAttrs (old: {
+          patches = (old.patches or [ ]) ++ [
+            (pkgs.fetchpatch {
+              url = "https://github.com/tailscale/tailscale/commit/d73d357b953a283bf736e422f57107efc66894e0.patch";
+              hash = "sha256-WffaDq3XvpxqySbR38YVNQTATdAj6YltfpATO0E86zM=";
+            })
+          ];
+        });
+      };
+
+      # Apply UDP GRO forwarding each time an interface comes up
+      networking.networkmanager.dispatcherScripts = [
+        {
+          source = pkgs.writeScript "tailscale-udp-gro" ''
+            #!${pkgs.runtimeShell}
+            if [ "$2" = "up" ]; then
+              ${pkgs.ethtool}/bin/ethtool -K "$1" rx-udp-gro-forwarding on rx-gro-list off 2>/dev/null || true
+            fi
+          '';
+          type = "basic";
+        }
+      ];
+    };
 
   flake.modules.darwin.tailscale.services.tailscale.enable = true;
 }

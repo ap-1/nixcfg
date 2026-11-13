@@ -5,6 +5,7 @@ let
   anish = meta.sshKey;
 
   cortado = hosts.cortado.sshKey;
+  macchiato = hosts.macchiato.sshKey;
   mocha = hosts.mocha.sshKey;
   affogato = hosts.affogato.sshKey;
 
@@ -74,6 +75,10 @@ in
   "secrets/headscale-authkey-cortado.age".publicKeys = [
     anish
     cortado
+  ];
+  "secrets/headscale-authkey-macchiato.age".publicKeys = [
+    anish
+    macchiato
   ];
   "secrets/kanidm-oauth2-immich.age".publicKeys = [
     anish

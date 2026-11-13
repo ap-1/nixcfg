@@ -1,5 +1,7 @@
 {
   flake.modules.nixos.macchiato-configuration = { pkgs, ... }: {
+    networking.hostName = "macchiato";
+
     hardware.asahi = {
       enable = true;
       # non-redistributable, loaded from the ESP at boot

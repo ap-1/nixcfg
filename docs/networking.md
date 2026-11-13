@@ -4,7 +4,7 @@ The fleet runs on a self-hosted [headscale](https://headscale.net/) control plan
 
 ## Joining a host
 
-NixOS hosts authenticate with a reusable headscale pre-auth key, stored as an [agenix secret](secrets.md) and wired through `services.tailscale.authKeyFile`. The shared tailscale module also sets `extraUpFlags` for the login server, Tailscale SSH, and exit-node advertisement. They take effect only at (re)authentication, so re-joining a host requires a `tailscale logout` and a restart of `tailscaled-autoconnect`.
+NixOS hosts join with a reusable headscale pre-auth key. Tailscale flags only apply when a host authenticates. Logging out with `tailscale logout` and restarting `tailscaled-autoconnect` makes it authenticate again.
 
 Keys are minted on affogato:
 

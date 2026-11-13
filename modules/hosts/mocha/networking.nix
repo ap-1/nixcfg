@@ -14,15 +14,6 @@ in
       '')
     ];
 
-    age.secrets.headscale-authkey-mocha = {
-      file = ../../../secrets/headscale-authkey-mocha.age;
-      owner = "root";
-      group = "root";
-      mode = "0400";
-    };
-
-    services.tailscale.authKeyFile = config.age.secrets.headscale-authkey-mocha.path;
-
     age.secrets.cloudflare-dns.file = ../../../secrets/cloudflare-dns.age;
 
     services.webProxy = {

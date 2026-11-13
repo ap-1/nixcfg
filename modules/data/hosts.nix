@@ -11,12 +11,10 @@
       };
     };
     macchiato = {
-      # TODO: macchiato host key
-      sshKey = "ssh-ed25519 TODO";
+      sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOYheUYlQZYREPgEKC/LEhgDLgzO0axxm5vTrzIBGIKg root@macchiato";
       maxJobs = 6;
       cores = 4;
       ietsWorkers = 8;
-      # TODO: confirm once joined
       tailnet = {
         ipv4 = "100.64.0.5";
         ipv6 = "fd7a:115c:a1e0::5";
