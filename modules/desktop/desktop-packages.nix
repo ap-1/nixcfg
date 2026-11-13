@@ -29,7 +29,20 @@
       home.packages =
         with pkgs;
         [
-          element-desktop
+          (
+            # electron doesn't detect oo7 under hyprland
+            if stdenv.hostPlatform.isLinux then
+              symlinkJoin {
+                inherit (element-desktop) name meta;
+                paths = [ element-desktop ];
+                nativeBuildInputs = [ makeWrapper ];
+                postBuild = ''
+                  wrapProgram $out/bin/element-desktop --add-flags --password-store=gnome-libsecret
+                '';
+              }
+            else
+              element-desktop
+          )
           signal-desktop
           jujutsu
           rustup
