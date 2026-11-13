@@ -16,7 +16,7 @@ hl.on("keybinds.submap", function(submap)
 	if submap == "cursor" then
 		hl.config({ input = { repeat_rate = 100, repeat_delay = 150 } })
 	else
-		hl.config({ input = { repeat_rate = 25, repeat_delay = 600 } })
+		hl.config({ input = require("modules/key-repeat") })
 	end
 end)
 
