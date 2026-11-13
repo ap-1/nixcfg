@@ -89,6 +89,7 @@ in
         enable = true;
         enableZshIntegration = true;
       };
+      home.sessionVariables._PR_AI_DISABLE = "1";
 
       programs.nix-index = {
         enable = true;
