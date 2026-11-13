@@ -6,6 +6,8 @@
       peripheralFirmwareDirectory = null;
     };
 
+    boot.blacklistedKernelModules = [ "appledrm" ];
+
     # TODO: drop once m1n1 tags a release after v2.0.0
     boot.m1n1Package = pkgs.m1n1.overrideAttrs {
       version = "2.0.0-unstable-2026-11-10";
