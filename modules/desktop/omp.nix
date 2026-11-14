@@ -7,8 +7,7 @@
 
       programs.omp = {
         enable = true;
-        # TODO: https://github.com/NixOS/nixpkgs/pull/585738
-        package = inputs.nixpkgs-omp.legacyPackages.${pkgs.stdenv.hostPlatform.system}.omp;
+        package = pkgs.omp;
         settings = {
           setupVersion = 1;
           theme.dark = "dark-catppuccin";

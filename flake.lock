@@ -886,22 +886,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-omp": {
-      "locked": {
-        "lastModified": 1794272359,
-        "narHash": "sha256-QDPlC83zYus2nuq14S0tlcxpbN/j197gZe31LR3zLRA=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "9f7285cd58340385b697209d12d259b72f084a1a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "9f7285cd58340385b697209d12d259b72f084a1a",
-        "type": "github"
-      }
-    },
     "nixpkgs-termfilepickers": {
       "locked": {
         "lastModified": 1792199369,
@@ -920,11 +904,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1794042290,
-        "narHash": "sha256-ziZn2PvCJE5JEEpqTdxXwJpPB+L3YqoCpTAMCzyaP3U=",
+        "lastModified": 1794386569,
+        "narHash": "sha256-x9sADJvoVG0L6RejZB+/BB4YiGZFBZrfTlhF4uBq1tQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f4a03c008967841f2a0b3cb7c436fc6fc31671f6",
+        "rev": "d4f25a3e562008648d45bcf2d70bcc7422cad84e",
         "type": "github"
       },
       "original": {
@@ -1041,7 +1025,6 @@
         "nixos-apple-silicon": "nixos-apple-silicon",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-atuin": "nixpkgs-atuin",
-        "nixpkgs-omp": "nixpkgs-omp",
         "nixpkgs-termfilepickers": "nixpkgs-termfilepickers",
         "oh-my-pi": "oh-my-pi",
         "preservation": "preservation",

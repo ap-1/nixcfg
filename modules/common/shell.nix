@@ -20,14 +20,7 @@ in
         sesh
         fzf
         trzsz-ssh
-        # TODO: https://github.com/NixOS/nixpkgs/pull/584771
-        (npb.overrideAttrs (old: {
-          nativeBuildInputs = old.nativeBuildInputs ++ [ pkg-config ];
-          buildInputs = (old.buildInputs or [ ]) ++ [
-            sqlite
-            zstd
-          ];
-        }))
+        npb
         inputs.tobi.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
 

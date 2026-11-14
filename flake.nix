@@ -103,8 +103,6 @@
     };
     # TODO: https://github.com/NixOS/nixpkgs/pull/570308
     nixpkgs-termfilepickers.url = "github:ap-1/nixpkgs/xdg-desktop-portal-termfilepickers";
-    # TODO: https://github.com/NixOS/nixpkgs/pull/585738
-    nixpkgs-omp.url = "github:NixOS/nixpkgs/9f7285cd58340385b697209d12d259b72f084a1a";
     oh-my-pi = {
       url = "github:can1357/oh-my-pi";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -62,52 +62,6 @@ in
             (pyfinal: pyprev: {
               # mcp is only a test input
               posthog = pyprev.posthog.override { mcp = pyfinal.mcp_1; };
-              # TODO: https://github.com/NixOS/nixpkgs/pull/584290
-              primp = pyprev.primp.overrideAttrs (old: {
-                __structuredAttrs = true;
-                nativeBuildInputs = old.nativeBuildInputs ++ [ final.pkg-config ];
-                buildInputs = old.buildInputs ++ [
-                  final.aws-lc
-                  final.zstd
-                ];
-              });
-              # TODO: https://github.com/NixOS/nixpkgs/pull/585193
-              speechrecognition = pyprev.speechrecognition.overridePythonAttrs (old: {
-                disabledTestPaths = old.disabledTestPaths ++ [
-                  "tests/recognizers/whisper_api/test_openai.py"
-                ];
-              });
-              # TODO: https://github.com/NixOS/nixpkgs/pull/584283
-              chromadb = pyprev.chromadb.overridePythonAttrs (old: {
-                buildInputs = old.buildInputs ++ [
-                  final.sqlite
-                  final.rust-jemalloc-sys
-                ];
-              });
-              # TODO: https://github.com/NixOS/nixpkgs/pull/584702
-              geopandas = pyprev.geopandas.overridePythonAttrs (old: rec {
-                version = "1.2.0";
-                src = final.fetchFromGitHub {
-                  owner = "geopandas";
-                  repo = "geopandas";
-                  tag = "v${version}";
-                  hash = "sha256-KXFNAsbeDLUupQSFnUSrvnSXqr5b8WUeDYaFbBvj9Xo=";
-                };
-                build-system = [
-                  pyfinal.hatch-vcs
-                  pyfinal.hatchling
-                ];
-                dependencies = old.dependencies ++ [ pyfinal.numpy ];
-                nativeCheckInputs = old.nativeCheckInputs ++ [ pyfinal.scipy ];
-                disabledTests = old.disabledTests ++ [
-                  "TestAxisLabels"
-                  "TestStyleMapping"
-                  "test_read_file_crs_warning_messages"
-                  "test_read_file_mask"
-                  "test_read_file_multi_layer_with_layer_arg_no_warning"
-                  "test_write_parquet_2_0_gdal_readable"
-                ];
-              });
             })
           ];
         })
