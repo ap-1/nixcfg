@@ -20,12 +20,13 @@
       wireless
       moonlight
       umvpn
-      bootvine
       omp
     ];
 
     time.timeZone = "America/New_York";
+
     programs.nix-ld.enable = true;
+    services.bootvine.enable = true;
   };
 
   flake.modules.darwin.desktop = {

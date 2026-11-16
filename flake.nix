@@ -4,8 +4,6 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # TODO: https://hydra.nixos.org/build/352349763
-    nixpkgs-atuin.url = "github:NixOS/nixpkgs/9397dcb09c9598a33509fbc0cce699bd4e6c84d5";
 
     # Flake infrastructure
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -33,8 +31,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    # TODO: https://github.com/nix-community/nixos-apple-silicon/pull/590
     nixos-apple-silicon = {
-      url = "github:nix-community/nixos-apple-silicon";
+      url = "github:ap-1/nixos-apple-silicon/linux-asahi-7.3.4-1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
@@ -58,9 +57,8 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TODO: https://github.com/manic-systems/ncro/pull/138
     ncro = {
-      url = "github:SuperSandro2000/ncro/patch-1";
+      url = "github:manic-systems/ncro";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tobi = {
@@ -69,10 +67,6 @@
     };
     iets = {
       url = "github:numtide/iets";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    bootvine = {
-      url = "git+https://codeberg.org/wvhulle/bootvine";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
