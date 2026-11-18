@@ -14,6 +14,7 @@
         "bluebubbles"
         "citrix-workspace"
         "figma"
+        "grok-bot"
         "macfuse"
         "mouseless"
         "obs"
