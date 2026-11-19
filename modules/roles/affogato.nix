@@ -15,6 +15,7 @@
       affogato-atuin
       affogato-postgres
       affogato-memory
+      rex
     ];
   };
 }

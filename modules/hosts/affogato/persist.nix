@@ -14,6 +14,7 @@
           "/var/lib/headplane"
           "/var/lib/vaultwarden"
           "/var/lib/tranquil-pds"
+          "/var/lib/rex"
           "/var/lib/postgresql"
           "/var/backup/postgresql"
           {

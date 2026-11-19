@@ -30,6 +30,7 @@
       games
       flatpak
       filechooser
+      rex
     ];
   };
 }
